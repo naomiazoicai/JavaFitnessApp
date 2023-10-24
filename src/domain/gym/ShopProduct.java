@@ -1,4 +1,4 @@
-package domain.money;
+package domain.gym;
 
 public class ShopProduct {
 }

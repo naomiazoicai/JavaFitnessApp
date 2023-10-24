@@ -1,6 +1,6 @@
 package domain.persons;
 
-public class Customer extends Person {
+public class Customer{
     public static class Manager extends Employee {
     }
 }
