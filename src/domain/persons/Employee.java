@@ -1,9 +1,11 @@
 package domain.persons;
 
+import java.time.LocalDate;
+
 public class Employee extends Person{
 
     private double salary;
-    public Employee(String username, String name, String birthDate, Gender gender) {
+    public Employee(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
     }
 

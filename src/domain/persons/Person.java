@@ -1,14 +1,15 @@
 package domain.persons;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Person {
     private String username;
     private String name;
-    private String birthDate;
+    private LocalDate birthDate;
     private Gender gender;
 
-    public Person(String username, String name, String birthDate, Gender gender) {
+    public Person(String username, String name, LocalDate birthDate, Gender gender) {
         this.username = username;
         this.name = name;
         this.birthDate = birthDate;
@@ -41,11 +42,11 @@ public class Person {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
