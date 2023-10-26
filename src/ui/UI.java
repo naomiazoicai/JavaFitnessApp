@@ -3,58 +3,61 @@ package UI;
 import domain.gym.*;
 import domain.money.Budget;
 import domain.persons.Customer;
+import domain.persons.Trainer;
+import repository.InMemoryRepository;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI implements IUi, ISubject{
+    private final InMemoryRepository repository = InMemoryRepository.getInstance();
     public void showAllEquipmentItems(){
-//        ArrayList<EquipmentItem> equipmentItems = repository.getAllEquipmentItems();
-//        for(EquipmentItem equipmentItem : equipmentItems)
-//        {
-//            System.out.println(equipmentItem);
-//        }
+        ArrayList<EquipmentItem> equipmentItems = repository.getEquipmentItems();
+        for(EquipmentItem equipmentItem : equipmentItems)
+        {
+            System.out.println(equipmentItem);
+        }
     }
     public void showAllExercises(){
-//        ArrayList<Exercise> exercises = repository.getAllExercises();
-//        for(Exercise exercise : exercises)
-//        {
-//            System.out.println(exercise);
-//        }
+        ArrayList<Exercise> exercises = repository.getExercises();
+        for(Exercise exercise : exercises)
+        {
+            System.out.println(exercise);
+        }
     }
     public void showAllSpecialisedRooms(){
-//        ArrayList<SpecialisedRoom> specialisedRooms = repository.getAllSpecialisedRooms();
-//        for(SpecialisedRoom specialisedRoom : specialisedRooms)
-//        {
-//            System.out.println(specialisedRooms);
-//        }
+        ArrayList<SpecialisedRoom> specialisedRooms = repository.getSpecialisedRooms();
+        for(SpecialisedRoom specialisedRoom : specialisedRooms)
+        {
+            System.out.println(specialisedRooms);
+        }
     }
 
     public void showAllWorkouts(){
-//        ArrayList<Workout> workouts = repository.getAllWorkouts();
-//        for(Workout workout : workouts)
-//        {
-//            System.out.println(workouts);
-//        }
+        ArrayList<Workout> workouts = repository.getWorkouts();
+        for(Workout workout : workouts)
+        {
+            System.out.println(workouts);
+        }
     }
 
     public void showBudget(){
-//        Budget budget = repository.getBudget();
+        Budget budget = repository.getBudget();
    }
     public void showAllCustomers() {
-//        ArrayList<Customer> customers = repository.getAllCustomers();
-//        for(Customer customer : customers)
-//        {
-//            System.out.println(customer);
-//        }
+        ArrayList<Customer> customers = repository.getCustomers();
+        for(Customer customer : customers)
+        {
+            System.out.println(customer);
+        }
     }
         public void showAllTrainers() {
-//        ArrayList<Trainer> trainers = repository.getAllTrainers();
-//        for(Trainer trainer : trainers)
-//        {
-//            System.out.println(trainers);
- //       }
+        ArrayList<Trainer> trainers = repository.getTrainers();
+        for(Trainer trainer : trainers)
+        {
+            System.out.println(trainers);
+        }
         }
 
         public void runUi(){
@@ -73,38 +76,38 @@ public class UI implements IUi, ISubject{
 
             switch(input) {
                 case 1:
-                    System.out.println("...");
-                    //method call equipment item
+                    System.out.println("Equipment items:");
+                    showAllEquipmentItems();
                     runUi();
                     break;
                 case 2:
-                    System.out.println("...");
-                    //method call exercise
+                    System.out.println("Exercises:");
+                    showAllExercises();
                     runUi();
                     break;
                 case 3:
-                    System.out.println("...");
-                    //method call rooms
+                    System.out.println("Rooms:");
+                    showAllSpecialisedRooms();
                     runUi();
                     break;
                 case 4:
-                    System.out.println("...");
-                    //method call workout
+                    System.out.println("Workouts:");
+                    showAllWorkouts();
                     runUi();
                     break;
                 case 5:
-                    System.out.println("...");
-                    //method call budget
+                    System.out.println("Budget:");
+                    showBudget();
                     runUi();
                     break;
                 case 6:
-                    System.out.println("...");
-                    //method call customer
+                    System.out.println("Customers:");
+                    showAllCustomers();
                     runUi();
                     break;
                 case 7:
-                    System.out.println("...");
-                    //method call trainer
+                    System.out.println("Trainers:");
+                    showAllTrainers();
                     runUi();
                     break;
                 default:

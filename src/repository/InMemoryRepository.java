@@ -14,17 +14,17 @@ import java.util.ArrayList;
 public class InMemoryRepository
 {
     // Gym
-    ArrayList<EquipmentItem> equipmentItems;
-    ArrayList<Exercise> exercises;
-    ArrayList<SpecialisedRoom> specialisedRooms;
-    ArrayList<Workout> workouts;
+    ArrayList<EquipmentItem> equipmentItems = new ArrayList<EquipmentItem>();
+    ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+    ArrayList<SpecialisedRoom> specialisedRooms = new ArrayList<SpecialisedRoom>();
+    ArrayList<Workout> workouts = new ArrayList<Workout>();
     // Budget
     Budget budget = Budget.getInstance();
-    ArrayList<CustomerSubscription> customerSubscriptions;
-    ArrayList<SubscriptionType> subscriptionTypes;
+    ArrayList<CustomerSubscription> customerSubscriptions = new ArrayList<CustomerSubscription>();
+    ArrayList<SubscriptionType> subscriptionTypes = new ArrayList<SubscriptionType>();
     // Persons
-    ArrayList<Customer> customers;
-    ArrayList<Trainer> trainers;
+    ArrayList<Customer> customers = new ArrayList<Customer>();
+    ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 
     // Singleton instance
     private static InMemoryRepository instance;
@@ -36,7 +36,7 @@ public class InMemoryRepository
     }
 
     // Methods
-    ArrayList<EquipmentItem> getEquipmentItems()
+    public ArrayList<EquipmentItem> getEquipmentItems()
     {
         EquipmentItem item1 = new EquipmentItem(1, "Plate");
         EquipmentItem item2 = new EquipmentItem(2, "Dumbbell");
@@ -45,7 +45,7 @@ public class InMemoryRepository
         return equipmentItems;
     }
 
-    ArrayList<Exercise> getExercises()
+    public ArrayList<Exercise> getExercises()
     {
         Exercise exercise1 = new Exercise(1, "Squat", "quads", null, 4, 10);
         Exercise exercise2 = new Exercise(2, "Dead-lift", "hamstrings", null, 4, 10);
@@ -54,7 +54,7 @@ public class InMemoryRepository
         return exercises;
     }
 
-    ArrayList<SpecialisedRoom> getSpecialisedRooms()
+    public ArrayList<SpecialisedRoom> getSpecialisedRooms()
     {
         SpecialisedRoom room1 = new SpecialisedRoom(1, true, false, "Studio", 10);
         SpecialisedRoom room2 = new SpecialisedRoom(2, true, false, "Studio", 10);
@@ -63,7 +63,7 @@ public class InMemoryRepository
         return specialisedRooms;
     }
 
-    ArrayList<Workout> getWorkouts()
+    public ArrayList<Workout> getWorkouts()
     {
         ArrayList<Exercise> exercises = getExercises();
         ArrayList<SpecialisedRoom> rooms = getSpecialisedRooms();
@@ -74,7 +74,7 @@ public class InMemoryRepository
         return workouts;
     }
 
-    Budget getBudget()
+    public Budget getBudget()
     {
         budget = Budget.getInstance();
         return budget;
