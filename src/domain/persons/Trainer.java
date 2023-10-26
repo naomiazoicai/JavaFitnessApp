@@ -7,5 +7,4 @@ public class Trainer extends Employee {
     public Trainer(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
     }
-
 }
