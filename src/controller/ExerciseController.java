@@ -3,7 +3,6 @@ package controller;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.ExerciseRepository;
 
 import java.util.ArrayList;

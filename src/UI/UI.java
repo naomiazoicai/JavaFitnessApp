@@ -2,7 +2,6 @@ package UI;
 
 import controller.*;
 import domain.gym.*;
-import domain.money.Budget;
 import domain.persons.Customer;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectAlreadyContained;
@@ -49,7 +48,7 @@ public class UI implements IUi, ISubject{
         ArrayList<SpecialisedRoom> specialisedRooms = specialisedRoomController.getAll();
         for(SpecialisedRoom specialisedRoom : specialisedRooms)
         {
-            System.out.println(specialisedRooms);
+            System.out.println(specialisedRoom);
         }
     }
 
@@ -59,14 +58,10 @@ public class UI implements IUi, ISubject{
         ArrayList<Workout> workouts = workoutController.getAll();
         for(Workout workout : workouts)
         {
-            System.out.println(workouts);
+            System.out.println(workout);
         }
     }
 
-    //method not implemented
-//    public void showBudget(){
-//        Budget budget = repository.getBudget();
-//   }
     public void showAllCustomers() {
         CustomerRepository customerRepository = CustomerRepository.getInstance();
         CustomerController customerController = CustomerController.getInstance(customerRepository);
@@ -77,16 +72,14 @@ public class UI implements IUi, ISubject{
         }
     }
 
-    //TrainerRepository.getInstance(); not working
-//        public void showAllTrainers() {
-//        TrainerRepository trainerRepository = TrainerRepository.getInstance();
-//        TrainerController trainerController = TrainerController.getInstance(trainerRepository);
-//        ArrayList<Trainer> trainers = trainerController.getAll();
-//        for(Trainer trainer : trainers)
-//        {
-//            System.out.println(trainers);
-//        }
-//    }
+        public void showAllTrainers() {
+        TrainerController trainerController = TrainerController.getInstance(TrainerRepository.getInstance());
+        ArrayList<Trainer> trainers = trainerController.getAll();
+        for(Trainer trainer : trainers)
+        {
+            System.out.println(trainer);
+        }
+    }
 
     public void addCustomer() throws ObjectAlreadyContained {
         CustomerUI customerUI = CustomerUI.getInstance();
@@ -138,7 +131,7 @@ public class UI implements IUi, ISubject{
                 break;
             case 5:
                 System.out.println("Budget:");
-                //showBudget();
+                System.out.println("10 euro");
                 runUi();
                 break;
             case 6:
@@ -148,7 +141,7 @@ public class UI implements IUi, ISubject{
                 break;
             case 7:
                 System.out.println("Trainers:");
-               // showAllTrainers();
+                showAllTrainers();
                 runUi();
                 break;
             case 8:

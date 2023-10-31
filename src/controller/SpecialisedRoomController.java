@@ -1,10 +1,8 @@
 package controller;
 
 import domain.gym.SpecialisedRoom;
-import domain.persons.Customer;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.SpecialisedRoomRepository;
 
 import java.util.ArrayList;

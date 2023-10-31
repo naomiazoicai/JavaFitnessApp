@@ -2,7 +2,6 @@ package controller;
 
 import domain.money.CustomerSubscription;
 import repository.exceptions.ObjectAlreadyContained;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.CustomerSubscriptionRepository;
 
 import java.util.ArrayList;

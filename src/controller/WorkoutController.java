@@ -1,8 +1,6 @@
 package controller;
 
 import domain.gym.Workout;
-import domain.persons.Customer;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.WorkoutRepository;
 
 import java.util.ArrayList;
