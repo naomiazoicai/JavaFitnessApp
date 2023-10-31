@@ -1,21 +1,21 @@
 package repository.inMemoryRepository;
 
-import domain.money.SubscriptionType;
+import domain.money.Customer;
 import repository.IRepository;
 
 import java.util.ArrayList;
 
-public class SubscriptionTypeRepository implements IRepository<SubscriptionType>
+public class SubscriptionTypeRepository implements IRepository<Customer>
 {
-    private final ArrayList<SubscriptionType> subscriptionTypes;
+    private final ArrayList<Customer> subscriptionTypes;
 
     private static SubscriptionTypeRepository instance;
 
     private SubscriptionTypeRepository()
     {
         subscriptionTypes = new ArrayList<>();
-        SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
-        SubscriptionType subscriptionType2 = new SubscriptionType("Diamond", "King", 1000);
+        Customer subscriptionType1 = new Customer("Silver", "Basic plan", 100);
+        Customer subscriptionType2 = new Customer("Diamond", "King", 1000);
         subscriptionTypes.add(subscriptionType1);
         subscriptionTypes.add(subscriptionType2);
     }
@@ -27,23 +27,23 @@ public class SubscriptionTypeRepository implements IRepository<SubscriptionType>
     }
 
     @Override
-    public void add(SubscriptionType object) {
+    public void add(Customer object) {
         subscriptionTypes.add(object);
     }
 
     @Override
-    public void update(SubscriptionType object) {
+    public void update(Customer object) {
         subscriptionTypes.remove(object);
         subscriptionTypes.add(object);
     }
 
     @Override
-    public void delete(SubscriptionType object) {
+    public void delete(Customer object) {
         subscriptionTypes.remove(object);
     }
 
     @Override
-    public ArrayList<SubscriptionType> getAll() {
+    public ArrayList<Customer> getAll() {
         return new ArrayList<>(subscriptionTypes);
     }
 }

@@ -1,13 +1,11 @@
 package controller;
 
-import domain.money.SubscriptionType;
-import domain.persons.Customer;
-import repository.inMemoryRepository.CustomerRepository;
+import domain.money.Customer;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
 
 import java.util.ArrayList;
 
-public class SubscriptionTypeController implements IController<SubscriptionType>{
+public class SubscriptionTypeController implements IController<Customer>{
     private final SubscriptionTypeRepository repository;
     private static SubscriptionTypeController instance;
 
@@ -29,25 +27,25 @@ public class SubscriptionTypeController implements IController<SubscriptionType>
     }
 
     @Override
-    public void add(SubscriptionType object)
+    public void add(Customer object)
     {
         repository.add(object);
     }
 
     @Override
-    public void update(SubscriptionType object)
+    public void update(Customer object)
     {
         repository.update(object);
     }
 
     @Override
-    public void delete(SubscriptionType object)
+    public void delete(Customer object)
     {
         repository.delete(object);
     }
 
     @Override
-    public ArrayList<SubscriptionType> getAll() {
+    public ArrayList<Customer> getAll() {
         return repository.getAll();
     }
 }

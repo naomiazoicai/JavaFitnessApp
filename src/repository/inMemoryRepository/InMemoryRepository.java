@@ -3,8 +3,7 @@ package repository.inMemoryRepository;
 import domain.gym.*;
 import domain.money.Budget;
 import domain.money.CustomerSubscription;
-import domain.money.SubscriptionType;
-import domain.persons.Customer;
+import domain.money.Customer;
 import domain.persons.Gender;
 import domain.persons.Trainer;
 
@@ -21,9 +20,9 @@ public class InMemoryRepository
     // Budget
     Budget budget = Budget.getInstance();
     ArrayList<CustomerSubscription> customerSubscriptions = new ArrayList<CustomerSubscription>();
-    ArrayList<SubscriptionType> subscriptionTypes = new ArrayList<SubscriptionType>();
+    ArrayList<Customer> subscriptionTypes = new ArrayList<Customer>();
     // Persons
-    ArrayList<Customer> customers = new ArrayList<Customer>();
+    ArrayList<domain.persons.Customer> customers = new ArrayList<domain.persons.Customer>();
     ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 
     // Singleton instance
@@ -80,18 +79,18 @@ public class InMemoryRepository
         return budget;
     }
 
-    public ArrayList<SubscriptionType> getSubscriptionTypes()
+    public ArrayList<Customer> getSubscriptionTypes()
     {
-        SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
-        SubscriptionType subscriptionType2 = new SubscriptionType("Diamond", "King", 1000);
+        Customer subscriptionType1 = new Customer("Silver", "Basic plan", 100);
+        Customer subscriptionType2 = new Customer("Diamond", "King", 1000);
         subscriptionTypes.add(subscriptionType1);
         subscriptionTypes.add(subscriptionType2);
         return subscriptionTypes;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        Customer customer1 = new Customer("gigiSlay", "gigi", LocalDate.of(2000, 10, 10), Gender.male);
-        Customer customer2 = new Customer("swiftie", "taylorSwift", LocalDate.of(1900, 10, 10), Gender.female);
+    public ArrayList<domain.persons.Customer> getCustomers() {
+        domain.persons.Customer customer1 = new domain.persons.Customer("gigiSlay", "gigi", LocalDate.of(2000, 10, 10), Gender.male);
+        domain.persons.Customer customer2 = new domain.persons.Customer("swiftie", "taylorSwift", LocalDate.of(1900, 10, 10), Gender.female);
         customers.add(customer1);
         customers.add(customer2);
         return customers;
@@ -99,7 +98,7 @@ public class InMemoryRepository
 
     public ArrayList<CustomerSubscription> getCustomerSubscriptions()
     {
-        ArrayList<Customer> customers = getCustomers();
+        ArrayList<domain.persons.Customer> customers = getCustomers();
         CustomerSubscription subscription1 = new CustomerSubscription("Silver", "Basic plan", 100, customers.get(1), LocalDate.now(), LocalDate.now());
         CustomerSubscription subscription2 = new CustomerSubscription("Premium", "King++", 1000, customers.get(0), LocalDate.now(), LocalDate.now());
         customerSubscriptions.add(subscription1);

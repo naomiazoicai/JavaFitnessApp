@@ -1,16 +1,14 @@
 package domain.money;
 
-import domain.persons.Customer;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class CustomerSubscription extends SubscriptionType{
-    private Customer customer;
+public class CustomerSubscription extends Customer {
+    private domain.persons.Customer customer;
     private LocalDate validFrom;
     private LocalDate validUntil;
 
-    public CustomerSubscription(String name, String description, double price, Customer customer, LocalDate validFrom, LocalDate validUntil) {
+    public CustomerSubscription(String name, String description, double price, domain.persons.Customer customer, LocalDate validFrom, LocalDate validUntil) {
         super(name, description, price);
         this.customer = customer;
         this.validFrom = validFrom;
@@ -26,11 +24,11 @@ public class CustomerSubscription extends SubscriptionType{
                 '}';
     }
 
-    public Customer getCustomer() {
+    public domain.persons.Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(domain.persons.Customer customer) {
         this.customer = customer;
     }
 

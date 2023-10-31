@@ -1,14 +1,17 @@
 package domain.persons;
 
-import domain.money.SubscriptionType;
-
 import java.time.LocalDate;
 
 public class Customer extends Person{
 
-    private SubscriptionType subscriptionType;
+    private domain.money.Customer subscriptionType;
     public Customer(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
+    }
+
+    public Customer(String username)
+    {
+        super(username, "", LocalDate.now(), Gender.notSpecifying);
     }
 
     @Override
@@ -18,11 +21,11 @@ public class Customer extends Person{
                 '}';
     }
 
-    public SubscriptionType getSubscriptionType() {
+    public domain.money.Customer getSubscriptionType() {
         return subscriptionType;
     }
 
-    public void setSubscriptionType(SubscriptionType subscriptionType) {
+    public void setSubscriptionType(domain.money.Customer subscriptionType) {
         this.subscriptionType = subscriptionType;
     }
 }
