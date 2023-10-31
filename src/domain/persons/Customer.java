@@ -11,9 +11,14 @@ public class Customer extends Person{
         super(username, name, birthDate, gender);
     }
 
+    public Customer(String username)
+    {
+        super(username, "", LocalDate.now(), Gender.notSpecifying);
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Customer{" + super.toString() +
                 "subscriptionType=" + subscriptionType +
                 '}';
     }

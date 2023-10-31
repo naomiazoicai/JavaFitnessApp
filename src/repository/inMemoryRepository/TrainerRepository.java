@@ -21,7 +21,7 @@ public class TrainerRepository implements IRepository<Trainer> {
         trainers.add(trainer2);
     }
 
-    public TrainerRepository getInstance()
+    public static TrainerRepository getInstance()
     {
         if (instance == null) instance = new TrainerRepository();
         return instance;

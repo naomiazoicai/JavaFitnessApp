@@ -1,9 +1,9 @@
 package controller;
 
 import domain.money.SubscriptionType;
-import domain.persons.Customer;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
+
+import java.util.ArrayList;
 
 public class SubscriptionTypeController implements IController<SubscriptionType>{
     private final SubscriptionTypeRepository repository;
@@ -42,5 +42,10 @@ public class SubscriptionTypeController implements IController<SubscriptionType>
     public void delete(SubscriptionType object)
     {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<SubscriptionType> getAll() {
+        return repository.getAll();
     }
 }

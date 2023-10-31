@@ -1,8 +1,11 @@
 package controller;
 
 import domain.gym.Exercise;
-import repository.inMemoryRepository.CustomerRepository;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.ExerciseRepository;
+
+import java.util.ArrayList;
 
 public class ExerciseController implements IController<Exercise>
 {
@@ -27,17 +30,22 @@ public class ExerciseController implements IController<Exercise>
     }
 
     @Override
-    public void add(Exercise object) {
+    public void add(Exercise object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(Exercise object) {
+    public void update(Exercise object) throws ObjectNotContained {
         repository.update(object);
     }
 
     @Override
-    public void delete(Exercise object) {
+    public void delete(Exercise object) throws ObjectNotContained {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<Exercise> getAll() {
+        return repository.getAll();
     }
 }

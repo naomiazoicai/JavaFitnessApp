@@ -1,9 +1,9 @@
 package controller;
 
 import domain.gym.Workout;
-import domain.persons.Customer;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.WorkoutRepository;
+
+import java.util.ArrayList;
 
 public class WorkoutController implements IController<Workout>
 {
@@ -43,5 +43,10 @@ public class WorkoutController implements IController<Workout>
     public void delete(Workout object)
     {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<Workout> getAll() {
+        return repository.getAll();
     }
 }

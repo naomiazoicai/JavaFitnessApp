@@ -3,6 +3,8 @@ package controller;
 import domain.persons.Trainer;
 import repository.inMemoryRepository.TrainerRepository;
 
+import java.util.ArrayList;
+
 public class TrainerController implements IController<Trainer>
 {
     private final TrainerRepository repository;
@@ -41,5 +43,10 @@ public class TrainerController implements IController<Trainer>
     public void delete(Trainer object)
     {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<Trainer> getAll() {
+        return repository.getAll();
     }
 }

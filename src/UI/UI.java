@@ -1,77 +1,96 @@
 package UI;
 
+import controller.*;
 import domain.gym.*;
-import domain.money.Budget;
 import domain.persons.Customer;
 import domain.persons.Trainer;
-import repository.inMemoryRepository.InMemoryRepository;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
+import repository.inMemoryRepository.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI implements IUi, ISubject{
-    private final InMemoryRepository repository;
     private static UI instance;
 
-    private UI(InMemoryRepository repository)
+    private UI() {}
+    public static UI getInstance()
     {
-        this.repository = repository;
-    }
-    public static UI getInstance(InMemoryRepository repository)
-    {
-        if (instance == null) instance = new UI(repository);
+        if (instance == null) instance = new UI();
         return instance;
 
     }
 
     public void showAllEquipmentItems(){
-        ArrayList<EquipmentItem> equipmentItems = repository.getEquipmentItems();
+        EquipmentItemRepository equipmentItemRepository = EquipmentItemRepository.getInstance();
+        EquipmentItemController equipmentItemController = EquipmentItemController.getInstance(equipmentItemRepository);
+
+        ArrayList<EquipmentItem> equipmentItems = equipmentItemController.getAll();
         for(EquipmentItem equipmentItem : equipmentItems)
         {
             System.out.println(equipmentItem);
         }
     }
     public void showAllExercises(){
-        ArrayList<Exercise> exercises = repository.getExercises();
+        ExerciseRepository exerciseRepository = ExerciseRepository.getInstance();
+        ExerciseController exerciseController = ExerciseController.getInstance(exerciseRepository);
+        ArrayList<Exercise> exercises = exerciseController.getAll();
         for(Exercise exercise : exercises)
         {
             System.out.println(exercise);
         }
     }
     public void showAllSpecialisedRooms(){
-        ArrayList<SpecialisedRoom> specialisedRooms = repository.getSpecialisedRooms();
+
+        SpecialisedRoomRepository specialisedRoomRepository = SpecialisedRoomRepository.getInstance();
+        SpecialisedRoomController specialisedRoomController = SpecialisedRoomController.getInstance(specialisedRoomRepository);
+        ArrayList<SpecialisedRoom> specialisedRooms = specialisedRoomController.getAll();
         for(SpecialisedRoom specialisedRoom : specialisedRooms)
         {
-            System.out.println(specialisedRooms);
+            System.out.println(specialisedRoom);
         }
     }
 
     public void showAllWorkouts(){
-        ArrayList<Workout> workouts = repository.getWorkouts();
+        WorkoutRepository workoutRepository = WorkoutRepository.getInstance();
+        WorkoutController workoutController = WorkoutController.getInstance(workoutRepository);
+        ArrayList<Workout> workouts = workoutController.getAll();
         for(Workout workout : workouts)
         {
-            System.out.println(workouts);
+            System.out.println(workout);
         }
     }
 
-    public void showBudget(){
-        Budget budget = repository.getBudget();
-   }
     public void showAllCustomers() {
-        ArrayList<Customer> customers = repository.getCustomers();
+        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        CustomerController customerController = CustomerController.getInstance(customerRepository);
+        ArrayList<Customer> customers = customerController.getAll();
         for(Customer customer : customers)
         {
             System.out.println(customer);
         }
     }
+
         public void showAllTrainers() {
-        ArrayList<Trainer> trainers = repository.getTrainers();
+        TrainerController trainerController = TrainerController.getInstance(TrainerRepository.getInstance());
+        ArrayList<Trainer> trainers = trainerController.getAll();
         for(Trainer trainer : trainers)
         {
-            System.out.println(trainers);
+            System.out.println(trainer);
         }
     }
-    public void runUi(){
+
+    public void addCustomer() throws ObjectAlreadyContained {
+        CustomerUI customerUI = CustomerUI.getInstance();
+        customerUI.addCustomer();
+    }
+    public void deleteCustomer() throws ObjectNotContained {
+        CustomerUI customerUI = CustomerUI.getInstance();
+        customerUI.deleteCustomer();
+    }
+
+    public void runUi() throws ObjectAlreadyContained, ObjectNotContained {
         Scanner scanner = new Scanner(System.in);
         System.out.println(
                 """
@@ -85,7 +104,9 @@ public class UI implements IUi, ISubject{
                         5. See the total budget
                         6. See all customers
                         7. See all trainers
-                        Please enter your choice (1-7):""");
+                        8. Add a customer
+                        9. Delete a customer
+                        Please enter your choice (1-9):""");
         int input = scanner.nextInt();
         switch(input) {
             case 1:
@@ -110,7 +131,7 @@ public class UI implements IUi, ISubject{
                 break;
             case 5:
                 System.out.println("Budget:");
-                showBudget();
+                System.out.println("10 euro");
                 runUi();
                 break;
             case 6:
@@ -123,8 +144,16 @@ public class UI implements IUi, ISubject{
                 showAllTrainers();
                 runUi();
                 break;
+            case 8:
+                addCustomer();
+                runUi();
+                break;
+            case 9:
+                deleteCustomer();
+                runUi();
+                break;
             default:
-                System.out.println("bravo, Naomiiiiiiiiiii");
+                System.out.println("Sorry, not a valid option.");
         }
         scanner.close();
     }

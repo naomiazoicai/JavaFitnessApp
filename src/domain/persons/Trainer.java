@@ -7,4 +7,11 @@ public class Trainer extends Employee {
     public Trainer(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
     }
+
+    @Override
+    public String toString() {
+        return "Trainer{" + super.toString() +
+                "specialization=" + specialization +
+                '}';
+    }
 }
