@@ -1,4 +1,4 @@
-package repository;
+package repository.inMemoryRepository;
 
 import domain.gym.*;
 import domain.money.Budget;
