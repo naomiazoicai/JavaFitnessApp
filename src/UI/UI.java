@@ -11,7 +11,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI implements IUi, ISubject{
-    private final InMemoryRepository repository = InMemoryRepository.getInstance();
+    private final InMemoryRepository repository;
+    private static UI instance;
+
+    private UI(InMemoryRepository repository)
+    {
+        this.repository = repository;
+    }
+    public static UI getInstance(InMemoryRepository repository)
+    {
+        if (instance == null) instance = new UI(repository);
+        return instance;
+
+    }
+
     public void showAllEquipmentItems(){
         ArrayList<EquipmentItem> equipmentItems = repository.getEquipmentItems();
         for(EquipmentItem equipmentItem : equipmentItems)
@@ -75,7 +88,6 @@ public class UI implements IUi, ISubject{
                         7. See all trainers
                         Please enter your choice (1-7):""");
         int input = scanner.nextInt();
-
         switch(input) {
             case 1:
                 System.out.println("Equipment items:");
