@@ -1,10 +1,14 @@
 package UI;
 
+import controller.EquipmentItemController;
+import controller.ExerciseController;
+import controller.SpecialisedRoomController;
+import controller.WorkoutController;
 import domain.gym.*;
 import domain.money.Budget;
 import domain.persons.Customer;
 import domain.persons.Trainer;
-import repository.inMemoryRepository.InMemoryRepository;
+import repository.inMemoryRepository.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,20 +29,28 @@ public class UI implements IUi, ISubject{
     }
 
     public void showAllEquipmentItems(){
-        ArrayList<EquipmentItem> equipmentItems = repository.getEquipmentItems();
+        EquipmentItemRepository equipmentItemRepository = EquipmentItemRepository.getInstance();
+        EquipmentItemController equipmentItemController = EquipmentItemController.getInstance(equipmentItemRepository);
+
+        ArrayList<EquipmentItem> equipmentItems = equipmentItemController.getAll();
         for(EquipmentItem equipmentItem : equipmentItems)
         {
             System.out.println(equipmentItem);
         }
     }
     public void showAllExercises(){
-        ArrayList<Exercise> exercises = repository.getExercises();
+        ExerciseRepository exerciseRepository = ExerciseRepository.getInstance();
+        ExerciseController exerciseController = ExerciseController.getInstance(exerciseRepository);
+        ArrayList<Exercise> exercises = exerciseController.getAll();
         for(Exercise exercise : exercises)
         {
             System.out.println(exercise);
         }
     }
     public void showAllSpecialisedRooms(){
+
+        SpecialisedRoomRepository specialisedRoomRepository = SpecialisedRoomRepository.getInstance();
+        SpecialisedRoomController specialisedRoomController = SpecialisedRoomController.getInstance(specialisedRoomRepository);
         ArrayList<SpecialisedRoom> specialisedRooms = repository.getSpecialisedRooms();
         for(SpecialisedRoom specialisedRoom : specialisedRooms)
         {
@@ -47,6 +59,8 @@ public class UI implements IUi, ISubject{
     }
 
     public void showAllWorkouts(){
+        WorkoutRepository workoutRepository = WorkoutRepository.getInstance();
+        WorkoutController workoutController = WorkoutController.getInstance(workoutRepository);
         ArrayList<Workout> workouts = repository.getWorkouts();
         for(Workout workout : workouts)
         {

@@ -1,8 +1,11 @@
 package controller;
 
 import domain.money.CustomerSubscription;
+import repository.exceptions.ObjectAlreadyContained;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.CustomerSubscriptionRepository;
+
+import java.util.ArrayList;
 
 public class CustomerSubscriptionController implements IController<CustomerSubscription>
 {
@@ -27,20 +30,22 @@ public class CustomerSubscriptionController implements IController<CustomerSubsc
     }
 
     @Override
-    public void add(CustomerSubscription object)
-    {
+    public void add(CustomerSubscription object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(CustomerSubscription object)
-    {
+    public void update(CustomerSubscription object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void delete(CustomerSubscription object)
-    {
+    public void delete(CustomerSubscription object) throws ObjectAlreadyContained {
         repository.add(object);
+    }
+
+    @Override
+    public ArrayList<CustomerSubscription> getAll() {
+        return repository.getAll();
     }
 }

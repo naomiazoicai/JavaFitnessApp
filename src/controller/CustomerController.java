@@ -1,7 +1,11 @@
 package controller;
 
 import domain.persons.Customer;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.CustomerRepository;
+
+import java.util.ArrayList;
 
 public class CustomerController implements IController<Customer>
 {
@@ -26,20 +30,22 @@ public class CustomerController implements IController<Customer>
     }
 
     @Override
-    public void add(Customer object)
-    {
+    public void add(Customer object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(Customer object)
-    {
+    public void update(Customer object) throws ObjectNotContained {
         repository.update(object);
     }
 
     @Override
-    public void delete(Customer object)
-    {
+    public void delete(Customer object) throws ObjectNotContained {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<Customer> getAll() {
+        return repository.getAll();
     }
 }

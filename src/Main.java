@@ -8,7 +8,7 @@ public class Main {
     {
          InMemoryRepository repository = InMemoryRepository.getInstance();
          UI ui = UI.getInstance(repository);
-         //ui.runUi();
+         ui.runUi();
 
     }
 }

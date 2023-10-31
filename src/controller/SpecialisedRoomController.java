@@ -2,8 +2,12 @@ package controller;
 
 import domain.gym.SpecialisedRoom;
 import domain.persons.Customer;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.SpecialisedRoomRepository;
+
+import java.util.ArrayList;
 
 public class SpecialisedRoomController implements IController<SpecialisedRoom>
 {
@@ -28,14 +32,12 @@ public class SpecialisedRoomController implements IController<SpecialisedRoom>
     }
 
     @Override
-    public void add(SpecialisedRoom object)
-    {
+    public void add(SpecialisedRoom object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(SpecialisedRoom object)
-    {
+    public void update(SpecialisedRoom object) throws ObjectNotContained {
         repository.update(object);
     }
 
@@ -43,5 +45,10 @@ public class SpecialisedRoomController implements IController<SpecialisedRoom>
     public void delete(SpecialisedRoom object)
     {
         repository.delete(object);
+    }
+
+    @Override
+    public ArrayList<SpecialisedRoom> getAll() {
+        return repository.getAll();
     }
 }
