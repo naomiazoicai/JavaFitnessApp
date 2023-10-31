@@ -1,9 +1,10 @@
 package repository.inMemoryRepository;
 
-import domain.money.CustomerSubscription;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import repository.IRepository;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,21 +30,21 @@ public class CustomerRepository implements IRepository<Customer>
     }
 
     @Override
-    public void add(Customer object)
-    {
+    public void add(Customer object) throws ObjectAlreadyContained {
+        if (customers.contains(object)) throw new ObjectAlreadyContained();
         customers.add(object);
     }
 
     @Override
-    public void update(Customer object)
-    {
+    public void update(Customer object) throws ObjectNotContained {
+        if (!customers.contains(object)) throw new ObjectNotContained();
         customers.remove(object);
         customers.add(object);
     }
 
     @Override
-    public void delete(Customer object)
-    {
+    public void delete(Customer object) throws ObjectNotContained {
+        if (!customers.contains(object)) throw new ObjectNotContained();
         customers.remove(object);
     }
 
