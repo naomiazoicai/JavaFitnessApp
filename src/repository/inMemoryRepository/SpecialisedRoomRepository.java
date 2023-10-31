@@ -2,6 +2,8 @@ package repository.inMemoryRepository;
 
 import domain.gym.SpecialisedRoom;
 import repository.IRepository;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 
 import java.util.ArrayList;
 
@@ -27,12 +29,14 @@ public class SpecialisedRoomRepository implements IRepository<SpecialisedRoom>
     }
 
     @Override
-    public void add(SpecialisedRoom object) {
+    public void add(SpecialisedRoom object) throws ObjectAlreadyContained {
+        if (specialisedRooms.contains(object)) throw new ObjectAlreadyContained();
         specialisedRooms.add(object);
     }
 
     @Override
-    public void update(SpecialisedRoom object) {
+    public void update(SpecialisedRoom object) throws ObjectNotContained {
+        if (!specialisedRooms.contains(object)) throw new ObjectNotContained();
         specialisedRooms.remove(object);
         specialisedRooms.add(object);
     }

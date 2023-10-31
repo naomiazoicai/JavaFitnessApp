@@ -2,13 +2,14 @@
 //
 //public class CustomerRepositoryTest {
 //}
-package repository.inMemoryRepository;
+package repository.inMemoryRepository.tests;
 
 import domain.persons.Customer;
 import domain.persons.Gender;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
+import repository.inMemoryRepository.CustomerRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,18 +20,23 @@ public class CustomerRepositoryTest {
 
     @Test
     public void testAdd() throws ObjectAlreadyContained {
-        Customer customer = new Customer("testCustomer", "Test", LocalDate.of(1990, 5, 5), Gender.male);
+        // Successful add
+        Customer customer = new Customer("testCustomer1", "Test", LocalDate.of(1990, 5, 5), Gender.male);
         customerRepository.add(customer);
         ArrayList<Customer> customers = customerRepository.getAll();
         assertTrue(customers.contains(customer));
+        // Already in repo
+        assertThrows(ObjectAlreadyContained.class, () -> {
+            customerRepository.add(customer);
+        });
+        // End
         System.out.println("Test add in CustomerRepo passed, bravo!");
     }
 
     @Test
     public void testUpdate() throws ObjectAlreadyContained, ObjectNotContained {
-        Customer customer = new Customer("testCustomer", "Test", LocalDate.of(1990, 5, 5), Gender.male);
+        Customer customer = new Customer("testCustomer2", "Test", LocalDate.of(1990, 5, 5), Gender.male);
         customerRepository.add(customer);
-
         customerRepository.update(customer);
 
         ArrayList<Customer> customers = customerRepository.getAll();
@@ -40,7 +46,7 @@ public class CustomerRepositoryTest {
 
     @Test
     public void testDelete() throws ObjectAlreadyContained, ObjectNotContained {
-        Customer customer = new Customer("testCustomer", "Test", LocalDate.of(1990, 5, 5), Gender.male);
+        Customer customer = new Customer("testCustomer3", "Test", LocalDate.of(1990, 5, 5), Gender.male);
         customerRepository.add(customer);
 
         customerRepository.delete(customer);
