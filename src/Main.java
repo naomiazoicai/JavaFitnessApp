@@ -1,4 +1,5 @@
 import UI.UI;
+import repository.inMemoryRepository.CustomerRepositoryTest;
 import repository.inMemoryRepository.InMemoryRepository;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
     {
          InMemoryRepository repository = InMemoryRepository.getInstance();
          UI ui = UI.getInstance(repository);
-         ui.runUi();
+         //ui.runUi();
+
     }
 }
