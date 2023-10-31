@@ -1,4 +1,4 @@
 package repository;
 
-public class ISubject {
+public interface ISubject {
 }

@@ -4,9 +4,8 @@ import domain.gym.*;
 import domain.money.Budget;
 import domain.persons.Customer;
 import domain.persons.Trainer;
-import repository.InMemoryRepository;
+import repository.inMemoryRepository.InMemoryRepository;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 

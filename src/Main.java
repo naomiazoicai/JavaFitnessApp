@@ -1,5 +1,5 @@
 import UI.UI;
-import repository.InMemoryRepository;
+import repository.inMemoryRepository.InMemoryRepository;
 
 public class Main {
 //    Projekt: Java-Konsolenanwendung
