@@ -3,7 +3,7 @@ package domain.money;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class CustomerSubscription extends Customer {
+public class CustomerSubscription extends SubscriptionType {
     private domain.persons.Customer customer;
     private LocalDate validFrom;
     private LocalDate validUntil;

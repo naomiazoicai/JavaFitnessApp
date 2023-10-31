@@ -3,7 +3,7 @@ package repository.inMemoryRepository;
 import domain.gym.*;
 import domain.money.Budget;
 import domain.money.CustomerSubscription;
-import domain.money.Customer;
+import domain.money.SubscriptionType;
 import domain.persons.Gender;
 import domain.persons.Trainer;
 
@@ -20,7 +20,7 @@ public class InMemoryRepository
     // Budget
     Budget budget = Budget.getInstance();
     ArrayList<CustomerSubscription> customerSubscriptions = new ArrayList<CustomerSubscription>();
-    ArrayList<Customer> subscriptionTypes = new ArrayList<Customer>();
+    ArrayList<SubscriptionType> subscriptionTypes = new ArrayList<SubscriptionType>();
     // Persons
     ArrayList<domain.persons.Customer> customers = new ArrayList<domain.persons.Customer>();
     ArrayList<Trainer> trainers = new ArrayList<Trainer>();
@@ -79,10 +79,10 @@ public class InMemoryRepository
         return budget;
     }
 
-    public ArrayList<Customer> getSubscriptionTypes()
+    public ArrayList<SubscriptionType> getSubscriptionTypes()
     {
-        Customer subscriptionType1 = new Customer("Silver", "Basic plan", 100);
-        Customer subscriptionType2 = new Customer("Diamond", "King", 1000);
+        SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
+        SubscriptionType subscriptionType2 = new SubscriptionType("Diamond", "King", 1000);
         subscriptionTypes.add(subscriptionType1);
         subscriptionTypes.add(subscriptionType2);
         return subscriptionTypes;

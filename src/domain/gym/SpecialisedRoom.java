@@ -12,7 +12,7 @@ public class SpecialisedRoom extends Room{
 
     @Override
     public String toString() {
-        return "SpecialisedRoom{" +
+        return "SpecialisedRoom{" + super.toString() +
                 "roomType='" + roomType + '\'' +
                 ", personCapacity=" + personCapacity +
                 '}';

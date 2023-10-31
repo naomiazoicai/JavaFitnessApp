@@ -2,12 +2,12 @@ package domain.money;
 
 import java.util.Objects;
 
-public class Customer {
+public class SubscriptionType {
     private String name;
     private String description;
     private double price;
 
-    public Customer(String name, String description, double price) {
+    public SubscriptionType(String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -26,7 +26,7 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer that = (Customer) o;
+        SubscriptionType that = (SubscriptionType) o;
         return Objects.equals(name, that.name);
     }
 

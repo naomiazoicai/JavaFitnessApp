@@ -1,10 +1,12 @@
 package domain.persons;
 
+import domain.money.SubscriptionType;
+
 import java.time.LocalDate;
 
 public class Customer extends Person{
 
-    private domain.money.Customer subscriptionType;
+    private SubscriptionType subscriptionType;
     public Customer(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
     }
@@ -16,16 +18,16 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Customer{" + super.toString() +
                 "subscriptionType=" + subscriptionType +
                 '}';
     }
 
-    public domain.money.Customer getSubscriptionType() {
+    public SubscriptionType getSubscriptionType() {
         return subscriptionType;
     }
 
-    public void setSubscriptionType(domain.money.Customer subscriptionType) {
+    public void setSubscriptionType(SubscriptionType subscriptionType) {
         this.subscriptionType = subscriptionType;
     }
 }

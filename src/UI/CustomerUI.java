@@ -41,7 +41,7 @@ public class CustomerUI {
     }
     public void deleteCustomer() throws ObjectNotContained {
         Scanner scanner = new Scanner(System.in);
-        // Enter  username
+        // Enter username
         System.out.println("Enter customer's username: ");
         String username = scanner.nextLine();
         if (Objects.equals(username, "")) {
