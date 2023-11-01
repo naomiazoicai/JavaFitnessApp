@@ -1,6 +1,7 @@
 package repository.inMemoryRepository.tests;
 
 import domain.money.CustomerSubscription;
+import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import org.junit.jupiter.api.Test;
@@ -16,13 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerSubscriptionRepositoryTest {
     private final CustomerSubscriptionRepository customerSubscriptionRepository = CustomerSubscriptionRepository.getInstance();
-    private final CustomerRepository customerRepository = CustomerRepository.getInstance();
-
     @Test
     public void testAdd() throws ObjectAlreadyContained {
         // Successful add
         Customer customer = new Customer("testCustomer1", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        CustomerSubscription subscription = new CustomerSubscription("Silver", "Basic plan", 100, customer, LocalDate.now(), LocalDate.now());
+        SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
+        CustomerSubscription subscription = new CustomerSubscription(customer, subscriptionType1, LocalDate.now(), LocalDate.now());
         customerSubscriptionRepository.add(subscription);
         ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAll();
         assertTrue(subscriptions.contains(subscription));
@@ -35,7 +35,8 @@ public class CustomerSubscriptionRepositoryTest {
     @Test
     public void testUpdate() throws ObjectAlreadyContained, ObjectNotContained {
         Customer customer = new Customer("testCustomer2", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        CustomerSubscription subscription = new CustomerSubscription("Silver", "Basic plan", 100, customer, LocalDate.now(), LocalDate.now());
+        SubscriptionType subscriptionType2 = new SubscriptionType("Silver", "Basic plan", 100);
+        CustomerSubscription subscription = new CustomerSubscription(customer, subscriptionType2, LocalDate.now(), LocalDate.now());
         customerSubscriptionRepository.add(subscription);
 
         customerSubscriptionRepository.update(subscription);
@@ -47,8 +48,10 @@ public class CustomerSubscriptionRepositoryTest {
 
     @Test
     public void testDelete() throws ObjectAlreadyContained, ObjectNotContained {
-        Customer customer = new Customer("testCustomer3", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        CustomerSubscription subscription = new CustomerSubscription("Silver", "Basic plan", 100, customer, LocalDate.now(), LocalDate.now());
+        Customer customer3 = new Customer("testCustomer2", "Test",
+                LocalDate.of(1990, 5, 5), Gender.male);
+        SubscriptionType subscriptionType3 = new SubscriptionType("Silver", "Basic plan", 100);
+        CustomerSubscription subscription = new CustomerSubscription(customer3, subscriptionType3, LocalDate.now(), LocalDate.now());
         customerSubscriptionRepository.add(subscription);
 
         customerSubscriptionRepository.delete(subscription);

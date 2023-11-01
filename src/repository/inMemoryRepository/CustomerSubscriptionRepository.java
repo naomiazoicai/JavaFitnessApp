@@ -1,6 +1,7 @@
 package repository.inMemoryRepository;
 
 import domain.money.CustomerSubscription;
+import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import repository.Repository;
 import java.time.LocalDate;
@@ -12,10 +13,10 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
     private CustomerSubscriptionRepository()
     {
         // Populate table
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
-        ArrayList<Customer> customers = customerRepository.getAll();
-        CustomerSubscription subscription1 = new CustomerSubscription("Silver", "Basic plan", 100, customers.get(1), LocalDate.now(), LocalDate.now());
-        CustomerSubscription subscription2 = new CustomerSubscription("Premium", "King++", 1000, customers.get(0), LocalDate.now(), LocalDate.now());
+        ArrayList<Customer> customers = CustomerRepository.getInstance().getAll();
+        ArrayList<SubscriptionType> subscriptionTypes = SubscriptionTypeRepository.getInstance().getAll();
+        CustomerSubscription subscription1 = new CustomerSubscription(customers.get(1), subscriptionTypes.get(1), LocalDate.now(), LocalDate.now());
+        CustomerSubscription subscription2 = new CustomerSubscription(customers.get(0), subscriptionTypes.get(0),  LocalDate.now(), LocalDate.now());
         arrayList.add(subscription1);
         arrayList.add(subscription2);
     }

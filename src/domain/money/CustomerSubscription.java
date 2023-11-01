@@ -1,16 +1,19 @@
 package domain.money;
 
+import domain.persons.Customer;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class CustomerSubscription extends SubscriptionType {
-    private domain.persons.Customer customer;
+public class CustomerSubscription{
+    private Customer customer;
+    private SubscriptionType subscriptionType;
     private LocalDate validFrom;
     private LocalDate validUntil;
 
-    public CustomerSubscription(String name, String description, double price, domain.persons.Customer customer, LocalDate validFrom, LocalDate validUntil) {
-        super(name, description, price);
+    public CustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom, LocalDate validUntil) {
         this.customer = customer;
+        this.subscriptionType = subscriptionType;
         this.validFrom = validFrom;
         this.validUntil = validUntil;
     }
@@ -19,17 +22,26 @@ public class CustomerSubscription extends SubscriptionType {
     public String toString() {
         return "CustomerSubscription{" +
                 "customer=" + customer +
+                "subscriptionType" + subscriptionType +
                 ", validFrom=" + validFrom +
                 ", validUntil=" + validUntil +
                 '}';
     }
 
-    public domain.persons.Customer getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(domain.persons.Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public SubscriptionType getSubscriptionType() {
+        return subscriptionType;
+    }
+
+    public void setSubscriptionType(SubscriptionType subscriptionType) {
+        this.subscriptionType = subscriptionType;
     }
 
     public LocalDate getValidFrom() {
@@ -52,9 +64,7 @@ public class CustomerSubscription extends SubscriptionType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         CustomerSubscription that = (CustomerSubscription) o;
-        return Objects.equals(customer, that.customer) && Objects.equals(validFrom, that.validFrom) && Objects.equals(validUntil, that.validUntil);
+        return Objects.equals(customer, that.customer) && Objects.equals(subscriptionType, that.subscriptionType) && Objects.equals(validFrom, that.validFrom);
     }
-
 }
