@@ -1,7 +1,5 @@
 package domain.gym;
 
-import java.util.Objects;
-
 public class EquipmentItem {
     private int ID;
     private String name;
