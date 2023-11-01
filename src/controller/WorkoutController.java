@@ -1,6 +1,8 @@
 package controller;
 
 import domain.gym.Workout;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.WorkoutRepository;
 
 import java.util.ArrayList;
@@ -28,20 +30,17 @@ public class WorkoutController implements IController<Workout>
     }
 
     @Override
-    public void add(Workout object)
-    {
+    public void add(Workout object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(Workout object)
-    {
+    public void update(Workout object) throws ObjectNotContained {
         repository.update(object);
     }
 
     @Override
-    public void delete(Workout object)
-    {
+    public void delete(Workout object) throws ObjectNotContained {
         repository.delete(object);
     }
 

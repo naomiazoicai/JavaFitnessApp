@@ -40,8 +40,7 @@ public class SpecialisedRoomController implements IController<SpecialisedRoom>
     }
 
     @Override
-    public void delete(SpecialisedRoom object)
-    {
+    public void delete(SpecialisedRoom object) throws ObjectNotContained {
         repository.delete(object);
     }
 

@@ -1,6 +1,8 @@
 package controller;
 
 import domain.money.SubscriptionType;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
 
 import java.util.ArrayList;
@@ -27,20 +29,17 @@ public class SubscriptionTypeController implements IController<SubscriptionType>
     }
 
     @Override
-    public void add(SubscriptionType object)
-    {
+    public void add(SubscriptionType object) throws ObjectAlreadyContained {
         repository.add(object);
     }
 
     @Override
-    public void update(SubscriptionType object)
-    {
+    public void update(SubscriptionType object) throws ObjectNotContained {
         repository.update(object);
     }
 
     @Override
-    public void delete(SubscriptionType object)
-    {
+    public void delete(SubscriptionType object) throws ObjectNotContained {
         repository.delete(object);
     }
 
