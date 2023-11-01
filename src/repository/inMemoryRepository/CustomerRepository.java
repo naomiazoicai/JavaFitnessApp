@@ -2,13 +2,8 @@ package repository.inMemoryRepository;
 
 import domain.persons.Customer;
 import domain.persons.Gender;
-import repository.IRepository;
 import repository.Repository;
-import repository.exceptions.ObjectAlreadyContained;
-import repository.exceptions.*;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class CustomerRepository extends Repository<Customer>
 {

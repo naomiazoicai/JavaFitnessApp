@@ -2,11 +2,9 @@ package repository.inMemoryRepository;
 
 import domain.persons.Gender;
 import domain.persons.Trainer;
-import repository.IRepository;
 import repository.Repository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TrainerRepository extends Repository<Trainer>
 {

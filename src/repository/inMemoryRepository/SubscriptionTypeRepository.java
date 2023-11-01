@@ -1,10 +1,7 @@
 package repository.inMemoryRepository;
 
 import domain.money.SubscriptionType;
-import repository.IRepository;
 import repository.Repository;
-
-import java.util.ArrayList;
 
 public class SubscriptionTypeRepository extends Repository<SubscriptionType>
 {

@@ -1,12 +1,7 @@
 package repository.inMemoryRepository;
 
 import domain.gym.SpecialisedRoom;
-import repository.IRepository;
 import repository.Repository;
-import repository.exceptions.ObjectAlreadyContained;
-import repository.exceptions.ObjectNotContained;
-
-import java.util.ArrayList;
 
 public class SpecialisedRoomRepository extends Repository<SpecialisedRoom>
 {

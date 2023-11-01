@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import domain.gym.Exercise;
 import domain.gym.SpecialisedRoom;
 import domain.gym.Workout;
-import repository.IRepository;
 import repository.Repository;
 
 public class WorkoutRepository extends Repository<Workout>
