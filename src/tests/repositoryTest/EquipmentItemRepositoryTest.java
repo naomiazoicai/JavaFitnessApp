@@ -1,4 +1,4 @@
-package repository.inMemoryRepository.tests;
+package tests.repositoryTest;
 
 import domain.gym.EquipmentItem;
 import org.junit.jupiter.api.Test;

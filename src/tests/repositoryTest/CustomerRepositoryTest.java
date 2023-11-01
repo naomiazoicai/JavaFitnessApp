@@ -2,7 +2,7 @@
 //
 //public class CustomerRepositoryTest {
 //}
-package repository.inMemoryRepository.tests;
+package tests.repositoryTest;
 
 import domain.persons.Customer;
 import domain.persons.Gender;
