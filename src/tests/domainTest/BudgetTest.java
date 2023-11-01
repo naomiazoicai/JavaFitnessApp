@@ -1,4 +1,4 @@
-package domain.tests;
+package tests.domainTest;
 import domain.money.Budget;
 import org.junit.jupiter.api.Test;
 

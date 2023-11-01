@@ -14,4 +14,12 @@ public class Trainer extends Employee {
                 "specialization=" + specialization +
                 '}';
     }
+
+    public TrainerSpecialization getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(TrainerSpecialization specialization) {
+        this.specialization = specialization;
+    }
 }

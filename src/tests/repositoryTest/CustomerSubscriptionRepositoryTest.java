@@ -1,4 +1,4 @@
-package repository.inMemoryRepository.tests;
+package tests.repositoryTest;
 
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;

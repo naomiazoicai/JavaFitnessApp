@@ -1,4 +1,4 @@
-package repository.inMemoryRepository.tests;
+package tests.repositoryTest;
 
 public class SubscriptionTypeRepositoryTest {
 }
