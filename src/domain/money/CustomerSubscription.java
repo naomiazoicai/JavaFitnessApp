@@ -28,6 +28,11 @@ public class CustomerSubscription{
                 '}';
     }
 
+    public boolean checkValidity()
+    {
+        return LocalDate.now().isBefore(validUntil);
+    }
+
     public Customer getCustomer() {
         return customer;
     }
