@@ -1,50 +1,21 @@
 package controller;
 
 import domain.money.SubscriptionType;
-import repository.exceptions.ObjectAlreadyContained;
-import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
 
-import java.util.ArrayList;
 
-public class SubscriptionTypeController implements IController<SubscriptionType>{
-    private final SubscriptionTypeRepository repository;
+public class SubscriptionTypeController extends Controller<SubscriptionType>
+{
     private static SubscriptionTypeController instance;
 
-    private SubscriptionTypeController(SubscriptionTypeRepository repository)
+    private SubscriptionTypeController()
     {
-        this.repository = repository;
-    }
-
-    public static SubscriptionTypeController getInstance(SubscriptionTypeRepository repository)
-    {
-        if (instance == null) instance = new SubscriptionTypeController(repository);
-        return instance;
+        super(SubscriptionTypeRepository.getInstance());
     }
 
     public static SubscriptionTypeController getInstance()
     {
-        if (instance == null) throw new Error("Repository was never provided");
+        if (instance == null) instance = new SubscriptionTypeController();
         return instance;
-    }
-
-    @Override
-    public void add(SubscriptionType object) throws ObjectAlreadyContained {
-        repository.add(object);
-    }
-
-    @Override
-    public void update(SubscriptionType object) throws ObjectNotContained {
-        repository.update(object);
-    }
-
-    @Override
-    public void delete(SubscriptionType object) throws ObjectNotContained {
-        repository.delete(object);
-    }
-
-    @Override
-    public ArrayList<SubscriptionType> getAll() {
-        return repository.getAll();
     }
 }
