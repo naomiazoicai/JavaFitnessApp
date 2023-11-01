@@ -7,7 +7,6 @@ import domain.persons.Gender;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.CustomerSubscriptionRepository;
 
 import java.time.LocalDate;
