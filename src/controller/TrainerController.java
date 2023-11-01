@@ -3,50 +3,19 @@ package controller;
 import domain.persons.Trainer;
 import repository.inMemoryRepository.TrainerRepository;
 
-import java.util.ArrayList;
 
-public class TrainerController implements IController<Trainer>
+public class TrainerController extends Controller<Trainer>
 {
-    private final TrainerRepository repository;
     private static TrainerController instance;
 
-    private TrainerController(TrainerRepository repository)
+    private TrainerController()
     {
-        this.repository = repository;
-    }
-
-    public static TrainerController getInstance(TrainerRepository repository)
-    {
-        if (instance == null) instance = new TrainerController(repository);
-        return instance;
+        super(TrainerRepository.getInstance());
     }
 
     public static TrainerController getInstance()
     {
-        if (instance == null) throw new Error("Repository was never provided");
+        if (instance == null) instance = new TrainerController();
         return instance;
-    }
-
-    @Override
-    public void add(Trainer object)
-    {
-        repository.add(object);
-    }
-
-    @Override
-    public void update(Trainer object)
-    {
-        repository.update(object);
-    }
-
-    @Override
-    public void delete(Trainer object)
-    {
-        repository.delete(object);
-    }
-
-    @Override
-    public ArrayList<Trainer> getAll() {
-        return repository.getAll();
     }
 }

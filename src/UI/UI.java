@@ -6,8 +6,6 @@ import domain.persons.Customer;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,8 +21,7 @@ public class UI implements IUi, ISubject{
     }
 
     public void showAllEquipmentItems(){
-        EquipmentItemRepository equipmentItemRepository = EquipmentItemRepository.getInstance();
-        EquipmentItemController equipmentItemController = EquipmentItemController.getInstance(equipmentItemRepository);
+        EquipmentItemController equipmentItemController = EquipmentItemController.getInstance();
 
         ArrayList<EquipmentItem> equipmentItems = equipmentItemController.getAll();
         for(EquipmentItem equipmentItem : equipmentItems)
@@ -33,18 +30,16 @@ public class UI implements IUi, ISubject{
         }
     }
     public void showAllExercises(){
-        ExerciseRepository exerciseRepository = ExerciseRepository.getInstance();
-        ExerciseController exerciseController = ExerciseController.getInstance(exerciseRepository);
+        ExerciseController exerciseController = ExerciseController.getInstance();
         ArrayList<Exercise> exercises = exerciseController.getAll();
         for(Exercise exercise : exercises)
         {
             System.out.println(exercise);
         }
     }
-    public void showAllSpecialisedRooms(){
-
-        SpecialisedRoomRepository specialisedRoomRepository = SpecialisedRoomRepository.getInstance();
-        SpecialisedRoomController specialisedRoomController = SpecialisedRoomController.getInstance(specialisedRoomRepository);
+    public void showAllSpecialisedRooms()
+    {
+        SpecialisedRoomController specialisedRoomController = SpecialisedRoomController.getInstance();
         ArrayList<SpecialisedRoom> specialisedRooms = specialisedRoomController.getAll();
         for(SpecialisedRoom specialisedRoom : specialisedRooms)
         {
@@ -53,8 +48,7 @@ public class UI implements IUi, ISubject{
     }
 
     public void showAllWorkouts(){
-        WorkoutRepository workoutRepository = WorkoutRepository.getInstance();
-        WorkoutController workoutController = WorkoutController.getInstance(workoutRepository);
+        WorkoutController workoutController = WorkoutController.getInstance();
         ArrayList<Workout> workouts = workoutController.getAll();
         for(Workout workout : workouts)
         {
@@ -63,8 +57,7 @@ public class UI implements IUi, ISubject{
     }
 
     public void showAllCustomers() {
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
-        CustomerController customerController = CustomerController.getInstance(customerRepository);
+        CustomerController customerController = CustomerController.getInstance();
         ArrayList<Customer> customers = customerController.getAll();
         for(Customer customer : customers)
         {
@@ -73,7 +66,7 @@ public class UI implements IUi, ISubject{
     }
 
         public void showAllTrainers() {
-        TrainerController trainerController = TrainerController.getInstance(TrainerRepository.getInstance());
+        TrainerController trainerController = TrainerController.getInstance();
         ArrayList<Trainer> trainers = trainerController.getAll();
         for(Trainer trainer : trainers)
         {

@@ -4,13 +4,12 @@ import controller.CustomerController;
 import domain.persons.Customer;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class CustomerUI {
-    final CustomerController controller = CustomerController.getInstance(CustomerRepository.getInstance());
+    final CustomerController controller = CustomerController.getInstance();
     private static CustomerUI instance;
 
     private CustomerUI(){}
