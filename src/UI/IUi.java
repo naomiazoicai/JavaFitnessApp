@@ -1,4 +1,5 @@
 package UI;
 
-public interface IUi {
+public interface IUi
+{
 }
