@@ -4,7 +4,8 @@ import domain.persons.Trainer;
 import repository.inMemoryRepository.TrainerRepository;
 
 
-public class TrainerController extends Controller<Trainer>
+public class TrainerController extends Controller<Trainer> implements IObserverNewCostumer
+
 {
     private static TrainerController instance;
 
@@ -17,5 +18,10 @@ public class TrainerController extends Controller<Trainer>
     {
         if (instance == null) instance = new TrainerController();
         return instance;
+    }
+
+    @Override
+    public void updateNewCustomerAdded() {
+
     }
 }

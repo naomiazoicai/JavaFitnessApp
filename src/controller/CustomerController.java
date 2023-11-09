@@ -7,7 +7,7 @@ import repository.inMemoryRepository.CustomerRepository;
 import java.util.ArrayList;
 
 
-public class CustomerController extends Controller<Customer> implements CustomerControllerInterface
+public class CustomerController extends Controller<Customer> implements CustomerControllerInterface, ISubjectNewCustomer
 {
     private static CustomerController instance;
 
@@ -40,5 +40,24 @@ public class CustomerController extends Controller<Customer> implements Customer
     @Override
     public Customer searchByUsername(String username) {
         return customerRepositoryInterface.searchByUsername(username);
+    }
+
+
+
+
+
+    @Override
+    public void registerObserver(IObserverNewCostumer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public boolean removeObserver(IObserverNewCostumer observer) {
+        return observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyNewCustomerAdded() {
+
     }
 }
