@@ -3,7 +3,7 @@ package controller;
 import controller.interfaces.IObserverDeleteEquipmentItem;
 import controller.interfaces.ISubjectDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
-import repository.interfaces.EquipmentItemRepositoryInterface;
+import repository.interfaces.IEquipmentItemRepository;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.EquipmentItemRepository;
@@ -13,7 +13,7 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
 {
     private static EquipmentItemController instance;
 
-    private final EquipmentItemRepositoryInterface equipmentItemRepositoryInterface;
+    private final IEquipmentItemRepository equipmentItemRepositoryInterface;
 
     private EquipmentItemController(EquipmentItemRepository equipmentItemRepository)
     {

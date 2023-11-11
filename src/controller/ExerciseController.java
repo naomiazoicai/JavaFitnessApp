@@ -7,16 +7,16 @@ import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.EquipmentItemRepository;
 import repository.inMemoryRepository.ExerciseRepository;
-import repository.interfaces.EquipmentItemRepositoryInterface;
-import repository.interfaces.ExerciseRepositoryInterface;
+import repository.interfaces.IEquipmentItemRepository;
+import repository.interfaces.IExerciseRepository;
 
 public class ExerciseController extends Controller<Exercise> implements ExerciseControllerInterface, IObserverDeleteEquipmentItem
 {
     private static ExerciseController instance;
 
-    private final ExerciseRepositoryInterface exerciseRepositoryInterface;
+    private final IExerciseRepository exerciseRepositoryInterface;
 
-    private final EquipmentItemRepositoryInterface equipmentItemRepositoryInterface;
+    private final IEquipmentItemRepository equipmentItemRepositoryInterface;
 
     private ExerciseController(ExerciseRepository exerciseRepository)
     {

@@ -3,10 +3,10 @@ package repository.inMemoryRepository;
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectNotContained;
-import repository.interfaces.ExerciseRepositoryInterface;
+import repository.interfaces.IExerciseRepository;
 import repository.Repository;
 
-public class ExerciseRepository extends Repository<Exercise> implements ExerciseRepositoryInterface
+public class ExerciseRepository extends Repository<Exercise> implements IExerciseRepository
 {
     private static ExerciseRepository instance;
 

@@ -1,11 +1,11 @@
 package domain.gym;
 
 public class SpecialisedRoom extends Room{
-    private String roomType;
+    private RoomType roomType;
     private int personCapacity;
 
-    public SpecialisedRoom(int id, boolean cleaned, boolean occupied, String roomType, int personCapacity) {
-        super(id, cleaned, occupied);
+    public SpecialisedRoom(int id, boolean occupied, RoomType roomType, int personCapacity) {
+        super(id, occupied);
         this.roomType = roomType;
         this.personCapacity = personCapacity;
     }
@@ -18,11 +18,11 @@ public class SpecialisedRoom extends Room{
                 '}';
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 

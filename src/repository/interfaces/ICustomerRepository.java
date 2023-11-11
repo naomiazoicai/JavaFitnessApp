@@ -4,7 +4,7 @@ import domain.persons.Customer;
 
 import java.util.ArrayList;
 
-public interface CustomerRepositoryInterface {
+public interface ICustomerRepository {
 
     Boolean usernameInRepo(String username);
     ArrayList<Customer> searchByPartialUsername(String username);

@@ -3,12 +3,11 @@ package repository.inMemoryRepository;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Person;
-import repository.interfaces.CustomerRepositoryInterface;
 import repository.Repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CustomerRepository extends Repository<Customer> implements CustomerRepositoryInterface
+public class CustomerRepository extends Repository<Customer> implements repository.interfaces.ICustomerRepository
 {
     private static CustomerRepository instance;
 

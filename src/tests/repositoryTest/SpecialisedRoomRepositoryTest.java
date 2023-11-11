@@ -1,5 +1,6 @@
 package tests.repositoryTest;
 
+import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
@@ -16,7 +17,7 @@ public class SpecialisedRoomRepositoryTest {
     @Test
     public void testAdd() throws ObjectAlreadyContained {
         // Successful add
-        SpecialisedRoom room = new SpecialisedRoom(3, true, false, "Cardio Room", 15);
+        SpecialisedRoom room = new SpecialisedRoom(3, true, RoomType.cardio, 15);
         specialisedRoomRepository.add(room);
         ArrayList<SpecialisedRoom> specialisedRooms = specialisedRoomRepository.getAll();
         assertTrue(specialisedRooms.contains(room));
@@ -28,7 +29,7 @@ public class SpecialisedRoomRepositoryTest {
 
     @Test
     public void testUpdate() throws ObjectAlreadyContained, ObjectNotContained {
-        SpecialisedRoom room = new SpecialisedRoom(4, true, false, "Yoga Room", 20);
+        SpecialisedRoom room = new SpecialisedRoom(4, true, RoomType.freeWeights, 20);
         specialisedRoomRepository.add(room);
 
         specialisedRoomRepository.update(room);
@@ -40,7 +41,7 @@ public class SpecialisedRoomRepositoryTest {
 
     @Test
     public void testDelete() throws ObjectAlreadyContained, ObjectNotContained {
-        SpecialisedRoom room = new SpecialisedRoom(5, true, false, "Weightlifting Room", 25);
+        SpecialisedRoom room = new SpecialisedRoom(5, true, RoomType.freeWeights, 25);
         specialisedRoomRepository.add(room);
 
         specialisedRoomRepository.delete(room);

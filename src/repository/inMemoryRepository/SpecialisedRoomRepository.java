@@ -1,5 +1,6 @@
 package repository.inMemoryRepository;
 
+import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;
 import repository.Repository;
 
@@ -10,8 +11,8 @@ public class SpecialisedRoomRepository extends Repository<SpecialisedRoom>
 
     private SpecialisedRoomRepository()
     {
-        SpecialisedRoom room1 = new SpecialisedRoom(1, true, false, "Studio", 10);
-        SpecialisedRoom room2 = new SpecialisedRoom(2, true, false, "Studio", 10);
+        SpecialisedRoom room1 = new SpecialisedRoom(1, true, RoomType.studio, 10);
+        SpecialisedRoom room2 = new SpecialisedRoom(2, true, RoomType.studio, 10);
         arrayList.add(room1);
         arrayList.add(room2);
     }

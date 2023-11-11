@@ -1,11 +1,11 @@
 package repository.inMemoryRepository;
 
 import domain.gym.EquipmentItem;
-import repository.interfaces.EquipmentItemRepositoryInterface;
+import repository.interfaces.IEquipmentItemRepository;
 import repository.Repository;
 import repository.exceptions.ObjectNotContained;
 
-public class EquipmentItemRepository extends Repository<EquipmentItem> implements EquipmentItemRepositoryInterface{
+public class EquipmentItemRepository extends Repository<EquipmentItem> implements IEquipmentItemRepository {
     private static EquipmentItemRepository instance;
 
     private int lastId;

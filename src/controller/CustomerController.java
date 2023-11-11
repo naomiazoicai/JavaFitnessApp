@@ -1,8 +1,8 @@
 package controller;
 
 import domain.persons.Customer;
-import repository.interfaces.CustomerRepositoryInterface;
 import repository.inMemoryRepository.CustomerRepository;
+import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,12 @@ public class CustomerController extends Controller<Customer> implements Customer
 {
     private static CustomerController instance;
 
-    private final CustomerRepositoryInterface customerRepositoryInterface;
+    private final ICustomerRepository ICustomerRepository;
 
     private CustomerController(CustomerRepository customerRepository)
     {
         super(customerRepository);
-        customerRepositoryInterface = customerRepository;
+        ICustomerRepository = customerRepository;
     }
 
     public static CustomerController getInstance()
@@ -28,18 +28,18 @@ public class CustomerController extends Controller<Customer> implements Customer
     @Override
     public ArrayList<Customer> searchByPartialUsername(String username)
     {
-        return customerRepositoryInterface.searchByPartialUsername(username);
+        return ICustomerRepository.searchByPartialUsername(username);
     }
 
     @Override
     public Boolean usernameInRepo(String username)
     {
-        return customerRepositoryInterface.usernameInRepo(username);
+        return ICustomerRepository.usernameInRepo(username);
     }
 
     @Override
     public Customer searchByUsername(String username) {
-        return customerRepositoryInterface.searchByUsername(username);
+        return ICustomerRepository.searchByUsername(username);
     }
 
 
