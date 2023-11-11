@@ -1,4 +1,4 @@
-package UI;
+package UI.SpecialisedUIs;
 
 public class BudgetUI {
 }

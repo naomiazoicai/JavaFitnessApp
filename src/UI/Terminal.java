@@ -39,9 +39,24 @@ public class Terminal
     }
 
     // Read methods
+    public int readId()
+    {
+        System.out.println("Enter id (number): ");
+        String idString = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Integer.parseInt(idString);
+            } catch (NumberFormatException e) {
+                System.out.println("The id must be a number: ");
+                idString = scanner.nextLine();
+            }
+        }
+    }
+
     public String readUsername()
     {
-        System.out.println("Enter customer's username: ");
+        System.out.println("Enter username: ");
         String username = scanner.nextLine();
         // Check for empty username
         while (Objects.equals(username, "")) {
@@ -52,7 +67,7 @@ public class Terminal
 
     public String readName()
     {
-        System.out.println("Enter customer's name: ");
+        System.out.println("Enter name: ");
         String username = scanner.nextLine();
         // Check for empty username
         while (Objects.equals(username, "")) {
@@ -64,7 +79,7 @@ public class Terminal
     public Gender readGender()
     {
         System.out.println("1. Male / 2. Female / 3. Not specified");
-        System.out.println("Enter customer's gender: ");
+        System.out.println("Enter gender: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3"))
         {
@@ -82,7 +97,7 @@ public class Terminal
 
     // Date stuff
     public LocalDate readBirthDate(){
-        System.out.println("Enter your birth date: ");
+        System.out.println("Enter birth date: ");
         return readDate();
     }
 

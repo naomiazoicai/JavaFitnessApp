@@ -1,6 +1,6 @@
-package UI;
+package UI.SpecialisedUIs;
 
-import controller.Controller;
+import UI.UI;
 import controller.CustomerController;
 import controller.CustomerControllerInterface;
 import domain.persons.Customer;
@@ -10,8 +10,6 @@ import repository.exceptions.ObjectNotContained;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
 
 public class CustomerUI extends UI<Customer> {
     private static CustomerUI instance;
@@ -37,12 +35,16 @@ public class CustomerUI extends UI<Customer> {
             username = terminal.readUsername();
         }
         // Read other attributes
-        String name = terminal.readUsername();
+        String name = terminal.readName();
         LocalDate birthDate = terminal.readBirthDate();
         Gender gender = terminal.readGender();
         // Create and add new customer
         Customer customer = new Customer(username, name, birthDate, gender);
-
+        try {
+            controller.add(customer);
+        } catch (ObjectAlreadyContained e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -52,13 +54,12 @@ public class CustomerUI extends UI<Customer> {
         if (customerControllerInterface.usernameInRepo(username)) {
             Customer toDeleteCustomer = customerControllerInterface.searchByUsername(username);
             try {
-
                 controller.delete(toDeleteCustomer);
                 terminal.printMessage("Customer deleted: " + toDeleteCustomer.toString());
             } catch (ObjectNotContained e) {
                 terminal.printMessage(e.getMessage());
             }
-        } else terminal.printMessage("Customer was not found in repository");
+        } else terminal.printMessage("Customer username was not found");
     }
 
     @Override
