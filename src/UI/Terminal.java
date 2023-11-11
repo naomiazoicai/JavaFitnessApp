@@ -2,6 +2,7 @@ package UI;
 
 import domain.gym.RoomType;
 import domain.persons.Gender;
+import domain.persons.TrainerSpecialization;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -116,6 +117,41 @@ public class Terminal
             case "7" -> RoomType.reception;
             case "8" -> RoomType.storage;
             default -> RoomType.empty;
+        };
+    }
+
+    public TrainerSpecialization readTrainerSpecialisation()
+    {
+        System.out.println("Trainer specialisations: ");
+        System.out.println("1. CrossTraining");
+        System.out.println("2. Cycling");
+        System.out.println("3. Yoga");
+        System.out.println("4. Zumba");
+        System.out.println("5. Aerobic");
+        System.out.println("6. Pilates");
+        System.out.println("7. Box");
+        System.out.println("8. TRX");
+        System.out.println("9. none");
+        System.out.println("Enter trainer specialisation: ");
+        String choice = scanner.nextLine();
+        while (!(Objects.equals(choice, "1") || Objects.equals(choice, "2") || Objects.equals(choice, "3")
+                || Objects.equals(choice, "4") || Objects.equals(choice, "5") || Objects.equals(choice, "6")
+                || Objects.equals(choice, "7") || Objects.equals(choice, "8") || Objects.equals(choice, "9")))
+        {
+            System.out.println("Enter a valid choice (1-9)");
+            System.out.println("Enter trainer specialisation: ");
+            choice = scanner.nextLine();
+        }
+        return switch (choice) {
+            case "1" -> TrainerSpecialization.CrossTraining;
+            case "2" -> TrainerSpecialization.Cycling;
+            case "3" -> TrainerSpecialization.Yoga;
+            case "4" -> TrainerSpecialization.Zumba;
+            case "5" -> TrainerSpecialization.Aerobic;
+            case "6" -> TrainerSpecialization.Pilates;
+            case "7" -> TrainerSpecialization.Box;
+            case "8" -> TrainerSpecialization.TRX;
+            default -> TrainerSpecialization.none;
         };
     }
 
