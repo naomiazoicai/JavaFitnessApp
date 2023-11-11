@@ -18,11 +18,11 @@ public class BudgetRepository
         return instance;
     }
 
-    public void addMoney(int value){
+    public void addMoney(double value){
         budget.addMoney(value);
     }
 
-    public void spendMoney(int value) throws Exception {
+    public void spendMoney(double value) throws Exception {
         budget.spendMoney(value);
     }
 

@@ -5,9 +5,9 @@ import repository.inMemoryRepository.BudgetRepository;
 public class BudgetController {
     private static BudgetController instance;
 
-    private final BudgetRepository repository = BudgetRepository.getInstance();
+    private final BudgetRepository repository;
 
-    private BudgetController(){};
+    private BudgetController(){repository = BudgetRepository.getInstance();};
 
     public static BudgetController getInstance()
     {
@@ -15,11 +15,11 @@ public class BudgetController {
         return instance;
     }
 
-    public void addMoney(int value){
+    public void addMoney(double value){
         repository.addMoney(value);
     }
 
-    public void spendMoney(int value) throws Exception {
+    public void spendMoney(double value) throws Exception {
         repository.spendMoney(value);
     }
 

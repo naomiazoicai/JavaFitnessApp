@@ -234,6 +234,21 @@ public class Terminal
         }
     }
 
+    public double readMoneyAmount()
+    {
+        System.out.println("Enter money amount (number): ");
+        String moneyAmount = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Double.parseDouble(moneyAmount);
+            } catch (NumberFormatException e) {
+                System.out.println("The money amount must be a number: ");
+                moneyAmount = scanner.nextLine();
+            }
+        }
+    }
+
     public String readSubscriptionTypeName()
     {
         System.out.println("Enter subscription name: ");
