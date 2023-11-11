@@ -2,7 +2,7 @@ package UI.SpecialisedUIs;
 
 import UI.UI;
 import controller.CustomerController;
-import controller.interfaces.CustomerControllerInterface;
+import controller.interfaces.ICustomerController;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import repository.exceptions.ObjectAlreadyContained;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class CustomerUI extends UI<Customer> {
     private static CustomerUI instance;
 
-    private final CustomerControllerInterface customerControllerInterface;
+    private final ICustomerController ICustomerController;
 
     private CustomerUI(CustomerController customerController) {
         super(customerController);
-        customerControllerInterface = customerController;
+        ICustomerController = customerController;
     }
 
     public static CustomerUI getInstance() {
@@ -30,7 +30,7 @@ public class CustomerUI extends UI<Customer> {
     public void addEntity() {
         String username = terminal.readUsername();
         // Check if username exists
-        while (customerControllerInterface.usernameInRepo(username)) {
+        while (ICustomerController.keyNameInRepo(username)) {
             terminal.printMessage("Username already in repo! Choose another");
             username = terminal.readUsername();
         }
@@ -51,13 +51,13 @@ public class CustomerUI extends UI<Customer> {
     public void deleteEntity() {
         String username = terminal.readUsername();
         // Check if username exists
-        if (customerControllerInterface.usernameInRepo(username)) {
-            Customer toDeleteCustomer = customerControllerInterface.searchByUsername(username);
+        if (ICustomerController.keyNameInRepo(username)) {
+            Customer toDeleteCustomer = ICustomerController.searchByKeyName(username);
             try {
                 controller.delete(toDeleteCustomer);
                 terminal.printMessage("Customer deleted: " + toDeleteCustomer.toString());
             } catch (ObjectNotContained e) {
-                terminal.printMessage(e.getMessage());
+                throw new RuntimeException();
             }
         } else terminal.printMessage("Customer username was not found");
     }
@@ -70,7 +70,7 @@ public class CustomerUI extends UI<Customer> {
 
     public void searchByPartialUsername() {
         String username = terminal.readUsername();
-        ArrayList<Customer> customers = customerControllerInterface.searchByPartialUsername(username);
+        ArrayList<Customer> customers = ICustomerController.searchByPartialKeyName(username);
         terminal.printArrayList(customers);
     }
 }

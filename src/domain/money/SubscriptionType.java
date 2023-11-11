@@ -13,6 +13,12 @@ public class SubscriptionType {
         this.price = price;
     }
 
+    public SubscriptionType(){
+        this.name = "";
+        this.description = "";
+        this.price = 0;
+    }
+
     @Override
     public String toString() {
         return "SubscriptionType{" +

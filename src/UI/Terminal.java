@@ -172,6 +172,44 @@ public class Terminal
         return username;
     }
 
+    public String readDescription()
+    {
+        System.out.println("Enter description: ");
+        String description = scanner.nextLine();
+        // Check for empty description
+        while (Objects.equals(description, "")) {
+            System.out.println("Please enter a description: ");
+        }
+        return description;
+    }
+
+    public double readPrice()
+    {
+        System.out.println("Enter price (number): ");
+        String price = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Integer.parseInt(price);
+            } catch (NumberFormatException e) {
+                System.out.println("The price must be a number: ");
+                price = scanner.nextLine();
+            }
+        }
+    }
+
+    public String readSubscriptionTypeName()
+    {
+        System.out.println("Enter subscription name: ");
+        String subscriptionName = scanner.nextLine();
+        // Check for empty subscriptionName
+        while (Objects.equals(subscriptionName, "")) {
+            System.out.println("Please enter a subscription name: ");
+        }
+        return subscriptionName;
+    }
+
+
     public String muscleTrained()
     {
         System.out.println("Enter muscle trained name: ");

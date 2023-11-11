@@ -4,10 +4,12 @@ import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Person;
 import repository.Repository;
+import repository.interfaces.ICustomerRepository;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CustomerRepository extends Repository<Customer> implements repository.interfaces.ICustomerRepository
+public class CustomerRepository extends Repository<Customer> implements ICustomerRepository
 {
     private static CustomerRepository instance;
 
@@ -27,31 +29,31 @@ public class CustomerRepository extends Repository<Customer> implements reposito
     }
 
     @Override
-    public Boolean usernameInRepo(String username)
+    public Boolean keyNameInRepo(String keyName)
     {
         for (Person person : arrayList)
         {
-            if (username.equals(person.getUsername())) return Boolean.TRUE;
+            if (keyName.equals(person.getUsername())) return Boolean.TRUE;
         }
         return Boolean.FALSE;
     }
 
     @Override
-    public ArrayList<Customer> searchByPartialUsername(String username)
+    public ArrayList<Customer> searchByPartialKeyName(String keyName)
     {
         ArrayList<Customer> result = new ArrayList<>();
         for (Customer customer : arrayList)
         {
-            if (customer.getUsername().contains(username)) result.add(customer);
+            if (customer.getUsername().contains(keyName)) result.add(customer.copy());
         }
         return result;
     }
 
     @Override
-    public Customer searchByUsername(String username) {
+    public Customer searchByKeyName(String keyName) {
         for (Customer customer : arrayList)
         {
-            if (username.equals(customer.getUsername())) return customer.copy();
+            if (keyName.equals(customer.getUsername())) return customer.copy();
         }
         return null;
     }

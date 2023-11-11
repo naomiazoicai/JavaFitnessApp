@@ -1,6 +1,6 @@
 package controller;
 
-import controller.interfaces.CustomerControllerInterface;
+import controller.interfaces.ICustomerController;
 import domain.persons.Customer;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.interfaces.ICustomerRepository;
@@ -8,7 +8,7 @@ import repository.interfaces.ICustomerRepository;
 import java.util.ArrayList;
 
 
-public class CustomerController extends Controller<Customer> implements CustomerControllerInterface, ISubjectNewCustomer
+public class CustomerController extends Controller<Customer> implements ICustomerController, ISubjectNewCustomer
 {
     private static CustomerController instance;
 
@@ -27,20 +27,20 @@ public class CustomerController extends Controller<Customer> implements Customer
     }
 
     @Override
-    public ArrayList<Customer> searchByPartialUsername(String username)
+    public ArrayList<Customer> searchByPartialKeyName(String keyName)
     {
-        return ICustomerRepository.searchByPartialUsername(username);
+        return ICustomerRepository.searchByPartialKeyName(keyName);
     }
 
     @Override
-    public Boolean usernameInRepo(String username)
+    public Boolean keyNameInRepo(String keyName)
     {
-        return ICustomerRepository.usernameInRepo(username);
+        return ICustomerRepository.keyNameInRepo(keyName);
     }
 
     @Override
-    public Customer searchByUsername(String username) {
-        return ICustomerRepository.searchByUsername(username);
+    public Customer searchByKeyName(String keyName) {
+        return ICustomerRepository.searchByKeyName(keyName);
     }
 
 
