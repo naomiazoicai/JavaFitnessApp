@@ -13,6 +13,11 @@ public class Customer extends Person {
         super(username, "", LocalDate.now(), Gender.notSpecifying);
     }
 
+    public Customer()
+    {
+        super("", "", LocalDate.now(), Gender.notSpecifying);
+    }
+
     @Override
     public String toString() {
         return "Customer{" + super.toString() +

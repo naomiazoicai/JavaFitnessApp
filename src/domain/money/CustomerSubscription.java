@@ -75,6 +75,7 @@ public class CustomerSubscription{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerSubscription that = (CustomerSubscription) o;
-        return Objects.equals(customer, that.customer) && Objects.equals(subscriptionType, that.subscriptionType) && Objects.equals(validFrom, that.validFrom);
+        return Objects.equals(customer, that.customer) && Objects.equals(subscriptionType, that.subscriptionType)
+                && Objects.equals(validFrom, that.validFrom) && Objects.equals(validUntil, that.validUntil);
     }
 }

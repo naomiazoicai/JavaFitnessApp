@@ -4,10 +4,12 @@ import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import repository.Repository;
+import repository.interfaces.ICustomerSubscriptionRepository;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CustomerSubscriptionRepository extends Repository<CustomerSubscription> {
+public class CustomerSubscriptionRepository extends Repository<CustomerSubscription> implements ICustomerSubscriptionRepository {
     private static CustomerSubscriptionRepository instance;
 
     private CustomerSubscriptionRepository()
@@ -25,5 +27,27 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
     {
         if (instance == null) instance = new CustomerSubscriptionRepository();
         return instance;
+    }
+
+    @Override
+    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username) {
+        ArrayList<CustomerSubscription> result = new ArrayList<>();
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (username.equals(customerSubscription.getCustomer().getUsername())){
+                result.add(customerSubscription);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType) {
+        ArrayList<CustomerSubscription> result = new ArrayList<>();
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (subscriptionType.equals(customerSubscription.getSubscriptionType())) result.add(customerSubscription);
+        }
+        return result;
     }
 }

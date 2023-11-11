@@ -297,6 +297,25 @@ public class Terminal
         return readDate();
     }
 
+    public LocalDate readValidFromDate()
+    {
+        System.out.println("Enter valid from date: ");
+        return readDate();
+    }
+
+    public LocalDate readValidToDate(LocalDate validFrom)
+    {
+        System.out.println("Enter valid to date: ");
+        LocalDate validTo = readDate();
+        while (validTo.isBefore(validFrom))
+        {
+            System.out.println("Valid to must be after valid from!");
+            System.out.println("Enter valid to date: ");
+            validTo = readDate();
+        }
+        return validTo;
+    }
+
     public LocalDate readDate()
     {
         System.out.print("Enter a date (yyyy-MM-dd): ");
