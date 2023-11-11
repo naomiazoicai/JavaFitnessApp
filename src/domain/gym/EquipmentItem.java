@@ -11,6 +11,18 @@ public class EquipmentItem {
 
     }
 
+    public EquipmentItem(String name) {
+        this.ID = 0;
+        this.name = name;
+
+    }
+
+    public EquipmentItem()
+    {
+        this.ID = 0;
+        this.name = "null";
+    }
+
     @Override
     public String toString() {
         return "EquipmentItem{" +

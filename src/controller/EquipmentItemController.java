@@ -1,7 +1,7 @@
 package controller;
 
 import domain.gym.EquipmentItem;
-import repository.EquipmentItemRepositoryInterface;
+import repository.interfaces.EquipmentItemRepositoryInterface;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.EquipmentItemRepository;
@@ -36,7 +36,7 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
         try {
             return equipmentItemRepositoryInterface.searchById(id);
         } catch (ObjectNotContained e) {
-            return null;
+            return new EquipmentItem();
         }
     }
 

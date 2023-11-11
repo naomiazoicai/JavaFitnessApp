@@ -1,7 +1,7 @@
 package controller;
 
 import domain.persons.Customer;
-import repository.CustomerRepositoryInterface;
+import repository.interfaces.CustomerRepositoryInterface;
 import repository.inMemoryRepository.CustomerRepository;
 
 import java.util.ArrayList;

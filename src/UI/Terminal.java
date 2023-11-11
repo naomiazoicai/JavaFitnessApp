@@ -54,6 +54,36 @@ public class Terminal
         }
     }
 
+    public int readSets()
+    {
+        System.out.println("Enter sets (number): ");
+        String setsString = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Integer.parseInt(setsString);
+            } catch (NumberFormatException e) {
+                System.out.println("The sets must be a number: ");
+                setsString = scanner.nextLine();
+            }
+        }
+    }
+
+    public int readReps()
+    {
+        System.out.println("Enter reps (number): ");
+        String repsString = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Integer.parseInt(repsString);
+            } catch (NumberFormatException e) {
+                System.out.println("The reps must be a number: ");
+                repsString = scanner.nextLine();
+            }
+        }
+    }
+
     public String readUsername()
     {
         System.out.println("Enter username: ");
@@ -74,6 +104,17 @@ public class Terminal
             System.out.println("Please enter a name: ");
         }
         return username;
+    }
+
+    public String muscleTrained()
+    {
+        System.out.println("Enter muscle trained name: ");
+        String name = scanner.nextLine();
+        // Check for empty username
+        while (Objects.equals(name, "")) {
+            System.out.println("Please enter muscle trained name: ");
+        }
+        return name;
     }
 
     public Gender readGender()

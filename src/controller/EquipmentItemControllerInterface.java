@@ -1,9 +1,8 @@
 package controller;
 
+import controller.interfaces.IdIdentifiedEntitiesController;
 import domain.gym.EquipmentItem;
 
-public interface EquipmentItemControllerInterface {
-    boolean idInRepo(int id);
+public interface EquipmentItemControllerInterface extends IdIdentifiedEntitiesController<EquipmentItem> {
 
-    EquipmentItem searchById(int id);
 }

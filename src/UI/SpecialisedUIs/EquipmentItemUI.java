@@ -27,7 +27,7 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
     public void addEntity() {
         String name = terminal.readName();
         // ID is automatically generated in controller
-        EquipmentItem equipmentItem = new EquipmentItem(0, name);
+        EquipmentItem equipmentItem = new EquipmentItem(name);
         try {
             controller.add(equipmentItem);
         } catch (ObjectAlreadyContained e) {
@@ -60,7 +60,7 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
     {
         int id = terminal.readId();
         EquipmentItem equipmentItem = equipmentItemControllerInterface.searchById(id);
-        if (equipmentItem == null) terminal.printMessage("Equipment id item was not found");
+        if (equipmentItem.getID() == 0) terminal.printMessage("Equipment id item was not found");
         else terminal.printMessage(equipmentItem.toString());
     }
 }
