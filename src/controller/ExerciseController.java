@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IObserverDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectAlreadyContained;
@@ -9,7 +10,7 @@ import repository.inMemoryRepository.ExerciseRepository;
 import repository.interfaces.EquipmentItemRepositoryInterface;
 import repository.interfaces.ExerciseRepositoryInterface;
 
-public class ExerciseController extends Controller<Exercise> implements ExerciseControllerInterface
+public class ExerciseController extends Controller<Exercise> implements ExerciseControllerInterface, IObserverDeleteEquipmentItem
 {
     private static ExerciseController instance;
 
@@ -65,5 +66,10 @@ public class ExerciseController extends Controller<Exercise> implements Exercise
         } catch (ObjectNotContained e) {
             return new EquipmentItem();
         }
+    }
+
+    @Override
+    public void updateEquipmentItemDeleted(EquipmentItem equipmentItem) {
+        exerciseRepositoryInterface.equipmentItemDeleted(equipmentItem);
     }
 }
