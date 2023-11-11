@@ -1,5 +1,6 @@
 package UI;
 
+import domain.gym.RoomType;
 import domain.persons.Gender;
 
 import java.time.LocalDate;
@@ -80,6 +81,71 @@ public class Terminal
             } catch (NumberFormatException e) {
                 System.out.println("The reps must be a number: ");
                 repsString = scanner.nextLine();
+            }
+        }
+    }
+
+    public RoomType readRoomType()
+    {
+        System.out.println("Room types: ");
+        System.out.println("1. empty");
+        System.out.println("2. freeWeights");
+        System.out.println("3. cardio");
+        System.out.println("4. functional");
+        System.out.println("5. resistanceMachines");
+        System.out.println("6. studio");
+        System.out.println("7. reception");
+        System.out.println("8. storage");
+        System.out.println("Enter a room type: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5")  && !Objects.equals(choice, "6")
+                && !Objects.equals(choice, "7") && !Objects.equals(choice, "8"))
+        {
+            System.out.println("Enter a valid choice (1-8)");
+            System.out.println("Enter a room type: ");
+            choice = scanner.nextLine();
+        }
+        return switch (choice) {
+            case "1" -> RoomType.empty;
+            case "2" -> RoomType.freeWeights;
+            case "3" -> RoomType.cardio;
+            case "4" -> RoomType.functional;
+            case "5" -> RoomType.resistanceMachines;
+            case "6" -> RoomType.studio;
+            case "7" -> RoomType.reception;
+            case "8" -> RoomType.storage;
+            default -> RoomType.empty;
+        };
+    }
+
+    public Boolean occupied()
+    {
+        System.out.println("1. Yes / 2. No)");
+        System.out.println("Enter occupied: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2"))
+        {
+            System.out.println("Enter a valid choice");
+            System.out.println("1. Yes / 2. No");
+            System.out.println("Enter occupierd: ");
+            choice = scanner.nextLine();
+        }
+        if (choice.equals("1")) return Boolean.TRUE;
+        else return Boolean.FALSE;
+    }
+
+    public int readPersonCapacity()
+    {
+        System.out.println("Enter person capacity (number): ");
+        String personCapacityString = scanner.nextLine();
+        // Check if int
+        while (true) {
+            try {
+                return Integer.parseInt(personCapacityString);
+            } catch (NumberFormatException e) {
+                System.out.println("The capacity must be a number: ");
+                personCapacityString = scanner.nextLine();
             }
         }
     }

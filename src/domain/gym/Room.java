@@ -1,10 +1,8 @@
 package domain.gym;
 
-import java.util.Objects;
-
 public class Room {
-    private int id;
-    private boolean occupied;
+    protected int id;
+    protected boolean occupied;
 
     public Room(int id, boolean occupied) {
         this.id = id;
@@ -33,6 +31,11 @@ public class Room {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Room copy()
+    {
+        return new Room(id, occupied);
     }
 
     public boolean isOccupied() {

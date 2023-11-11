@@ -44,7 +44,7 @@ public class EquipmentItemRepository extends Repository<EquipmentItem> implement
     public EquipmentItem searchById(int id) throws ObjectNotContained {
         for (EquipmentItem equipmentItem : arrayList)
         {
-            if (id == equipmentItem.getID()) return equipmentItem;
+            if (id == equipmentItem.getID()) return equipmentItem.copy();
         }
         throw new ObjectNotContained();
     }

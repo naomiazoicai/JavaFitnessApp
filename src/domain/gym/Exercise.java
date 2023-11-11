@@ -97,6 +97,11 @@ public class Exercise {
         this.reps = reps;
     }
 
+    public Exercise copy()
+    {
+        return new Exercise(id, name, muscleTrained, equipmentUsed, sets, reps);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

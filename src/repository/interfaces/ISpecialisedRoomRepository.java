@@ -1,4 +1,6 @@
 package repository.interfaces;
 
-public interface ISpecialisedRoomRepository {
+import domain.gym.SpecialisedRoom;
+
+public interface ISpecialisedRoomRepository extends IdIdentifiedEntitiesRepository<SpecialisedRoom> {
 }

@@ -8,11 +8,21 @@ public class Trainer extends Employee {
         super(username, name, birthDate, gender);
     }
 
+    public Trainer(String username, String name, LocalDate birthDate, Gender gender, TrainerSpecialization specialization) {
+        super(username, name, birthDate, gender);
+        this.specialization = specialization;
+    }
+
     @Override
     public String toString() {
         return "Trainer{" + super.toString() +
                 "specialization=" + specialization +
                 '}';
+    }
+
+    public Trainer copy()
+    {
+        return new Trainer(username, name, birthDate, gender, specialization);
     }
 
     public TrainerSpecialization getSpecialization() {

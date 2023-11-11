@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Employee extends Person{
 
-    private double salary;
+    protected double salary;
     public Employee(String username, String name, LocalDate birthDate, Gender gender) {
         super(username, name, birthDate, gender);
     }

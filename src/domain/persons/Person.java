@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Person {
-    private String username;
-    private String name;
-    private LocalDate birthDate;
-    private Gender gender;
+    protected String username;
+    protected String name;
+    protected LocalDate birthDate;
+    protected Gender gender;
 
     public Person(String username, String name, LocalDate birthDate, Gender gender) {
         this.username = username;
@@ -67,5 +67,9 @@ public class Person {
         return Objects.equals(username, person.username);
     }
 
+    public Person copy()
+    {
+        return new Person(username, name, birthDate, gender);
+    }
 
 }

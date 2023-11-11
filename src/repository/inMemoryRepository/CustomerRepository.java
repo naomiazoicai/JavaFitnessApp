@@ -51,7 +51,7 @@ public class CustomerRepository extends Repository<Customer> implements reposito
     public Customer searchByUsername(String username) {
         for (Customer customer : arrayList)
         {
-            if (username.equals(customer.getUsername())) return customer;
+            if (username.equals(customer.getUsername())) return customer.copy();
         }
         return null;
     }

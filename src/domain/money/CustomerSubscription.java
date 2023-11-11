@@ -65,6 +65,11 @@ public class CustomerSubscription{
         this.validUntil = validUntil;
     }
 
+    public CustomerSubscription copy()
+    {
+        return new CustomerSubscription(customer, subscriptionType, validFrom, validUntil);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

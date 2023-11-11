@@ -42,7 +42,7 @@ public class ExerciseRepository extends Repository<Exercise> implements IExercis
     public Exercise searchById(int id) throws ObjectNotContained {
         for (Exercise exercise : arrayList)
         {
-            if (id == exercise.getId()) return exercise;
+            if (id == exercise.getId()) return exercise.copy();
         }
         throw new ObjectNotContained();
     }
@@ -61,11 +61,6 @@ public class ExerciseRepository extends Repository<Exercise> implements IExercis
             {
                 // Set null
                 exercise.setEquipmentUsed(new EquipmentItem());
-//                try {
-//                    update(exercise);
-//                } catch (ObjectNotContained e) {
-//                    throw new RuntimeException(e);
-//                }
             }
         }
     }

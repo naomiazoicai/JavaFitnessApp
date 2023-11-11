@@ -10,12 +10,30 @@ public class SpecialisedRoom extends Room{
         this.personCapacity = personCapacity;
     }
 
+    public SpecialisedRoom(boolean occupied, RoomType roomType, int personCapacity) {
+        super(0, occupied);
+        this.roomType = roomType;
+        this.personCapacity = personCapacity;
+    }
+
+    public SpecialisedRoom()
+    {
+        super(0, false);
+        this.roomType = RoomType.empty;
+        this.personCapacity = 0;
+    }
+
     @Override
     public String toString() {
         return "SpecialisedRoom{" + super.toString() +
                 "roomType='" + roomType + '\'' +
                 ", personCapacity=" + personCapacity +
                 '}';
+    }
+
+    public SpecialisedRoom copy()
+    {
+        return new SpecialisedRoom(id, occupied, roomType, personCapacity);
     }
 
     public RoomType getRoomType() {

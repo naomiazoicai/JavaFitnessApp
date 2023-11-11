@@ -70,7 +70,7 @@ public class ExerciseUI extends UI<Exercise> {
 
     @Override
     public void updateEntity() {
-
+        //TODO
     }
 
     public void searchById()

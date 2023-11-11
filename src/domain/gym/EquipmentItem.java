@@ -47,7 +47,9 @@ public class EquipmentItem {
         this.name = name;
     }
 
-
+    public EquipmentItem copy() {
+        return new EquipmentItem(ID, name);
+    }
 
     @Override
     public boolean equals(Object o) {

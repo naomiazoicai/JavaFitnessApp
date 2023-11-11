@@ -30,6 +30,11 @@ public class SubscriptionType {
         return Objects.equals(name, that.name);
     }
 
+    public SubscriptionType copy()
+    {
+        return new SubscriptionType(name, description, price);
+    }
+
     public String getName() {
         return name;
     }

@@ -47,6 +47,11 @@ public class Workout {
         this.room = room;
     }
 
+    public Workout copy()
+    {
+        return new Workout(id, exercises, room);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
