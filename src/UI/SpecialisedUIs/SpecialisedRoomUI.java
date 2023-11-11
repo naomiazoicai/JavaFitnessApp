@@ -1,7 +1,7 @@
 package UI.SpecialisedUIs;
 
 import UI.UI;
-import controller.ISpecialisedRoomController;
+import controller.interfaces.ISpecialisedRoomController;
 import controller.SpecialisedRoomController;
 import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;

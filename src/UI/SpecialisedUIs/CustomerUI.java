@@ -2,7 +2,7 @@ package UI.SpecialisedUIs;
 
 import UI.UI;
 import controller.CustomerController;
-import controller.CustomerControllerInterface;
+import controller.interfaces.CustomerControllerInterface;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import repository.exceptions.ObjectAlreadyContained;

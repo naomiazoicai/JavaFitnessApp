@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.EquipmentItemControllerInterface;
 import controller.interfaces.IObserverDeleteEquipmentItem;
 import controller.interfaces.ISubjectDeleteEquipmentItem;
 import domain.gym.EquipmentItem;

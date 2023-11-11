@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.ISpecialisedRoomController;
 import domain.gym.SpecialisedRoom;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;

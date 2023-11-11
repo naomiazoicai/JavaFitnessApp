@@ -2,7 +2,7 @@ package UI.SpecialisedUIs;
 
 import UI.UI;
 import controller.EquipmentItemController;
-import controller.EquipmentItemControllerInterface;
+import controller.interfaces.EquipmentItemControllerInterface;
 import domain.gym.EquipmentItem;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
