@@ -1,11 +1,11 @@
-import UI.SpecialisedUIs.CustomerSubscriptionUI;
+import UI.MainUI;
+import UI.SpecialisedUIs.*;
 
 public class Main {
 //    Projekt: Java-Konsolenanwendung
 //    dieses Dokument dient als Leitfaden für die Entwicklung einer Konsolenanwendung in Java.
     public static void main(String[] args){
-        CustomerSubscriptionUI customerSubscriptionUI = CustomerSubscriptionUI.getInstance();
-        customerSubscriptionUI.searchSubscriptionByType();
-        customerSubscriptionUI.searchSubscriptionsOfUser();
+        MainUI mainUI = MainUI.getInstance();
+        mainUI.runUi();
     }
 }

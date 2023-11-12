@@ -12,6 +12,7 @@ import repository.exceptions.ObjectNotContained;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TrainerUI extends UI<Trainer> {
     private static TrainerUI instance;
@@ -28,6 +29,27 @@ public class TrainerUI extends UI<Trainer> {
     {
         if (instance == null) instance = new TrainerUI(TrainerController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Trainer UI is running...");
+        String choice = terminal.trainerUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchByPartialUsername(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.trainerUiMenu();
+        }
     }
 
     @Override
@@ -70,6 +92,7 @@ public class TrainerUI extends UI<Trainer> {
     @Override
     public void updateEntity() {
         //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchByPartialUsername()

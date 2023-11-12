@@ -26,6 +26,174 @@ public class Terminal
         return instance;
     }
 
+    // Run UI
+    public void pressEnterToContinue()
+    {
+        System.out.println("Press enter to continue...");
+        scanner.nextLine();
+    }
+
+    public String customerUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add customer");
+        System.out.println("2. Update customer");
+        System.out.println("3. Delete customer");
+        System.out.println("4. Search customer by username");
+        System.out.println("5. Show all customers");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String equipmentItemUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add equipment item");
+        System.out.println("2. Update equipment item");
+        System.out.println("3. Delete equipment item");
+        System.out.println("4. Search equipment item by id");
+        System.out.println("5. Show all equipment items");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String exerciseUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add exercise");
+        System.out.println("2. Update exercise");
+        System.out.println("3. Delete exercise");
+        System.out.println("4. Search exercise by id");
+        System.out.println("5. Show all exercises");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String specialisedRoomUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add room");
+        System.out.println("2. Update room");
+        System.out.println("3. Delete room");
+        System.out.println("4. Search room by id");
+        System.out.println("5. Show all rooms");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String trainerUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add trainer");
+        System.out.println("2. Update trainer");
+        System.out.println("3. Delete trainer");
+        System.out.println("4. Search trainer by username");
+        System.out.println("5. Show all trainers");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String subscriptionTypeUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add subscription type");
+        System.out.println("2. Update subscription type");
+        System.out.println("3. Delete subscription type");
+        System.out.println("4. Search subscription type by name");
+        System.out.println("5. Show all subscription types");
+        System.out.println("6. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
+            System.out.println("Enter a valid choice (1-6)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String customerSubscriptionUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Add customer subscription");
+        System.out.println("2. Update customer subscription");
+        System.out.println("3. Delete customer subscription");
+        System.out.println("4. Search customer subscription by customer username");
+        System.out.println("5. Search customer subscription by subscription type name");
+        System.out.println("6. Show all customer subscriptions");
+        System.out.println("7. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5")
+                && !Objects.equals(choice, "6") && !Objects.equals(choice, "7")) {
+            System.out.println("Enter a valid choice (1-7)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
+    public String budgetUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Show budget");
+        System.out.println("2. Add money");
+        System.out.println("3. Spend money");
+        System.out.println("4. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4"))
+        {
+            System.out.println("Enter a valid choice (1-4)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
+
     // Write methods
     public void printMessage(String message)
     {
@@ -108,7 +276,6 @@ public class Terminal
             choice = scanner.nextLine();
         }
         return switch (choice) {
-            case "1" -> RoomType.empty;
             case "2" -> RoomType.freeWeights;
             case "3" -> RoomType.cardio;
             case "4" -> RoomType.functional;
@@ -164,7 +331,7 @@ public class Terminal
         {
             System.out.println("Enter a valid choice");
             System.out.println("1. Yes / 2. No");
-            System.out.println("Enter occupierd: ");
+            System.out.println("Enter occupied: ");
             choice = scanner.nextLine();
         }
         if (choice.equals("1")) return Boolean.TRUE;

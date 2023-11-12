@@ -8,6 +8,8 @@ import domain.gym.Exercise;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
+import java.util.Objects;
+
 public class ExerciseUI extends UI<Exercise> {
     private static ExerciseUI instance;
 
@@ -22,6 +24,27 @@ public class ExerciseUI extends UI<Exercise> {
     {
         if (instance == null) instance = new ExerciseUI(ExerciseController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Exercise UI is running...");
+        String choice = terminal.exerciseUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchById(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.exerciseUiMenu();
+        }
     }
 
     @Override
@@ -71,6 +94,7 @@ public class ExerciseUI extends UI<Exercise> {
     @Override
     public void updateEntity() {
         //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchById()

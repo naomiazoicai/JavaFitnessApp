@@ -8,6 +8,8 @@ import domain.gym.SpecialisedRoom;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
+import java.util.Objects;
+
 public class SpecialisedRoomUI extends UI<SpecialisedRoom> {
     private static SpecialisedRoomUI instance;
 
@@ -23,6 +25,27 @@ public class SpecialisedRoomUI extends UI<SpecialisedRoom> {
     {
         if (instance == null) instance = new SpecialisedRoomUI(SpecialisedRoomController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Specialised room is running...");
+        String choice = terminal.specialisedRoomUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchById(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.specialisedRoomUiMenu();
+        }
     }
 
     @Override
@@ -59,6 +82,7 @@ public class SpecialisedRoomUI extends UI<SpecialisedRoom> {
     @Override
     public void updateEntity() {
         //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchById()

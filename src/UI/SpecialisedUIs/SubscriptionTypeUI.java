@@ -8,6 +8,7 @@ import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SubscriptionTypeUI extends UI<SubscriptionType> {
     private static SubscriptionTypeUI instance;
@@ -65,8 +66,30 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     }
 
     @Override
+    public void run()
+    {
+        terminal.printMessage("Subscription type UI is running...");
+        String choice = terminal.subscriptionTypeUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchByPartialName(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.subscriptionTypeUiMenu();
+        }
+    }
+
+    @Override
     public void updateEntity() {
         //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchByPartialName()

@@ -7,6 +7,8 @@ import domain.gym.EquipmentItem;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
+import java.util.Objects;
+
 public class EquipmentItemUI extends UI<EquipmentItem> {
     private static EquipmentItemUI instance;
 
@@ -21,6 +23,27 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
     {
         if (instance == null) instance = new EquipmentItemUI(EquipmentItemController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Equipment item UI is running...");
+        String choice = terminal.equipmentItemUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchById(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.equipmentItemUiMenu();
+        }
     }
 
     @Override
@@ -53,7 +76,8 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
 
     @Override
     public void updateEntity() {
-
+        //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchById()

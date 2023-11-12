@@ -12,6 +12,7 @@ import repository.exceptions.ObjectNotContained;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     private static CustomerSubscriptionUI instance;
@@ -28,6 +29,28 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     {
         if (instance == null) instance = new CustomerSubscriptionUI(CustomerSubscriptionController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Customer subscription UI is running...");
+        String choice = terminal.customerSubscriptionUiMenu();
+        // If choice == 7 -> return to main menu
+        while (!Objects.equals(choice, "7"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchSubscriptionsOfUser(); break;
+                case "5": searchSubscriptionByType(); break;
+                case "6": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.customerSubscriptionUiMenu();
+        }
     }
 
     @Override
@@ -88,7 +111,8 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
 
     @Override
     public void updateEntity() {
-
+        //TODO
+        terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
     public void searchSubscriptionsOfUser()

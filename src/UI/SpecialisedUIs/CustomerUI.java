@@ -10,6 +10,7 @@ import repository.exceptions.ObjectNotContained;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CustomerUI extends UI<Customer> {
     private static CustomerUI instance;
@@ -24,6 +25,27 @@ public class CustomerUI extends UI<Customer> {
     public static CustomerUI getInstance() {
         if (instance == null) instance = new CustomerUI(CustomerController.getInstance());
         return instance;
+    }
+
+    @Override
+    public void run()
+    {
+        terminal.printMessage("Customer UI is running...");
+        String choice = terminal.customerUiMenu();
+        // If choice == 5 -> return to main menu
+        while (!Objects.equals(choice, "6"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchByPartialUsername(); break;
+                case "5": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.customerUiMenu();
+        }
     }
 
     @Override
@@ -68,7 +90,7 @@ public class CustomerUI extends UI<Customer> {
         terminal.printMessage("NOT IMPLEMENTED YET");
     }
 
-    public void searchByPartialUsername() {
+    private void searchByPartialUsername() {
         String username = terminal.readUsername();
         ArrayList<Customer> customers = ICustomerController.searchByPartialKeyName(username);
         terminal.printArrayList(customers);

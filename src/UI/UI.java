@@ -1,17 +1,9 @@
 package UI;
 
 import controller.*;
-import domain.gym.*;
-import domain.persons.Customer;
-import domain.persons.Trainer;
-import repository.exceptions.ObjectAlreadyContained;
-import repository.exceptions.ObjectNotContained;
-
-import javax.naming.ldap.Control;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public abstract class UI<Type> implements IUi<Type>{
+public abstract class UI<Type> implements IUi{
     final protected Controller<Type> controller;
     final protected Terminal terminal = Terminal.getInstance();
 

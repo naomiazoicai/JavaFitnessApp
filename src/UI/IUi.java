@@ -1,7 +1,9 @@
 package UI;
 
-public interface IUi<Type>
+public interface IUi
 {
+     void run();
+
      void showAll();
 
      void addEntity();
