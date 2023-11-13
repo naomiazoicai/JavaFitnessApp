@@ -2,29 +2,30 @@ package UI;
 
 import UI.SpecialisedUIs.*;
 import factory.UiRunnableFactory;
+import proxy.UiProxy;
 
 public class MainUI {
-    private final UiRunnable budgetUI;
-    private final UiRunnable customerUI;
-    private final UiRunnable trainerUI;
-    private final UiRunnable subscriptionTypeUI;
-    private final UiRunnable customerSubscriptionUI;
-    private final UiRunnable specialisedRoomUI;
-    private final UiRunnable equipmentItemUI;
-    private final UiRunnable exerciseUI;
+    private final UiProxy budgetUI;
+    private final UiProxy customerUI;
+    private final UiProxy trainerUI;
+    private final UiProxy subscriptionTypeUI;
+    private final UiProxy customerSubscriptionUI;
+    private final UiProxy specialisedRoomUI;
+    private final UiProxy equipmentItemUI;
+    private final UiProxy exerciseUI;
 
     private static MainUI instance;
 
     private MainUI()
     {
-        budgetUI = UiRunnableFactory.buildUi(UiTypes.budget);
-        customerUI = UiRunnableFactory.buildUi(UiTypes.customer);
-        trainerUI = UiRunnableFactory.buildUi(UiTypes.trainer);
-        subscriptionTypeUI = UiRunnableFactory.buildUi(UiTypes.subscriptionType);
-        customerSubscriptionUI = UiRunnableFactory.buildUi(UiTypes.customerSubscription);
-        specialisedRoomUI = UiRunnableFactory.buildUi(UiTypes.specialisedRoom);
-        equipmentItemUI = UiRunnableFactory.buildUi(UiTypes.equipmentItem);
-        exerciseUI = UiRunnableFactory.buildUi(UiTypes.exercise);
+        budgetUI = new UiProxy(UiTypes.budget);
+        customerUI = new UiProxy(UiTypes.customer);
+        trainerUI = new UiProxy(UiTypes.trainer);
+        subscriptionTypeUI = new UiProxy(UiTypes.subscriptionType);
+        customerSubscriptionUI = new UiProxy(UiTypes.customerSubscription);
+        specialisedRoomUI = new UiProxy(UiTypes.specialisedRoom);
+        equipmentItemUI = new UiProxy(UiTypes.equipmentItem);
+        exerciseUI = new UiProxy(UiTypes.exercise);
     }
 
     public static MainUI getInstance()
