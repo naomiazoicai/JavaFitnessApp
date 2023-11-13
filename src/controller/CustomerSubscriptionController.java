@@ -9,6 +9,7 @@ import repository.inMemoryRepository.CustomerSubscriptionRepository;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -74,4 +75,18 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
         }
         return new SubscriptionType();
     }
+
+    @Override
+    public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom) {
+        for (CustomerSubscription subscription : repository.getAll()) {
+            if (subscription.getCustomer().equals(customer)
+                    && subscription.getSubscriptionType().equals(subscriptionType)
+                    && subscription.getValidFrom().equals(validFrom)) {
+                return subscription;
+            }
+        }
+        return null;
+    }
+
+
 }

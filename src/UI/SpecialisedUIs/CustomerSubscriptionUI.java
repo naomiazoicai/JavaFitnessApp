@@ -110,9 +110,49 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        // Customer
+        String username = terminal.readUsername();
+        while (!customerSubscriptionController.customerInRepo(username)) {
+            terminal.printMessage("Username not in repo! Choose a valid customer");
+            username = terminal.readUsername();
+        }
+        Customer customer = customerSubscriptionController.searchCustomerInRepo(username);
+        // Subscription Type
+        String name = terminal.readSubscriptionTypeName();
+        while (!customerSubscriptionController.subscriptionTypeInRepo(name)) {
+            terminal.printMessage("Subscription type not in repo! Choose a valid subscription type");
+            name = terminal.readSubscriptionTypeName();
+        }
+        SubscriptionType subscriptionType = customerSubscriptionController.searchSubscriptionType(name);
+        // Search for existing subscription
+        LocalDate validFrom = terminal.readValidFromDate();
+        CustomerSubscription existingSubscription = customerSubscriptionController.searchCustomerSubscription(customer, subscriptionType, validFrom);
+        if (existingSubscription != null) {
+            // Display existing subscription details
+            terminal.printMessage("Existing Customer Subscription Details:\n" + existingSubscription);
+
+            // Prompt user for updated details
+            LocalDate updatedValidFrom = terminal.readValidFromDate();
+            LocalDate updatedValidTo = terminal.readValidToDate(updatedValidFrom);
+
+            // Update the subscription details
+            existingSubscription.setValidFrom(updatedValidFrom);
+            existingSubscription.setValidUntil(updatedValidTo);
+
+            // Display updated subscription details
+            terminal.printMessage("Updated Customer Subscription Details:\n" + existingSubscription);
+
+            // Save the updated subscription to the repository
+            try {
+                controller.update(existingSubscription);
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating customer subscription: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Customer subscription not found!");
+        }
     }
+
 
     public void searchSubscriptionsOfUser()
     {

@@ -91,9 +91,41 @@ public class TrainerUI extends UI<Trainer> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        String username = terminal.readUsername();
+        // Check if username exists
+        if (trainerController.keyNameInRepo(username)) {
+            Trainer existingTrainer = trainerController.searchByKeyName(username);
+
+            // Display existing trainer details
+            terminal.printMessage("Existing Trainer Details:\n" + existingTrainer);
+
+            // Prompt user for updated details
+            String updatedName = terminal.readName();
+            LocalDate updatedBirthDate = terminal.readBirthDate();
+            Gender updatedGender = terminal.readGender();
+            TrainerSpecialization updatedSpecialization = terminal.readTrainerSpecialisation();
+
+            // Update the trainer details
+            existingTrainer.setName(updatedName);
+            existingTrainer.setBirthDate(updatedBirthDate);
+            existingTrainer.setGender(updatedGender);
+            existingTrainer.setSpecialization(updatedSpecialization);
+
+            // Display updated trainer details
+            terminal.printMessage("Updated Trainer Details:\n" + existingTrainer);
+
+            // Save the updated trainer to the repository
+            try {
+                controller.update(existingTrainer);
+                terminal.printMessage("Trainer updated successfully!");
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating trainer: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Trainer username was not found");
+        }
     }
+
 
     public void searchByPartialUsername()
     {

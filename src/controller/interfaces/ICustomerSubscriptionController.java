@@ -4,6 +4,7 @@ import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface ICustomerSubscriptionController {
@@ -18,4 +19,7 @@ public interface ICustomerSubscriptionController {
     boolean subscriptionTypeInRepo(String name);
 
     SubscriptionType searchSubscriptionType(String name);
+
+    CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom);
+
 }

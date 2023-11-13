@@ -76,9 +76,34 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        int id = terminal.readId();
+        // Check if id exists
+        if (equipmentItemControllerInterface.idInRepo(id)) {
+            EquipmentItem existingEquipmentItem = equipmentItemControllerInterface.searchById(id);
+
+            // Display existing equipment item details
+            terminal.printMessage("Existing Equipment Item Details:\n" + existingEquipmentItem);
+
+            // Prompt user for updated details
+            String updatedName = terminal.readName();
+
+            // Update the equipment item details
+            existingEquipmentItem.setName(updatedName);
+
+            // Display updated equipment item details
+            terminal.printMessage("Updated Equipment Item Details:\n" + existingEquipmentItem);
+
+            // Save the updated equipment item to the repository
+            try {
+                controller.update(existingEquipmentItem);
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating equipment item: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Equipment item ID was not found");
+        }
     }
+
 
     public void searchById()
     {

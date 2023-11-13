@@ -86,9 +86,38 @@ public class CustomerUI extends UI<Customer> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        String username = terminal.readUsername();
+        // Check if username exists
+        if (ICustomerController.keyNameInRepo(username)) {
+            Customer existingCustomer = ICustomerController.searchByKeyName(username);
+
+            // Display existing customer details
+            terminal.printMessage("Existing Customer Details:\n" + existingCustomer);
+
+            // Prompt user for updated details
+            String updatedName = terminal.readName();
+            LocalDate updatedBirthDate = terminal.readBirthDate();
+            Gender updatedGender = terminal.readGender();
+
+            // Update the customer details
+            existingCustomer.setName(updatedName);
+            existingCustomer.setBirthDate(updatedBirthDate);
+            existingCustomer.setGender(updatedGender);
+
+            // Display updated customer details
+            terminal.printMessage("Updated Customer Details:\n" + existingCustomer);
+
+            // Save the updated customer to the repository
+            try {
+                controller.update(existingCustomer);
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating customer: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Customer username was not found");
+        }
     }
+
 
     private void searchByPartialUsername() {
         String username = terminal.readUsername();

@@ -81,9 +81,38 @@ public class SpecialisedRoomUI extends UI<SpecialisedRoom> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        int id = terminal.readId();
+        // Check if id exists
+        if (specialisedRoomController.idInRepo(id)) {
+            SpecialisedRoom existingSpecialisedRoom = specialisedRoomController.searchById(id);
+
+            // Display existing specialised room details
+            terminal.printMessage("Existing Specialised Room Details:\n" + existingSpecialisedRoom);
+
+            // Prompt user for updated details
+            boolean updatedOccupied = terminal.occupied();
+            RoomType updatedRoomType = terminal.readRoomType();
+            int updatedPersonCapacity = terminal.readPersonCapacity();
+
+            // Update the specialised room details
+            existingSpecialisedRoom.setOccupied(updatedOccupied);
+            existingSpecialisedRoom.setRoomType(updatedRoomType);
+            existingSpecialisedRoom.setPersonCapacity(updatedPersonCapacity);
+
+            // Display updated specialised room details
+            terminal.printMessage("Updated Specialised Room Details:\n" + existingSpecialisedRoom);
+
+            // Save the updated specialised room to the repository
+            try {
+                controller.update(existingSpecialisedRoom);
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating specialised room: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Room ID was not found");
+        }
     }
+
 
     public void searchById()
     {

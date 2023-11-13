@@ -93,9 +93,40 @@ public class ExerciseUI extends UI<Exercise> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        int id = terminal.readId();
+        // Check if id exists
+        if (exerciseControllerInterface.checkEquipmentItemIdInRepo(id)) {
+            Exercise existingExercise = exerciseControllerInterface.searchById(id);
+
+            // Display the existing exercise details
+            terminal.printMessage("Existing Exercise Details:\n" + existingExercise);
+
+            // Prompt user for updated details
+            String updatedName = terminal.readName();
+            String updatedMuscleTrained = terminal.muscleTrained();
+            int updatedSets = terminal.readSets();
+            int updatedReps = terminal.readReps();
+
+            // Update the exercise details
+            existingExercise.setName(updatedName);
+            existingExercise.setMuscleTrained(updatedMuscleTrained);
+            existingExercise.setSets(updatedSets);
+            existingExercise.setReps(updatedReps);
+
+            // Display updated exercise details
+            terminal.printMessage("Updated Exercise Details:\n" + existingExercise);
+
+            // Save the updated exercise to the repository
+            try {
+                controller.update(existingExercise);
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating exercise: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Exercise id was not found");
+        }
     }
+
 
     public void searchById()
     {

@@ -88,9 +88,37 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
 
     @Override
     public void updateEntity() {
-        //TODO
-        terminal.printMessage("NOT IMPLEMENTED YET");
+        String name = terminal.readSubscriptionTypeName();
+        // Check if name exists
+        if (subscriptionTypeController.keyNameInRepo(name)) {
+            SubscriptionType existingSubscriptionType = subscriptionTypeController.searchByKeyName(name);
+
+            // Display existing subscription type details
+            terminal.printMessage("Existing Subscription Type Details:\n" + existingSubscriptionType);
+
+            // Prompt user for updated details
+            String updatedDescription = terminal.readDescription();
+            double updatedPrice = terminal.readPrice();
+
+            // Update the subscription type details
+            existingSubscriptionType.setDescription(updatedDescription);
+            existingSubscriptionType.setPrice(updatedPrice);
+
+            // Display updated subscription type details
+            terminal.printMessage("Updated Subscription Type Details:\n" + existingSubscriptionType);
+
+            // Save the updated subscription type to the repository
+            try {
+                controller.update(existingSubscriptionType);
+                terminal.printMessage("Subscription type updated successfully!");
+            } catch (ObjectNotContained e) {
+                terminal.printMessage("Error updating subscription type: " + e.getMessage());
+            }
+        } else {
+            terminal.printMessage("Subscription type name was not found");
+        }
     }
+
 
     public void searchByPartialName()
     {
