@@ -3,7 +3,7 @@ package UI;
 import controller.*;
 import java.util.ArrayList;
 
-public abstract class UI<Type> implements IUi{
+public abstract class UI<Type> implements IUi, UiRunnable{
     final protected Controller<Type> controller;
     final protected Terminal terminal = Terminal.getInstance();
 

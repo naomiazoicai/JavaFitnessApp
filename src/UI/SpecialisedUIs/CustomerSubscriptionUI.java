@@ -11,7 +11,6 @@ import repository.exceptions.ObjectNotContained;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class CustomerSubscriptionUI extends UI<CustomerSubscription> {

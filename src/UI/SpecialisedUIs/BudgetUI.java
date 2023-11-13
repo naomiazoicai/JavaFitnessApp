@@ -1,11 +1,12 @@
 package UI.SpecialisedUIs;
 
 import UI.Terminal;
+import UI.UiRunnable;
 import controller.BudgetController;
 
 import java.util.Objects;
 
-public class BudgetUI {
+public class BudgetUI implements UiRunnable {
     private static BudgetUI instance;
 
     private final BudgetController controller;
@@ -23,6 +24,7 @@ public class BudgetUI {
         return instance;
     }
 
+    @Override
     public void run()
     {
         terminal.printMessage("Budget UI is running...");

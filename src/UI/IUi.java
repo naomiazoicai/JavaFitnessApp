@@ -2,8 +2,6 @@ package UI;
 
 public interface IUi
 {
-     void run();
-
      void showAll();
 
      void addEntity();

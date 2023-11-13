@@ -3,14 +3,14 @@ package UI;
 import UI.SpecialisedUIs.*;
 
 public class MainUI {
-    private final BudgetUI budgetUI;
-    private final CustomerUI customerUI;
-    private final TrainerUI trainerUI;
-    private final SubscriptionTypeUI subscriptionTypeUI;
-    private final CustomerSubscriptionUI customerSubscriptionUI;
-    private final SpecialisedRoomUI specialisedRoomUI;
-    private final EquipmentItemUI equipmentItemUI;
-    private final ExerciseUI exerciseUI;
+    private final UiRunnable budgetUI;
+    private final UiRunnable customerUI;
+    private final UiRunnable trainerUI;
+    private final UiRunnable subscriptionTypeUI;
+    private final UiRunnable customerSubscriptionUI;
+    private final UiRunnable specialisedRoomUI;
+    private final UiRunnable equipmentItemUI;
+    private final UiRunnable exerciseUI;
 
     private static MainUI instance;
 
@@ -34,5 +34,6 @@ public class MainUI {
     public void runUi()
     {
         //TODO
+        budgetUI.run();
     }
 }
