@@ -8,7 +8,7 @@ import repository.interfaces.ICustomerRepository;
 import java.util.ArrayList;
 
 
-public class CustomerController extends Controller<Customer> implements ICustomerController, ISubjectNewCustomer
+public class CustomerController extends Controller<Customer> implements ICustomerController
 {
     private static CustomerController instance;
 
@@ -41,24 +41,5 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public Customer searchByKeyName(String keyName) {
         return ICustomerRepository.searchByKeyName(keyName);
-    }
-
-
-
-
-
-    @Override
-    public void registerObserver(IObserverNewCostumer observer) {
-        observerList.add(observer);
-    }
-
-    @Override
-    public boolean removeObserver(IObserverNewCostumer observer) {
-        return observerList.remove(observer);
-    }
-
-    @Override
-    public void notifyNewCustomerAdded() {
-
     }
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import controller.interfaces.ExerciseControllerInterface;
+import controller.interfaces.IExerciseController;
 import controller.interfaces.IObserverDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
@@ -11,7 +11,7 @@ import repository.inMemoryRepository.ExerciseRepository;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.interfaces.IExerciseRepository;
 
-public class ExerciseController extends Controller<Exercise> implements ExerciseControllerInterface, IObserverDeleteEquipmentItem
+public class ExerciseController extends Controller<Exercise> implements IExerciseController, IObserverDeleteEquipmentItem
 {
     private static ExerciseController instance;
 

@@ -8,7 +8,7 @@ import repository.interfaces.ITrainerRepository;
 import java.util.ArrayList;
 
 
-public class TrainerController extends Controller<Trainer> implements ITrainerController,IObserverNewCostumer
+public class TrainerController extends Controller<Trainer> implements ITrainerController
 
 {
     private static TrainerController instance;
@@ -24,11 +24,6 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     {
         if (instance == null) instance = new TrainerController(TrainerRepository.getInstance());
         return instance;
-    }
-
-    @Override
-    public void updateNewCustomerAdded() {
-
     }
 
     @Override

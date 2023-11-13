@@ -2,7 +2,7 @@ package UI.SpecialisedUIs;
 
 import UI.UI;
 import controller.EquipmentItemController;
-import controller.interfaces.EquipmentItemControllerInterface;
+import controller.interfaces.IEquipmentItemController;
 import domain.gym.EquipmentItem;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
@@ -12,7 +12,7 @@ import java.util.Objects;
 public class EquipmentItemUI extends UI<EquipmentItem> {
     private static EquipmentItemUI instance;
 
-    private final EquipmentItemControllerInterface equipmentItemControllerInterface;
+    private final IEquipmentItemController equipmentItemControllerInterface;
 
     public EquipmentItemUI(EquipmentItemController equipmentItemController) {
         super(equipmentItemController);

@@ -2,7 +2,7 @@ package UI.SpecialisedUIs;
 
 import UI.UI;
 import controller.ExerciseController;
-import controller.interfaces.ExerciseControllerInterface;
+import controller.interfaces.IExerciseController;
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectAlreadyContained;
@@ -13,7 +13,7 @@ import java.util.Objects;
 public class ExerciseUI extends UI<Exercise> {
     private static ExerciseUI instance;
 
-    private final ExerciseControllerInterface exerciseControllerInterface;
+    private final IExerciseController exerciseControllerInterface;
 
     private ExerciseUI(ExerciseController exerciseController) {
         super(exerciseController);

@@ -1,6 +1,6 @@
 package controller;
 
-import controller.interfaces.EquipmentItemControllerInterface;
+import controller.interfaces.IEquipmentItemController;
 import controller.interfaces.IObserverDeleteEquipmentItem;
 import controller.interfaces.ISubjectDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
@@ -10,7 +10,7 @@ import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.EquipmentItemRepository;
 
 
-public class EquipmentItemController extends Controller<EquipmentItem> implements EquipmentItemControllerInterface, ISubjectDeleteEquipmentItem
+public class EquipmentItemController extends Controller<EquipmentItem> implements IEquipmentItemController, ISubjectDeleteEquipmentItem
 {
     private static EquipmentItemController instance;
 
