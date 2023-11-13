@@ -1,6 +1,7 @@
 package UI;
 
 import UI.SpecialisedUIs.*;
+import factory.UiRunnableFactory;
 
 public class MainUI {
     private final UiRunnable budgetUI;
@@ -16,14 +17,14 @@ public class MainUI {
 
     private MainUI()
     {
-        budgetUI = BudgetUI.getInstance();
-        customerUI = CustomerUI.getInstance();
-        trainerUI = TrainerUI.getInstance();
-        subscriptionTypeUI = SubscriptionTypeUI.getInstance();
-        customerSubscriptionUI = CustomerSubscriptionUI.getInstance();
-        specialisedRoomUI = SpecialisedRoomUI.getInstance();
-        equipmentItemUI = EquipmentItemUI.getInstance();
-        exerciseUI = ExerciseUI.getInstance();
+        budgetUI = UiRunnableFactory.buildUi(UiTypes.budget);
+        customerUI = UiRunnableFactory.buildUi(UiTypes.customer);
+        trainerUI = UiRunnableFactory.buildUi(UiTypes.trainer);
+        subscriptionTypeUI = UiRunnableFactory.buildUi(UiTypes.subscriptionType);
+        customerSubscriptionUI = UiRunnableFactory.buildUi(UiTypes.customerSubscription);
+        specialisedRoomUI = UiRunnableFactory.buildUi(UiTypes.specialisedRoom);
+        equipmentItemUI = UiRunnableFactory.buildUi(UiTypes.equipmentItem);
+        exerciseUI = UiRunnableFactory.buildUi(UiTypes.exercise);
     }
 
     public static MainUI getInstance()
