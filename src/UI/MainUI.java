@@ -4,6 +4,9 @@ import UI.SpecialisedUIs.*;
 import factory.UiRunnableFactory;
 import proxy.UiProxy;
 
+import java.lang.reflect.Type;
+import java.util.Objects;
+
 public class MainUI {
     private final UiProxy budgetUI;
     private final UiProxy customerUI;
@@ -15,6 +18,8 @@ public class MainUI {
     private final UiProxy exerciseUI;
 
     private static MainUI instance;
+
+    private final Terminal terminal = Terminal.getInstance();
 
     private MainUI()
     {
@@ -35,7 +40,23 @@ public class MainUI {
     }
     public void runUi()
     {
-        //TODO
-        budgetUI.run();
+        System.out.println("Main UI is running...");
+        String choice = terminal.mainUiMenu();
+        while (!Objects.equals(choice, "0"))
+        {
+            switch (choice)
+            {
+                case "1": budgetUI.run(); break;
+                case "2": customerSubscriptionUI.run(); break;
+                case "3": customerUI.run(); break;
+                case "4": equipmentItemUI.run(); break;
+                case "5": exerciseUI.run(); break;
+                case "6": specialisedRoomUI.run(); break;
+                case "7": subscriptionTypeUI.run(); break;
+                case "8": trainerUI.run(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.customerUiMenu();
+        }
     }
 }

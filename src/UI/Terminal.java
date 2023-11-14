@@ -33,6 +33,29 @@ public class Terminal
         scanner.nextLine();
     }
 
+    public String mainUiMenu()
+    {
+        System.out.println("Choose an action: ");
+        System.out.println("1. Budget");
+        System.out.println("2. Customer subscription");
+        System.out.println("3. Customer");
+        System.out.println("4. Equipment item");
+        System.out.println("5. Exercise");
+        System.out.println("6. Specialised Room");
+        System.out.println("7. Subscription type");
+        System.out.println("8. Trainer");
+        System.out.println("9. <-- Return to main menu");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")
+                && !Objects.equals(choice, "7") && !Objects.equals(choice, "8")) {
+            System.out.println("Enter a valid choice (1-8)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        return choice;
+    }
     public String customerUiMenu()
     {
         System.out.println("Choose an action: ");
