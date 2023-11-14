@@ -12,4 +12,6 @@ public interface ICustomerController extends NameIdentifiedEntitiesController<Cu
     Boolean trainerUsernameInRepo(String username);
 
     Trainer getTrainerByUsername(String username);
+
+    boolean hasValidSubscription(String username);
 }

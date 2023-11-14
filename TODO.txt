@@ -1,2 +1,3 @@
 
+method to check if customer has valid subscription
 Add DAO and Database

@@ -50,4 +50,13 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
         }
         return result;
     }
+
+    @Override
+    public Boolean hasValidSubscription(Customer customer) {
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (customerSubscription.getCustomer().equals(customer) && customerSubscription.checkValidity()) return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
 }

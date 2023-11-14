@@ -22,4 +22,5 @@ public interface ICustomerSubscriptionController {
 
     CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom);
 
+    Boolean hasValidSubscription(Customer customer);
 }

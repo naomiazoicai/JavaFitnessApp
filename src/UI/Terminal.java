@@ -64,14 +64,15 @@ public class Terminal
         System.out.println("3. Delete customer");
         System.out.println("4. Search customer by username");
         System.out.println("5. Assign trainer to user");
-        System.out.println("6. Show all customers");
+        System.out.println("6. Check user subscription validity");
+        System.out.println("7. Show all customers");
         System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
                 && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")
-                && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "7") && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-7) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }

@@ -88,5 +88,8 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
         return null;
     }
 
-
+    @Override
+    public Boolean hasValidSubscription(Customer customer) {
+        return customerSubscriptionRepository.hasValidSubscription(customer);
+    }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import controller.interfaces.ICustomerController;
+import controller.interfaces.ICustomerSubscriptionController;
 import controller.interfaces.IObserverDeletedTrainer;
 import controller.interfaces.ISubjectDeletedTrainer;
 import domain.persons.Customer;
@@ -69,5 +70,12 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public void updatedTrainerDeleted(Trainer trainer) {
         ICustomerRepository.trainerDeleted(trainer);
+    }
+
+    @Override
+    public boolean hasValidSubscription(String username) {
+        ICustomerSubscriptionController customerSubscriptionController = CustomerSubscriptionController.getInstance();
+        Customer customer = ICustomerRepository.searchByKeyName(username);
+        return customerSubscriptionController.hasValidSubscription(customer);
     }
 }

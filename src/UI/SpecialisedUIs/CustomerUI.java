@@ -43,7 +43,8 @@ public class CustomerUI extends UI<Customer> {
                 case "3": deleteEntity(); break;
                 case "4": searchByPartialUsername(); break;
                 case "5": changeAssignedTrainerOfCustomer(); break;
-                case "6": showAll(); break;
+                case "6": checkUserSubscriptionValidity(); break;
+                case "7": showAll(); break;
             }
             terminal.pressEnterToContinue();
             choice = terminal.customerUiMenu();
@@ -155,5 +156,27 @@ public class CustomerUI extends UI<Customer> {
         }
         terminal.printMessage("Old trainer of user was: " + oldTrainer);
         terminal.printMessage("New trainer of user is:  " + newTrainer);
+    }
+
+    private void checkUserSubscriptionValidity()
+    {
+        // Customer
+        terminal.printMessage("Enter customer username: ");
+        String customerUsername = terminal.readUsername();
+        if (!ICustomerController.keyNameInRepo(customerUsername))
+        {
+            terminal.printMessage("Customer username was not found");
+            return;
+        }
+        // Get customer
+        Customer customer = ICustomerController.searchByKeyName(customerUsername);
+        if (ICustomerController.hasValidSubscription(customerUsername))
+        {
+            terminal.printMessage("YES! Customer has a valid subscription: " + customer);
+        }
+        else
+        {
+            terminal.printMessage("NO! Customer has not a valid subscription: " + customer);
+        }
     }
 }
