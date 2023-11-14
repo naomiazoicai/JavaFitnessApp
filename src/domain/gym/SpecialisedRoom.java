@@ -1,13 +1,26 @@
 package domain.gym;
 
 public class SpecialisedRoom extends Room{
-    private String roomType;
+    private RoomType roomType;
     private int personCapacity;
 
-    public SpecialisedRoom(int id, boolean cleaned, boolean occupied, String roomType, int personCapacity) {
-        super(id, cleaned, occupied);
+    public SpecialisedRoom(int id, boolean occupied, RoomType roomType, int personCapacity) {
+        super(id, occupied);
         this.roomType = roomType;
         this.personCapacity = personCapacity;
+    }
+
+    public SpecialisedRoom(boolean occupied, RoomType roomType, int personCapacity) {
+        super(0, occupied);
+        this.roomType = roomType;
+        this.personCapacity = personCapacity;
+    }
+
+    public SpecialisedRoom()
+    {
+        super(0, false);
+        this.roomType = RoomType.empty;
+        this.personCapacity = 0;
     }
 
     @Override
@@ -18,11 +31,16 @@ public class SpecialisedRoom extends Room{
                 '}';
     }
 
-    public String getRoomType() {
+    public SpecialisedRoom copy()
+    {
+        return new SpecialisedRoom(id, occupied, roomType, personCapacity);
+    }
+
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 

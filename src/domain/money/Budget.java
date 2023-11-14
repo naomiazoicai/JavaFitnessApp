@@ -16,12 +16,12 @@ public class Budget {
         return instance;
     };
 
-    public void addMoney(int value)
+    public void addMoney(double value)
     {
         currentMoney += value;
     }
 
-    public void spendMoney(int value) throws Exception {
+    public void spendMoney(double value) throws Exception {
         if (value > currentMoney) throw new Exception("Expense exceeds budget");
         currentMoney -= value;
     }

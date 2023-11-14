@@ -1,15 +1,11 @@
 package domain.gym;
 
-import java.util.Objects;
-
 public class Room {
-    private int id;
-    private boolean cleaned;
-    private boolean occupied;
+    protected int id;
+    protected boolean occupied;
 
-    public Room(int id, boolean cleaned, boolean occupied) {
+    public Room(int id, boolean occupied) {
         this.id = id;
-        this.cleaned = cleaned;
         this.occupied = occupied;
     }
 
@@ -17,7 +13,6 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", cleaned=" + cleaned +
                 ", occupied=" + occupied +
                 '}';
     }
@@ -38,12 +33,9 @@ public class Room {
         this.id = id;
     }
 
-    public boolean isCleaned() {
-        return cleaned;
-    }
-
-    public void setCleaned(boolean cleaned) {
-        this.cleaned = cleaned;
+    public Room copy()
+    {
+        return new Room(id, occupied);
     }
 
     public boolean isOccupied() {

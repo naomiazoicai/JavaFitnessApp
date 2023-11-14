@@ -19,6 +19,24 @@ public class Exercise {
         this.reps = reps;
     }
 
+    public Exercise(String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps) {
+        this.name = name;
+        this.muscleTrained = muscleTrained;
+        this.equipmentUsed = equipmentUsed;
+        this.sets = sets;
+        this.reps = reps;
+    }
+
+    public Exercise()
+    {
+        this.id = 0;
+        this.name = "null";
+        this.muscleTrained = "null";
+        this.equipmentUsed = new EquipmentItem();
+        this.sets = 0;
+        this.reps = 0;
+    }
+
     @Override
     public String toString() {
         return "Exercise{" +
@@ -77,6 +95,11 @@ public class Exercise {
 
     public void setReps(int reps) {
         this.reps = reps;
+    }
+
+    public Exercise copy()
+    {
+        return new Exercise(id, name, muscleTrained, equipmentUsed, sets, reps);
     }
 
     @Override

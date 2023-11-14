@@ -13,6 +13,12 @@ public class SubscriptionType {
         this.price = price;
     }
 
+    public SubscriptionType(){
+        this.name = "";
+        this.description = "";
+        this.price = 0;
+    }
+
     @Override
     public String toString() {
         return "SubscriptionType{" +
@@ -28,6 +34,11 @@ public class SubscriptionType {
         if (o == null || getClass() != o.getClass()) return false;
         SubscriptionType that = (SubscriptionType) o;
         return Objects.equals(name, that.name);
+    }
+
+    public SubscriptionType copy()
+    {
+        return new SubscriptionType(name, description, price);
     }
 
     public String getName() {

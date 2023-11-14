@@ -11,6 +11,18 @@ public class EquipmentItem {
 
     }
 
+    public EquipmentItem(String name) {
+        this.ID = 0;
+        this.name = name;
+
+    }
+
+    public EquipmentItem()
+    {
+        this.ID = 0;
+        this.name = "null";
+    }
+
     @Override
     public String toString() {
         return "EquipmentItem{" +
@@ -35,7 +47,9 @@ public class EquipmentItem {
         this.name = name;
     }
 
-
+    public EquipmentItem copy() {
+        return new EquipmentItem(ID, name);
+    }
 
     @Override
     public boolean equals(Object o) {

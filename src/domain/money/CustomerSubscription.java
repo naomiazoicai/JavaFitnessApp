@@ -65,11 +65,17 @@ public class CustomerSubscription{
         this.validUntil = validUntil;
     }
 
+    public CustomerSubscription copy()
+    {
+        return new CustomerSubscription(customer, subscriptionType, validFrom, validUntil);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerSubscription that = (CustomerSubscription) o;
-        return Objects.equals(customer, that.customer) && Objects.equals(subscriptionType, that.subscriptionType) && Objects.equals(validFrom, that.validFrom);
+        return Objects.equals(customer, that.customer) && Objects.equals(subscriptionType, that.subscriptionType)
+                && Objects.equals(validFrom, that.validFrom) && Objects.equals(validUntil, that.validUntil);
     }
 }

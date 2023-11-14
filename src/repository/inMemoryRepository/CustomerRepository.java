@@ -2,10 +2,14 @@ package repository.inMemoryRepository;
 
 import domain.persons.Customer;
 import domain.persons.Gender;
+import domain.persons.Person;
 import repository.Repository;
-import java.time.LocalDate;
+import repository.interfaces.ICustomerRepository;
 
-public class CustomerRepository extends Repository<Customer>
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class CustomerRepository extends Repository<Customer> implements ICustomerRepository
 {
     private static CustomerRepository instance;
 
@@ -22,5 +26,35 @@ public class CustomerRepository extends Repository<Customer>
     {
         if (instance == null) instance = new CustomerRepository();
         return instance;
+    }
+
+    @Override
+    public Boolean keyNameInRepo(String keyName)
+    {
+        for (Person person : arrayList)
+        {
+            if (keyName.equals(person.getUsername())) return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    @Override
+    public ArrayList<Customer> searchByPartialKeyName(String keyName)
+    {
+        ArrayList<Customer> result = new ArrayList<>();
+        for (Customer customer : arrayList)
+        {
+            if (customer.getUsername().contains(keyName)) result.add(customer.copy());
+        }
+        return result;
+    }
+
+    @Override
+    public Customer searchByKeyName(String keyName) {
+        for (Customer customer : arrayList)
+        {
+            if (keyName.equals(customer.getUsername())) return customer.copy();
+        }
+        return null;
     }
 }

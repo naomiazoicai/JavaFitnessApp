@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IController;
 import repository.Repository;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;

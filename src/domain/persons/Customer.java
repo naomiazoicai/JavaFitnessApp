@@ -1,8 +1,5 @@
 package domain.persons;
 
-import domain.money.CustomerSubscription;
-import domain.money.SubscriptionType;
-
 import java.time.LocalDate;
 
 public class Customer extends Person {
@@ -16,9 +13,19 @@ public class Customer extends Person {
         super(username, "", LocalDate.now(), Gender.notSpecifying);
     }
 
+    public Customer()
+    {
+        super("", "", LocalDate.now(), Gender.notSpecifying);
+    }
+
     @Override
     public String toString() {
         return "Customer{" + super.toString() +
                 '}';
+    }
+
+    public Customer copy()
+    {
+        return new Customer(username, name, birthDate, gender);
     }
 }
