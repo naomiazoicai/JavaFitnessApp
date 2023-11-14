@@ -53,12 +53,8 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
 
     @Override
     public void delete(EquipmentItem object) throws ObjectNotContained {
-        try {
-            super.delete(object);
-            notifyEquipmentItemDeleted(object);
-        } catch (ObjectNotContained e) {
-            throw new ObjectNotContained();
-        }
+        super.delete(object);
+        notifyEquipmentItemDeleted(object);
     }
 
     @Override

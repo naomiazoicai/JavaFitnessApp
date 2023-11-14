@@ -1,14 +1,19 @@
 package controller;
 
 import controller.interfaces.ICustomerController;
+import controller.interfaces.IObserverDeletedTrainer;
+import controller.interfaces.ISubjectDeletedTrainer;
 import domain.persons.Customer;
+import domain.persons.Person;
+import domain.persons.Trainer;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
 
 
-public class CustomerController extends Controller<Customer> implements ICustomerController
+public class CustomerController extends Controller<Customer> implements ICustomerController, IObserverDeletedTrainer
 {
     private static CustomerController instance;
 
@@ -39,7 +44,30 @@ public class CustomerController extends Controller<Customer> implements ICustome
     }
 
     @Override
+    public Boolean trainerUsernameInRepo(String username)
+    {
+        TrainerController trainerController = TrainerController.getInstance();
+        return trainerController.keyNameInRepo(username);
+    }
+
+    @Override
     public Customer searchByKeyName(String keyName) {
         return ICustomerRepository.searchByKeyName(keyName);
+    }
+
+    @Override
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained {
+        return ICustomerRepository.changeAssignedTrainerOfCustomer(customer, trainer);
+    }
+
+    @Override
+    public Trainer getTrainerByUsername(String username) {
+        TrainerController trainerController = TrainerController.getInstance();
+        return trainerController.searchByKeyName(username);
+    }
+
+    @Override
+    public void updatedTrainerDeleted(Trainer trainer) {
+        ICustomerRepository.trainerDeleted(trainer);
     }
 }

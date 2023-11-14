@@ -1,14 +1,17 @@
 package controller;
 
+import controller.interfaces.IObserverDeletedTrainer;
+import controller.interfaces.ISubjectDeletedTrainer;
 import controller.interfaces.ITrainerController;
 import domain.persons.Trainer;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.TrainerRepository;
 import repository.interfaces.ITrainerRepository;
 
 import java.util.ArrayList;
 
 
-public class TrainerController extends Controller<Trainer> implements ITrainerController
+public class TrainerController extends Controller<Trainer> implements ITrainerController, ISubjectDeletedTrainer
 
 {
     private static TrainerController instance;
@@ -18,6 +21,7 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     {
         super(trainerRepository);
         this.trainerRepository = trainerRepository;
+        addObserver(CustomerController.getInstance());
     }
 
     public static TrainerController getInstance()
@@ -40,4 +44,26 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     public Boolean keyNameInRepo(String keyName) {
         return trainerRepository.keyNameInRepo(keyName);
     }
+
+    @Override
+    public void delete(Trainer object) throws ObjectNotContained {
+        super.delete(object);
+        notifyTrainerDeleted(object);
+    }
+
+    @Override
+    public void addObserver(IObserverDeletedTrainer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeletedTrainer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyTrainerDeleted(Trainer trainer) {
+        for (IObserverDeletedTrainer observer : observerList) observer.updatedTrainerDeleted(trainer);
+    }
 }
+
