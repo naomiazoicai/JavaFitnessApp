@@ -1,3 +1,8 @@
+addRoomToSubscription in UI!!
+Observer pattern for when a room is deleted
 
-method to check if customer has valid subscription
+
+
+link Room to CustomerSubscription
 Add DAO and Database
+observer pattern for when a subscriptionType is deleted

@@ -3,6 +3,7 @@ package UI.SpecialisedUIs;
 import UI.UI;
 import controller.SubscriptionTypeController;
 import controller.interfaces.ISubscriptionTypeController;
+import domain.gym.Room;
 import domain.money.SubscriptionType;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
@@ -71,7 +72,7 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
         terminal.printMessage("Subscription type UI is running...");
         String choice = terminal.subscriptionTypeUiMenu();
         // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
             switch (choice)
             {
@@ -79,7 +80,9 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
                 case "2": updateEntity(); break;
                 case "3": deleteEntity(); break;
                 case "4": searchByPartialName(); break;
-                case "5": showAll(); break;
+                case "5": addRoomToSubscription(); break;
+                case "6": removeRoomFromSubscription(); break;
+                case "7": showAll(); break;
             }
             terminal.pressEnterToContinue();
             choice = terminal.subscriptionTypeUiMenu();
@@ -119,11 +122,64 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
         }
     }
 
-
     public void searchByPartialName()
     {
         String name = terminal.readSubscriptionTypeName();
         ArrayList<SubscriptionType> subscriptionTypes = subscriptionTypeController.searchByPartialKeyName(name);
         terminal.printArrayList(subscriptionTypes);
+    }
+
+    public void addRoomToSubscription()
+    {
+        // Room
+        terminal.printMessage("Enter room id: ");
+        int roomId = terminal.readId();
+        if (!subscriptionTypeController.roomIdInRepo(roomId))
+        {
+            terminal.printMessage("Room id was not found");
+            return;
+        }
+        // Trainer
+        terminal.printMessage("Enter subscription type name: ");
+        String subscriptionTypeName = terminal.readSubscriptionTypeName();
+        if (!subscriptionTypeController.keyNameInRepo(subscriptionTypeName))
+        {
+            terminal.printMessage("Subscription type was not found");
+            return;
+        }
+        // Add
+        try {
+            subscriptionTypeController.addRoomToSubscription(subscriptionTypeName, roomId);
+        } catch (ObjectNotContained e) {
+            throw new RuntimeException(e);
+        }
+        terminal.printMessage("Successful!");
+    }
+
+    public void removeRoomFromSubscription()
+    {
+        // Room
+        terminal.printMessage("Enter room id: ");
+        int roomId = terminal.readId();
+        if (!subscriptionTypeController.roomIdInRepo(roomId))
+        {
+            terminal.printMessage("Room id was not found");
+            return;
+        }
+        // Trainer
+        terminal.printMessage("Enter subscription type name: ");
+        String subscriptionTypeName = terminal.readSubscriptionTypeName();
+        if (!subscriptionTypeController.keyNameInRepo(subscriptionTypeName))
+        {
+            terminal.printMessage("Subscription type was not found");
+            return;
+        }
+        // Add
+        try {
+            subscriptionTypeController.removeRoomFromSubscription(subscriptionTypeName, roomId);
+        } catch (ObjectNotContained e) {
+            throw new RuntimeException(e);
+        }
+        terminal.printMessage("Successful!");
     }
 }

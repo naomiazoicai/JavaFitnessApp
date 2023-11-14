@@ -16,6 +16,13 @@ public class SpecialisedRoom extends Room{
         this.personCapacity = personCapacity;
     }
 
+    public SpecialisedRoom(int id)
+    {
+        super(id, false);
+        this.roomType = RoomType.empty;
+        this.personCapacity = 0;
+    }
+
     public SpecialisedRoom()
     {
         super(0, false);
@@ -25,9 +32,12 @@ public class SpecialisedRoom extends Room{
 
     @Override
     public String toString() {
-        return "SpecialisedRoom{" + super.toString() +
-                "roomType='" + roomType + '\'' +
+        return "SpecialisedRoom{" +
+                "roomType=" + roomType +
                 ", personCapacity=" + personCapacity +
+                ", id=" + id +
+                ", occupied=" + occupied +
+                ", roomAccess=" + roomAccess +
                 '}';
     }
 

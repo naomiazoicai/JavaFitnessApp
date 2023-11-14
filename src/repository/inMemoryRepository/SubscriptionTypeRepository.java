@@ -1,5 +1,6 @@
 package repository.inMemoryRepository;
 
+import domain.gym.Room;
 import domain.money.SubscriptionType;
 import repository.Repository;
 import repository.exceptions.ObjectNotContained;
@@ -51,5 +52,37 @@ public class SubscriptionTypeRepository extends Repository<SubscriptionType> imp
             if (keyName.equals(subscriptionType.getName())) return subscriptionType.copy();
         }
         return new SubscriptionType();
+    }
+
+    @Override
+    public void addRoomToSubscription(SubscriptionType subscriptionType, Room room) {
+        for (SubscriptionType subscription : arrayList)
+        {
+            if (subscription.equals(subscriptionType))
+            {
+                subscription.addRoomAccess(room);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void removeRoomFromSubscription(SubscriptionType subscriptionType, Room room) {
+        for (SubscriptionType subscription : arrayList)
+        {
+            if (subscription.equals(subscriptionType))
+            {
+                subscription.removeRoomAccess(room);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void roomDeleted(Room room) {
+        for (SubscriptionType subscriptionType : arrayList)
+        {
+            subscriptionType.removeRoomAccess(room);
+        }
     }
 }

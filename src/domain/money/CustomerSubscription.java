@@ -64,7 +64,6 @@ public class CustomerSubscription{
     public void setValidUntil(LocalDate validUntil) {
         this.validUntil = validUntil;
     }
-
     public CustomerSubscription copy()
     {
         return new CustomerSubscription(customer, subscriptionType, validFrom, validUntil);

@@ -166,13 +166,16 @@ public class Terminal
         System.out.println("2. Update subscription type");
         System.out.println("3. Delete subscription type");
         System.out.println("4. Search subscription type by name");
-        System.out.println("5. Show all subscription types");
-        System.out.println("6. <-- Return to main menu");
+        System.out.println("5. Add room to subscription");
+        System.out.println("6. Remove room from subscription");
+        System.out.println("7. Show all subscription types");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")
+                && !Objects.equals(choice, "7") && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-7) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
