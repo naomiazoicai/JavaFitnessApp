@@ -42,7 +42,7 @@ public class MainUI {
     {
         System.out.println("Main UI is running...");
         String choice = terminal.mainUiMenu();
-        while (!Objects.equals(choice, "0"))
+        while (!Objects.equals(choice, "x"))
         {
             switch (choice)
             {
@@ -56,7 +56,8 @@ public class MainUI {
                 case "8": trainerUI.run(); break;
             }
             terminal.pressEnterToContinue();
-            choice = terminal.customerUiMenu();
+            choice = terminal.mainUiMenu();
         }
+        System.out.println("App is closing..");
     }
 }
