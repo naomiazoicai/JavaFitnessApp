@@ -5,7 +5,7 @@ import UI.UiRunnable;
 import factory.UiRunnableFactory;
 
 // This proxy initialises the UI only when it is needed
-public class UiProxy {
+public class UiProxy implements UiRunnable {
     private final UiTypes uiType;
     private UiRunnable ui;
 
@@ -13,6 +13,8 @@ public class UiProxy {
     {
         this.uiType = uiType;
     }
+
+    @Override
     public void run()
     {
         if (ui == null) ui = UiRunnableFactory.buildUi(uiType);

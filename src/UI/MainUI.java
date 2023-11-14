@@ -1,21 +1,19 @@
 package UI;
 
 import UI.SpecialisedUIs.*;
-import factory.UiRunnableFactory;
 import proxy.UiProxy;
 
-import java.lang.reflect.Type;
 import java.util.Objects;
 
 public class MainUI {
-    private final UiProxy budgetUI;
-    private final UiProxy customerUI;
-    private final UiProxy trainerUI;
-    private final UiProxy subscriptionTypeUI;
-    private final UiProxy customerSubscriptionUI;
-    private final UiProxy specialisedRoomUI;
-    private final UiProxy equipmentItemUI;
-    private final UiProxy exerciseUI;
+    private final UiRunnable budgetUI;
+    private final UiRunnable customerUI;
+    private final UiRunnable trainerUI;
+    private final UiRunnable subscriptionTypeUI;
+    private final UiRunnable customerSubscriptionUI;
+    private final UiRunnable specialisedRoomUI;
+    private final UiRunnable equipmentItemUI;
+    private final UiRunnable exerciseUI;
 
     private static MainUI instance;
 
