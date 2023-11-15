@@ -30,10 +30,10 @@ public class SpecialisedRoomUI extends UI<SpecialisedRoom> {
     @Override
     public void run()
     {
-        terminal.printMessage("Specialised room is running...");
+        terminal.printMessage("Specialised room UI is running...");
         String choice = terminal.specialisedRoomUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "X") && !Objects.equals(choice, "x"))
         {
             switch (choice)
             {

@@ -30,7 +30,7 @@ public class CustomerSubscription{
 
     public boolean checkValidity()
     {
-        return LocalDate.now().minusDays(1).isBefore(validUntil);
+        return !subscriptionType.equals(SubscriptionType.nullSubscriptionType) && LocalDate.now().minusDays(1).isBefore(validUntil);
     }
 
     public Customer getCustomer() {
@@ -64,7 +64,6 @@ public class CustomerSubscription{
     public void setValidUntil(LocalDate validUntil) {
         this.validUntil = validUntil;
     }
-
     public CustomerSubscription copy()
     {
         return new CustomerSubscription(customer, subscriptionType, validFrom, validUntil);

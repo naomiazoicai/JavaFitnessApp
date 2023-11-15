@@ -1,6 +1,9 @@
 package controller;
 
+import controller.interfaces.observers.IObserverDeletedRoom;
 import controller.interfaces.ISpecialisedRoomController;
+import controller.interfaces.subjects.ISubjectDeletedRoom;
+import domain.gym.Room;
 import domain.gym.SpecialisedRoom;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
@@ -8,7 +11,7 @@ import repository.inMemoryRepository.SpecialisedRoomRepository;
 import repository.interfaces.ISpecialisedRoomRepository;
 
 
-public class SpecialisedRoomController extends Controller<SpecialisedRoom> implements ISpecialisedRoomController
+public class SpecialisedRoomController extends Controller<SpecialisedRoom> implements ISpecialisedRoomController, ISubjectDeletedRoom
 {
     private static SpecialisedRoomController instance;
 
@@ -18,6 +21,7 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     {
         super(specialisedRoomRepository);
         this.specialisedRoomRepository = specialisedRoomRepository;
+        addObserver(SubscriptionTypeController.getInstance());
     }
 
     public static SpecialisedRoomController getInstance()
@@ -44,5 +48,26 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     public void add(SpecialisedRoom object) throws ObjectAlreadyContained {
         object.setId(specialisedRoomRepository.generateNextId());
         super.add(object);
+    }
+
+    @Override
+    public void delete(SpecialisedRoom object) throws ObjectNotContained {
+        super.delete(object);
+        notifyRoomDeleted(object);
+    }
+
+    @Override
+    public void addObserver(IObserverDeletedRoom observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeletedRoom observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyRoomDeleted(Room room) {
+        for (IObserverDeletedRoom observer : observerList) observer.updateDeletedRoom(room);
     }
 }

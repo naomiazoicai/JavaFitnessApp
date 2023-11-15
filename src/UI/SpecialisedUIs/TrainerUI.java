@@ -36,8 +36,8 @@ public class TrainerUI extends UI<Trainer> {
     {
         terminal.printMessage("Trainer UI is running...");
         String choice = terminal.trainerUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
             switch (choice)
             {

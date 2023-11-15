@@ -1,4 +1,5 @@
 import UI.MainUI;
+
 public class Main {
 //    Projekt: Java-Konsolenanwendung
 //    dieses Dokument dient als Leitfaden für die Entwicklung einer Konsolenanwendung in Java.

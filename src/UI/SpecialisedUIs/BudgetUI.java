@@ -29,8 +29,8 @@ public class BudgetUI implements UiRunnable {
     {
         terminal.printMessage("Budget UI is running...");
         String choice = terminal.budgetUiMenu();
-        // If choice == 4 -> return to main menu
-        while (!Objects.equals(choice, "4"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
             switch (choice)
             {

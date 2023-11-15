@@ -1,14 +1,18 @@
 package controller;
 
 import controller.interfaces.ICustomerController;
+import controller.interfaces.ICustomerSubscriptionController;
+import controller.interfaces.observers.IObserverDeletedTrainer;
 import domain.persons.Customer;
+import domain.persons.Trainer;
+import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
 
 
-public class CustomerController extends Controller<Customer> implements ICustomerController
+public class CustomerController extends Controller<Customer> implements ICustomerController, IObserverDeletedTrainer
 {
     private static CustomerController instance;
 
@@ -39,7 +43,37 @@ public class CustomerController extends Controller<Customer> implements ICustome
     }
 
     @Override
+    public Boolean trainerUsernameInRepo(String username)
+    {
+        TrainerController trainerController = TrainerController.getInstance();
+        return trainerController.keyNameInRepo(username);
+    }
+
+    @Override
     public Customer searchByKeyName(String keyName) {
         return ICustomerRepository.searchByKeyName(keyName);
+    }
+
+    @Override
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained {
+        return ICustomerRepository.changeAssignedTrainerOfCustomer(customer, trainer);
+    }
+
+    @Override
+    public Trainer getTrainerByUsername(String username) {
+        TrainerController trainerController = TrainerController.getInstance();
+        return trainerController.searchByKeyName(username);
+    }
+
+    @Override
+    public void updatedTrainerDeleted(Trainer trainer) {
+        ICustomerRepository.trainerDeleted(trainer);
+    }
+
+    @Override
+    public boolean hasValidSubscription(String username) {
+        ICustomerSubscriptionController customerSubscriptionController = CustomerSubscriptionController.getInstance();
+        Customer customer = ICustomerRepository.searchByKeyName(username);
+        return customerSubscriptionController.hasValidSubscription(customer);
     }
 }

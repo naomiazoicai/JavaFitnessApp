@@ -50,4 +50,25 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
         }
         return result;
     }
+
+    @Override
+    public Boolean hasValidSubscription(Customer customer) {
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (customerSubscription.getCustomer().equals(customer) && customerSubscription.checkValidity()) return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    @Override
+    public void subscriptionTypeDeleted(SubscriptionType subscriptionType)
+    {
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (customerSubscription.getSubscriptionType().equals(subscriptionType))
+            {
+                customerSubscription.setSubscriptionType(SubscriptionType.nullSubscriptionType.copy());
+            }
+        }
+    }
 }

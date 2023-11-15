@@ -5,6 +5,7 @@ import controller.CustomerController;
 import controller.interfaces.ICustomerController;
 import domain.persons.Customer;
 import domain.persons.Gender;
+import domain.persons.Trainer;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
@@ -32,8 +33,8 @@ public class CustomerUI extends UI<Customer> {
     {
         terminal.printMessage("Customer UI is running...");
         String choice = terminal.customerUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        // If choice == X -> return to main menu
+        while (!(Objects.equals(choice, "x") || Objects.equals(choice, "X")))
         {
             switch (choice)
             {
@@ -41,7 +42,9 @@ public class CustomerUI extends UI<Customer> {
                 case "2": updateEntity(); break;
                 case "3": deleteEntity(); break;
                 case "4": searchByPartialUsername(); break;
-                case "5": showAll(); break;
+                case "5": changeAssignedTrainerOfCustomer(); break;
+                case "6": checkUserSubscriptionValidity(); break;
+                case "7": showAll(); break;
             }
             terminal.pressEnterToContinue();
             choice = terminal.customerUiMenu();
@@ -123,5 +126,57 @@ public class CustomerUI extends UI<Customer> {
         String username = terminal.readUsername();
         ArrayList<Customer> customers = ICustomerController.searchByPartialKeyName(username);
         terminal.printArrayList(customers);
+    }
+
+    private void changeAssignedTrainerOfCustomer()
+    {
+        // Customer
+        terminal.printMessage("Enter customer username: ");
+        String customerUsername = terminal.readUsername();
+        if (!ICustomerController.keyNameInRepo(customerUsername))
+        {
+            terminal.printMessage("Customer username was not found");
+            return;
+        }
+        // Trainer
+        terminal.printMessage("Enter trainer username: ");
+        String trainerUsername = terminal.readUsername();
+        if (!ICustomerController.trainerUsernameInRepo(trainerUsername))
+        {
+            terminal.printMessage("Trainer username was not found");
+            return;
+        }
+        Trainer newTrainer = ICustomerController.getTrainerByUsername(trainerUsername);
+        // Perform action
+        Trainer oldTrainer;
+        try {
+            oldTrainer = ICustomerController.changeAssignedTrainerOfCustomer(new Customer(customerUsername), newTrainer);
+        } catch (ObjectNotContained e) {
+            throw new RuntimeException(e);
+        }
+        terminal.printMessage("Old trainer of user was: " + oldTrainer);
+        terminal.printMessage("New trainer of user is:  " + newTrainer);
+    }
+
+    private void checkUserSubscriptionValidity()
+    {
+        // Customer
+        terminal.printMessage("Enter customer username: ");
+        String customerUsername = terminal.readUsername();
+        if (!ICustomerController.keyNameInRepo(customerUsername))
+        {
+            terminal.printMessage("Customer username was not found");
+            return;
+        }
+        // Get customer
+        Customer customer = ICustomerController.searchByKeyName(customerUsername);
+        if (ICustomerController.hasValidSubscription(customerUsername))
+        {
+            terminal.printMessage("YES! Customer has a valid subscription: " + customer);
+        }
+        else
+        {
+            terminal.printMessage("NO! Customer has not a valid subscription: " + customer);
+        }
     }
 }

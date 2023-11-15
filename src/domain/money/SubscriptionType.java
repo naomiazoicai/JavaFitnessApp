@@ -1,11 +1,19 @@
 package domain.money;
 
+import domain.gym.Room;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class SubscriptionType {
     private String name;
     private String description;
     private double price;
+
+    public static SubscriptionType nullSubscriptionType = new SubscriptionType();
+
+    private final HashSet<Room> accessibleRestrictedRooms = new HashSet<>();
 
     public SubscriptionType(String name, String description, double price) {
         this.name = name;
@@ -19,12 +27,23 @@ public class SubscriptionType {
         this.price = 0;
     }
 
+    public void addRoomAccess(Room room)
+    {
+        accessibleRestrictedRooms.add(room);
+    }
+
+    public void removeRoomAccess(Room room)
+    {
+        accessibleRestrictedRooms.remove(room);
+    }
+
     @Override
     public String toString() {
         return "SubscriptionType{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", restrictedAccessibleRooms=" + accessibleRestrictedRooms +
                 '}';
     }
 
@@ -64,4 +83,9 @@ public class SubscriptionType {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public ArrayList<Room> getAccessibleRestrictedRooms() {
+        return new ArrayList<>(accessibleRestrictedRooms);
+    }
+
 }

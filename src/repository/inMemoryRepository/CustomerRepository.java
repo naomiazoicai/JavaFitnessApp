@@ -3,7 +3,9 @@ package repository.inMemoryRepository;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Person;
+import domain.persons.Trainer;
 import repository.Repository;
+import repository.exceptions.ObjectNotContained;
 import repository.interfaces.ICustomerRepository;
 
 import java.time.LocalDate;
@@ -56,5 +58,27 @@ public class CustomerRepository extends Repository<Customer> implements ICustome
             if (keyName.equals(customer.getUsername())) return customer.copy();
         }
         return null;
+    }
+
+    @Override
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained {
+        for (Customer existingCustomer: arrayList)
+        {
+            if (existingCustomer.getUsername().equals(customer.getUsername()))
+            {
+                Trainer previousTrainer = existingCustomer.getAssignedTrainer();
+                existingCustomer.setAssignedTrainer(trainer);
+                return previousTrainer;
+            }
+        }
+        throw new ObjectNotContained();
+    }
+
+    @Override
+    public void trainerDeleted(Trainer trainer) {
+        for (Customer customer : arrayList)
+        {
+            if (customer.getAssignedTrainer().equals(trainer)) customer.setAssignedTrainer(new Trainer());
+        }
     }
 }

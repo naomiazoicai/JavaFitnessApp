@@ -1,5 +1,6 @@
-package controller.interfaces;
+package controller.interfaces.subjects;
 
+import controller.interfaces.observers.IObserverDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
 
 import java.util.ArrayList;
