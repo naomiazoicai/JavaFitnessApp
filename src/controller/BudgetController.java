@@ -1,8 +1,10 @@
 package controller;
 
+import controller.interfaces.IObserverCustomerSubscriptionAdded;
+import domain.money.CustomerSubscription;
 import repository.inMemoryRepository.BudgetRepository;
 
-public class BudgetController {
+public class BudgetController implements IObserverCustomerSubscriptionAdded {
     private static BudgetController instance;
 
     private final BudgetRepository repository;
@@ -31,5 +33,10 @@ public class BudgetController {
     public String budgetAsString()
     {
         return repository.budgetAsString();
+    }
+
+    @Override
+    public void updatedAddedCustomerSubscription(CustomerSubscription customerSubscription) {
+        addMoney(customerSubscription.getSubscriptionType().getPrice());
     }
 }

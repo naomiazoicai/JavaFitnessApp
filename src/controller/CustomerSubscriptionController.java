@@ -1,10 +1,13 @@
 package controller;
 
 import controller.interfaces.ICustomerSubscriptionController;
+import controller.interfaces.IObserverCustomerSubscriptionAdded;
 import controller.interfaces.IObserverDeletedSubscriptionType;
+import controller.interfaces.ISubjectCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
+import repository.exceptions.ObjectAlreadyContained;
 import repository.inMemoryRepository.CustomerRepository;
 import repository.inMemoryRepository.CustomerSubscriptionRepository;
 import repository.inMemoryRepository.SubscriptionTypeRepository;
@@ -14,7 +17,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-public class CustomerSubscriptionController extends Controller<CustomerSubscription> implements ICustomerSubscriptionController, IObserverDeletedSubscriptionType
+public class CustomerSubscriptionController extends Controller<CustomerSubscription>
+        implements ICustomerSubscriptionController, IObserverDeletedSubscriptionType, ISubjectCustomerSubscriptionAdded
 {
     private static CustomerSubscriptionController instance;
 
@@ -24,12 +28,19 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     {
         super(customerSubscriptionRepository);
         this.customerSubscriptionRepository = customerSubscriptionRepository;
+        addObserver(BudgetController.getInstance());
     }
 
     public static CustomerSubscriptionController getInstance()
     {
         if (instance == null) instance = new CustomerSubscriptionController(CustomerSubscriptionRepository.getInstance());
         return instance;
+    }
+
+    @Override
+    public void add(CustomerSubscription object) throws ObjectAlreadyContained {
+        super.add(object);
+        notifyAddedCustomerSubscription(object);
     }
 
     @Override
@@ -96,5 +107,23 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     @Override
     public void updateDeletedSubscriptionType(SubscriptionType subscriptionType) {
         customerSubscriptionRepository.subscriptionTypeDeleted(subscriptionType);
+    }
+
+    @Override
+    public void addObserver(IObserverCustomerSubscriptionAdded observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverCustomerSubscriptionAdded observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription) {
+        for (IObserverCustomerSubscriptionAdded observer : observerList)
+        {
+            observer.updatedAddedCustomerSubscription(customerSubscription);
+        }
     }
 }
