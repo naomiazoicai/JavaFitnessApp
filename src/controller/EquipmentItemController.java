@@ -1,8 +1,8 @@
 package controller;
 
 import controller.interfaces.IEquipmentItemController;
-import controller.interfaces.IObserverDeleteEquipmentItem;
-import controller.interfaces.ISubjectDeleteEquipmentItem;
+import controller.interfaces.observers.IObserverDeleteEquipmentItem;
+import controller.interfaces.subjects.ISubjectDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.exceptions.ObjectAlreadyContained;

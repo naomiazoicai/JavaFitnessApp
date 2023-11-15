@@ -1,5 +1,6 @@
-package controller.interfaces;
+package controller.interfaces.subjects;
 
+import controller.interfaces.observers.IObserverDeletedTrainer;
 import domain.persons.Trainer;
 
 import java.util.ArrayList;

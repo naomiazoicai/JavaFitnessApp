@@ -1,8 +1,8 @@
 package controller;
 
-import controller.interfaces.IObserverDeletedRoom;
-import controller.interfaces.IObserverDeletedSubscriptionType;
-import controller.interfaces.ISubjectDeletedSubscriptionType;
+import controller.interfaces.observers.IObserverDeletedRoom;
+import controller.interfaces.observers.IObserverDeletedSubscriptionType;
+import controller.interfaces.subjects.ISubjectDeletedSubscriptionType;
 import controller.interfaces.ISubscriptionTypeController;
 import domain.gym.Room;
 import domain.money.SubscriptionType;

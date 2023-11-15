@@ -1,7 +1,7 @@
-package controller.interfaces;
+package controller.interfaces.subjects;
 
+import controller.interfaces.observers.IObserverDeletedRoom;
 import domain.gym.Room;
-import domain.persons.Trainer;
 
 import java.util.ArrayList;
 

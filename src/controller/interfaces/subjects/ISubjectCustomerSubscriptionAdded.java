@@ -1,5 +1,6 @@
-package controller.interfaces;
+package controller.interfaces.subjects;
 
+import controller.interfaces.observers.IObserverCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 
 import java.util.ArrayList;
@@ -12,4 +13,5 @@ public interface ISubjectCustomerSubscriptionAdded {
     void removeObserver(IObserverCustomerSubscriptionAdded observer);
 
     void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription);
+
 }

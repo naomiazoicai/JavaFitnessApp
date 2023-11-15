@@ -1,4 +1,4 @@
-package controller.interfaces;
+package controller.interfaces.observers;
 
 import domain.gym.Room;
 

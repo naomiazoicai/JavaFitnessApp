@@ -1,9 +1,9 @@
 package controller;
 
 import controller.interfaces.ICustomerSubscriptionController;
-import controller.interfaces.IObserverCustomerSubscriptionAdded;
-import controller.interfaces.IObserverDeletedSubscriptionType;
-import controller.interfaces.ISubjectCustomerSubscriptionAdded;
+import controller.interfaces.observers.IObserverCustomerSubscriptionAdded;
+import controller.interfaces.observers.IObserverDeletedSubscriptionType;
+import controller.interfaces.subjects.ISubjectCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;

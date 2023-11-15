@@ -1,7 +1,7 @@
 package controller;
 
-import controller.interfaces.IObserverDeletedTrainer;
-import controller.interfaces.ISubjectDeletedTrainer;
+import controller.interfaces.observers.IObserverDeletedTrainer;
+import controller.interfaces.subjects.ISubjectDeletedTrainer;
 import controller.interfaces.ITrainerController;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectNotContained;

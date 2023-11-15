@@ -1,8 +1,8 @@
 package controller;
 
-import controller.interfaces.IObserverDeletedRoom;
+import controller.interfaces.observers.IObserverDeletedRoom;
 import controller.interfaces.ISpecialisedRoomController;
-import controller.interfaces.ISubjectDeletedRoom;
+import controller.interfaces.subjects.ISubjectDeletedRoom;
 import domain.gym.Room;
 import domain.gym.SpecialisedRoom;
 import repository.exceptions.ObjectAlreadyContained;

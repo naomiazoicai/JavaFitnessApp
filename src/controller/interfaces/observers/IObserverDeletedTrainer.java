@@ -1,9 +1,6 @@
-package controller.interfaces;
+package controller.interfaces.observers;
 
-import domain.gym.EquipmentItem;
 import domain.persons.Trainer;
-
-import java.util.ArrayList;
 
 public interface IObserverDeletedTrainer {
     void updatedTrainerDeleted(Trainer trainer);

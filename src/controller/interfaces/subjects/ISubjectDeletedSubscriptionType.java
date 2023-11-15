@@ -1,5 +1,6 @@
-package controller.interfaces;
+package controller.interfaces.subjects;
 
+import controller.interfaces.observers.IObserverDeletedSubscriptionType;
 import domain.money.SubscriptionType;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package controller;
 
-import controller.interfaces.IObserverCustomerSubscriptionAdded;
+import controller.interfaces.observers.IObserverCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import repository.inMemoryRepository.BudgetRepository;
 
