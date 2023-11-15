@@ -1,6 +1,8 @@
 package controller;
 
 import controller.interfaces.IObserverDeletedRoom;
+import controller.interfaces.IObserverDeletedSubscriptionType;
+import controller.interfaces.ISubjectDeletedSubscriptionType;
 import controller.interfaces.ISubscriptionTypeController;
 import domain.gym.Room;
 import domain.money.SubscriptionType;
@@ -12,7 +14,7 @@ import repository.interfaces.ISubscriptionTypeRepository;
 import java.util.ArrayList;
 
 
-public class SubscriptionTypeController extends Controller<SubscriptionType> implements ISubscriptionTypeController, IObserverDeletedRoom
+public class SubscriptionTypeController extends Controller<SubscriptionType> implements ISubscriptionTypeController, IObserverDeletedRoom, ISubjectDeletedSubscriptionType
 {
     private static SubscriptionTypeController instance;
 
@@ -22,12 +24,19 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     {
         super(subscriptionTypeRepository);
         this.subscriptionTypeRepository = subscriptionTypeRepository;
+        addObserver(CustomerSubscriptionController.getInstance());
     }
 
     public static SubscriptionTypeController getInstance()
     {
         if (instance == null) instance = new SubscriptionTypeController(SubscriptionTypeRepository.getInstance());
         return instance;
+    }
+
+    @Override
+    public void delete(SubscriptionType object) throws ObjectNotContained {
+        super.delete(object);
+        notifySubscriptionTypeDeleted(object);
     }
 
     @Override
@@ -73,5 +82,20 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     @Override
     public void updateDeletedRoom(Room room) {
         subscriptionTypeRepository.roomDeleted(room);
+    }
+
+    @Override
+    public void addObserver(IObserverDeletedSubscriptionType observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeletedSubscriptionType observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType) {
+        for (IObserverDeletedSubscriptionType observer : observerList) observer.updateDeletedSubscriptionType(subscriptionType);
     }
 }

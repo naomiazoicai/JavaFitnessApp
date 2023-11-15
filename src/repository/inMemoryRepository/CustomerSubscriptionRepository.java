@@ -59,4 +59,16 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
         }
         return Boolean.FALSE;
     }
+
+    @Override
+    public void subscriptionTypeDeleted(SubscriptionType subscriptionType)
+    {
+        for (CustomerSubscription customerSubscription : arrayList)
+        {
+            if (customerSubscription.getSubscriptionType().equals(subscriptionType))
+            {
+                customerSubscription.setSubscriptionType(SubscriptionType.nullSubscriptionType.copy());
+            }
+        }
+    }
 }

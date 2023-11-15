@@ -1,6 +1,7 @@
 package controller;
 
 import controller.interfaces.ICustomerSubscriptionController;
+import controller.interfaces.IObserverDeletedSubscriptionType;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
@@ -13,9 +14,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-public class CustomerSubscriptionController extends Controller<CustomerSubscription> implements ICustomerSubscriptionController
+public class CustomerSubscriptionController extends Controller<CustomerSubscription> implements ICustomerSubscriptionController, IObserverDeletedSubscriptionType
 {
-    //TODO Observer for budget to increase budget when subscription is sold
     private static CustomerSubscriptionController instance;
 
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
@@ -91,5 +91,10 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     @Override
     public Boolean hasValidSubscription(Customer customer) {
         return customerSubscriptionRepository.hasValidSubscription(customer);
+    }
+
+    @Override
+    public void updateDeletedSubscriptionType(SubscriptionType subscriptionType) {
+        customerSubscriptionRepository.subscriptionTypeDeleted(subscriptionType);
     }
 }

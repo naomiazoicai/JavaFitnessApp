@@ -12,4 +12,6 @@ public interface ICustomerSubscriptionRepository {
     ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType);
 
     Boolean hasValidSubscription(Customer customer);
+
+    void subscriptionTypeDeleted(SubscriptionType subscriptionType);
 }

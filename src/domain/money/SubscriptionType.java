@@ -11,6 +11,8 @@ public class SubscriptionType {
     private String description;
     private double price;
 
+    public static SubscriptionType nullSubscriptionType = new SubscriptionType();
+
     private final HashSet<Room> accessibleRestrictedRooms = new HashSet<>();
 
     public SubscriptionType(String name, String description, double price) {
