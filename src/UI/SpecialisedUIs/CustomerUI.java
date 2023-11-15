@@ -33,7 +33,7 @@ public class CustomerUI extends UI<Customer> {
     {
         terminal.printMessage("Customer UI is running...");
         String choice = terminal.customerUiMenu();
-        // If choice == 5 -> return to main menu
+        // If choice == X -> return to main menu
         while (!(Objects.equals(choice, "x") || Objects.equals(choice, "X")))
         {
             switch (choice)

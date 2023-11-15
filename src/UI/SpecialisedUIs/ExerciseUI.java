@@ -31,8 +31,8 @@ public class ExerciseUI extends UI<Exercise> {
     {
         terminal.printMessage("Exercise UI is running...");
         String choice = terminal.exerciseUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
             switch (choice)
             {

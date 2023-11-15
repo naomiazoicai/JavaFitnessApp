@@ -35,8 +35,8 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     {
         terminal.printMessage("Customer subscription UI is running...");
         String choice = terminal.customerSubscriptionUiMenu();
-        // If choice == 7 -> return to main menu
-        while (!Objects.equals(choice, "7"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "X") && !Objects.equals(choice, "x"))
         {
             switch (choice)
             {

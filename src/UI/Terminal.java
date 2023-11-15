@@ -44,7 +44,7 @@ public class Terminal
         System.out.println("6. Specialised Room");
         System.out.println("7. Subscription type");
         System.out.println("8. Trainer");
-        System.out.println("x. <--- Close app");
+        System.out.println("X. <--- Close app");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
@@ -87,12 +87,13 @@ public class Terminal
         System.out.println("3. Delete equipment item");
         System.out.println("4. Search equipment item by id");
         System.out.println("5. Show all equipment items");
-        System.out.println("6. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "x")
+                && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-5) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
@@ -107,12 +108,13 @@ public class Terminal
         System.out.println("3. Delete exercise");
         System.out.println("4. Search exercise by id");
         System.out.println("5. Show all exercises");
-        System.out.println("6. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "x")
+                && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-5) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
@@ -127,12 +129,13 @@ public class Terminal
         System.out.println("3. Delete room");
         System.out.println("4. Search room by id");
         System.out.println("5. Show all rooms");
-        System.out.println("6. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5")
+                && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-5) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
@@ -147,12 +150,13 @@ public class Terminal
         System.out.println("3. Delete trainer");
         System.out.println("4. Search trainer by username");
         System.out.println("5. Show all trainers");
-        System.out.println("6. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")) {
-            System.out.println("Enter a valid choice (1-6)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5")
+                && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-5) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
@@ -191,13 +195,13 @@ public class Terminal
         System.out.println("4. Search customer subscription by customer username");
         System.out.println("5. Search customer subscription by subscription type name");
         System.out.println("6. Show all customer subscriptions");
-        System.out.println("7. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5")
-                && !Objects.equals(choice, "6") && !Objects.equals(choice, "7")) {
-            System.out.println("Enter a valid choice (1-7)");
+                && !Objects.equals(choice, "4") && !Objects.equals(choice, "5") && !Objects.equals(choice, "6")
+                && !Objects.equals(choice, "x") && !Objects.equals(choice, "X")) {
+            System.out.println("Enter a valid choice (1-6) || X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }
@@ -210,13 +214,13 @@ public class Terminal
         System.out.println("1. Show budget");
         System.out.println("2. Add money");
         System.out.println("3. Spend money");
-        System.out.println("4. <-- Return to main menu");
+        System.out.println("X. <-- Return to main menu");
         System.out.println("Your choice: ");
         String choice = scanner.nextLine();
         while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2")  && !Objects.equals(choice, "3")
-                && !Objects.equals(choice, "4"))
+                && !Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
-            System.out.println("Enter a valid choice (1-4)");
+            System.out.println("Enter a valid choice (1-3) | X for exit");
             System.out.println("Your choice: ");
             choice = scanner.nextLine();
         }

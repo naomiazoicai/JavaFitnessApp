@@ -30,8 +30,8 @@ public class EquipmentItemUI extends UI<EquipmentItem> {
     {
         terminal.printMessage("Equipment item UI is running...");
         String choice = terminal.equipmentItemUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "6"))
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
         {
             switch (choice)
             {

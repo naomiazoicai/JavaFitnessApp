@@ -29,6 +29,29 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     }
 
     @Override
+    public void run()
+    {
+        terminal.printMessage("Subscription type UI is running...");
+        String choice = terminal.subscriptionTypeUiMenu();
+        // If choice == X -> return to main menu
+        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
+        {
+            switch (choice)
+            {
+                case "1": addEntity(); break;
+                case "2": updateEntity(); break;
+                case "3": deleteEntity(); break;
+                case "4": searchByPartialName(); break;
+                case "5": addRoomToSubscription(); break;
+                case "6": removeRoomFromSubscription(); break;
+                case "7": showAll(); break;
+            }
+            terminal.pressEnterToContinue();
+            choice = terminal.subscriptionTypeUiMenu();
+        }
+    }
+
+    @Override
     public void addEntity() {
         String name = terminal.readSubscriptionTypeName();
         // Check if name exists
@@ -64,29 +87,6 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
                 throw new RuntimeException();
             }
         } else terminal.printMessage("Subscription type name was not found");
-    }
-
-    @Override
-    public void run()
-    {
-        terminal.printMessage("Subscription type UI is running...");
-        String choice = terminal.subscriptionTypeUiMenu();
-        // If choice == 5 -> return to main menu
-        while (!Objects.equals(choice, "x") && !Objects.equals(choice, "X"))
-        {
-            switch (choice)
-            {
-                case "1": addEntity(); break;
-                case "2": updateEntity(); break;
-                case "3": deleteEntity(); break;
-                case "4": searchByPartialName(); break;
-                case "5": addRoomToSubscription(); break;
-                case "6": removeRoomFromSubscription(); break;
-                case "7": showAll(); break;
-            }
-            terminal.pressEnterToContinue();
-            choice = terminal.subscriptionTypeUiMenu();
-        }
     }
 
     @Override
