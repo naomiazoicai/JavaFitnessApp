@@ -21,6 +21,13 @@ public class SubscriptionType {
         this.price = price;
     }
 
+    public SubscriptionType(String name)
+    {
+        this.name = name;
+        this.description = "";
+        this.price = 0;
+    }
+
     public SubscriptionType(){
         this.name = "";
         this.description = "";
@@ -43,7 +50,7 @@ public class SubscriptionType {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", restrictedAccessibleRooms=" + accessibleRestrictedRooms +
+                ", accessibleRestrictedRooms=" + accessibleRestrictedRooms +
                 '}';
     }
 
