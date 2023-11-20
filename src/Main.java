@@ -1,8 +1,9 @@
 
-import dao.BudgetDao;
+import UI.Terminal;
 import dao.DatabaseConnection;
-
-import dao.TestDao;
+import dao.EquipmentItemDao;
+import domain.gym.EquipmentItem;
+import repository.exceptions.ObjectNotContained;
 
 
 import java.sql.SQLException;
@@ -18,52 +19,33 @@ public class Main {
             throw new RuntimeException();
         }
 
-        BudgetDao budgetDao = BudgetDao.getInstance();
+        EquipmentItemDao dao = EquipmentItemDao.getInstance();
 
-//        budgetDao.addMoney(12);
-        try {
-            budgetDao.spendMoney(22.2);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+//        System.out.println(dao.generateNextId());
 
-        System.out.println(budgetDao.getCurrentMoney());
+//        System.out.println(dao.searchById(2));
 
+//        System.out.println(dao.idInRepo(2));
 
-
-
-
-
-        // Test methods
 //        try {
-//            SubscriptionTypeDao.getInstance().insertEntity(new SubscriptionType("Platinum", "King", 100));
-//
+//            dao.insertEntity(new EquipmentItem("Test"));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
 //        try {
-//            SubscriptionTypeDao.getInstance().deleteEntity(new SubscriptionType("Platinum"));
+//            dao.deleteEntity(new EquipmentItem(3));
 //        } catch (ObjectNotContained e) {
-//            System.out.println(e);
-//        }
-//
-//        try {
-//            SubscriptionTypeDao.getInstance().updateEntity(new SubscriptionType("Platinum", "Full access plan", 40));
-//        } catch (ObjectNotContained e) {
-//            System.out.println(e);
+//            System.out.println(e.getMessage());
 //        }
 
-//        Terminal.getInstance().printArrayList(SubscriptionTypeDao.getInstance().getAllEntities());
+        try {
+            dao.updateEntity(new EquipmentItem(4, "Spoon"));
+        } catch (ObjectNotContained e) {
+            System.out.println(e.getMessage());
+        }
 
-//        System.out.println(SubscriptionTypeDao.getInstance().keyNameInRepo("Silver"));
-
-//        Terminal.getInstance().printArrayList(SubscriptionTypeDao.getInstance().searchByPartialKeyName("i"));
-
-//        System.out.println(SubscriptionTypeDao.getInstance().searchByKeyName("Silver"));
-
-
-        TestDao.getAllSubscriptionTypes();
+        Terminal.getInstance().printArrayList(dao.getAllEntities());
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();

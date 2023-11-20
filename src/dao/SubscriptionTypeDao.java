@@ -23,13 +23,10 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
 
     @Override
     public void insertEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained {
-
+        String name = subscriptionType.getName();
+        String description = subscriptionType.getDescription();
+        double price = subscriptionType.getPrice();
         try {
-            // Add object
-            String name = subscriptionType.getName();
-            String description = subscriptionType.getDescription();
-            double price = subscriptionType.getPrice();
-
             String insertQuery = "INSERT INTO SubscriptionType(name, description, price) VALUES (?, ?, ?);";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, name);

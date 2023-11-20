@@ -4,11 +4,18 @@ public class EquipmentItem {
     private int ID;
     private String name;
 
+    private static final EquipmentItem nullEquipmentItem = new EquipmentItem();
 
     public EquipmentItem(int ID, String name) {
         this.ID = ID;
         this.name = name;
 
+    }
+
+    public EquipmentItem(int id)
+    {
+        this.ID = id;
+        this.name = "";
     }
 
     public EquipmentItem(String name) {
@@ -49,6 +56,10 @@ public class EquipmentItem {
 
     public EquipmentItem copy() {
         return new EquipmentItem(ID, name);
+    }
+
+    public static EquipmentItem getNullEquipmentItem() {
+        return nullEquipmentItem.copy();
     }
 
     @Override
