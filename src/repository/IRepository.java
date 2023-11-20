@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public interface IRepository<Type> {
 
-    void add(Type object) throws ObjectAlreadyContained;
+    void addEntity(Type object) throws ObjectAlreadyContained;
 
-    void update(Type object) throws ObjectNotContained;
+    void updateEntity(Type object) throws ObjectNotContained;
 
-    void delete(Type object) throws ObjectNotContained;
-    ArrayList<Type> getAll();
+    void deleteEntity(Type object) throws ObjectNotContained;
+    ArrayList<Type> getAllEntities();
 }

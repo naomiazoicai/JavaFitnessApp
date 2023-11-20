@@ -89,7 +89,7 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     @Override
     public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom) {
-        for (CustomerSubscription subscription : repository.getAll()) {
+        for (CustomerSubscription subscription : repository.getAllEntities()) {
             if (subscription.getCustomer().equals(customer)
                     && subscription.getSubscriptionType().equals(subscriptionType)
                     && subscription.getValidFrom().equals(validFrom)) {

@@ -10,14 +10,14 @@ public abstract class Repository<Type> implements IRepository<Type>
     protected final ArrayList<Type> arrayList = new ArrayList<>();
 
     @Override
-    public void add(Type object) throws ObjectAlreadyContained
+    public void addEntity(Type object) throws ObjectAlreadyContained
     {
         if (arrayList.contains(object)) throw new ObjectAlreadyContained();
         arrayList.add(object);
     }
 
     @Override
-    public void update(Type object) throws ObjectNotContained
+    public void updateEntity(Type object) throws ObjectNotContained
     {
         if (!arrayList.contains(object)) throw new ObjectNotContained();
         arrayList.remove(object);
@@ -25,14 +25,14 @@ public abstract class Repository<Type> implements IRepository<Type>
     }
 
     @Override
-    public void delete(Type object) throws ObjectNotContained
+    public void deleteEntity(Type object) throws ObjectNotContained
     {
         if (!arrayList.contains(object)) throw new ObjectNotContained();
         arrayList.remove(object);
     }
 
     @Override
-    public ArrayList<Type> getAll()
+    public ArrayList<Type> getAllEntities()
     {
         return new ArrayList<>(arrayList);
     }

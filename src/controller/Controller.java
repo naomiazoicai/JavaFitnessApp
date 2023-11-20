@@ -19,24 +19,24 @@ public abstract class Controller<Type> implements IController<Type>
     @Override
     public void add(Type object) throws ObjectAlreadyContained
     {
-        repository.add(object);
+        repository.addEntity(object);
     }
 
     @Override
     public void update(Type object) throws ObjectNotContained
     {
-        repository.update(object);
+        repository.updateEntity(object);
     }
 
     @Override
     public void delete(Type object) throws ObjectNotContained
     {
-        repository.delete(object);
+        repository.deleteEntity(object);
     }
 
     @Override
     public ArrayList<Type> getAll()
     {
-        return repository.getAll();
+        return repository.getAllEntities();
     }
 }

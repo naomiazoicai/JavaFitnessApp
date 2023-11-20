@@ -22,11 +22,11 @@ public class CustomerSubscriptionRepositoryTest {
         Customer customer = new Customer("testCustomer1", "Test", LocalDate.of(1990, 5, 5), Gender.male);
         SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
         CustomerSubscription subscription = new CustomerSubscription(customer, subscriptionType1, LocalDate.now(), LocalDate.now());
-        customerSubscriptionRepository.add(subscription);
-        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAll();
+        customerSubscriptionRepository.addEntity(subscription);
+        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAllEntities();
         assertTrue(subscriptions.contains(subscription));
         // Already in repo
-        assertThrows(ObjectAlreadyContained.class, () -> customerSubscriptionRepository.add(subscription));
+        assertThrows(ObjectAlreadyContained.class, () -> customerSubscriptionRepository.addEntity(subscription));
         // End
         System.out.println("Test add in CustomerSubscriptionRepo passed, bravo!");
     }
@@ -36,11 +36,11 @@ public class CustomerSubscriptionRepositoryTest {
         Customer customer = new Customer("testCustomer2", "Test", LocalDate.of(1990, 5, 5), Gender.male);
         SubscriptionType subscriptionType2 = new SubscriptionType("Silver", "Basic plan", 100);
         CustomerSubscription subscription = new CustomerSubscription(customer, subscriptionType2, LocalDate.now(), LocalDate.now());
-        customerSubscriptionRepository.add(subscription);
+        customerSubscriptionRepository.addEntity(subscription);
 
-        customerSubscriptionRepository.update(subscription);
+        customerSubscriptionRepository.updateEntity(subscription);
 
-        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAll();
+        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAllEntities();
         assertTrue(subscriptions.contains(subscription));
         System.out.println("Test update in CustomerSubscriptionRepo passed, bravo!");
     }
@@ -51,18 +51,18 @@ public class CustomerSubscriptionRepositoryTest {
                 LocalDate.of(1990, 5, 5), Gender.male);
         SubscriptionType subscriptionType3 = new SubscriptionType("Silver", "Basic plan", 100);
         CustomerSubscription subscription = new CustomerSubscription(customer3, subscriptionType3, LocalDate.now(), LocalDate.now());
-        customerSubscriptionRepository.add(subscription);
+        customerSubscriptionRepository.addEntity(subscription);
 
-        customerSubscriptionRepository.delete(subscription);
+        customerSubscriptionRepository.deleteEntity(subscription);
 
-        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAll();
+        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAllEntities();
         assertFalse(subscriptions.contains(subscription));
         System.out.println("Test delete in CustomerSubscriptionRepo passed, bravo!");
     }
 
     @Test
     public void testGetAll() {
-        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAll();
+        ArrayList<CustomerSubscription> subscriptions = customerSubscriptionRepository.getAllEntities();
         assertNotNull(subscriptions);
         System.out.println("Test getAll in CustomerSubscriptionRepo passed, bravo!");
     }

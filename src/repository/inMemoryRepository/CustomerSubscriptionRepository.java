@@ -15,8 +15,8 @@ public class CustomerSubscriptionRepository extends Repository<CustomerSubscript
     private CustomerSubscriptionRepository()
     {
         // Populate table
-        ArrayList<Customer> customers = CustomerRepository.getInstance().getAll();
-        ArrayList<SubscriptionType> subscriptionTypes = SubscriptionTypeRepository.getInstance().getAll();
+        ArrayList<Customer> customers = CustomerRepository.getInstance().getAllEntities();
+        ArrayList<SubscriptionType> subscriptionTypes = SubscriptionTypeRepository.getInstance().getAllEntities();
         CustomerSubscription subscription1 = new CustomerSubscription(customers.get(1), subscriptionTypes.get(1), LocalDate.now(), LocalDate.now());
         CustomerSubscription subscription2 = new CustomerSubscription(customers.get(0), subscriptionTypes.get(0),  LocalDate.now(), LocalDate.now());
         arrayList.add(subscription1);

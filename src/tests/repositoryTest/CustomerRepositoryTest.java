@@ -22,12 +22,12 @@ public class CustomerRepositoryTest {
     public void testAdd() throws ObjectAlreadyContained {
         // Successful add
         Customer customer = new Customer("testCustomer1", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        customerRepository.add(customer);
-        ArrayList<Customer> customers = customerRepository.getAll();
+        customerRepository.addEntity(customer);
+        ArrayList<Customer> customers = customerRepository.getAllEntities();
         assertTrue(customers.contains(customer));
         // Already in repo
         assertThrows(ObjectAlreadyContained.class, () -> {
-            customerRepository.add(customer);
+            customerRepository.addEntity(customer);
         });
         // End
         System.out.println("Test add in CustomerRepo passed, bravo!");
@@ -36,10 +36,10 @@ public class CustomerRepositoryTest {
     @Test
     public void testUpdate() throws ObjectAlreadyContained, ObjectNotContained {
         Customer customer = new Customer("testCustomer2", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        customerRepository.add(customer);
-        customerRepository.update(customer);
+        customerRepository.addEntity(customer);
+        customerRepository.updateEntity(customer);
 
-        ArrayList<Customer> customers = customerRepository.getAll();
+        ArrayList<Customer> customers = customerRepository.getAllEntities();
         assertTrue(customers.contains(customer));
         System.out.println("Test update in CustomerRepo passed, bravo!");
     }
@@ -47,18 +47,18 @@ public class CustomerRepositoryTest {
     @Test
     public void testDelete() throws ObjectAlreadyContained, ObjectNotContained {
         Customer customer = new Customer("testCustomer3", "Test", LocalDate.of(1990, 5, 5), Gender.male);
-        customerRepository.add(customer);
+        customerRepository.addEntity(customer);
 
-        customerRepository.delete(customer);
+        customerRepository.deleteEntity(customer);
 
-        ArrayList<Customer> customers = customerRepository.getAll();
+        ArrayList<Customer> customers = customerRepository.getAllEntities();
         assertFalse(customers.contains(customer));
         System.out.println("Test delete in CustomerRepo passed, bravo!");
     }
 
     @Test
     public void testGetAll() {
-        ArrayList<Customer> customers = customerRepository.getAll();
+        ArrayList<Customer> customers = customerRepository.getAllEntities();
         assertNotNull(customers);
         System.out.println("Test getAll in CustomerRepo passed, bravo!");
     }
