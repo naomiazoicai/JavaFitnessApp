@@ -10,7 +10,7 @@ public class BudgetRepository
 
     private BudgetRepository(){
         budget = Budget.getInstance();
-    };
+    }
 
     public static BudgetRepository getInstance()
     {

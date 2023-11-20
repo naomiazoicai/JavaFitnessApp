@@ -1,11 +1,9 @@
-import UI.MainUI;
-import UI.Terminal;
+
+import dao.BudgetDao;
 import dao.DatabaseConnection;
-import dao.SubscriptionTypeDao;
+
 import dao.TestDao;
-import domain.money.SubscriptionType;
-import repository.exceptions.ObjectAlreadyContained;
-import repository.exceptions.ObjectNotContained;
+
 
 import java.sql.SQLException;
 
@@ -19,6 +17,22 @@ public class Main {
             System.out.println(e.getMessage());
             throw new RuntimeException();
         }
+
+        BudgetDao budgetDao = BudgetDao.getInstance();
+
+//        budgetDao.addMoney(12);
+        try {
+            budgetDao.spendMoney(22.2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(budgetDao.getCurrentMoney());
+
+
+
+
+
 
         // Test methods
 //        try {
@@ -49,7 +63,7 @@ public class Main {
 //        System.out.println(SubscriptionTypeDao.getInstance().searchByKeyName("Silver"));
 
 
-//        TestDao.getAllSubscriptionTypes();
+        TestDao.getAllSubscriptionTypes();
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();

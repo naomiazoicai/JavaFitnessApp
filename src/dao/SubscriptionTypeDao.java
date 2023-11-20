@@ -6,7 +6,6 @@ import domain.money.SubscriptionType;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
