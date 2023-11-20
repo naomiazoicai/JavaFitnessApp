@@ -1,1 +1,10 @@
+For the database:
+AccessibleRestrictedRoom (SubscriptionTypeDao.java)
+Person
+Employee
+Trainer (TrainerDao)
+Customer (CustomerDao)
+CustomerSubscription (CustomerSubscriptionDao)
+
+Other:
 when inserting a new exercise make sure it offers a valid exercise id
