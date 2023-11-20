@@ -47,8 +47,8 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
 
     @Override
     public void delete(Trainer object) throws ObjectNotContained {
-        super.delete(object);
         notifyTrainerDeleted(object);
+        super.delete(object);
     }
 
     @Override

@@ -35,8 +35,8 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
 
     @Override
     public void delete(SubscriptionType object) throws ObjectNotContained {
-        super.delete(object);
         notifySubscriptionTypeDeleted(object);
+        super.delete(object);
     }
 
     @Override

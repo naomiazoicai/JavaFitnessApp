@@ -52,8 +52,8 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
 
     @Override
     public void delete(SpecialisedRoom object) throws ObjectNotContained {
-        super.delete(object);
         notifyRoomDeleted(object);
+        super.delete(object);
     }
 
     @Override
