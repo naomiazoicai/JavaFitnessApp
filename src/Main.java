@@ -1,9 +1,8 @@
 
 import UI.Terminal;
 import dao.DatabaseConnection;
-import dao.EquipmentItemDao;
-import domain.gym.EquipmentItem;
-import repository.exceptions.ObjectNotContained;
+import dao.ExerciseDao;
+
 
 
 import java.sql.SQLException;
@@ -19,31 +18,33 @@ public class Main {
             throw new RuntimeException();
         }
 
-        EquipmentItemDao dao = EquipmentItemDao.getInstance();
+        ExerciseDao dao = ExerciseDao.getInstance();
 
 //        System.out.println(dao.generateNextId());
 
-//        System.out.println(dao.searchById(2));
+//        System.out.println(dao.searchById(3));
 
-//        System.out.println(dao.idInRepo(2));
+//        System.out.println(dao.idInRepo(3));
+
+//        dao.equipmentItemDeleted(new EquipmentItem(10));
 
 //        try {
-//            dao.insertEntity(new EquipmentItem("Test"));
+//            dao.insertEntity(new Exercise(11, "Run", "leg", new EquipmentItem(3), 100, 100));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
 //        try {
-//            dao.deleteEntity(new EquipmentItem(3));
+//            dao.deleteEntity(new Exercise(13));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
-        try {
-            dao.updateEntity(new EquipmentItem(4, "Spoon"));
-        } catch (ObjectNotContained e) {
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            dao.updateEntity(new Exercise(11, "Run", "leg", new EquipmentItem(3), 100, 100));
+//        } catch (ObjectNotContained e) {
+//            System.out.println(e.getMessage());
+//        }
 
         Terminal.getInstance().printArrayList(dao.getAllEntities());
 

@@ -43,8 +43,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
 
     @Override
     public void updateEntity(EquipmentItem equipmentItem) throws ObjectNotContained {
-        // Add object
         int id = equipmentItem.getID();
+        if (id == 0) throw new ObjectNotContained();
         String name = equipmentItem.getName();
         try {
             String updateQuery = "UPDATE equipmentitem SET name = ? WHERE id = ?;";
@@ -62,6 +62,7 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
     @Override
     public void deleteEntity(EquipmentItem equipmentItem) throws ObjectNotContained {
         int id = equipmentItem.getID();
+        if (id == 0) throw new ObjectNotContained();
         try {
             String deleteQuery = "DELETE FROM equipmentitem WHERE id = ?;";
             PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
@@ -94,11 +95,13 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        result.remove(new EquipmentItem(0));
         return result;
     }
 
     @Override
     public Boolean idInRepo(int id) {
+        if (id == 0) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM equipmentitem WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -119,6 +122,7 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
 
     @Override
     public EquipmentItem searchById(int id){
+        if (id == 0) return EquipmentItem.getNullEquipmentItem();
         try {
             String query = "SELECT * FROM equipmentitem WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(query);

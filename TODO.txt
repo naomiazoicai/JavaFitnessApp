@@ -1,1 +1,1 @@
-Add DAO and Database
+when inserting a new exercise make sure it offers a valid exercise id

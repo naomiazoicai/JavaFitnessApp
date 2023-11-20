@@ -3,6 +3,8 @@ package domain.gym;
 import java.util.Objects;
 
 public class Exercise {
+    private final static Exercise nullExercise = new Exercise();
+
     private int id;
     private String name;
     private String muscleTrained;
@@ -25,6 +27,16 @@ public class Exercise {
         this.equipmentUsed = equipmentUsed;
         this.sets = sets;
         this.reps = reps;
+    }
+
+    public Exercise(int id)
+    {
+        this.id = id;
+        this.name = "null";
+        this.muscleTrained = "null";
+        this.equipmentUsed = new EquipmentItem();
+        this.sets = 0;
+        this.reps = 0;
     }
 
     public Exercise()
@@ -100,6 +112,11 @@ public class Exercise {
     public Exercise copy()
     {
         return new Exercise(id, name, muscleTrained, equipmentUsed, sets, reps);
+    }
+
+    public static Exercise getNullExercise()
+    {
+        return nullExercise.copy();
     }
 
     @Override
