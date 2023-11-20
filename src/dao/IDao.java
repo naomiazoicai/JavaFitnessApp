@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface IDao<Entity>{
     Connection connection = DatabaseConnection.getConnection();
-    void insertEntity(Entity entity) throws ObjectAlreadyContained;
+    void addEntity(Entity entity) throws ObjectAlreadyContained;
 
     void updateEntity(Entity entity) throws ObjectNotContained;
 

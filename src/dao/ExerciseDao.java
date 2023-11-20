@@ -24,7 +24,7 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public void insertEntity(Exercise exercise) throws ObjectAlreadyContained {
+    public void addEntity(Exercise exercise) throws ObjectAlreadyContained {
         int id = generateNextId();
         String name = exercise.getName();
         String muscleTrained = exercise.getMuscleTrained();

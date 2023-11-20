@@ -22,7 +22,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public void insertEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained {
+    public void addEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained {
         String name = subscriptionType.getName();
         String description = subscriptionType.getDescription();
         double price = subscriptionType.getPrice();

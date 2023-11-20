@@ -3,7 +3,6 @@ package repository.inMemoryRepository;
 import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;
 import repository.Repository;
-import repository.exceptions.ObjectNotContained;
 import repository.interfaces.ISpecialisedRoomRepository;
 
 public class SpecialisedRoomRepository extends Repository<SpecialisedRoom> implements ISpecialisedRoomRepository
@@ -37,7 +36,7 @@ public class SpecialisedRoomRepository extends Repository<SpecialisedRoom> imple
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) throws ObjectNotContained {
+    public SpecialisedRoom searchById(int id){
         for (SpecialisedRoom specialisedRoom : arrayList)
         {
             if (id == specialisedRoom.getId()) return specialisedRoom;

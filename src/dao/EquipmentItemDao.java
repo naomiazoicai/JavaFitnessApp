@@ -23,7 +23,7 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
     }
 
     @Override
-    public void insertEntity(EquipmentItem equipmentItem) throws ObjectAlreadyContained {
+    public void addEntity(EquipmentItem equipmentItem) throws ObjectAlreadyContained {
         int id = generateNextId();
         String name = equipmentItem.getName();
         try {

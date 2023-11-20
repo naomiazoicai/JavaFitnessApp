@@ -8,9 +8,28 @@ public class Room {
 
     protected RoomAccess roomAccess;
 
+    private final static Room nullRoom = new Room();
+
     public Room(int id, boolean occupied) {
         this.id = id;
         this.occupied = occupied;
+        this.roomAccess = RoomAccess.forAll;
+    }
+
+    public Room(boolean occupied, RoomAccess roomAccess) {
+        this.occupied = occupied;
+        this.roomAccess = roomAccess;
+    }
+
+    public Room(int id, boolean occupied, RoomAccess roomAccess) {
+        this.id = id;
+        this.occupied = occupied;
+        this.roomAccess = roomAccess;
+    }
+
+    public Room() {
+        this.id = 0;
+        this.occupied = false;
         this.roomAccess = RoomAccess.forAll;
     }
 
@@ -44,6 +63,15 @@ public class Room {
         this.id = id;
     }
 
+    public RoomAccess getRoomAccess() {
+        return roomAccess;
+    }
+
+    public void setRoomAccess(RoomAccess roomAccess) {
+        this.roomAccess = roomAccess;
+    }
+
+
     public Room copy()
     {
         return new Room(id, occupied);
@@ -55,5 +83,10 @@ public class Room {
 
     public void setOccupied(boolean occupied) {
         this.occupied = occupied;
+    }
+
+    public static Room getNullRoom()
+    {
+        return nullRoom.copy();
     }
 }
