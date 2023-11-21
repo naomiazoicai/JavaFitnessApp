@@ -4,7 +4,8 @@ import controller.interfaces.observers.IObserverCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import repository.inMemoryRepository.BudgetRepository;
 
-public class BudgetController implements IObserverCustomerSubscriptionAdded {
+public class BudgetController implements IObserverCustomerSubscriptionAdded
+{
     private static BudgetController instance;
 
     private final BudgetRepository repository;
@@ -21,7 +22,8 @@ public class BudgetController implements IObserverCustomerSubscriptionAdded {
         repository.addMoney(value);
     }
 
-    public void spendMoney(double value) throws Exception {
+    public void spendMoney(double value) throws Exception
+    {
         repository.spendMoney(value);
     }
 
@@ -36,7 +38,8 @@ public class BudgetController implements IObserverCustomerSubscriptionAdded {
     }
 
     @Override
-    public void updatedAddedCustomerSubscription(CustomerSubscription customerSubscription) {
+    public void updatedAddedCustomerSubscription(CustomerSubscription customerSubscription)
+    {
         addMoney(customerSubscription.getSubscriptionType().getPrice());
     }
 }

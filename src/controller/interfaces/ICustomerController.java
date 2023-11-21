@@ -6,7 +6,8 @@ import domain.persons.Trainer;
 import repository.exceptions.ObjectNotContained;
 
 
-public interface ICustomerController extends NameIdentifiedEntitiesController<Customer> {
+public interface ICustomerController extends NameIdentifiedEntitiesController<Customer>
+{
     Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained;
 
     Boolean trainerUsernameInRepo(String username);

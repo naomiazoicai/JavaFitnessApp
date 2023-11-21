@@ -38,18 +38,21 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public void add(CustomerSubscription object) throws ObjectAlreadyContained {
+    public void add(CustomerSubscription object) throws ObjectAlreadyContained
+    {
         super.add(object);
         notifyAddedCustomerSubscription(object);
     }
 
     @Override
-    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username) {
+    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username)
+    {
         return customerSubscriptionRepository.searchSubscriptionsOfUser(username);
     }
 
     @Override
-    public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType) {
+    public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType)
+    {
         return customerSubscriptionRepository.searchSubscriptionByType(subscriptionType);
     }
 
@@ -72,13 +75,15 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public boolean subscriptionTypeInRepo(String name) {
+    public boolean subscriptionTypeInRepo(String name)
+    {
         SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
         return subscriptionTypeRepository.keyNameInRepo(name);
     }
 
     @Override
-    public SubscriptionType searchSubscriptionType(String name) {
+    public SubscriptionType searchSubscriptionType(String name)
+    {
         SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
         if (subscriptionTypeRepository.keyNameInRepo(name))
         {
@@ -88,11 +93,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom) {
-        for (CustomerSubscription subscription : repository.getAllEntities()) {
+    public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom)
+    {
+        for (CustomerSubscription subscription : repository.getAllEntities())
+        {
             if (subscription.getCustomer().equals(customer)
                     && subscription.getSubscriptionType().equals(subscriptionType)
-                    && subscription.getValidFrom().equals(validFrom)) {
+                    && subscription.getValidFrom().equals(validFrom))
+            {
                 return subscription;
             }
         }
@@ -100,12 +108,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public Boolean hasValidSubscription(Customer customer) {
+    public Boolean hasValidSubscription(Customer customer)
+    {
         return customerSubscriptionRepository.hasValidSubscription(customer);
     }
 
     @Override
-    public void updateDeletedSubscriptionType(SubscriptionType subscriptionType) {
+    public void updateDeletedSubscriptionType(SubscriptionType subscriptionType)
+    {
         customerSubscriptionRepository.subscriptionTypeDeleted(subscriptionType);
     }
 
@@ -120,7 +130,8 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription) {
+    public void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription)
+    {
         for (IObserverCustomerSubscriptionAdded observer : observerList)
         {
             observer.updatedAddedCustomerSubscription(customerSubscription);

@@ -36,7 +36,8 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) {
+    public SpecialisedRoom searchById(int id)
+    {
         try {
             return specialisedRoomRepository.searchById(id).copy();
         } catch (ObjectNotContained e) {
@@ -45,13 +46,15 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public void add(SpecialisedRoom object) throws ObjectAlreadyContained {
+    public void add(SpecialisedRoom object) throws ObjectAlreadyContained
+    {
         object.setId(specialisedRoomRepository.generateNextId());
         super.add(object);
     }
 
     @Override
-    public void delete(SpecialisedRoom object) throws ObjectNotContained {
+    public void delete(SpecialisedRoom object) throws ObjectNotContained
+    {
         notifyRoomDeleted(object);
         super.delete(object);
     }
@@ -67,7 +70,8 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public void notifyRoomDeleted(Room room) {
+    public void notifyRoomDeleted(Room room)
+    {
         for (IObserverDeletedRoom observer : observerList) observer.updateDeletedRoom(room);
     }
 }

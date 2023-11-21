@@ -33,13 +33,15 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     }
 
     @Override
-    public boolean idInRepo(int id) {
+    public boolean idInRepo(int id)
+    {
         // Set id
         return exerciseRepositoryInterface.idInRepo(id);
     }
 
     @Override
-    public Exercise searchById(int id) {
+    public Exercise searchById(int id)
+    {
         try {
             return exerciseRepositoryInterface.searchById(id);
         } catch (ObjectNotContained e)
@@ -49,7 +51,8 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     }
 
     @Override
-    public void add(Exercise object) throws ObjectAlreadyContained {
+    public void add(Exercise object) throws ObjectAlreadyContained
+    {
         // Set it
         object.setId(exerciseRepositoryInterface.generateNextId());
         super.add(object);
@@ -61,7 +64,8 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     }
 
     @Override
-    public EquipmentItem searchEquipmentItemById(int id) {
+    public EquipmentItem searchEquipmentItemById(int id)
+    {
         try {
             return equipmentItemRepositoryInterface.searchById(id);
         } catch (ObjectNotContained e) {
@@ -70,7 +74,8 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     }
 
     @Override
-    public void updateEquipmentItemDeleted(EquipmentItem equipmentItem) {
+    public void updateEquipmentItemDeleted(EquipmentItem equipmentItem)
+    {
         exerciseRepositoryInterface.equipmentItemDeleted(equipmentItem);
     }
 }

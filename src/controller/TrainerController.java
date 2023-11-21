@@ -31,7 +31,8 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public ArrayList<Trainer> searchByPartialKeyName(String keyName) {
+    public ArrayList<Trainer> searchByPartialKeyName(String keyName)
+    {
         return trainerRepository.searchByPartialKeyName(keyName);
     }
 
@@ -46,7 +47,8 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public void delete(Trainer object) throws ObjectNotContained {
+    public void delete(Trainer object) throws ObjectNotContained
+    {
         notifyTrainerDeleted(object);
         super.delete(object);
     }
@@ -62,7 +64,8 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public void notifyTrainerDeleted(Trainer trainer) {
+    public void notifyTrainerDeleted(Trainer trainer)
+    {
         for (IObserverDeletedTrainer observer : observerList) observer.updatedTrainerDeleted(trainer);
     }
 }

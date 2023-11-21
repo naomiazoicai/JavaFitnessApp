@@ -7,7 +7,8 @@ import domain.persons.Customer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public interface ICustomerSubscriptionController {
+public interface ICustomerSubscriptionController
+{
     ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username);
 
     ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType);

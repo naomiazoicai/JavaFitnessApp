@@ -55,12 +55,14 @@ public class CustomerController extends Controller<Customer> implements ICustome
     }
 
     @Override
-    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained {
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained
+    {
         return ICustomerRepository.changeAssignedTrainerOfCustomer(customer, trainer);
     }
 
     @Override
-    public Trainer getTrainerByUsername(String username) {
+    public Trainer getTrainerByUsername(String username)
+    {
         TrainerController trainerController = TrainerController.getInstance();
         return trainerController.searchByKeyName(username);
     }
@@ -71,7 +73,8 @@ public class CustomerController extends Controller<Customer> implements ICustome
     }
 
     @Override
-    public boolean hasValidSubscription(String username) {
+    public boolean hasValidSubscription(String username)
+    {
         ICustomerSubscriptionController customerSubscriptionController = CustomerSubscriptionController.getInstance();
         Customer customer = ICustomerRepository.searchByKeyName(username);
         return customerSubscriptionController.hasValidSubscription(customer);

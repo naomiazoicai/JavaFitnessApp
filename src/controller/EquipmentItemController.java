@@ -45,14 +45,16 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     }
 
     @Override
-    public void add(EquipmentItem object) throws ObjectAlreadyContained {
+    public void add(EquipmentItem object) throws ObjectAlreadyContained
+    {
         // Set id
         object.setID(equipmentItemRepositoryInterface.generateNextId());
         super.add(object);
     }
 
     @Override
-    public void delete(EquipmentItem object) throws ObjectNotContained {
+    public void delete(EquipmentItem object) throws ObjectNotContained
+    {
         notifyEquipmentItemDeleted(object);
         super.delete(object);
     }
@@ -68,7 +70,8 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     }
 
     @Override
-    public void notifyEquipmentItemDeleted(EquipmentItem equipmentItem) {
+    public void notifyEquipmentItemDeleted(EquipmentItem equipmentItem)
+    {
         for (IObserverDeleteEquipmentItem observer : observerList) observer.updateEquipmentItemDeleted(equipmentItem);
     }
 }

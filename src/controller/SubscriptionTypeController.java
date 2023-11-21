@@ -34,18 +34,21 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     }
 
     @Override
-    public void delete(SubscriptionType object) throws ObjectNotContained {
+    public void delete(SubscriptionType object) throws ObjectNotContained
+    {
         notifySubscriptionTypeDeleted(object);
         super.delete(object);
     }
 
     @Override
-    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName) {
+    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName)
+    {
         return subscriptionTypeRepository.searchByPartialKeyName(keyName);
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName) {
+    public SubscriptionType searchByKeyName(String keyName)
+    {
         return subscriptionTypeRepository.searchByKeyName(keyName);
     }
 
@@ -61,19 +64,22 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     }
 
     @Override
-    public Room searchRoom(int roomId) throws ObjectNotContained {
+    public Room searchRoom(int roomId) throws ObjectNotContained
+    {
         return SpecialisedRoomRepository.getInstance().searchById(roomId);
     }
 
     @Override
-    public void addRoomToSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained {
+    public void addRoomToSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained
+    {
         Room room = searchRoom(roomId);
         SubscriptionType subscriptionType = searchByKeyName(subscriptionTypeName);
         subscriptionTypeRepository.addRoomToSubscription(subscriptionType, room);
     }
 
     @Override
-    public void removeRoomFromSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained {
+    public void removeRoomFromSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained
+    {
         Room room = searchRoom(roomId);
         SubscriptionType subscriptionType = searchByKeyName(subscriptionTypeName);
         subscriptionTypeRepository.removeRoomFromSubscription(subscriptionType, room);
@@ -95,7 +101,8 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     }
 
     @Override
-    public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType) {
+    public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType)
+    {
         for (IObserverDeletedSubscriptionType observer : observerList) observer.updateDeletedSubscriptionType(subscriptionType);
     }
 }
