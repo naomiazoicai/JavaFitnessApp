@@ -1,7 +1,6 @@
-package dao.interaces;
+package dao;
 
-import dao.IDao;
-import dao.PersonDao;
+import dao.interaces.IEmployeeDao;
 import domain.persons.Employee;
 import domain.persons.Gender;
 import domain.persons.Person;

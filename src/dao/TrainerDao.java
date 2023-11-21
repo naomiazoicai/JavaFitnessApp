@@ -1,6 +1,6 @@
-package dao.interaces;
+package dao;
 
-import dao.IDao;
+import dao.interaces.ITrainerDao;
 import domain.persons.*;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;

@@ -1,6 +1,5 @@
 For the database:
 AccessibleRestrictedRoom (SubscriptionTypeDao.java)
-Customer (CustomerDao)
 CustomerSubscription (CustomerSubscriptionDao)
 
 Other:

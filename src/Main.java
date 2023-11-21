@@ -1,13 +1,11 @@
 
 import UI.Terminal;
+import dao.CustomerDao;
 import dao.DatabaseConnection;
-import dao.PersonDao;
-import dao.interaces.EmployeeDao;
-import dao.interaces.TrainerDao;
-import domain.persons.Employee;
+import dao.TrainerDao;
+import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Trainer;
-import domain.persons.TrainerSpecialization;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
@@ -25,13 +23,13 @@ public class Main {
             throw new RuntimeException();
         }
 
-        TrainerDao dao = TrainerDao.getInstance();
+        CustomerDao dao = CustomerDao.getInstance();
 
-//        System.out.println(dao.keyNameInRepo("bgy99"));
+//        System.out.println(dao.keyNameInRepo("gigiSlay"));
 
-//        System.out.println(dao.searchByKeyName("bgy99"));
+//        System.out.println(dao.searchByKeyName("yourBoss"));
 
-//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("yc"));
+//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("i"));
 
 //        System.out.println(dao.generateNextId());
 
@@ -48,19 +46,23 @@ public class Main {
 //        }
 
 //        try {
-//            dao.addEntity(new Trainer("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male, 1000, TrainerSpecialization.Box));
+//            dao.addEntity(new Customer("yone", "ionel", LocalDate.of(2000, 10, 10),
+//                    Gender.male, new Trainer("giovanniBecali")));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
+//        dao.trainerDeleted(new Trainer("giovanniBecali"));
+
 //        try {
-//            dao.deleteEntity(new Trainer("yone"));
+//            dao.deleteEntity(new Customer("yone"));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
 //
 //        try {
-//            dao.updateEntity(new Trainer("yone", "ionelllllll", LocalDate.of(2000, 10, 10), Gender.male, 1000, TrainerSpecialization.TRX));
+//            dao.updateEntity(new Customer("yone", "ionela", LocalDate.of(2000, 10, 10),
+//                Gender.male, new Trainer("giovanniBecali")));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
