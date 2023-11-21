@@ -7,10 +7,12 @@ import controller.interfaces.subjects.ISubjectCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
+import factory.repo.CustomerSubscriptionRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
-import repository.inMemoryRepository.CustomerRepository;
-import repository.inMemoryRepository.CustomerSubscriptionRepository;
-import repository.inMemoryRepository.SubscriptionTypeRepository;
+import repository.inMemoryRepository.CustomerInMemoryRepository;
+import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
 
 import java.time.LocalDate;
@@ -24,46 +26,57 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
 
-    private CustomerSubscriptionController(CustomerSubscriptionRepository customerSubscriptionRepository)
+    private static RepoTypes repoType;
+
+    private CustomerSubscriptionController(IRepository<CustomerSubscription> iRepository, ICustomerSubscriptionRepository iCustomerSubscriptionRepository)
     {
-        super(customerSubscriptionRepository);
-        this.customerSubscriptionRepository = customerSubscriptionRepository;
+        super(iRepository);
+        this.customerSubscriptionRepository = iCustomerSubscriptionRepository;
         addObserver(BudgetController.getInstance());
     }
 
     public static CustomerSubscriptionController getInstance()
     {
-        if (instance == null) instance = new CustomerSubscriptionController(CustomerSubscriptionRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<CustomerSubscription> iRepository = CustomerSubscriptionRepoFactory.buildIRepository(repoType);
+            ICustomerSubscriptionRepository iCustomerRepository = CustomerSubscriptionRepoFactory.buildInterface(repoType);
+            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository);
+        }
         return instance;
     }
 
     @Override
-    public void add(CustomerSubscription object) throws ObjectAlreadyContained {
+    public void add(CustomerSubscription object) throws ObjectAlreadyContained
+    {
         super.add(object);
         notifyAddedCustomerSubscription(object);
     }
 
     @Override
-    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username) {
+    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username)
+    {
         return customerSubscriptionRepository.searchSubscriptionsOfUser(username);
     }
 
     @Override
-    public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType) {
+    public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType)
+    {
         return customerSubscriptionRepository.searchSubscriptionByType(subscriptionType);
     }
 
     @Override
     public boolean customerInRepo(String username)
     {
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
         return customerRepository.keyNameInRepo(username);
     }
 
     @Override
     public Customer searchCustomerInRepo(String username)
     {
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
         if (customerRepository.keyNameInRepo(username))
         {
             return customerRepository.searchByKeyName(username);
@@ -72,14 +85,16 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public boolean subscriptionTypeInRepo(String name) {
-        SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
+    public boolean subscriptionTypeInRepo(String name)
+    {
+        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
         return subscriptionTypeRepository.keyNameInRepo(name);
     }
 
     @Override
-    public SubscriptionType searchSubscriptionType(String name) {
-        SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
+    public SubscriptionType searchSubscriptionType(String name)
+    {
+        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
         if (subscriptionTypeRepository.keyNameInRepo(name))
         {
             return subscriptionTypeRepository.searchByKeyName(name);
@@ -88,11 +103,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom) {
-        for (CustomerSubscription subscription : repository.getAll()) {
+    public CustomerSubscription searchCustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom)
+    {
+        for (CustomerSubscription subscription : repository.getAllEntities())
+        {
             if (subscription.getCustomer().equals(customer)
                     && subscription.getSubscriptionType().equals(subscriptionType)
-                    && subscription.getValidFrom().equals(validFrom)) {
+                    && subscription.getValidFrom().equals(validFrom))
+            {
                 return subscription;
             }
         }
@@ -100,12 +118,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public Boolean hasValidSubscription(Customer customer) {
+    public Boolean hasValidSubscription(Customer customer)
+    {
         return customerSubscriptionRepository.hasValidSubscription(customer);
     }
 
     @Override
-    public void updateDeletedSubscriptionType(SubscriptionType subscriptionType) {
+    public void updateDeletedSubscriptionType(SubscriptionType subscriptionType)
+    {
         customerSubscriptionRepository.subscriptionTypeDeleted(subscriptionType);
     }
 
@@ -120,10 +140,16 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription) {
+    public void notifyAddedCustomerSubscription(CustomerSubscription customerSubscription)
+    {
         for (IObserverCustomerSubscriptionAdded observer : observerList)
         {
             observer.updatedAddedCustomerSubscription(customerSubscription);
         }
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }

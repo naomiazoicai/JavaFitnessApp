@@ -4,8 +4,10 @@ import controller.interfaces.observers.IObserverDeletedTrainer;
 import controller.interfaces.subjects.ISubjectDeletedTrainer;
 import controller.interfaces.ITrainerController;
 import domain.persons.Trainer;
+import factory.repo.TrainerRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.TrainerRepository;
 import repository.interfaces.ITrainerRepository;
 
 import java.util.ArrayList;
@@ -15,40 +17,50 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
 
 {
     private static TrainerController instance;
-    private final ITrainerRepository trainerRepository;
+    private final ITrainerRepository iTrainerRepository;
 
-    private TrainerController(TrainerRepository trainerRepository)
+    private static RepoTypes repoType;
+
+    private TrainerController(IRepository<Trainer> iRepository, ITrainerRepository iTrainerRepository)
     {
-        super(trainerRepository);
-        this.trainerRepository = trainerRepository;
+        super(iRepository);
+        this.iTrainerRepository = iTrainerRepository;
         addObserver(CustomerController.getInstance());
     }
 
     public static TrainerController getInstance()
     {
-        if (instance == null) instance = new TrainerController(TrainerRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<Trainer> iRepository = TrainerRepoFactory.buildIRepository(repoType);
+            ITrainerRepository iTrainerRepository = TrainerRepoFactory.buildInterface(repoType);
+            instance = new TrainerController(iRepository, iTrainerRepository);
+        }
         return instance;
     }
 
     @Override
-    public ArrayList<Trainer> searchByPartialKeyName(String keyName) {
-        return trainerRepository.searchByPartialKeyName(keyName);
+    public ArrayList<Trainer> searchByPartialKeyName(String keyName)
+    {
+        return iTrainerRepository.searchByPartialKeyName(keyName);
     }
 
     @Override
     public Trainer searchByKeyName(String keyName) {
-        return trainerRepository.searchByKeyName(keyName);
+        return iTrainerRepository.searchByKeyName(keyName);
     }
 
     @Override
     public Boolean keyNameInRepo(String keyName) {
-        return trainerRepository.keyNameInRepo(keyName);
+        return iTrainerRepository.keyNameInRepo(keyName);
     }
 
     @Override
-    public void delete(Trainer object) throws ObjectNotContained {
-        super.delete(object);
+    public void delete(Trainer object) throws ObjectNotContained
+    {
         notifyTrainerDeleted(object);
+        super.delete(object);
     }
 
     @Override
@@ -62,8 +74,14 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public void notifyTrainerDeleted(Trainer trainer) {
+    public void notifyTrainerDeleted(Trainer trainer)
+    {
         for (IObserverDeletedTrainer observer : observerList) observer.updatedTrainerDeleted(trainer);
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }
 

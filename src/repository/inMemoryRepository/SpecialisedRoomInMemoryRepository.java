@@ -2,17 +2,16 @@ package repository.inMemoryRepository;
 
 import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;
-import repository.Repository;
-import repository.exceptions.ObjectNotContained;
+import repository.InMemoryRepository;
 import repository.interfaces.ISpecialisedRoomRepository;
 
-public class SpecialisedRoomRepository extends Repository<SpecialisedRoom> implements ISpecialisedRoomRepository
+public class SpecialisedRoomInMemoryRepository extends InMemoryRepository<SpecialisedRoom> implements ISpecialisedRoomRepository
 {
-    private static SpecialisedRoomRepository instance;
+    private static SpecialisedRoomInMemoryRepository instance;
 
     private int lastId;
 
-    private SpecialisedRoomRepository()
+    private SpecialisedRoomInMemoryRepository()
     {
         SpecialisedRoom room1 = new SpecialisedRoom(1, true, RoomType.studio, 10);
         SpecialisedRoom room2 = new SpecialisedRoom(2, true, RoomType.studio, 10);
@@ -21,9 +20,9 @@ public class SpecialisedRoomRepository extends Repository<SpecialisedRoom> imple
         lastId = 2;
     }
 
-    public static SpecialisedRoomRepository getInstance()
+    public static SpecialisedRoomInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new SpecialisedRoomRepository();
+        if (instance == null) instance = new SpecialisedRoomInMemoryRepository();
         return instance;
     }
 
@@ -37,7 +36,7 @@ public class SpecialisedRoomRepository extends Repository<SpecialisedRoom> imple
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) throws ObjectNotContained {
+    public SpecialisedRoom searchById(int id){
         for (SpecialisedRoom specialisedRoom : arrayList)
         {
             if (id == specialisedRoom.getId()) return specialisedRoom;

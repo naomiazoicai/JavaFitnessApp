@@ -1,7 +1,7 @@
 package controller;
 
 import controller.interfaces.IController;
-import repository.Repository;
+import repository.IRepository;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 public abstract class Controller<Type> implements IController<Type>
 {
-    final protected Repository<Type> repository;
+    final protected IRepository<Type> repository;
 
-    protected Controller(Repository<Type> repository)
+    protected Controller(IRepository<Type> repository)
     {
         this.repository = repository;
     }
@@ -19,24 +19,24 @@ public abstract class Controller<Type> implements IController<Type>
     @Override
     public void add(Type object) throws ObjectAlreadyContained
     {
-        repository.add(object);
+        repository.addEntity(object);
     }
 
     @Override
     public void update(Type object) throws ObjectNotContained
     {
-        repository.update(object);
+        repository.updateEntity(object);
     }
 
     @Override
     public void delete(Type object) throws ObjectNotContained
     {
-        repository.delete(object);
+        repository.deleteEntity(object);
     }
 
     @Override
     public ArrayList<Type> getAll()
     {
-        return repository.getAll();
+        return repository.getAllEntities();
     }
 }

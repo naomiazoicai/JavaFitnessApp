@@ -5,9 +5,11 @@ import controller.interfaces.ISpecialisedRoomController;
 import controller.interfaces.subjects.ISubjectDeletedRoom;
 import domain.gym.Room;
 import domain.gym.SpecialisedRoom;
+import factory.repo.SpecialisedRoomRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomRepository;
 import repository.interfaces.ISpecialisedRoomRepository;
 
 
@@ -15,45 +17,56 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
 {
     private static SpecialisedRoomController instance;
 
-    private final ISpecialisedRoomRepository specialisedRoomRepository;
+    private final ISpecialisedRoomRepository iSpecialisedRoomRepository;
 
-    private SpecialisedRoomController(SpecialisedRoomRepository specialisedRoomRepository)
+    private static RepoTypes repoType;
+
+    private SpecialisedRoomController(IRepository<SpecialisedRoom> iRepository, ISpecialisedRoomRepository iSpecialisedRoomRepository)
     {
-        super(specialisedRoomRepository);
-        this.specialisedRoomRepository = specialisedRoomRepository;
+        super(iRepository);
+        this.iSpecialisedRoomRepository = iSpecialisedRoomRepository;
         addObserver(SubscriptionTypeController.getInstance());
     }
 
     public static SpecialisedRoomController getInstance()
     {
-        if (instance == null) instance = new SpecialisedRoomController(SpecialisedRoomRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<SpecialisedRoom> iRepository = SpecialisedRoomRepoFactory.buildIRepository(repoType);
+            ISpecialisedRoomRepository iSpecialisedRoomRepository = SpecialisedRoomRepoFactory.buildInterface(repoType);
+            instance = new SpecialisedRoomController(iRepository, iSpecialisedRoomRepository);
+        }
         return instance;
     }
 
     @Override
     public boolean idInRepo(int id) {
-        return specialisedRoomRepository.idInRepo(id);
+        return iSpecialisedRoomRepository.idInRepo(id);
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) {
+    public SpecialisedRoom searchById(int id)
+    {
         try {
-            return specialisedRoomRepository.searchById(id).copy();
+            return iSpecialisedRoomRepository.searchById(id).copy();
         } catch (ObjectNotContained e) {
             return new SpecialisedRoom();
         }
     }
 
     @Override
-    public void add(SpecialisedRoom object) throws ObjectAlreadyContained {
-        object.setId(specialisedRoomRepository.generateNextId());
+    public void add(SpecialisedRoom object) throws ObjectAlreadyContained
+    {
+        object.setId(iSpecialisedRoomRepository.generateNextId());
         super.add(object);
     }
 
     @Override
-    public void delete(SpecialisedRoom object) throws ObjectNotContained {
-        super.delete(object);
+    public void delete(SpecialisedRoom object) throws ObjectNotContained
+    {
         notifyRoomDeleted(object);
+        super.delete(object);
     }
 
     @Override
@@ -67,7 +80,13 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public void notifyRoomDeleted(Room room) {
+    public void notifyRoomDeleted(Room room)
+    {
         for (IObserverDeletedRoom observer : observerList) observer.updateDeletedRoom(room);
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }

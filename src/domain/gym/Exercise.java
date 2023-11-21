@@ -2,7 +2,10 @@ package domain.gym;
 
 import java.util.Objects;
 
-public class Exercise {
+public class Exercise
+{
+    private final static Exercise nullExercise = new Exercise();
+
     private int id;
     private String name;
     private String muscleTrained;
@@ -10,7 +13,8 @@ public class Exercise {
     private int sets;
     private int reps;
 
-    public Exercise(int id, String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps) {
+    public Exercise(int id, String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps)
+    {
         this.id = id;
         this.name = name;
         this.muscleTrained = muscleTrained;
@@ -19,12 +23,23 @@ public class Exercise {
         this.reps = reps;
     }
 
-    public Exercise(String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps) {
+    public Exercise(String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps)
+    {
         this.name = name;
         this.muscleTrained = muscleTrained;
         this.equipmentUsed = equipmentUsed;
         this.sets = sets;
         this.reps = reps;
+    }
+
+    public Exercise(int id)
+    {
+        this.id = id;
+        this.name = "null";
+        this.muscleTrained = "null";
+        this.equipmentUsed = new EquipmentItem();
+        this.sets = 0;
+        this.reps = 0;
     }
 
     public Exercise()
@@ -38,7 +53,8 @@ public class Exercise {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Exercise{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
@@ -102,8 +118,14 @@ public class Exercise {
         return new Exercise(id, name, muscleTrained, equipmentUsed, sets, reps);
     }
 
+    public static Exercise getNullExercise()
+    {
+        return nullExercise.copy();
+    }
+
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;

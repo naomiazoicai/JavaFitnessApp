@@ -1,1 +1,11 @@
-Add DAO and Database
+For the database:
+1. Factory for Repository
+2. Controller to use Repo factory
+
+Todo:
+CustomerDatabaseRepository: changeAssignedTrainerOfCustomer
+
+Other:
+EquipmentItemRepository(both): generateNextId() should be private
+ExerciseRepository(both): generateNextId() should be private
+SpecialisedRoom(both): generateNextId() should be private

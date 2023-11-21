@@ -2,17 +2,16 @@ package repository.inMemoryRepository;
 
 import domain.gym.Room;
 import domain.money.SubscriptionType;
-import repository.Repository;
-import repository.exceptions.ObjectNotContained;
+import repository.InMemoryRepository;
 import repository.interfaces.ISubscriptionTypeRepository;
 
 import java.util.ArrayList;
 
-public class SubscriptionTypeRepository extends Repository<SubscriptionType> implements ISubscriptionTypeRepository
+public class SubscriptionTypeInMemoryRepository extends InMemoryRepository<SubscriptionType> implements ISubscriptionTypeRepository
 {
-    private static SubscriptionTypeRepository instance;
+    private static SubscriptionTypeInMemoryRepository instance;
 
-    private SubscriptionTypeRepository()
+    private SubscriptionTypeInMemoryRepository()
     {
         SubscriptionType subscriptionType1 = new SubscriptionType("Silver", "Basic plan", 100);
         SubscriptionType subscriptionType2 = new SubscriptionType("Diamond", "King", 1000);
@@ -20,9 +19,9 @@ public class SubscriptionTypeRepository extends Repository<SubscriptionType> imp
         arrayList.add(subscriptionType2);
     }
 
-    public static SubscriptionTypeRepository getInstance()
+    public static SubscriptionTypeInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new SubscriptionTypeRepository();
+        if (instance == null) instance = new SubscriptionTypeInMemoryRepository();
         return instance;
     }
 

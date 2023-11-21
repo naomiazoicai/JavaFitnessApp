@@ -3,21 +3,38 @@ package domain.persons;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Person {
+public class Person
+{
+    private final static Person nullPerson = new Person();
+
     protected String username;
     protected String name;
     protected LocalDate birthDate;
     protected Gender gender;
 
-    public Person(String username, String name, LocalDate birthDate, Gender gender) {
+    public Person(String username, String name, LocalDate birthDate, Gender gender)
+    {
         this.username = username;
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
     }
 
+    public Person(String username) {
+        this.username = username;
+    }
+
+    public Person()
+    {
+        this.username = "null";
+        this.name = "null";
+        this.birthDate = LocalDate.of(1000, 1, 1);
+        this.gender = Gender.notSpecifying;
+    }
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Person{" +
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
@@ -59,7 +76,8 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person;
@@ -72,4 +90,7 @@ public class Person {
         return new Person(username, name, birthDate, gender);
     }
 
+    public static Person getNullPerson() {
+        return nullPerson.copy();
+    }
 }

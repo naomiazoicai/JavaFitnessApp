@@ -4,18 +4,18 @@ import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Person;
 import domain.persons.Trainer;
-import repository.Repository;
+import repository.InMemoryRepository;
 import repository.exceptions.ObjectNotContained;
 import repository.interfaces.ICustomerRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CustomerRepository extends Repository<Customer> implements ICustomerRepository
+public class CustomerInMemoryRepository extends InMemoryRepository<Customer> implements ICustomerRepository
 {
-    private static CustomerRepository instance;
+    private static CustomerInMemoryRepository instance;
 
-    private CustomerRepository()
+    private CustomerInMemoryRepository()
     {
         super();
         Customer customer1 = new Customer("gigiSlay", "gigi", LocalDate.of(2000, 10, 10), Gender.male);
@@ -24,9 +24,9 @@ public class CustomerRepository extends Repository<Customer> implements ICustome
         arrayList.add(customer2);
     }
 
-    public static CustomerRepository getInstance()
+    public static CustomerInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new CustomerRepository();
+        if (instance == null) instance = new CustomerInMemoryRepository();
         return instance;
     }
 
