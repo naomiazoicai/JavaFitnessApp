@@ -2,11 +2,13 @@ package dao;
 
 import java.sql.*;
 
-public class DatabaseConnection {
+public class DatabaseConnection
+{
     private static Connection connection;
 
     private DatabaseConnection() {}
-    public static void setConnection(String url, String user, String password) throws SQLException {
+    public static void setConnection(String url, String user, String password) throws SQLException
+    {
         // Set
         try {
             // Load the MySQL JDBC driver
@@ -17,7 +19,8 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection(url, user, password);
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection()
+    {
         if (connection == null) throw new RuntimeException("No database connection provided.");
         return connection;
     }

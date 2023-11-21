@@ -5,7 +5,8 @@ import domain.money.SubscriptionType;
 
 import java.util.ArrayList;
 
-public interface ISubscriptionTypeDao {
+public interface ISubscriptionTypeDao
+{
     Boolean keyNameInRepo(String keyName);
 
     ArrayList<SubscriptionType> searchByPartialKeyName(String keyName);

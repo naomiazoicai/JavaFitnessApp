@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
-public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao {
+public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
+{
     private static EquipmentItemDao instance;
 
     private EquipmentItemDao(){}
@@ -23,7 +24,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
     }
 
     @Override
-    public void addEntity(EquipmentItem equipmentItem) throws ObjectAlreadyContained {
+    public void addEntity(EquipmentItem equipmentItem) throws ObjectAlreadyContained
+    {
         int id = generateNextId();
         String name = equipmentItem.getName();
         try {
@@ -42,7 +44,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao 
     }
 
     @Override
-    public void updateEntity(EquipmentItem equipmentItem) throws ObjectNotContained {
+    public void updateEntity(EquipmentItem equipmentItem) throws ObjectNotContained
+    {
         int id = equipmentItem.getID();
         if (id == 0) throw new ObjectNotContained();
         String name = equipmentItem.getName();

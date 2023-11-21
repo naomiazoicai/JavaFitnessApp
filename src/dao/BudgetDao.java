@@ -9,14 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BudgetDao {
+public class BudgetDao
+{
     private final Connection connection = DatabaseConnection.getConnection();
 
     private static BudgetDao instance;
 
     private final Budget budget;
 
-    private BudgetDao(){
+    private BudgetDao()
+    {
         budget = Budget.getInstance();
         initialiseBudget();
     }
