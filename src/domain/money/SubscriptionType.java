@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class SubscriptionType {
+public class SubscriptionType
+{
     private String name;
     private String description;
     private double price;
@@ -15,7 +16,8 @@ public class SubscriptionType {
 
     private final HashSet<Room> accessibleRestrictedRooms = new HashSet<>();
 
-    public SubscriptionType(String name, String description, double price) {
+    public SubscriptionType(String name, String description, double price)
+    {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -28,7 +30,8 @@ public class SubscriptionType {
         this.price = 0;
     }
 
-    public SubscriptionType(){
+    public SubscriptionType()
+    {
         this.name = "";
         this.description = "";
         this.price = 0;
@@ -45,7 +48,8 @@ public class SubscriptionType {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "SubscriptionType{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -55,7 +59,8 @@ public class SubscriptionType {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SubscriptionType that = (SubscriptionType) o;
@@ -67,31 +72,38 @@ public class SubscriptionType {
         return new SubscriptionType(name, description, price);
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public double getPrice() {
+    public double getPrice()
+    {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price)
+    {
         this.price = price;
     }
 
-    public ArrayList<Room> getAccessibleRestrictedRooms() {
+    public ArrayList<Room> getAccessibleRestrictedRooms()
+    {
         return new ArrayList<>(accessibleRestrictedRooms);
     }
 

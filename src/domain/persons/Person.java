@@ -3,7 +3,8 @@ package domain.persons;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Person {
+public class Person
+{
     private final static Person nullPerson = new Person();
 
     protected String username;
@@ -11,7 +12,8 @@ public class Person {
     protected LocalDate birthDate;
     protected Gender gender;
 
-    public Person(String username, String name, LocalDate birthDate, Gender gender) {
+    public Person(String username, String name, LocalDate birthDate, Gender gender)
+    {
         this.username = username;
         this.name = name;
         this.birthDate = birthDate;
@@ -22,7 +24,8 @@ public class Person {
         this.username = username;
     }
 
-    public Person() {
+    public Person()
+    {
         this.username = "null";
         this.name = "null";
         this.birthDate = LocalDate.of(1000, 1, 1);
@@ -30,7 +33,8 @@ public class Person {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Person{" +
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
@@ -72,7 +76,8 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person;

@@ -2,7 +2,8 @@ package domain.gym;
 
 import java.util.Objects;
 
-public class Exercise {
+public class Exercise
+{
     private final static Exercise nullExercise = new Exercise();
 
     private int id;
@@ -12,7 +13,8 @@ public class Exercise {
     private int sets;
     private int reps;
 
-    public Exercise(int id, String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps) {
+    public Exercise(int id, String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps)
+    {
         this.id = id;
         this.name = name;
         this.muscleTrained = muscleTrained;
@@ -21,7 +23,8 @@ public class Exercise {
         this.reps = reps;
     }
 
-    public Exercise(String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps) {
+    public Exercise(String name, String muscleTrained, EquipmentItem equipmentUsed, int sets, int reps)
+    {
         this.name = name;
         this.muscleTrained = muscleTrained;
         this.equipmentUsed = equipmentUsed;
@@ -50,7 +53,8 @@ public class Exercise {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Exercise{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
@@ -120,7 +124,8 @@ public class Exercise {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;

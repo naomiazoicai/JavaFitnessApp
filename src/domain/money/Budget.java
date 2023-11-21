@@ -1,7 +1,8 @@
 package domain.money;
 
 // Singleton
-public class Budget {
+public class Budget
+{
     private static Budget instance;
     private double currentMoney;
 
@@ -35,7 +36,8 @@ public class Budget {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Budget{" +
                 "currentMoney=" + currentMoney +
                 '}';

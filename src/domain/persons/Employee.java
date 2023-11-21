@@ -2,7 +2,8 @@ package domain.persons;
 
 import java.time.LocalDate;
 
-public class Employee extends Person{
+public class Employee extends Person
+{
     private final static Employee nullEmployee = new Employee();
 
     protected double salary;
@@ -12,7 +13,8 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
-    public Employee(String username, String name, LocalDate birthDate, Gender gender) {
+    public Employee(String username, String name, LocalDate birthDate, Gender gender)
+    {
         super(username, name, birthDate, gender);
         salary = 0;
     }
@@ -27,7 +29,8 @@ public class Employee extends Person{
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Employee{" +
                 "salary=" + salary +
                 ", username='" + username + '\'' +
