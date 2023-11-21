@@ -13,7 +13,12 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
 {
     private static SubscriptionTypeDao instance;
 
-    private SubscriptionTypeDao(){}
+    private final SpecialisedRoomDao roomDao;
+
+    private SubscriptionTypeDao()
+    {
+        roomDao = SpecialisedRoomDao.getInstance();
+    }
 
     public static SubscriptionTypeDao getInstance()
     {
@@ -99,6 +104,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
                 subscriptionType.setName(resultSet.getString("name"));
                 subscriptionType.setDescription(resultSet.getString("description"));
                 subscriptionType.setPrice(resultSet.getDouble("price"));
+                addRooms(subscriptionType);
+                // Return
                 result.add(subscriptionType);
             }
         }
@@ -106,6 +113,23 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    private void addRooms (SubscriptionType subscriptionType) throws SQLException {
+        // Add rooms
+        String roomQuery = "SELECT roomId FROM accessiblerestrictedroom WHERE subscriptionTypeName = ?";
+        PreparedStatement roomStatement = connection.prepareStatement(roomQuery);
+        roomStatement.setString(1, subscriptionType.getName());
+        ResultSet roomResultSet = roomStatement.executeQuery();
+        while (roomResultSet.next())
+        {
+            int roomId = roomResultSet.getInt("roomId");
+            if (roomDao.idInRepo(roomId))
+            {
+                Room room = roomDao.searchById(roomId);
+                subscriptionType.addRoomAccess(room);
+            }
+        }
     }
 
     @Override
@@ -145,6 +169,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
                 subscriptionType.setName(resultSet.getString("name"));
                 subscriptionType.setDescription(resultSet.getString("description"));
                 subscriptionType.setPrice(resultSet.getDouble("price"));
+                addRooms(subscriptionType);
                 result.add(subscriptionType);
             }
         }
@@ -169,6 +194,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
                 subscriptionType.setName(resultSet.getString("name"));
                 subscriptionType.setDescription(resultSet.getString("description"));
                 subscriptionType.setPrice(resultSet.getDouble("price"));
+                addRooms(subscriptionType);
                 return subscriptionType;
             }
         }
@@ -182,18 +208,52 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     @Override
     public void addRoomToSubscription(SubscriptionType subscriptionType, Room room)
     {
-        //TODO
+        String subscriptionName = subscriptionType.getName();
+        if (!keyNameInRepo(subscriptionName)) return;
+        int roomId = room.getId();
+        if (!roomDao.idInRepo(roomId)) return;
+        try{
+            String query = "INSERT INTO accessiblerestrictedroom (roomId, subscriptionTypeName) VALUES (?, ?)";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, roomId);
+            statement.setString(2, subscriptionName);
+            statement.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException ignore){} // IF already added, ignore
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void removeRoomFromSubscription(SubscriptionType subscriptionType, Room room)
     {
-        //TODO
+        String subscriptionName = subscriptionType.getName();
+        if (!keyNameInRepo(subscriptionName)) return;
+        int roomId = room.getId();
+        if (!roomDao.idInRepo(roomId)) return;
+        try{
+            String query = "DELETE FROM accessiblerestrictedroom WHERE roomId = ? AND subscriptionTypeName = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, roomId);
+            statement.setString(2, subscriptionName);
+            statement.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void roomDeleted(Room room)
     {
-        //TODO
+        int id = room.getId();
+        try {
+            String insertQuery = "DELETE FROM accessiblerestrictedroom WHERE roomId = ?";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setInt(1, id);
+            insertStatement.executeUpdate();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

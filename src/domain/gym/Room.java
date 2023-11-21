@@ -11,6 +11,11 @@ public class Room
 
     private final static Room nullRoom = new Room();
 
+    public Room(int id)
+    {
+        this.id = id;
+    }
+
     public Room(int id, boolean occupied)
     {
         this.id = id;

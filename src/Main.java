@@ -2,7 +2,10 @@
 import UI.Terminal;
 import dao.CustomerDao;
 import dao.DatabaseConnection;
+import dao.SubscriptionTypeDao;
 import dao.TrainerDao;
+import domain.gym.Room;
+import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Trainer;
@@ -23,51 +26,20 @@ public class Main {
             throw new RuntimeException();
         }
 
-        CustomerDao dao = CustomerDao.getInstance();
+        SubscriptionTypeDao dao = SubscriptionTypeDao.getInstance();
 
-//        System.out.println(dao.keyNameInRepo("gigiSlay"));
+//        dao.addRoomToSubscription(new SubscriptionType("Gold"), new Room(4));
 
-//        System.out.println(dao.searchByKeyName("yourBoss"));
+        dao.removeRoomFromSubscription(new SubscriptionType("Gold"), new Room(4));
 
-//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("i"));
+//        dao.roomDeleted(new Room(4));
 
-//        System.out.println(dao.generateNextId());
 
-//        System.out.println(dao.searchById(2));
+//        System.out.println(dao.searchByKeyName("Gold"));
 
-//        System.out.println(dao.idInRepo(2));
+//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("l"));
 
-//        dao.equipmentItemDeleted(new EquipmentItem(10));
-
-//        try {
-//            EmployeeDao.getInstance().addEntity(new Trainer("swiftie", "Taylor Swift", LocalDate.of(1950, 10, 10), Gender.female, 1000, TrainerSpecialization.Box));
-//        } catch (ObjectAlreadyContained e) {
-//            System.out.println(e.getMessage());
-//        }
-
-//        try {
-//            dao.addEntity(new Customer("yone", "ionel", LocalDate.of(2000, 10, 10),
-//                    Gender.male, new Trainer("giovanniBecali")));
-//        } catch (ObjectAlreadyContained e) {
-//            System.out.println(e.getMessage());
-//        }
-
-//        dao.trainerDeleted(new Trainer("giovanniBecali"));
-
-//        try {
-//            dao.deleteEntity(new Customer("yone"));
-//        } catch (ObjectNotContained e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        try {
-//            dao.updateEntity(new Customer("yone", "ionela", LocalDate.of(2000, 10, 10),
-//                Gender.male, new Trainer("giovanniBecali")));
-//        } catch (ObjectNotContained e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        Terminal.getInstance().printArrayList(dao.getAllEntities());
+        Terminal.getInstance().printArrayList(dao.getAllEntities());
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();
