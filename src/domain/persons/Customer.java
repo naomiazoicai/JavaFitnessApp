@@ -2,14 +2,17 @@ package domain.persons;
 
 import java.time.LocalDate;
 
-public class Customer extends Person {
+public class Customer extends Person
+{
     private Trainer assignedTrainer;
-    public Customer(String username, String name, LocalDate birthDate, Gender gender) {
+    public Customer(String username, String name, LocalDate birthDate, Gender gender)
+    {
         super(username, name, birthDate, gender);
         this.assignedTrainer = new Trainer();
     }
 
-    public Customer(String username) {
+    public Customer(String username)
+    {
         super(username, "", LocalDate.now(), Gender.notSpecifying);
         this.assignedTrainer = new Trainer();
     }
@@ -21,7 +24,8 @@ public class Customer extends Person {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Customer{" +
                 "assignedTrainer=" + assignedTrainer +
                 ", username='" + username + '\'' +

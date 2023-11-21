@@ -5,13 +5,15 @@ import domain.persons.Customer;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class CustomerSubscription{
+public class CustomerSubscription
+{
     private Customer customer;
     private SubscriptionType subscriptionType;
     private LocalDate validFrom;
     private LocalDate validUntil;
 
-    public CustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom, LocalDate validUntil) {
+    public CustomerSubscription(Customer customer, SubscriptionType subscriptionType, LocalDate validFrom, LocalDate validUntil)
+    {
         this.customer = customer;
         this.subscriptionType = subscriptionType;
         this.validFrom = validFrom;
@@ -19,7 +21,8 @@ public class CustomerSubscription{
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "CustomerSubscription{" +
                 "customer=" + customer +
                 "subscriptionType" + subscriptionType +
@@ -70,7 +73,8 @@ public class CustomerSubscription{
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerSubscription that = (CustomerSubscription) o;

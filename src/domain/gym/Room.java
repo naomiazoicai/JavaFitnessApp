@@ -2,7 +2,8 @@ package domain.gym;
 
 import java.util.Objects;
 
-public class Room {
+public class Room
+{
     protected int id;
     protected boolean occupied;
 
@@ -10,31 +11,36 @@ public class Room {
 
     private final static Room nullRoom = new Room();
 
-    public Room(int id, boolean occupied) {
+    public Room(int id, boolean occupied)
+    {
         this.id = id;
         this.occupied = occupied;
         this.roomAccess = RoomAccess.forAll;
     }
 
-    public Room(boolean occupied, RoomAccess roomAccess) {
+    public Room(boolean occupied, RoomAccess roomAccess)
+    {
         this.occupied = occupied;
         this.roomAccess = roomAccess;
     }
 
-    public Room(int id, boolean occupied, RoomAccess roomAccess) {
+    public Room(int id, boolean occupied, RoomAccess roomAccess)
+    {
         this.id = id;
         this.occupied = occupied;
         this.roomAccess = roomAccess;
     }
 
-    public Room() {
+    public Room()
+    {
         this.id = 0;
         this.occupied = false;
         this.roomAccess = RoomAccess.forAll;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Room{" +
                 "id=" + id +
                 ", occupied=" + occupied +
@@ -43,7 +49,8 @@ public class Room {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
