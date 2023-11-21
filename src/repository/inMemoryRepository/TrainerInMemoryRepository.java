@@ -16,7 +16,7 @@ public class TrainerInMemoryRepository extends InMemoryRepository<Trainer> imple
     private TrainerInMemoryRepository()
     {
         Trainer trainer1 = new Trainer("bgy99", "BogdanTrainer", LocalDate.of(1995, 1, 1), Gender.male);
-        Trainer trainer2 = new Trainer("bgyClone", "BogdanTrainerClone", LocalDate.of(1995, 1, 1), Gender.male);
+        Trainer trainer2 = new Trainer("bgyClone", "BogdanTrainer", LocalDate.of(1995, 1, 1), Gender.male);
         arrayList.add(trainer1);
         arrayList.add(trainer2);
     }
