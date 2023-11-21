@@ -2,15 +2,15 @@ package repository.inMemoryRepository;
 
 import domain.gym.EquipmentItem;
 import repository.interfaces.IEquipmentItemRepository;
-import repository.Repository;
+import repository.InMemoryRepository;
 import repository.exceptions.ObjectNotContained;
 
-public class EquipmentItemRepository extends Repository<EquipmentItem> implements IEquipmentItemRepository {
-    private static EquipmentItemRepository instance;
+public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem> implements IEquipmentItemRepository {
+    private static EquipmentItemInMemoryRepository instance;
 
     private int lastId;
 
-    private EquipmentItemRepository()
+    private EquipmentItemInMemoryRepository()
     {
         EquipmentItem item1 = new EquipmentItem(1, "Plate");
         EquipmentItem item2 = new EquipmentItem(2, "Dumbbell");
@@ -19,9 +19,9 @@ public class EquipmentItemRepository extends Repository<EquipmentItem> implement
         lastId = 2;
     }
 
-    public static EquipmentItemRepository getInstance()
+    public static EquipmentItemInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new EquipmentItemRepository();
+        if (instance == null) instance = new EquipmentItemInMemoryRepository();
         return instance;
     }
 

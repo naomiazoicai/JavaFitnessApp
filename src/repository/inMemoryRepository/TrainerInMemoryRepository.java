@@ -3,17 +3,17 @@ package repository.inMemoryRepository;
 import domain.persons.Gender;
 import domain.persons.Person;
 import domain.persons.Trainer;
-import repository.Repository;
+import repository.InMemoryRepository;
 import repository.interfaces.ITrainerRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class TrainerRepository extends Repository<Trainer> implements ITrainerRepository
+public class TrainerInMemoryRepository extends InMemoryRepository<Trainer> implements ITrainerRepository
 {
-    private static TrainerRepository instance;
+    private static TrainerInMemoryRepository instance;
 
-    private TrainerRepository()
+    private TrainerInMemoryRepository()
     {
         Trainer trainer1 = new Trainer("bgy99", "BogdanTrainer", LocalDate.of(1995, 1, 1), Gender.male);
         Trainer trainer2 = new Trainer("bgyClone", "BogdanTrainerClone", LocalDate.of(1995, 1, 1), Gender.male);
@@ -21,9 +21,9 @@ public class TrainerRepository extends Repository<Trainer> implements ITrainerRe
         arrayList.add(trainer2);
     }
 
-    public static TrainerRepository getInstance()
+    public static TrainerInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new TrainerRepository();
+        if (instance == null) instance = new TrainerInMemoryRepository();
         return instance;
     }
 

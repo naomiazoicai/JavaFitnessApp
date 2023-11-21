@@ -5,14 +5,14 @@ import domain.gym.SpecialisedRoom;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomRepository;
+import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpecialisedRoomRepositoryTest {
-    private final SpecialisedRoomRepository specialisedRoomRepository = SpecialisedRoomRepository.getInstance();
+public class SpecialisedRoomInMemoryRepositoryTest {
+    private final SpecialisedRoomInMemoryRepository specialisedRoomRepository = SpecialisedRoomInMemoryRepository.getInstance();
 
     @Test
     public void testAdd() throws ObjectAlreadyContained {

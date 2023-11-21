@@ -2,15 +2,15 @@ package controller;
 
 import controller.interfaces.observers.IObserverCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
-import repository.inMemoryRepository.BudgetRepository;
+import repository.inMemoryRepository.BudgetInMemoryRepository;
 
 public class BudgetController implements IObserverCustomerSubscriptionAdded
 {
     private static BudgetController instance;
 
-    private final BudgetRepository repository;
+    private final BudgetInMemoryRepository repository;
 
-    private BudgetController(){repository = BudgetRepository.getInstance();};
+    private BudgetController(){repository = BudgetInMemoryRepository.getInstance();};
 
     public static BudgetController getInstance()
     {

@@ -8,9 +8,9 @@ import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import repository.exceptions.ObjectAlreadyContained;
-import repository.inMemoryRepository.CustomerRepository;
-import repository.inMemoryRepository.CustomerSubscriptionRepository;
-import repository.inMemoryRepository.SubscriptionTypeRepository;
+import repository.inMemoryRepository.CustomerInMemoryRepository;
+import repository.inMemoryRepository.CustomerSubscriptionInMemoryRepository;
+import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
 
 import java.time.LocalDate;
@@ -24,7 +24,7 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
 
-    private CustomerSubscriptionController(CustomerSubscriptionRepository customerSubscriptionRepository)
+    private CustomerSubscriptionController(CustomerSubscriptionInMemoryRepository customerSubscriptionRepository)
     {
         super(customerSubscriptionRepository);
         this.customerSubscriptionRepository = customerSubscriptionRepository;
@@ -33,7 +33,7 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     public static CustomerSubscriptionController getInstance()
     {
-        if (instance == null) instance = new CustomerSubscriptionController(CustomerSubscriptionRepository.getInstance());
+        if (instance == null) instance = new CustomerSubscriptionController(CustomerSubscriptionInMemoryRepository.getInstance());
         return instance;
     }
 
@@ -59,14 +59,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     @Override
     public boolean customerInRepo(String username)
     {
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
         return customerRepository.keyNameInRepo(username);
     }
 
     @Override
     public Customer searchCustomerInRepo(String username)
     {
-        CustomerRepository customerRepository = CustomerRepository.getInstance();
+        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
         if (customerRepository.keyNameInRepo(username))
         {
             return customerRepository.searchByKeyName(username);
@@ -77,14 +77,14 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     @Override
     public boolean subscriptionTypeInRepo(String name)
     {
-        SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
+        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
         return subscriptionTypeRepository.keyNameInRepo(name);
     }
 
     @Override
     public SubscriptionType searchSubscriptionType(String name)
     {
-        SubscriptionTypeRepository subscriptionTypeRepository = SubscriptionTypeRepository.getInstance();
+        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
         if (subscriptionTypeRepository.keyNameInRepo(name))
         {
             return subscriptionTypeRepository.searchByKeyName(name);

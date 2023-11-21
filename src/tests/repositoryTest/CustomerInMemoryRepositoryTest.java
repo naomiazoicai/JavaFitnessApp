@@ -9,14 +9,14 @@ import domain.persons.Gender;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
+import repository.inMemoryRepository.CustomerInMemoryRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CustomerRepositoryTest {
-    private final CustomerRepository customerRepository = CustomerRepository.getInstance();
+public class CustomerInMemoryRepositoryTest {
+    private final CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
 
     @Test
     public void testAdd() throws ObjectAlreadyContained {

@@ -6,7 +6,7 @@ import controller.interfaces.observers.IObserverDeletedTrainer;
 import domain.persons.Customer;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerRepository;
+import repository.inMemoryRepository.CustomerInMemoryRepository;
 import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
 
     private final ICustomerRepository ICustomerRepository;
 
-    private CustomerController(CustomerRepository customerRepository)
+    private CustomerController(CustomerInMemoryRepository customerRepository)
     {
         super(customerRepository);
         ICustomerRepository = customerRepository;
@@ -26,7 +26,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
 
     public static CustomerController getInstance()
     {
-        if (instance == null) instance = new CustomerController(CustomerRepository.getInstance());
+        if (instance == null) instance = new CustomerController(CustomerInMemoryRepository.getInstance());
         return instance;
     }
 

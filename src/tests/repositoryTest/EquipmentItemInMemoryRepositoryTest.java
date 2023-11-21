@@ -4,14 +4,14 @@ import domain.gym.EquipmentItem;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.EquipmentItemRepository;
+import repository.inMemoryRepository.EquipmentItemInMemoryRepository;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EquipmentItemRepositoryTest {
-    private final EquipmentItemRepository equipmentItemRepository = EquipmentItemRepository.getInstance();
+public class EquipmentItemInMemoryRepositoryTest {
+    private final EquipmentItemInMemoryRepository equipmentItemRepository = EquipmentItemInMemoryRepository.getInstance();
 
     @Test
     public void testAdd() throws ObjectAlreadyContained {

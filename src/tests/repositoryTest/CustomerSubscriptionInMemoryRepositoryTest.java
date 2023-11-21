@@ -7,15 +7,15 @@ import domain.persons.Gender;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.CustomerSubscriptionRepository;
+import repository.inMemoryRepository.CustomerSubscriptionInMemoryRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CustomerSubscriptionRepositoryTest {
-    private final CustomerSubscriptionRepository customerSubscriptionRepository = CustomerSubscriptionRepository.getInstance();
+public class CustomerSubscriptionInMemoryRepositoryTest {
+    private final CustomerSubscriptionInMemoryRepository customerSubscriptionRepository = CustomerSubscriptionInMemoryRepository.getInstance();
     @Test
     public void testAdd() throws ObjectAlreadyContained {
         // Successful add

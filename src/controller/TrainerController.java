@@ -5,7 +5,7 @@ import controller.interfaces.subjects.ISubjectDeletedTrainer;
 import controller.interfaces.ITrainerController;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.TrainerRepository;
+import repository.inMemoryRepository.TrainerInMemoryRepository;
 import repository.interfaces.ITrainerRepository;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     private static TrainerController instance;
     private final ITrainerRepository trainerRepository;
 
-    private TrainerController(TrainerRepository trainerRepository)
+    private TrainerController(TrainerInMemoryRepository trainerRepository)
     {
         super(trainerRepository);
         this.trainerRepository = trainerRepository;
@@ -26,7 +26,7 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
 
     public static TrainerController getInstance()
     {
-        if (instance == null) instance = new TrainerController(TrainerRepository.getInstance());
+        if (instance == null) instance = new TrainerController(TrainerInMemoryRepository.getInstance());
         return instance;
     }
 
