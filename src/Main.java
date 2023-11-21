@@ -3,8 +3,11 @@ import UI.Terminal;
 import dao.DatabaseConnection;
 import dao.PersonDao;
 import dao.interaces.EmployeeDao;
+import dao.interaces.TrainerDao;
 import domain.persons.Employee;
 import domain.persons.Gender;
+import domain.persons.Trainer;
+import domain.persons.TrainerSpecialization;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
 
@@ -22,11 +25,13 @@ public class Main {
             throw new RuntimeException();
         }
 
-        EmployeeDao dao = EmployeeDao.getInstance();
+        TrainerDao dao = TrainerDao.getInstance();
 
 //        System.out.println(dao.keyNameInRepo("bgy99"));
 
 //        System.out.println(dao.searchByKeyName("bgy99"));
+
+//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("yc"));
 
 //        System.out.println(dao.generateNextId());
 
@@ -37,24 +42,30 @@ public class Main {
 //        dao.equipmentItemDeleted(new EquipmentItem(10));
 
 //        try {
-//            dao.addEntity(new Employee("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male, 1000));
+//            EmployeeDao.getInstance().addEntity(new Trainer("swiftie", "Taylor Swift", LocalDate.of(1950, 10, 10), Gender.female, 1000, TrainerSpecialization.Box));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
-        try {
-            dao.deleteEntity(new Employee("yone"));
-        } catch (ObjectNotContained e) {
-            System.out.println(e.getMessage());
-        }
-
 //        try {
-//            dao.updateEntity(new Employee("yone", "ionelulBoss", LocalDate.of(2999, 12, 5), Gender.male, 10002));
-//        } catch (ObjectNotContained e) {
+//            dao.addEntity(new Trainer("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male, 1000, TrainerSpecialization.Box));
+//        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
-        Terminal.getInstance().printArrayList(dao.getAllEntities());
+//        try {
+//            dao.deleteEntity(new Trainer("yone"));
+//        } catch (ObjectNotContained e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        try {
+//            dao.updateEntity(new Trainer("yone", "ionelllllll", LocalDate.of(2000, 10, 10), Gender.male, 1000, TrainerSpecialization.TRX));
+//        } catch (ObjectNotContained e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        Terminal.getInstance().printArrayList(dao.getAllEntities());
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();

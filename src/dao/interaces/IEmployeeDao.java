@@ -1,9 +1,9 @@
 package dao.interaces;
 
-import domain.persons.Person;
+import domain.persons.Employee;
 
 public interface IEmployeeDao {
     Boolean keyNameInRepo(String keyName);
 
-    Person searchByKeyName(String keyName);
+    Employee searchByKeyName(String keyName);
 }

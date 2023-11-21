@@ -16,9 +16,11 @@ import java.util.Objects;
 public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     private static EmployeeDao instance;
 
-    private final PersonDao personDao = PersonDao.getInstance();
+    private final PersonDao personDao;
 
-    private EmployeeDao(){}
+    private EmployeeDao(){
+        personDao = PersonDao.getInstance();
+    }
 
     public static EmployeeDao getInstance()
     {
@@ -36,18 +38,19 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
         double salary = employee.getSalary();
         try {
             // Check if contained in person table
-            String insertQuery = "INSERT INTO person (username, name, birthdate, gender) VALUES (?, ?, ?, ?)";
-            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
-            insertStatement.setString(1, username);
-            insertStatement.setString(2, name);
-            insertStatement.setDate(3, Date.valueOf(birthdate));
-            insertStatement.setString(4, gender.toString());
             try {
-                insertStatement.executeUpdate();
-            } catch (SQLIntegrityConstraintViolationException ignored) {}
+                personDao.addEntity(new Person(username, name, birthdate, gender));
+            } catch (ObjectAlreadyContained ignored) {
+                // If contained, update person
+                try {
+                    personDao.updateEntity(new Person(username, name, birthdate, gender));
+                } catch (ObjectNotContained e) {
+                    throw new RuntimeException(e);
+                }
+            }
             // Add to employee
-            insertQuery = "INSERT INTO employee (username, salary) VALUES (?, ?)";
-            insertStatement = connection.prepareStatement(insertQuery);
+            String insertQuery = "INSERT INTO employee (username, salary) VALUES (?, ?)";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, username);
             insertStatement.setDouble(2, salary);
             insertStatement.executeUpdate();
@@ -153,7 +156,7 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public Person searchByKeyName(String keyName) {
+    public Employee searchByKeyName(String keyName) {
         if (Objects.equals(keyName, "null")) return Employee.getNullEmployee();
         try {
             String query = "SELECT * FROM employee WHERE username = ?";
