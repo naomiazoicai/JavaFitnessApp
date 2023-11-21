@@ -4,7 +4,9 @@ import dao.CustomerDao;
 import dao.DatabaseConnection;
 import dao.SubscriptionTypeDao;
 import dao.TrainerDao;
+import dao.interaces.CustomerSubscriptionDao;
 import domain.gym.Room;
+import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import domain.persons.Gender;
@@ -26,18 +28,36 @@ public class Main {
             throw new RuntimeException();
         }
 
-        SubscriptionTypeDao dao = SubscriptionTypeDao.getInstance();
+        CustomerSubscriptionDao dao = CustomerSubscriptionDao.getInstance();
 
-//        dao.addRoomToSubscription(new SubscriptionType("Gold"), new Room(4));
+//        Terminal.getInstance().printArrayList(dao.searchSubscriptionsOfUser("swiftie"));
 
-        dao.removeRoomFromSubscription(new SubscriptionType("Gold"), new Room(4));
+//        Terminal.getInstance().printArrayList(dao.searchSubscriptionByType(new SubscriptionType("Gold")));
 
-//        dao.roomDeleted(new Room(4));
+//        System.out.println(dao.hasValidSubscription(new Customer("gigiSlay")));
 
+//        try {
+//            dao.addEntity(new CustomerSubscription(new Customer("swiftie"), new SubscriptionType("Test"),
+//                    LocalDate.of(2022, 8, 1), LocalDate.of(2023, 7, 12)));
+//        } catch (ObjectAlreadyContained e) {
+//            System.out.println(e.getMessage());
+//        }
 
-//        System.out.println(dao.searchByKeyName("Gold"));
+//        try {
+//            dao.updateEntity(new CustomerSubscription(new Customer("swiftie"), new SubscriptionType("Gold"),
+//                    LocalDate.of(2022, 8, 1), LocalDate.of(2023, 7, 12)));
+//        } catch (ObjectNotContained e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        try {
+//            dao.deleteEntity(new CustomerSubscription(new Customer("swiftie"), new SubscriptionType("Gold"),
+//                    LocalDate.of(2022, 8, 1), LocalDate.of(2023, 7, 12)));
+//        } catch (ObjectNotContained e) {
+//            System.out.println(e.getMessage());
+//        }
 
-//        Terminal.getInstance().printArrayList(dao.searchByPartialKeyName("l"));
+//        dao.subscriptionTypeDeleted(new SubscriptionType("Test"));
 
         Terminal.getInstance().printArrayList(dao.getAllEntities());
 

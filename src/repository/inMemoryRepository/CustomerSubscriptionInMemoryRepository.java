@@ -67,7 +67,7 @@ public class CustomerSubscriptionInMemoryRepository extends InMemoryRepository<C
         {
             if (customerSubscription.getSubscriptionType().equals(subscriptionType))
             {
-                customerSubscription.setSubscriptionType(SubscriptionType.nullSubscriptionType.copy());
+                customerSubscription.setSubscriptionType(SubscriptionType.getNullSubscriptionType());
             }
         }
     }

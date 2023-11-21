@@ -12,7 +12,7 @@ public class SubscriptionType
     private String description;
     private double price;
 
-    public static SubscriptionType nullSubscriptionType = new SubscriptionType();
+    private final static SubscriptionType nullSubscriptionType = new SubscriptionType();
 
     private final HashSet<Room> accessibleRestrictedRooms = new HashSet<>();
 
@@ -107,4 +107,8 @@ public class SubscriptionType
         return new ArrayList<>(accessibleRestrictedRooms);
     }
 
+    public static SubscriptionType getNullSubscriptionType()
+    {
+        return nullSubscriptionType.copy();
+    }
 }

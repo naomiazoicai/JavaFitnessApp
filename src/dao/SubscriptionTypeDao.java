@@ -92,7 +92,6 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     public ArrayList<SubscriptionType> getAllEntities()
     {
         ArrayList<SubscriptionType> result = new ArrayList<>();
-
         try {
             String query = "SELECT * FROM subscriptiontype ORDER BY price ASC;";
             PreparedStatement statement = connection.prepareStatement(query);

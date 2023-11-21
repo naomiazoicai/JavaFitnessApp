@@ -7,6 +7,8 @@ import java.util.Objects;
 
 public class CustomerSubscription
 {
+    private static final CustomerSubscription nullCustomerSubscription = new CustomerSubscription();
+
     private Customer customer;
     private SubscriptionType subscriptionType;
     private LocalDate validFrom;
@@ -20,20 +22,27 @@ public class CustomerSubscription
         this.validUntil = validUntil;
     }
 
+    public CustomerSubscription() {
+        this.customer = Customer.getNullCustomer();
+        this.subscriptionType = SubscriptionType.getNullSubscriptionType();
+        this.validFrom = LocalDate.of(1000, 1, 1);
+        this.validUntil = LocalDate.of(1000, 1, 1);
+    }
+
     @Override
     public String toString()
     {
         return "CustomerSubscription{" +
-                "customer=" + customer +
-                "subscriptionType" + subscriptionType +
-                ", validFrom=" + validFrom +
-                ", validUntil=" + validUntil +
-                '}';
+                "\ncustomer=" + customer +
+                "\nsubscriptionType=" + subscriptionType +
+                ", \nvalidFrom=" + validFrom +
+                ", \nvalidUntil=" + validUntil +
+                '}' + '\n';
     }
 
     public boolean checkValidity()
     {
-        return !subscriptionType.equals(SubscriptionType.nullSubscriptionType) && LocalDate.now().minusDays(1).isBefore(validUntil);
+        return !subscriptionType.equals(SubscriptionType.getNullSubscriptionType()) && LocalDate.now().minusDays(1).isBefore(validUntil);
     }
 
     public Customer getCustomer() {
@@ -62,6 +71,11 @@ public class CustomerSubscription
 
     public LocalDate getValidUntil() {
         return validUntil;
+    }
+
+    public static CustomerSubscription getNullCustomerSubscription()
+    {
+        return nullCustomerSubscription.copy();
     }
 
     public void setValidUntil(LocalDate validUntil) {
