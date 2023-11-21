@@ -1,5 +1,11 @@
 For the database:
-CustomerSubscription (CustomerSubscriptionDao)
+1. Factory for Repository
+2. Controller to use Repo factory
+
+Todo:
+CustomerDatabaseRepository: changeAssignedTrainerOfCustomer
 
 Other:
-when inserting a new exercise make sure it offers a valid exercise id
+EquipmentItemRepository(both): generateNextId() should be private
+ExerciseRepository(both): generateNextId() should be private
+SpecialisedRoom(both): generateNextId() should be private
