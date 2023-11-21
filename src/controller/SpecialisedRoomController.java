@@ -7,7 +7,7 @@ import domain.gym.Room;
 import domain.gym.SpecialisedRoom;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomRepository;
+import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
 import repository.interfaces.ISpecialisedRoomRepository;
 
 
@@ -17,7 +17,7 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
 
     private final ISpecialisedRoomRepository specialisedRoomRepository;
 
-    private SpecialisedRoomController(SpecialisedRoomRepository specialisedRoomRepository)
+    private SpecialisedRoomController(SpecialisedRoomInMemoryRepository specialisedRoomRepository)
     {
         super(specialisedRoomRepository);
         this.specialisedRoomRepository = specialisedRoomRepository;
@@ -26,7 +26,7 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
 
     public static SpecialisedRoomController getInstance()
     {
-        if (instance == null) instance = new SpecialisedRoomController(SpecialisedRoomRepository.getInstance());
+        if (instance == null) instance = new SpecialisedRoomController(SpecialisedRoomInMemoryRepository.getInstance());
         return instance;
     }
 

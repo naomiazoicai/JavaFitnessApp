@@ -6,8 +6,8 @@ import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.EquipmentItemRepository;
-import repository.inMemoryRepository.ExerciseRepository;
+import repository.inMemoryRepository.EquipmentItemInMemoryRepository;
+import repository.inMemoryRepository.ExerciseInMemoryRepository;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.interfaces.IExerciseRepository;
 
@@ -19,16 +19,16 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
 
     private final IEquipmentItemRepository equipmentItemRepositoryInterface;
 
-    private ExerciseController(ExerciseRepository exerciseRepository)
+    private ExerciseController(ExerciseInMemoryRepository exerciseRepository)
     {
         super(exerciseRepository);
         exerciseRepositoryInterface = exerciseRepository;
-        equipmentItemRepositoryInterface = EquipmentItemRepository.getInstance();
+        equipmentItemRepositoryInterface = EquipmentItemInMemoryRepository.getInstance();
     }
 
     public static ExerciseController getInstance()
     {
-        if (instance == null) instance = new ExerciseController(ExerciseRepository.getInstance());
+        if (instance == null) instance = new ExerciseController(ExerciseInMemoryRepository.getInstance());
         return instance;
     }
 

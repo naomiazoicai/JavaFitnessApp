@@ -7,7 +7,7 @@ import domain.gym.EquipmentItem;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.EquipmentItemRepository;
+import repository.inMemoryRepository.EquipmentItemInMemoryRepository;
 
 
 public class EquipmentItemController extends Controller<EquipmentItem> implements IEquipmentItemController, ISubjectDeleteEquipmentItem
@@ -16,7 +16,7 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
 
     private final IEquipmentItemRepository equipmentItemRepositoryInterface;
 
-    private EquipmentItemController(EquipmentItemRepository equipmentItemRepository)
+    private EquipmentItemController(EquipmentItemInMemoryRepository equipmentItemRepository)
     {
         super(equipmentItemRepository);
         equipmentItemRepositoryInterface = equipmentItemRepository;
@@ -25,7 +25,7 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
 
     public static EquipmentItemController getInstance()
     {
-        if (instance == null) instance = new EquipmentItemController(EquipmentItemRepository.getInstance());
+        if (instance == null) instance = new EquipmentItemController(EquipmentItemInMemoryRepository.getInstance());
         return instance;
     }
 

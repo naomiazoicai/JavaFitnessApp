@@ -5,7 +5,7 @@ import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import org.junit.jupiter.api.Test;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.ExerciseRepository;
+import repository.inMemoryRepository.ExerciseInMemoryRepository;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class EquipmentItemControllerTest {
             equipmentItemController.delete(item3);
         });
         // Check if Equipment item2 exists
-        ExerciseRepository exerciseRepository = ExerciseRepository.getInstance();
+        ExerciseInMemoryRepository exerciseRepository = ExerciseInMemoryRepository.getInstance();
         ArrayList<Exercise> exerciseArrayList = exerciseRepository.getAllEntities();
         boolean exists = false;
         for (Exercise exercise : exerciseArrayList)

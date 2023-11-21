@@ -2,19 +2,19 @@ package repository.inMemoryRepository;
 
 import domain.money.Budget;
 
-public class BudgetRepository
+public class BudgetInMemoryRepository
 {
-    private static BudgetRepository instance;
+    private static BudgetInMemoryRepository instance;
 
     private final Budget budget;
 
-    private BudgetRepository(){
+    private BudgetInMemoryRepository(){
         budget = Budget.getInstance();
     }
 
-    public static BudgetRepository getInstance()
+    public static BudgetInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new BudgetRepository();
+        if (instance == null) instance = new BudgetInMemoryRepository();
         return instance;
     }
 

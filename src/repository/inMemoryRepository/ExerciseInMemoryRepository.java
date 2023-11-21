@@ -4,15 +4,15 @@ import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
 import repository.exceptions.ObjectNotContained;
 import repository.interfaces.IExerciseRepository;
-import repository.Repository;
+import repository.InMemoryRepository;
 
-public class ExerciseRepository extends Repository<Exercise> implements IExerciseRepository
+public class ExerciseInMemoryRepository extends InMemoryRepository<Exercise> implements IExerciseRepository
 {
-    private static ExerciseRepository instance;
+    private static ExerciseInMemoryRepository instance;
 
     private int lastId;
 
-    private ExerciseRepository()
+    private ExerciseInMemoryRepository()
     {
         Exercise exercise1 = new Exercise(1, "Squat", "quads", new EquipmentItem(), 4, 10);
         Exercise exercise2 = new Exercise(2, "Dead-lift", "hamstrings", new EquipmentItem(), 4, 10);
@@ -23,9 +23,9 @@ public class ExerciseRepository extends Repository<Exercise> implements IExercis
         lastId = 3;
     }
 
-    public static ExerciseRepository getInstance()
+    public static ExerciseInMemoryRepository getInstance()
     {
-        if (instance == null) instance = new ExerciseRepository();
+        if (instance == null) instance = new ExerciseInMemoryRepository();
         return instance;
     }
 

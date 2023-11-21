@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Person {
+    private final static Person nullPerson = new Person();
+
     protected String username;
     protected String name;
     protected LocalDate birthDate;
@@ -14,6 +16,17 @@ public class Person {
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
+    }
+
+    public Person(String username) {
+        this.username = username;
+    }
+
+    public Person() {
+        this.username = "null";
+        this.name = "null";
+        this.birthDate = LocalDate.of(1000, 1, 1);
+        this.gender = Gender.notSpecifying;
     }
 
     @Override
@@ -72,4 +85,7 @@ public class Person {
         return new Person(username, name, birthDate, gender);
     }
 
+    public static Person getNullPerson() {
+        return nullPerson.copy();
+    }
 }

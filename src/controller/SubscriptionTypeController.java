@@ -7,8 +7,8 @@ import controller.interfaces.ISubscriptionTypeController;
 import domain.gym.Room;
 import domain.money.SubscriptionType;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomRepository;
-import repository.inMemoryRepository.SubscriptionTypeRepository;
+import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
+import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ISubscriptionTypeRepository;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
 
     private final ISubscriptionTypeRepository subscriptionTypeRepository;
 
-    private SubscriptionTypeController(SubscriptionTypeRepository subscriptionTypeRepository)
+    private SubscriptionTypeController(SubscriptionTypeInMemoryRepository subscriptionTypeRepository)
     {
         super(subscriptionTypeRepository);
         this.subscriptionTypeRepository = subscriptionTypeRepository;
@@ -29,7 +29,7 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
 
     public static SubscriptionTypeController getInstance()
     {
-        if (instance == null) instance = new SubscriptionTypeController(SubscriptionTypeRepository.getInstance());
+        if (instance == null) instance = new SubscriptionTypeController(SubscriptionTypeInMemoryRepository.getInstance());
         return instance;
     }
 
@@ -60,13 +60,13 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     @Override
     public Boolean roomIdInRepo(int roomId)
     {
-        return SpecialisedRoomRepository.getInstance().idInRepo(roomId);
+        return SpecialisedRoomInMemoryRepository.getInstance().idInRepo(roomId);
     }
 
     @Override
     public Room searchRoom(int roomId) throws ObjectNotContained
     {
-        return SpecialisedRoomRepository.getInstance().searchById(roomId);
+        return SpecialisedRoomInMemoryRepository.getInstance().searchById(roomId);
     }
 
     @Override

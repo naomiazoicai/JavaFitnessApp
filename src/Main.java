@@ -1,8 +1,6 @@
 
-import UI.Terminal;
 import dao.DatabaseConnection;
-import dao.SpecialisedRoomDao;
-
+import dao.PersonDao;
 
 import java.sql.SQLException;
 
@@ -17,7 +15,11 @@ public class Main {
             throw new RuntimeException();
         }
 
-        SpecialisedRoomDao dao = SpecialisedRoomDao.getInstance();
+        PersonDao dao = PersonDao.getInstance();
+
+//        System.out.println(dao.keyNameInRepo("swift"));
+
+        System.out.println(dao.searchByKeyName("swiftie"));
 
 //        System.out.println(dao.generateNextId());
 
@@ -28,24 +30,24 @@ public class Main {
 //        dao.equipmentItemDeleted(new EquipmentItem(10));
 
 //        try {
-//            dao.addEntity(new SpecialisedRoom(false, RoomAccess.subscriptionRestricted, RoomType.freeWeights, 5));
+//            dao.addEntity(new Person("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
-
+//
 //        try {
-//            dao.deleteEntity(new SpecialisedRoom(3));
+//            dao.deleteEntity(new Person("yone"));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
 //        try {
-//            dao.updateEntity(new SpecialisedRoom(3, false, RoomAccess.employee, RoomType.empty, 23));
+//            dao.updateEntity(new Person("yone", "ionelul", LocalDate.of(2002, 12, 10), Gender.female));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
-        Terminal.getInstance().printArrayList(dao.getAllEntities());
+//        Terminal.getInstance().printArrayList(dao.getAllEntities());
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();

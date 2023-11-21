@@ -5,7 +5,7 @@ import repository.exceptions.ObjectNotContained;
 
 import java.util.ArrayList;
 
-public abstract class Repository<Type> implements IRepository<Type>
+public abstract class InMemoryRepository<Type> implements IRepository<Type>
 {
     protected final ArrayList<Type> arrayList = new ArrayList<>();
 
