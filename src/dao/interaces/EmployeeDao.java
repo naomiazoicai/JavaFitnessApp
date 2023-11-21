@@ -1,6 +1,8 @@
-package dao;
+package dao.interaces;
 
-import dao.interaces.IPersonDao;
+import dao.IDao;
+import dao.PersonDao;
+import domain.persons.Employee;
 import domain.persons.Gender;
 import domain.persons.Person;
 import repository.exceptions.ObjectAlreadyContained;
@@ -11,31 +13,43 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class PersonDao implements IDao<Person>, IPersonDao {
-    private static PersonDao instance;
+public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
+    private static EmployeeDao instance;
 
-    private PersonDao(){}
+    private final PersonDao personDao = PersonDao.getInstance();
 
-    public static PersonDao getInstance()
+    private EmployeeDao(){}
+
+    public static EmployeeDao getInstance()
     {
-        if (instance == null) instance = new PersonDao();
+        if (instance == null) instance = new EmployeeDao();
         return instance;
     }
 
     @Override
-    public void addEntity(Person person) throws ObjectAlreadyContained {
-        if (Objects.equals(person.getUsername(), "null")) throw new ObjectAlreadyContained();
-        String username = person.getUsername();
-        String name = person.getName();
-        LocalDate birthdate = person.getBirthDate();
-        Gender gender = person.getGender();
+    public void addEntity(Employee employee) throws ObjectAlreadyContained {
+        if (Objects.equals(employee.getUsername(), "null")) throw new ObjectAlreadyContained();
+        String username = employee.getUsername();
+        String name = employee.getName();
+        LocalDate birthdate = employee.getBirthDate();
+        Gender gender = employee.getGender();
+        double salary = employee.getSalary();
         try {
+            // Check if contained in person table
             String insertQuery = "INSERT INTO person (username, name, birthdate, gender) VALUES (?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, username);
             insertStatement.setString(2, name);
             insertStatement.setDate(3, Date.valueOf(birthdate));
             insertStatement.setString(4, gender.toString());
+            try {
+                insertStatement.executeUpdate();
+            } catch (SQLIntegrityConstraintViolationException ignored) {}
+            // Add to employee
+            insertQuery = "INSERT INTO employee (username, salary) VALUES (?, ?)";
+            insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setString(1, username);
+            insertStatement.setDouble(2, salary);
             insertStatement.executeUpdate();
         }
         catch (SQLIntegrityConstraintViolationException e) {
@@ -47,13 +61,15 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public void updateEntity(Person person) throws ObjectNotContained {
-        if (Objects.equals(person.getUsername(), "null")) throw new ObjectNotContained();
-        String username = person.getUsername();
-        String name = person.getName();
-        LocalDate birthdate = person.getBirthDate();
-        Gender gender = person.getGender();
+    public void updateEntity(Employee employee) throws ObjectNotContained {
+        if (Objects.equals(employee.getUsername(), "null")) throw new ObjectNotContained();
+        String username = employee.getUsername();
+        String name = employee.getName();
+        LocalDate birthdate = employee.getBirthDate();
+        Gender gender = employee.getGender();
+        double salary = employee.getSalary();
         try {
+            // Update person
             String insertQuery = "UPDATE person SET name = ?, birthdate = ?, gender = ? WHERE username = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(4, username);
@@ -61,6 +77,13 @@ public class PersonDao implements IDao<Person>, IPersonDao {
             insertStatement.setDate(2, Date.valueOf(birthdate));
             insertStatement.setString(3, gender.toString());
             int rowsAffected = insertStatement.executeUpdate();
+            // Update employee
+            insertQuery = "UPDATE employee SET salary = ? WHERE username = ?";
+            insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setDouble(1, salary);
+            insertStatement.setString(2, username);
+            rowsAffected += insertStatement.executeUpdate();
+
             if (rowsAffected == 0) throw new ObjectNotContained();
         }
         catch (SQLException e) {
@@ -69,11 +92,11 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public void deleteEntity(Person person) throws ObjectNotContained {
-        if (Objects.equals(person.getUsername(), "null")) throw new ObjectNotContained();
-        String username = person.getUsername();
+    public void deleteEntity(Employee employee) throws ObjectNotContained {
+        if (Objects.equals(employee.getUsername(), "null")) throw new ObjectNotContained();
+        String username = employee.getUsername();
         try {
-            String insertQuery = "DELETE FROM person WHERE username = ?";
+            String insertQuery = "DELETE FROM employee WHERE username = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, username);
             int rowsAffected = insertStatement.executeUpdate();
@@ -85,27 +108,26 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public ArrayList<Person> getAllEntities() {
-        ArrayList<Person> result = new ArrayList<>();
+    public ArrayList<Employee> getAllEntities() {
+        ArrayList<Employee> result = new ArrayList<>();
         try {
-            String query = "SELECT * FROM person ORDER BY username;";
+            String query = "SELECT * FROM employee ORDER BY username;";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next())
             {
                 String username = resultSet.getString("username");
-                String name = resultSet.getString("name");
-                LocalDate birthdate = resultSet.getDate("birthDate").toLocalDate();
-                Gender gender = Gender.valueOf(resultSet.getString("gender"));
-                Person person = new Person(username, name, birthdate, gender);
-                result.add(person);
+                Person person = personDao.searchByKeyName(username);
+                int salary = resultSet.getInt("salary");
+                Employee employee = new Employee(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), salary);
+                result.add(employee);
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        result.remove(new Person("null"));
+        result.remove(new Employee("null"));
         return result;
     }
 
@@ -113,7 +135,7 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     public Boolean keyNameInRepo(String keyName) {
         if (Objects.equals(keyName, "null")) return Boolean.FALSE;
         try {
-            String query = "SELECT COUNT(*) AS row_count FROM person WHERE username = ?";
+            String query = "SELECT COUNT(*) AS row_count FROM employee WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, keyName);
             ResultSet resultSet = statement.executeQuery();
@@ -132,26 +154,25 @@ public class PersonDao implements IDao<Person>, IPersonDao {
 
     @Override
     public Person searchByKeyName(String keyName) {
-        if (Objects.equals(keyName, "null")) return Person.getNullPerson();
+        if (Objects.equals(keyName, "null")) return Employee.getNullEmployee();
         try {
-            String query = "SELECT * FROM person WHERE username = ?";
+            String query = "SELECT * FROM employee WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, keyName);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
             {
-                String username = resultSet.getString("username");
-                String name = resultSet.getString("name");
-                LocalDate birthdate = resultSet.getDate("birthDate").toLocalDate();
-                Gender gender = Gender.valueOf(resultSet.getString("gender"));
-                return new Person(username, name, birthdate, gender);
+                Person person = personDao.searchByKeyName(keyName);
+                if (person.equals(Person.getNullPerson())) return Employee.getNullEmployee();
+                int salary = resultSet.getInt("salary");
+                return new Employee(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), salary);
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
         // No subscription type found
-        return Person.getNullPerson();
+        return Employee.getNullEmployee();
     }
 }

@@ -1,8 +1,15 @@
 
+import UI.Terminal;
 import dao.DatabaseConnection;
 import dao.PersonDao;
+import dao.interaces.EmployeeDao;
+import domain.persons.Employee;
+import domain.persons.Gender;
+import repository.exceptions.ObjectAlreadyContained;
+import repository.exceptions.ObjectNotContained;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Main {
 //    Projekt: Java-Konsolenanwendung
@@ -15,11 +22,11 @@ public class Main {
             throw new RuntimeException();
         }
 
-        PersonDao dao = PersonDao.getInstance();
+        EmployeeDao dao = EmployeeDao.getInstance();
 
-//        System.out.println(dao.keyNameInRepo("swift"));
+//        System.out.println(dao.keyNameInRepo("bgy99"));
 
-        System.out.println(dao.searchByKeyName("swiftie"));
+//        System.out.println(dao.searchByKeyName("bgy99"));
 
 //        System.out.println(dao.generateNextId());
 
@@ -30,24 +37,24 @@ public class Main {
 //        dao.equipmentItemDeleted(new EquipmentItem(10));
 
 //        try {
-//            dao.addEntity(new Person("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male));
+//            dao.addEntity(new Employee("yone", "ionel", LocalDate.of(2000, 10, 10), Gender.male, 1000));
 //        } catch (ObjectAlreadyContained e) {
 //            System.out.println(e.getMessage());
 //        }
-//
+
+        try {
+            dao.deleteEntity(new Employee("yone"));
+        } catch (ObjectNotContained e) {
+            System.out.println(e.getMessage());
+        }
+
 //        try {
-//            dao.deleteEntity(new Person("yone"));
+//            dao.updateEntity(new Employee("yone", "ionelulBoss", LocalDate.of(2999, 12, 5), Gender.male, 10002));
 //        } catch (ObjectNotContained e) {
 //            System.out.println(e.getMessage());
 //        }
 
-//        try {
-//            dao.updateEntity(new Person("yone", "ionelul", LocalDate.of(2002, 12, 10), Gender.female));
-//        } catch (ObjectNotContained e) {
-//            System.out.println(e.getMessage());
-//        }
-
-//        Terminal.getInstance().printArrayList(dao.getAllEntities());
+        Terminal.getInstance().printArrayList(dao.getAllEntities());
 
         //        MainUI mainUI = MainUI.getInstance();
         //        mainUI.runUi();
