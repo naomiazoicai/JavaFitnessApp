@@ -9,11 +9,11 @@ import repository.exceptions.ObjectNotContained;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptionTypeDao {
+public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptionTypeDao
+{
     private static SubscriptionTypeDao instance;
 
-    private SubscriptionTypeDao(){
-    }
+    private SubscriptionTypeDao(){}
 
     public static SubscriptionTypeDao getInstance()
     {
@@ -22,7 +22,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public void addEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained {
+    public void addEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained
+    {
         String name = subscriptionType.getName();
         String description = subscriptionType.getDescription();
         double price = subscriptionType.getPrice();
@@ -43,7 +44,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public void updateEntity(SubscriptionType subscriptionType) throws ObjectNotContained {
+    public void updateEntity(SubscriptionType subscriptionType) throws ObjectNotContained
+    {
         try {
             // Add object
             String name = subscriptionType.getName();
@@ -64,7 +66,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public void deleteEntity(SubscriptionType subscriptionType) throws ObjectNotContained {
+    public void deleteEntity(SubscriptionType subscriptionType) throws ObjectNotContained
+    {
         try {
             // Add object
             String name = subscriptionType.getName();
@@ -81,7 +84,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public ArrayList<SubscriptionType> getAllEntities() {
+    public ArrayList<SubscriptionType> getAllEntities()
+    {
         ArrayList<SubscriptionType> result = new ArrayList<>();
 
         try {
@@ -105,7 +109,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
+    public Boolean keyNameInRepo(String keyName)
+    {
         try {
             String query = "SELECT COUNT(*) AS row_count FROM subscriptiontype WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -125,7 +130,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName) {
+    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName)
+    {
         ArrayList<SubscriptionType> result = new ArrayList<>();
         String partialName = "%" + keyName + "%";
         try {
@@ -149,7 +155,8 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName) {
+    public SubscriptionType searchByKeyName(String keyName)
+    {
         try {
             String query = "SELECT * FROM subscriptiontype WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -173,17 +180,20 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public void addRoomToSubscription(SubscriptionType subscriptionType, Room room) {
+    public void addRoomToSubscription(SubscriptionType subscriptionType, Room room)
+    {
         //TODO
     }
 
     @Override
-    public void removeRoomFromSubscription(SubscriptionType subscriptionType, Room room) {
+    public void removeRoomFromSubscription(SubscriptionType subscriptionType, Room room)
+    {
         //TODO
     }
 
     @Override
-    public void roomDeleted(Room room) {
+    public void roomDeleted(Room room)
+    {
         //TODO
     }
 }

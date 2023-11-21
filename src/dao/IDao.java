@@ -6,7 +6,8 @@ import repository.exceptions.ObjectNotContained;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-public interface IDao<Entity>{
+public interface IDao<Entity>
+{
     Connection connection = DatabaseConnection.getConnection();
     void addEntity(Entity entity) throws ObjectAlreadyContained;
 

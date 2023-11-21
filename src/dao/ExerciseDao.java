@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
-public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
+public class ExerciseDao implements IDao<Exercise>, IExerciseDao
+{
     private static ExerciseDao instance;
 
     private ExerciseDao(){}
@@ -24,7 +25,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public void addEntity(Exercise exercise) throws ObjectAlreadyContained {
+    public void addEntity(Exercise exercise) throws ObjectAlreadyContained
+    {
         int id = generateNextId();
         String name = exercise.getName();
         String muscleTrained = exercise.getMuscleTrained();
@@ -52,7 +54,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public void updateEntity(Exercise exercise) throws ObjectNotContained {
+    public void updateEntity(Exercise exercise) throws ObjectNotContained
+    {
         int id = exercise.getId();
         if (id == 0) throw new ObjectNotContained();
         String name = exercise.getName();
@@ -78,7 +81,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public void deleteEntity(Exercise exercise) throws ObjectNotContained {
+    public void deleteEntity(Exercise exercise) throws ObjectNotContained
+    {
         int id = exercise.getId();
         if (id == 0) throw new ObjectNotContained();
         try {
@@ -94,7 +98,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public ArrayList<Exercise> getAllEntities() {
+    public ArrayList<Exercise> getAllEntities()
+    {
         ArrayList<Exercise> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM exercise";
@@ -121,7 +126,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public Boolean idInRepo(int id) {
+    public Boolean idInRepo(int id)
+    {
         if (id == 0) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM exercise WHERE id = ?";
@@ -142,7 +148,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public Exercise searchById(int id) {
+    public Exercise searchById(int id)
+    {
         if (id == 0) return Exercise.getNullExercise();
         try {
             String query = "SELECT * FROM exercise WHERE id = ?";
@@ -167,7 +174,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public int generateNextId() {
+    public int generateNextId()
+    {
         try {
             String query = "SELECT id FROM exercise ORDER BY id DESC LIMIT 1";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -182,7 +190,8 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao {
     }
 
     @Override
-    public void equipmentItemDeleted(EquipmentItem removedEquipmentItem) {
+    public void equipmentItemDeleted(EquipmentItem removedEquipmentItem)
+    {
         int id = removedEquipmentItem.getID();
         try {
             String insertQuery = "UPDATE exercise SET equipmentItemId = 0 WHERE equipmentItemId = ?";

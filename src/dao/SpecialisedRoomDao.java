@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
-public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRoomDao {
+public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRoomDao
+{
     private static SpecialisedRoomDao instance;
 
     private SpecialisedRoomDao(){}
@@ -23,7 +24,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public void addEntity(SpecialisedRoom specialisedRoom) throws ObjectAlreadyContained {
+    public void addEntity(SpecialisedRoom specialisedRoom) throws ObjectAlreadyContained
+    {
         int id = generateNextId();
         boolean occupied = specialisedRoom.isOccupied();
         RoomAccess roomAccess = specialisedRoom.getRoomAccess();
@@ -55,7 +57,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public void updateEntity(SpecialisedRoom specialisedRoom) throws ObjectNotContained {
+    public void updateEntity(SpecialisedRoom specialisedRoom) throws ObjectNotContained
+    {
         int id = specialisedRoom.getId();
         boolean occupied = specialisedRoom.isOccupied();
         RoomAccess roomAccess = specialisedRoom.getRoomAccess();
@@ -87,7 +90,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public void deleteEntity(SpecialisedRoom specialisedRoom) throws ObjectNotContained {
+    public void deleteEntity(SpecialisedRoom specialisedRoom) throws ObjectNotContained
+    {
         int id = specialisedRoom.getId();
         if (id == 0) throw new ObjectNotContained();
         try {
@@ -109,7 +113,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public ArrayList<SpecialisedRoom> getAllEntities() {
+    public ArrayList<SpecialisedRoom> getAllEntities()
+    {
         ArrayList<SpecialisedRoom> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM specialisedroom";
@@ -135,7 +140,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public Boolean idInRepo(int id) {
+    public Boolean idInRepo(int id)
+    {
         if (id == 0) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM room WHERE id = ?";
@@ -156,7 +162,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) {
+    public SpecialisedRoom searchById(int id)
+    {
         if (id == 0) return SpecialisedRoom.getNullSpecialisedRoom();
         try {
             String query = "SELECT * FROM specialisedroom WHERE roomId = ?";
@@ -203,7 +210,8 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     }
 
     @Override
-    public int generateNextId() {
+    public int generateNextId()
+    {
         try {
             String query = "SELECT id FROM room ORDER BY id DESC LIMIT 1";
             PreparedStatement statement = connection.prepareStatement(query);

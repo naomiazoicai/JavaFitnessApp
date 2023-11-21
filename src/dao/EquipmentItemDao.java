@@ -63,7 +63,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     }
 
     @Override
-    public void deleteEntity(EquipmentItem equipmentItem) throws ObjectNotContained {
+    public void deleteEntity(EquipmentItem equipmentItem) throws ObjectNotContained
+    {
         int id = equipmentItem.getID();
         if (id == 0) throw new ObjectNotContained();
         try {
@@ -79,7 +80,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     }
 
     @Override
-    public ArrayList<EquipmentItem> getAllEntities() {
+    public ArrayList<EquipmentItem> getAllEntities()
+    {
         ArrayList<EquipmentItem> result = new ArrayList<>();
 
         try {
@@ -103,7 +105,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     }
 
     @Override
-    public Boolean idInRepo(int id) {
+    public Boolean idInRepo(int id)
+    {
         if (id == 0) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM equipmentitem WHERE id = ?";
@@ -124,7 +127,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     }
 
     @Override
-    public EquipmentItem searchById(int id){
+    public EquipmentItem searchById(int id)
+    {
         if (id == 0) return EquipmentItem.getNullEquipmentItem();
         try {
             String query = "SELECT * FROM equipmentitem WHERE id = ?";
@@ -145,7 +149,8 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     }
 
     @Override
-    public int generateNextId() {
+    public int generateNextId()
+    {
         try {
             String query = "SELECT id FROM equipmentitem E ORDER BY id DESC LIMIT 1";
             PreparedStatement statement = connection.prepareStatement(query);
