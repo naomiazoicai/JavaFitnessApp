@@ -7,12 +7,13 @@ import controller.interfaces.subjects.ISubjectCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
+import factory.repo.CustomerRepoFactory;
 import factory.repo.CustomerSubscriptionRepoFactory;
 import repository.IRepository;
 import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
-import repository.inMemoryRepository.CustomerInMemoryRepository;
 import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
+import repository.interfaces.ICustomerRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
 
 import java.time.LocalDate;
@@ -26,12 +27,17 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
 
+    private final ICustomerRepository iCustomerRepository;
+
     private static RepoTypes repoType;
 
-    private CustomerSubscriptionController(IRepository<CustomerSubscription> iRepository, ICustomerSubscriptionRepository iCustomerSubscriptionRepository)
+    private CustomerSubscriptionController(IRepository<CustomerSubscription> iRepository,
+                                           ICustomerSubscriptionRepository iCustomerSubscriptionRepository,
+                                           ICustomerRepository iCustomerRepository)
     {
         super(iRepository);
         this.customerSubscriptionRepository = iCustomerSubscriptionRepository;
+        this.iCustomerRepository = iCustomerRepository;
         addObserver(BudgetController.getInstance());
     }
 
@@ -42,7 +48,8 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
             if (repoType == null) throw new RuntimeException("Repo Type not provided!");
             IRepository<CustomerSubscription> iRepository = CustomerSubscriptionRepoFactory.buildIRepository(repoType);
             ICustomerSubscriptionRepository iCustomerRepository = CustomerSubscriptionRepoFactory.buildInterface(repoType);
-            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository);
+            ICustomerRepository iCustomerRepository1 = CustomerRepoFactory.buildInterface(repoType);
+            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository, iCustomerRepository1);
         }
         return instance;
     }
@@ -69,19 +76,17 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     @Override
     public boolean customerInRepo(String username)
     {
-        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
-        return customerRepository.keyNameInRepo(username);
+        return iCustomerRepository.keyNameInRepo(username);
     }
 
     @Override
     public Customer searchCustomerInRepo(String username)
     {
-        CustomerInMemoryRepository customerRepository = CustomerInMemoryRepository.getInstance();
-        if (customerRepository.keyNameInRepo(username))
+        if (iCustomerRepository.keyNameInRepo(username))
         {
-            return customerRepository.searchByKeyName(username);
+            return iCustomerRepository.searchByKeyName(username);
         }
-        return new Customer();
+        return Customer.getNullCustomer();
     }
 
     @Override

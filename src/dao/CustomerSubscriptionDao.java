@@ -1,9 +1,6 @@
-package dao.interaces;
+package dao;
 
-import dao.CustomerDao;
-import dao.IDao;
-import dao.SpecialisedRoomDao;
-import dao.SubscriptionTypeDao;
+import dao.interaces.ICustomerSubscriptionDao;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;

@@ -1,6 +1,6 @@
 package repository.databaseRepository;
 
-import dao.interaces.CustomerSubscriptionDao;
+import dao.CustomerSubscriptionDao;
 import dao.interaces.ICustomerSubscriptionDao;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
