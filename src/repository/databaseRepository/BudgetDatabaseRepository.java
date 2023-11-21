@@ -1,8 +1,9 @@
 package repository.databaseRepository;
 
 import dao.BudgetDao;
+import repository.interfaces.IBudgetRepo;
 
-public class BudgetDatabaseRepository
+public class BudgetDatabaseRepository implements IBudgetRepo
 {
     private static BudgetDatabaseRepository  instance;
 
@@ -19,19 +20,23 @@ public class BudgetDatabaseRepository
         return instance;
     }
 
+    @Override
     public void addMoney(double value){
         budgetDao.addMoney(value);
     }
 
+    @Override
     public void spendMoney(double value) throws Exception {
         budgetDao.spendMoney(value);
     }
 
+    @Override
     public double getCurrentMoney()
     {
         return budgetDao.getCurrentMoney();
     }
 
+    @Override
     public String budgetAsString()
     {
         return budgetDao.toString();

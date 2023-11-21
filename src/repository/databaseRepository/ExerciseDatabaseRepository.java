@@ -20,6 +20,12 @@ public class ExerciseDatabaseRepository extends DatabaseRepository<Exercise> imp
         exerciseDao = ExerciseDao.getInstance();
     }
 
+    public static ExerciseDatabaseRepository getInstance()
+    {
+        if (instance == null) instance = new ExerciseDatabaseRepository();
+        return instance;
+    }
+
     @Override
     public void equipmentItemDeleted(EquipmentItem removedEquipmentItem)
     {
