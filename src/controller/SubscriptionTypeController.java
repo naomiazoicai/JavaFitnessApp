@@ -6,9 +6,11 @@ import controller.interfaces.subjects.ISubjectDeletedSubscriptionType;
 import controller.interfaces.ISubscriptionTypeController;
 import domain.gym.Room;
 import domain.money.SubscriptionType;
+import factory.repo.SubscriptionTypeRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectNotContained;
 import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
-import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ISubscriptionTypeRepository;
 
 import java.util.ArrayList;
@@ -20,16 +22,24 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
 
     private final ISubscriptionTypeRepository subscriptionTypeRepository;
 
-    private SubscriptionTypeController(SubscriptionTypeInMemoryRepository subscriptionTypeRepository)
+    private static RepoTypes repoType;
+
+    private SubscriptionTypeController(IRepository<SubscriptionType> iRepository, ISubscriptionTypeRepository iSubscriptionTypeRepository)
     {
-        super(subscriptionTypeRepository);
-        this.subscriptionTypeRepository = subscriptionTypeRepository;
+        super(iRepository);
+        this.subscriptionTypeRepository = iSubscriptionTypeRepository;
         addObserver(CustomerSubscriptionController.getInstance());
     }
 
     public static SubscriptionTypeController getInstance()
     {
-        if (instance == null) instance = new SubscriptionTypeController(SubscriptionTypeInMemoryRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<SubscriptionType> iRepository = SubscriptionTypeRepoFactory.buildIRepository(repoType);
+            ISubscriptionTypeRepository iSubscriptionTypeRepository = SubscriptionTypeRepoFactory.buildInterface(repoType);
+            instance = new SubscriptionTypeController(iRepository, iSubscriptionTypeRepository);
+        }
         return instance;
     }
 
@@ -64,7 +74,7 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     }
 
     @Override
-    public Room searchRoom(int roomId) throws ObjectNotContained
+    public Room searchRoom(int roomId)
     {
         return SpecialisedRoomInMemoryRepository.getInstance().searchById(roomId);
     }
@@ -104,5 +114,10 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType)
     {
         for (IObserverDeletedSubscriptionType observer : observerList) observer.updateDeletedSubscriptionType(subscriptionType);
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }

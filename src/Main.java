@@ -1,4 +1,4 @@
-import UI.Terminal;
+import UI.MainUI;
 
 import dao.DatabaseConnection;
 
@@ -16,8 +16,7 @@ public class Main {
             throw new RuntimeException();
         }
 
-
-//                MainUI mainUI = MainUI.getInstance();
-//                mainUI.runUi();
+        MainUI mainUI = MainUI.getInstance();
+        mainUI.runUi();
     }
 }

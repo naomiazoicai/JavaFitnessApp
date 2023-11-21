@@ -39,6 +39,6 @@ public class BudgetDatabaseRepository implements IBudgetRepo
     @Override
     public String budgetAsString()
     {
-        return budgetDao.toString();
+        return budgetDao.budgetAsString();
     }
 }

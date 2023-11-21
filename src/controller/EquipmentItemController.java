@@ -4,41 +4,51 @@ import controller.interfaces.IEquipmentItemController;
 import controller.interfaces.observers.IObserverDeleteEquipmentItem;
 import controller.interfaces.subjects.ISubjectDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
+import factory.repo.EquipmentItemRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.EquipmentItemInMemoryRepository;
 
 
 public class EquipmentItemController extends Controller<EquipmentItem> implements IEquipmentItemController, ISubjectDeleteEquipmentItem
 {
     private static EquipmentItemController instance;
 
-    private final IEquipmentItemRepository equipmentItemRepositoryInterface;
+    private final IEquipmentItemRepository iEquipmentItemRepository;
 
-    private EquipmentItemController(EquipmentItemInMemoryRepository equipmentItemRepository)
+    private static RepoTypes repoType;
+
+    private EquipmentItemController(IRepository<EquipmentItem> iRepository, IEquipmentItemRepository iEquipmentItemRepository)
     {
-        super(equipmentItemRepository);
-        equipmentItemRepositoryInterface = equipmentItemRepository;
+        super(iRepository);
+        this.iEquipmentItemRepository = iEquipmentItemRepository;
         addObserver(ExerciseController.getInstance());
     }
 
     public static EquipmentItemController getInstance()
     {
-        if (instance == null) instance = new EquipmentItemController(EquipmentItemInMemoryRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<EquipmentItem> iRepository = EquipmentItemRepoFactory.buildIRepository(repoType);
+            IEquipmentItemRepository iEquipmentItemRepository = EquipmentItemRepoFactory.buildInterface(repoType);
+            instance = new EquipmentItemController(iRepository, iEquipmentItemRepository);
+        }
         return instance;
     }
 
     @Override
     public boolean idInRepo(int id) {
-        return equipmentItemRepositoryInterface.idInRepo(id);
+        return iEquipmentItemRepository.idInRepo(id);
     }
 
     @Override
     public EquipmentItem searchById(int id)
     {
         try {
-            return equipmentItemRepositoryInterface.searchById(id);
+            return iEquipmentItemRepository.searchById(id);
         } catch (ObjectNotContained e) {
             return new EquipmentItem();
         }
@@ -48,7 +58,7 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     public void add(EquipmentItem object) throws ObjectAlreadyContained
     {
         // Set id
-        object.setID(equipmentItemRepositoryInterface.generateNextId());
+        object.setID(iEquipmentItemRepository.generateNextId());
         super.add(object);
     }
 
@@ -73,5 +83,10 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     public void notifyEquipmentItemDeleted(EquipmentItem equipmentItem)
     {
         for (IObserverDeleteEquipmentItem observer : observerList) observer.updateEquipmentItemDeleted(equipmentItem);
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }

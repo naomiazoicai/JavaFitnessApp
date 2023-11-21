@@ -7,9 +7,11 @@ import controller.interfaces.subjects.ISubjectCustomerSubscriptionAdded;
 import domain.money.CustomerSubscription;
 import domain.money.SubscriptionType;
 import domain.persons.Customer;
+import factory.repo.CustomerSubscriptionRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.inMemoryRepository.CustomerInMemoryRepository;
-import repository.inMemoryRepository.CustomerSubscriptionInMemoryRepository;
 import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
 
@@ -24,16 +26,24 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
 
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
 
-    private CustomerSubscriptionController(CustomerSubscriptionInMemoryRepository customerSubscriptionRepository)
+    private static RepoTypes repoType;
+
+    private CustomerSubscriptionController(IRepository<CustomerSubscription> iRepository, ICustomerSubscriptionRepository iCustomerSubscriptionRepository)
     {
-        super(customerSubscriptionRepository);
-        this.customerSubscriptionRepository = customerSubscriptionRepository;
+        super(iRepository);
+        this.customerSubscriptionRepository = iCustomerSubscriptionRepository;
         addObserver(BudgetController.getInstance());
     }
 
     public static CustomerSubscriptionController getInstance()
     {
-        if (instance == null) instance = new CustomerSubscriptionController(CustomerSubscriptionInMemoryRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<CustomerSubscription> iRepository = CustomerSubscriptionRepoFactory.buildIRepository(repoType);
+            ICustomerSubscriptionRepository iCustomerRepository = CustomerSubscriptionRepoFactory.buildInterface(repoType);
+            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository);
+        }
         return instance;
     }
 
@@ -136,5 +146,10 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
         {
             observer.updatedAddedCustomerSubscription(customerSubscription);
         }
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }

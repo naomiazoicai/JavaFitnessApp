@@ -3,6 +3,7 @@ package UI;
 import domain.gym.RoomType;
 import domain.persons.Gender;
 import domain.persons.TrainerSpecialization;
+import repository.RepoTypes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +32,23 @@ public class Terminal
     {
         System.out.println("Press enter to continue...");
         scanner.nextLine();
+    }
+
+    public RepoTypes repoTypeMenu()
+    {
+        System.out.println("\nChoose repo type:");
+        System.out.println("1. Database");
+        System.out.println("2. In memory");
+        System.out.println("Your choice: ");
+        String choice = scanner.nextLine();
+        while (!Objects.equals(choice, "1") && !Objects.equals(choice, "2"))
+        {
+            System.out.println("Enter a valid choice (1-2)");
+            System.out.println("Your choice: ");
+            choice = scanner.nextLine();
+        }
+        if (choice.equals("1")) return RepoTypes.database;
+        else return RepoTypes.inMemory;
     }
 
     public String mainUiMenu()

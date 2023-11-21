@@ -1,7 +1,9 @@
 package UI;
 
 import UI.SpecialisedUIs.*;
+import controller.*;
 import proxy.UiProxy;
+import repository.RepoTypes;
 
 import java.util.Objects;
 
@@ -14,9 +16,7 @@ public class MainUI {
     private final UiRunnable specialisedRoomUI;
     private final UiRunnable equipmentItemUI;
     private final UiRunnable exerciseUI;
-
     private static MainUI instance;
-
     private final Terminal terminal = Terminal.getInstance();
 
     private MainUI()
@@ -39,6 +39,9 @@ public class MainUI {
     public void runUi()
     {
         System.out.println("Main UI is running...");
+        // Choose repo type
+        selectRepoType();
+        // Go
         String choice = terminal.mainUiMenu();
         while (!Objects.equals(choice, "x"))
         {
@@ -57,5 +60,18 @@ public class MainUI {
             choice = terminal.mainUiMenu();
         }
         System.out.println("App is closing..");
+    }
+
+    private void selectRepoType()
+    {
+        RepoTypes repoType = terminal.repoTypeMenu();
+        BudgetController.setRepoType(repoType);
+        CustomerController.setRepoType(repoType);
+        CustomerSubscriptionController.setRepoType(repoType);
+        EquipmentItemController.setRepoType(repoType);
+        ExerciseController.setRepoType(repoType);
+        SpecialisedRoomController.setRepoType(repoType);
+        SubscriptionTypeController.setRepoType(repoType);
+        TrainerController.setRepoType(repoType);
     }
 }

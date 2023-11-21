@@ -12,5 +12,5 @@ public interface ISubscriptionTypeController extends NameIdentifiedEntitiesContr
 
     Boolean roomIdInRepo(int roomId);
 
-    Room searchRoom(int roomId) throws ObjectNotContained;
+    Room searchRoom(int roomId);
 }

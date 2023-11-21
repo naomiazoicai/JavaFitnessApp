@@ -4,10 +4,12 @@ import controller.interfaces.IExerciseController;
 import controller.interfaces.observers.IObserverDeleteEquipmentItem;
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
+import factory.repo.EquipmentItemRepoFactory;
+import factory.repo.ExerciseRepoFactory;
+import repository.IRepository;
+import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.EquipmentItemInMemoryRepository;
-import repository.inMemoryRepository.ExerciseInMemoryRepository;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.interfaces.IExerciseRepository;
 
@@ -15,20 +17,29 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
 {
     private static ExerciseController instance;
 
-    private final IExerciseRepository exerciseRepositoryInterface;
+    private final IExerciseRepository iExerciseRepository;
 
-    private final IEquipmentItemRepository equipmentItemRepositoryInterface;
+    private final IEquipmentItemRepository iEquipmentItemRepository;
 
-    private ExerciseController(ExerciseInMemoryRepository exerciseRepository)
+    private static RepoTypes repoType;
+
+    private ExerciseController(IRepository<Exercise> iRepository, IExerciseRepository iExerciseRepository, IEquipmentItemRepository iEquipmentItemRepository)
     {
-        super(exerciseRepository);
-        exerciseRepositoryInterface = exerciseRepository;
-        equipmentItemRepositoryInterface = EquipmentItemInMemoryRepository.getInstance();
+        super(iRepository);
+        this.iExerciseRepository = iExerciseRepository;
+        this.iEquipmentItemRepository = iEquipmentItemRepository;
     }
 
     public static ExerciseController getInstance()
     {
-        if (instance == null) instance = new ExerciseController(ExerciseInMemoryRepository.getInstance());
+        if (instance == null)
+        {
+            if (repoType == null) throw new RuntimeException("Repo Type not provided!");
+            IRepository<Exercise> iRepository = ExerciseRepoFactory.buildIRepository(repoType);
+            IExerciseRepository iExerciseRepository = ExerciseRepoFactory.buildInterface(repoType);
+            IEquipmentItemRepository iEquipmentItemRepository = EquipmentItemRepoFactory.buildInterface(repoType);
+            instance = new ExerciseController(iRepository, iExerciseRepository, iEquipmentItemRepository);
+        }
         return instance;
     }
 
@@ -36,14 +47,14 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     public boolean idInRepo(int id)
     {
         // Set id
-        return exerciseRepositoryInterface.idInRepo(id);
+        return iExerciseRepository.idInRepo(id);
     }
 
     @Override
     public Exercise searchById(int id)
     {
         try {
-            return exerciseRepositoryInterface.searchById(id);
+            return iExerciseRepository.searchById(id);
         } catch (ObjectNotContained e)
         {
             return null;
@@ -54,20 +65,20 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     public void add(Exercise object) throws ObjectAlreadyContained
     {
         // Set it
-        object.setId(exerciseRepositoryInterface.generateNextId());
+        object.setId(iExerciseRepository.generateNextId());
         super.add(object);
     }
 
     @Override
     public boolean checkEquipmentItemIdInRepo(int id) {
-        return equipmentItemRepositoryInterface.idInRepo(id);
+        return iEquipmentItemRepository.idInRepo(id);
     }
 
     @Override
     public EquipmentItem searchEquipmentItemById(int id)
     {
         try {
-            return equipmentItemRepositoryInterface.searchById(id);
+            return iEquipmentItemRepository.searchById(id);
         } catch (ObjectNotContained e) {
             return new EquipmentItem();
         }
@@ -76,6 +87,11 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     @Override
     public void updateEquipmentItemDeleted(EquipmentItem equipmentItem)
     {
-        exerciseRepositoryInterface.equipmentItemDeleted(equipmentItem);
+        iExerciseRepository.equipmentItemDeleted(equipmentItem);
+    }
+
+    public static void setRepoType(RepoTypes newRepoType)
+    {
+        repoType = newRepoType;
     }
 }
