@@ -1,17 +1,28 @@
 package tests.daoTest;
 
 import dao.BudgetDao;
+import dao.DatabaseConnection;
 import domain.money.Budget;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BudgetDaoTest {
-
     private BudgetDao budgetDao;
 
     @BeforeEach
     public void setUp() {
+        // Connect to database
+        try {
+            DatabaseConnection.setConnection("jdbc:mysql://localhost:3306/testjavaapp", "coders", "ThisIsOurDatabase.2023");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+        // Get database
         budgetDao = BudgetDao.getInstance();
     }
 
