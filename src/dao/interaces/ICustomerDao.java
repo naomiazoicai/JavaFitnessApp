@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public interface ICustomerDao
 {
-    Boolean keyNameInRepo(String keyName);
+    Boolean usernameInRepo(String username);
 
-    Customer searchByKeyName(String keyName);
+    Customer searchByUsername(String username);
 
-    ArrayList<Customer> searchByPartialKeyName(String keyName);
+    ArrayList<Customer> searchByPartialUsername(String username);
 
     void trainerDeleted(Trainer trainer);
 }

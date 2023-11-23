@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public interface ISubscriptionTypeDao
 {
-    Boolean keyNameInRepo(String keyName);
+    Boolean nameInRepo(String keyName);
 
-    ArrayList<SubscriptionType> searchByPartialKeyName(String keyName);
+    ArrayList<SubscriptionType> searchByPartialName(String keyName);
 
-    SubscriptionType searchByKeyName(String keyName);
+    SubscriptionType searchByName(String keyName);
 
     void addRoomToSubscription(SubscriptionType subscriptionType, Room room);
 

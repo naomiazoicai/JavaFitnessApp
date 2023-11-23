@@ -1,5 +1,7 @@
 Todo:
 CustomerDatabaseRepository: changeAssignedTrainerOfCustomer
+Null id/username custom exception
+Different method for addTo person and updatePerson
 
 Other:
 EquipmentItemRepository(both): generateNextId() should be private

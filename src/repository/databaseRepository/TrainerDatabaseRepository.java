@@ -29,18 +29,18 @@ public class TrainerDatabaseRepository extends DatabaseRepository<Trainer> imple
     @Override
     public Boolean usernameInRepo(String keyName)
     {
-        return trainerDao.keyNameInRepo(keyName);
+        return trainerDao.usernameInRepo(keyName);
     }
 
     @Override
     public ArrayList<Trainer> searchByPartialUsername(String keyName)
     {
-        return trainerDao.searchByPartialKeyName(keyName);
+        return trainerDao.searchByPartialUsername(keyName);
     }
 
     @Override
     public Trainer searchByUsername(String keyName)
     {
-        return trainerDao.searchByKeyName(keyName);
+        return trainerDao.searchByUsername(keyName);
     }
 }

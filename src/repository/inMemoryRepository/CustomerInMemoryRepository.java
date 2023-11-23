@@ -31,31 +31,31 @@ public class CustomerInMemoryRepository extends InMemoryRepository<Customer> imp
     }
 
     @Override
-    public boolean usernameInRepo(String keyName)
+    public boolean usernameInRepo(String username)
     {
         for (Person person : arrayList)
         {
-            if (keyName.equals(person.getUsername())) return Boolean.TRUE;
+            if (username.equals(person.getUsername())) return Boolean.TRUE;
         }
         return Boolean.FALSE;
     }
 
     @Override
-    public ArrayList<Customer> searchByPartialKeyName(String keyName)
+    public ArrayList<Customer> searchByPartialUsername(String username)
     {
         ArrayList<Customer> result = new ArrayList<>();
         for (Customer customer : arrayList)
         {
-            if (customer.getUsername().contains(keyName)) result.add(customer.copy());
+            if (customer.getUsername().contains(username)) result.add(customer.copy());
         }
         return result;
     }
 
     @Override
-    public Customer searchByUsername(String keyName) {
+    public Customer searchByUsername(String username) {
         for (Customer customer : arrayList)
         {
-            if (keyName.equals(customer.getUsername())) return customer.copy();
+            if (username.equals(customer.getUsername())) return customer.copy();
         }
         return null;
     }

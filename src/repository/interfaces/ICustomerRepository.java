@@ -11,9 +11,9 @@ public interface ICustomerRepository {
 
     void trainerDeleted(Trainer trainer);
 
-    boolean usernameInRepo(String keyName);
+    boolean usernameInRepo(String username);
 
-    ArrayList<Customer> searchByPartialKeyName(String keyName);
+    ArrayList<Customer> searchByPartialUsername(String username);
 
-    Customer searchByUsername(String keyName);
+    Customer searchByUsername(String username);
 }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class ExerciseDao implements IDao<Exercise>, IExerciseDao
 {
     private static ExerciseDao instance;
-
     private ExerciseDao(){}
 
     public static ExerciseDao getInstance()
@@ -27,12 +26,14 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao
     @Override
     public void addEntity(Exercise exercise) throws ObjectAlreadyContained
     {
+        // Save fields
         int id = generateNextId();
         String name = exercise.getName();
         String muscleTrained = exercise.getMuscleTrained();
         int equipmentItemId = exercise.getEquipmentUsed().getID();
         int sets = exercise.getSets();
         int reps = exercise.getReps();
+        // Add
         try {
             String updateQuery = "INSERT INTO exercise VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(updateQuery);
@@ -56,6 +57,7 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao
     @Override
     public void updateEntity(Exercise exercise) throws ObjectNotContained
     {
+        // Save fields
         int id = exercise.getId();
         if (id == 0) throw new ObjectNotContained();
         String name = exercise.getName();
@@ -63,6 +65,7 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao
         int equipmentItemId = exercise.getEquipmentUsed().getID();
         int sets = exercise.getSets();
         int reps = exercise.getReps();
+        // Update
         try {
             String updateQuery = "UPDATE exercise SET name = ?, muscleTrained = ?, equipmentItemId = ?, sets = ?, reps =? WHERE id = ?;";
             PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
@@ -105,7 +108,6 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao
             String query = "SELECT * FROM exercise";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next())
             {
                 Exercise exercise = new Exercise();
@@ -121,7 +123,7 @@ public class ExerciseDao implements IDao<Exercise>, IExerciseDao
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        result.remove(new Exercise(0));
+        result.remove(Exercise.getNullExercise());
         return result;
     }
 

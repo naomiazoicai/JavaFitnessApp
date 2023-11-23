@@ -28,21 +28,21 @@ public class CustomerDatabaseRepository extends DatabaseRepository<Customer> imp
     }
 
     @Override
-    public boolean usernameInRepo(String keyName)
+    public boolean usernameInRepo(String username)
     {
-        return customerDao.keyNameInRepo(keyName);
+        return customerDao.usernameInRepo(username);
     }
 
     @Override
-    public ArrayList<Customer> searchByPartialKeyName(String keyName)
+    public ArrayList<Customer> searchByPartialUsername(String username)
     {
-        return customerDao.searchByPartialKeyName(keyName);
+        return customerDao.searchByPartialUsername(username);
     }
 
     @Override
-    public Customer searchByUsername(String keyName)
+    public Customer searchByUsername(String username)
     {
-        return customerDao.searchByKeyName(keyName);
+        return customerDao.searchByUsername(username);
     }
 
     @Override

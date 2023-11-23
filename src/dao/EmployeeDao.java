@@ -14,9 +14,7 @@ import java.util.Objects;
 
 public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     private static EmployeeDao instance;
-
     private final PersonDao personDao;
-
     private EmployeeDao(){
         personDao = PersonDao.getInstance();
     }
@@ -28,25 +26,15 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public void addEntity(Employee employee) throws ObjectAlreadyContained {
+    public void addEntity(Employee employee) throws ObjectAlreadyContained
+    {
         if (Objects.equals(employee.getUsername(), "null")) throw new ObjectAlreadyContained();
+        // Save fields
         String username = employee.getUsername();
-        String name = employee.getName();
-        LocalDate birthdate = employee.getBirthDate();
-        Gender gender = employee.getGender();
         double salary = employee.getSalary();
+        // Update person and add employee
+        updatePerson(employee);
         try {
-            // Check if contained in person table
-            try {
-                personDao.addEntity(new Person(username, name, birthdate, gender));
-            } catch (ObjectAlreadyContained ignored) {
-                // If contained, update person
-                try {
-                    personDao.updateEntity(new Person(username, name, birthdate, gender));
-                } catch (ObjectNotContained e) {
-                    throw new RuntimeException(e);
-                }
-            }
             // Add to employee
             String insertQuery = "INSERT INTO employee (username, salary) VALUES (?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -63,29 +51,20 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public void updateEntity(Employee employee) throws ObjectNotContained {
+    public void updateEntity(Employee employee) throws ObjectNotContained
+    {
         if (Objects.equals(employee.getUsername(), "null")) throw new ObjectNotContained();
         String username = employee.getUsername();
-        String name = employee.getName();
-        LocalDate birthdate = employee.getBirthDate();
-        Gender gender = employee.getGender();
         double salary = employee.getSalary();
+        // Update person and then employee
+        updatePerson(employee);
         try {
-            // Update person
-            String insertQuery = "UPDATE person SET name = ?, birthdate = ?, gender = ? WHERE username = ?";
-            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
-            insertStatement.setString(4, username);
-            insertStatement.setString(1, name);
-            insertStatement.setDate(2, Date.valueOf(birthdate));
-            insertStatement.setString(3, gender.toString());
-            int rowsAffected = insertStatement.executeUpdate();
             // Update employee
-            insertQuery = "UPDATE employee SET salary = ? WHERE username = ?";
-            insertStatement = connection.prepareStatement(insertQuery);
+            String insertQuery = "UPDATE employee SET salary = ? WHERE username = ?";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setDouble(1, salary);
             insertStatement.setString(2, username);
-            rowsAffected += insertStatement.executeUpdate();
-
+            int rowsAffected = insertStatement.executeUpdate();
             if (rowsAffected == 0) throw new ObjectNotContained();
         }
         catch (SQLException e) {
@@ -94,7 +73,8 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public void deleteEntity(Employee employee) throws ObjectNotContained {
+    public void deleteEntity(Employee employee) throws ObjectNotContained
+    {
         if (Objects.equals(employee.getUsername(), "null")) throw new ObjectNotContained();
         String username = employee.getUsername();
         try {
@@ -110,36 +90,39 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public ArrayList<Employee> getAllEntities() {
+    public ArrayList<Employee> getAllEntities()
+    {
         ArrayList<Employee> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM employee ORDER BY username;";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
+            // For each result, search person, build employee add it to result list
             while (resultSet.next())
             {
                 String username = resultSet.getString("username");
-                Person person = personDao.searchByKeyName(username);
+                Person person = personDao.searchByUsername(username);
                 int salary = resultSet.getInt("salary");
-                Employee employee = new Employee(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), salary);
+                Employee employee = new Employee(person.getUsername(), person.getName(),
+                        person.getBirthDate(), person.getGender(), salary);
                 result.add(employee);
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        result.remove(new Employee("null"));
+        result.remove(Employee.getNullEmployee());
         return result;
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
-        if (Objects.equals(keyName, "null")) return Boolean.FALSE;
+    public Boolean usernameInRepo(String username)
+    {
+        if (Objects.equals(username, "null")) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM employee WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
@@ -155,17 +138,18 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
     }
 
     @Override
-    public Employee searchByKeyName(String keyName) {
-        if (Objects.equals(keyName, "null")) return Employee.getNullEmployee();
+    public Employee searchByUsername(String username)
+    {
+        if (Objects.equals(username, "null")) return Employee.getNullEmployee();
         try {
             String query = "SELECT * FROM employee WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
             {
-                Person person = personDao.searchByKeyName(keyName);
+                Person person = personDao.searchByUsername(username);
                 if (person.equals(Person.getNullPerson())) return Employee.getNullEmployee();
                 int salary = resultSet.getInt("salary");
                 return new Employee(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), salary);
@@ -176,5 +160,25 @@ public class EmployeeDao implements IDao<Employee>, IEmployeeDao {
         }
         // No subscription type found
         return Employee.getNullEmployee();
+    }
+
+    private void updatePerson(Person person)
+    {
+        String username = person.getUsername();
+        String name = person.getName();
+        LocalDate birthdate = person.getBirthDate();
+        Gender gender = person.getGender();
+        // Add person
+        try {
+            personDao.addEntity(new Person(username, name, birthdate, gender));
+        }
+        catch (ObjectAlreadyContained ignored) {
+            // If contained, update person
+            try {
+                personDao.updateEntity(new Person(username, name, birthdate, gender));
+            } catch (ObjectNotContained e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

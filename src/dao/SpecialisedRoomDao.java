@@ -26,11 +26,14 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     @Override
     public void addEntity(SpecialisedRoom specialisedRoom) throws ObjectAlreadyContained
     {
+        if (specialisedRoom.getId() == 0) throw new ObjectAlreadyContained();
+        // Save fields
         int id = generateNextId();
         boolean occupied = specialisedRoom.isOccupied();
         RoomAccess roomAccess = specialisedRoom.getRoomAccess();
         int personCapacity = specialisedRoom.getPersonCapacity();
         RoomType roomType = specialisedRoom.getRoomType();
+        // Add
         try {
             // Insert in room
             String insertQuery = "INSERT INTO room (id, occupied, roomAccess) VALUES (?, ?, ?)";
@@ -59,11 +62,14 @@ public class SpecialisedRoomDao implements IDao<SpecialisedRoom>, ISpecialisedRo
     @Override
     public void updateEntity(SpecialisedRoom specialisedRoom) throws ObjectNotContained
     {
+        if (specialisedRoom.getId() == 0) throw new ObjectNotContained();
+        // Save fields
         int id = specialisedRoom.getId();
         boolean occupied = specialisedRoom.isOccupied();
         RoomAccess roomAccess = specialisedRoom.getRoomAccess();
         int personCapacity = specialisedRoom.getPersonCapacity();
         RoomType roomType = specialisedRoom.getRoomType();
+        // Add
         try {
             // Insert in room
             String insertQuery = "UPDATE room SET occupied = ?, roomAccess = ? WHERE id = ?";

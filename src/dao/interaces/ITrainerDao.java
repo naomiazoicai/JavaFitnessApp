@@ -5,9 +5,9 @@ import domain.persons.Trainer;
 import java.util.ArrayList;
 
 public interface ITrainerDao {
-    Boolean keyNameInRepo(String keyName);
+    Boolean usernameInRepo(String keyName);
 
-    Trainer searchByKeyName(String keyName);
+    Trainer searchByUsername(String keyName);
 
-    ArrayList<Trainer> searchByPartialKeyName(String keyName);
+    ArrayList<Trainer> searchByPartialUsername(String keyName);
 }

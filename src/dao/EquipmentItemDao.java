@@ -83,12 +83,10 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
     public ArrayList<EquipmentItem> getAllEntities()
     {
         ArrayList<EquipmentItem> result = new ArrayList<>();
-
         try {
             String query = "SELECT * FROM equipmentitem";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next())
             {
                 EquipmentItem equipmentItem = new EquipmentItem();
@@ -100,7 +98,7 @@ public class EquipmentItemDao implements IDao<EquipmentItem>, IEquipmentItemDao
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        result.remove(new EquipmentItem(0));
+        result.remove(EquipmentItem.getNullEquipmentItem());
         return result;
     }
 

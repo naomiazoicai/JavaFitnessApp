@@ -19,13 +19,11 @@ public class CustomerController extends Controller<Customer> implements ICustome
     private static CustomerController instance;
     private static RepoTypes repoType; // Must be set before getInstance()
     private final ICustomerRepository iCustomerRepository;
-    private final TrainerController trainerController;
 
     private CustomerController(IRepository<Customer> iRepository, ICustomerRepository iCustomerRepository)
     {
         super(iRepository);
         this.iCustomerRepository = iCustomerRepository;
-        this.trainerController = TrainerController.getInstance();
     }
 
     public static CustomerController getInstance()
@@ -43,7 +41,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public ArrayList<Customer> searchByPartialKeyName(String keyName)
     {
-        return iCustomerRepository.searchByPartialKeyName(keyName);
+        return iCustomerRepository.searchByPartialUsername(keyName);
     }
 
     @Override
@@ -55,7 +53,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public Boolean trainerUsernameInRepo(String username)
     {
-        return trainerController.usernameInRepo(username);
+        return TrainerController.getInstance().usernameInRepo(username);
     }
 
     @Override
@@ -72,7 +70,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public Trainer getTrainerByUsername(String username)
     {
-        return trainerController.searchByUsername(username);
+        return TrainerController.getInstance().searchByUsername(username);
     }
 
     @Override

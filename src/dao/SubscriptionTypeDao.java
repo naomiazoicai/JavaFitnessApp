@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptionTypeDao
 {
     private static SubscriptionTypeDao instance;
-
     private final SpecialisedRoomDao roomDao;
 
     private SubscriptionTypeDao()
@@ -29,6 +28,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     @Override
     public void addEntity(SubscriptionType subscriptionType) throws ObjectAlreadyContained
     {
+        if (subscriptionType.getName().equals("null")) throw new ObjectAlreadyContained();
         String name = subscriptionType.getName();
         String description = subscriptionType.getDescription();
         double price = subscriptionType.getPrice();
@@ -51,12 +51,11 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     @Override
     public void updateEntity(SubscriptionType subscriptionType) throws ObjectNotContained
     {
+        if (subscriptionType.getName().equals("null")) throw new ObjectNotContained();
+        String name = subscriptionType.getName();
+        String description = subscriptionType.getDescription();
+        double price = subscriptionType.getPrice();
         try {
-            // Add object
-            String name = subscriptionType.getName();
-            String description = subscriptionType.getDescription();
-            double price = subscriptionType.getPrice();
-
             String updateQuery = "UPDATE subscriptiontype SET description = ?, price = ? WHERE name = ?;";
             PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
             updateStatement.setString(1, description);
@@ -73,10 +72,9 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     @Override
     public void deleteEntity(SubscriptionType subscriptionType) throws ObjectNotContained
     {
+        if (subscriptionType.getName().equals("null")) throw new ObjectNotContained();
+        String name = subscriptionType.getName();
         try {
-            // Add object
-            String name = subscriptionType.getName();
-
             String deleteQuery = "DELETE FROM subscriptiontype WHERE name = ?;";
             PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
             deleteStatement.setString(1, name);
@@ -93,10 +91,9 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     {
         ArrayList<SubscriptionType> result = new ArrayList<>();
         try {
-            String query = "SELECT * FROM subscriptiontype ORDER BY price ASC;";
+            String query = "SELECT * FROM subscriptiontype ORDER BY price";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next())
             {
                 SubscriptionType subscriptionType = new SubscriptionType();
@@ -111,6 +108,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        result.remove(SubscriptionType.getNullSubscriptionType());
         return result;
     }
 
@@ -132,12 +130,12 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName)
+    public Boolean nameInRepo(String name)
     {
         try {
             String query = "SELECT COUNT(*) AS row_count FROM subscriptiontype WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
@@ -153,10 +151,10 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName)
+    public ArrayList<SubscriptionType> searchByPartialName(String name)
     {
         ArrayList<SubscriptionType> result = new ArrayList<>();
-        String partialName = "%" + keyName + "%";
+        String partialName = "%" + name + "%";
         try {
             String query = "SELECT * FROM subscriptiontype WHERE name LIKE ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -179,12 +177,12 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName)
+    public SubscriptionType searchByName(String name)
     {
         try {
             String query = "SELECT * FROM subscriptiontype WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
@@ -208,7 +206,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     public void addRoomToSubscription(SubscriptionType subscriptionType, Room room)
     {
         String subscriptionName = subscriptionType.getName();
-        if (!keyNameInRepo(subscriptionName)) return;
+        if (!nameInRepo(subscriptionName)) return;
         int roomId = room.getId();
         if (!roomDao.idInRepo(roomId)) return;
         try{
@@ -227,7 +225,7 @@ public class SubscriptionTypeDao implements IDao<SubscriptionType>, ISubscriptio
     public void removeRoomFromSubscription(SubscriptionType subscriptionType, Room room)
     {
         String subscriptionName = subscriptionType.getName();
-        if (!keyNameInRepo(subscriptionName)) return;
+        if (!nameInRepo(subscriptionName)) return;
         int roomId = room.getId();
         if (!roomDao.idInRepo(roomId)) return;
         try{

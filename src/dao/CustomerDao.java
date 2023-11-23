@@ -13,9 +13,7 @@ import java.util.Objects;
 public class CustomerDao implements IDao<Customer>, ICustomerDao
 {
     private static CustomerDao instance;
-
     private final PersonDao personDao;
-
     private final TrainerDao trainerDao;
 
     private CustomerDao()
@@ -31,70 +29,49 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public void addEntity(Customer customer) throws ObjectAlreadyContained {
+    public void addEntity(Customer customer) throws ObjectAlreadyContained
+    {
         if (Objects.equals(customer.getUsername(), "null")) throw new ObjectAlreadyContained();
+        // Save fields
         String username = customer.getUsername();
-        String name = customer.getName();
-        LocalDate birthdate = customer.getBirthDate();
-        Gender gender = customer.getGender();
-        String trainerUsername = customer.getAssignedTrainer().getUsername();
+        String trainerUsername = validateTrainerUsername(customer.getAssignedTrainer().getUsername());
+        // Update person and add customer
+        updatePerson(customer);
         try {
-            // Check if contained in person table
-            try {
-                personDao.addEntity(new Person(username, name, birthdate, gender));
-            } catch (ObjectAlreadyContained ignored) {
-                // If contained, update person
-                try {
-                    personDao.updateEntity(new Person(username, name, birthdate, gender));
-                } catch (ObjectNotContained e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            // Check if valid trainer id
-            if (!trainerDao.keyNameInRepo(trainerUsername)) trainerUsername = "null";
-            // Add to employee
             String insertQuery = "INSERT INTO customer (username, assignedTrainerUsername) VALUES (?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, username);
             insertStatement.setString(2, trainerUsername);
             insertStatement.executeUpdate();
         }
-        catch (SQLIntegrityConstraintViolationException e) {
+        catch (SQLIntegrityConstraintViolationException e)
+        {
             throw new ObjectAlreadyContained();
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void updateEntity(Customer customer) throws ObjectNotContained {
+    public void updateEntity(Customer customer) throws ObjectNotContained
+    {
         if (Objects.equals(customer.getUsername(), "null")) throw new ObjectNotContained();
+        // Save fields
         String username = customer.getUsername();
-        String name = customer.getName();
-        LocalDate birthdate = customer.getBirthDate();
-        Gender gender = customer.getGender();
-        String trainerUsername = customer.getAssignedTrainer().getUsername();
+        String trainerUsername = validateTrainerUsername(customer.getAssignedTrainer().getUsername());
+        // Update person and customer
+        updatePerson(customer);
         try {
-            // Check if contained in person table
-            try {
-                personDao.addEntity(new Person(username, name, birthdate, gender));
-            } catch (ObjectAlreadyContained ignored) {
-                // If contained, update person
-                try {
-                    personDao.updateEntity(new Person(username, name, birthdate, gender));
-                } catch (ObjectNotContained e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            // Check if valid trainer id
-            if (!trainerDao.keyNameInRepo(trainerUsername)) trainerUsername = "null";
             // Add to employee
             String insertQuery = "UPDATE customer SET assignedTrainerUsername = ? WHERE username = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(2, username);
             insertStatement.setString(1, trainerUsername);
-            insertStatement.executeUpdate();
+            int affectedRows = insertStatement.executeUpdate();
+            // No update done
+            if (affectedRows == 0) throw new ObjectNotContained();
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
@@ -102,9 +79,11 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public void deleteEntity(Customer customer) throws ObjectNotContained {
+    public void deleteEntity(Customer customer) throws ObjectNotContained
+    {
         if (Objects.equals(customer.getUsername(), "null")) throw new ObjectNotContained();
         String username = customer.getUsername();
+        // Delete customer
         try {
             String insertQuery = "DELETE FROM customer WHERE username = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -118,19 +97,22 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public ArrayList<Customer> getAllEntities() {
+    public ArrayList<Customer> getAllEntities()
+    {
         ArrayList<Customer> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM customer";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
+            // Add each found customer to result
             while (resultSet.next())
             {
                 String username = resultSet.getString("username");
                 String trainerUsername = resultSet.getString("assignedTrainerUsername");
-                Person person = personDao.searchByKeyName(username);
-                Trainer trainer = trainerDao.searchByKeyName(trainerUsername);
-                Customer customer = new Customer(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), trainer);
+                Person person = personDao.searchByUsername(username);
+                Trainer trainer = trainerDao.searchByUsername(trainerUsername);
+                Customer customer = new Customer(person.getUsername(), person.getName(),
+                        person.getBirthDate(), person.getGender(), trainer);
                 result.add(customer);
             }
         }
@@ -142,12 +124,13 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
-        if (Objects.equals(keyName, "null")) return Boolean.FALSE;
+    public Boolean usernameInRepo(String username)
+    {
+        if (Objects.equals(username, "null")) return Boolean.FALSE;
         try {
             String query = "SELECT COUNT(*) AS row_count FROM customer WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
@@ -163,48 +146,56 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public Customer searchByKeyName(String keyName) {
-        if (Objects.equals(keyName, "null")) return Customer.getNullCustomer();
+    public Customer searchByUsername(String username)
+    {
+        if (Objects.equals(username, "null")) return Customer.getNullCustomer();
         try {
             String query = "SELECT * FROM customer WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
             {
-                Person person = personDao.searchByKeyName(keyName);
+                // Get person
+                Person person = personDao.searchByUsername(username);
                 if (person.equals(Person.getNullPerson())) return Customer.getNullCustomer();
                 String trainerUsername = resultSet.getString("assignedTrainerUsername");
+                // Get trainer
                 Trainer trainer;
                 if (trainerUsername.equals("null")) trainer = Trainer.getNullTrainer();
-                else trainer = trainerDao.searchByKeyName(trainerUsername);
-                return new Customer(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), trainer);
+                else trainer = trainerDao.searchByUsername(trainerUsername);
+                // Return
+                return new Customer(person.getUsername(), person.getName(),
+                        person.getBirthDate(), person.getGender(), trainer);
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        // No subscription type found
+        // No customer found
         return Customer.getNullCustomer();
     }
 
     @Override
-    public ArrayList<Customer> searchByPartialKeyName(String keyName) {
+    public ArrayList<Customer> searchByPartialUsername(String username)
+    {
         ArrayList<Customer> result = new ArrayList<>();
-        String partialName = "%" + keyName + "%";
+        String partialName = "%" + username + "%";
+        // Search
         try {
             String query = "SELECT * FROM customer WHERE customer.username LIKE ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, partialName);
             ResultSet resultSet = statement.executeQuery();
+            // Add each found customer to result
             while (resultSet.next())
             {
-                String username = resultSet.getString("username");
                 String trainerUsername = resultSet.getString("assignedTrainerUsername");
-                Person person = personDao.searchByKeyName(username);
-                Trainer trainer = trainerDao.searchByKeyName(trainerUsername);
-                Customer customer = new Customer(person.getUsername(), person.getName(), person.getBirthDate(), person.getGender(), trainer);
+                Person person = personDao.searchByUsername(username);
+                Trainer trainer = trainerDao.searchByUsername(trainerUsername);
+                Customer customer = new Customer(person.getUsername(), person.getName(), person.getBirthDate(),
+                        person.getGender(), trainer);
                 result.add(customer);
             }
         }
@@ -216,7 +207,8 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
     }
 
     @Override
-    public void trainerDeleted(Trainer trainer) {
+    public void trainerDeleted(Trainer trainer)
+    {
         if (trainer.getUsername().equals("null")) return;
         String trainerUsername = trainer.getUsername();
         try {
@@ -225,8 +217,34 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
             insertStatement.setString(1, "null");
             insertStatement.setString(2, trainerUsername);
             insertStatement.executeUpdate();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private String validateTrainerUsername(String username)
+    {
+        if (!trainerDao.usernameInRepo(username)) username = "null";
+        return username;
+    }
+
+    private void updatePerson(Person person)
+    {
+        String username = person.getUsername();
+        String name = person.getName();
+        LocalDate birthdate = person.getBirthDate();
+        Gender gender = person.getGender();
+        // Add person
+        try {
+            personDao.addEntity(new Person(username, name, birthdate, gender));
+        }
+        catch (ObjectAlreadyContained ignored) {
+            // If contained, update person
+            try {
+                personDao.updateEntity(new Person(username, name, birthdate, gender));
+            } catch (ObjectNotContained e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

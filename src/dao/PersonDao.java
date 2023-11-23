@@ -11,9 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class PersonDao implements IDao<Person>, IPersonDao {
+public class PersonDao implements IDao<Person>, IPersonDao
+{
     private static PersonDao instance;
-
     private PersonDao(){}
 
     public static PersonDao getInstance()
@@ -23,12 +23,15 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public void addEntity(Person person) throws ObjectAlreadyContained {
+    public void addEntity(Person person) throws ObjectAlreadyContained
+    {
         if (Objects.equals(person.getUsername(), "null")) throw new ObjectAlreadyContained();
+        // Save fields
         String username = person.getUsername();
         String name = person.getName();
         LocalDate birthdate = person.getBirthDate();
         Gender gender = person.getGender();
+        // Add
         try {
             String insertQuery = "INSERT INTO person (username, name, birthdate, gender) VALUES (?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -47,12 +50,15 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public void updateEntity(Person person) throws ObjectNotContained {
+    public void updateEntity(Person person) throws ObjectNotContained
+    {
         if (Objects.equals(person.getUsername(), "null")) throw new ObjectNotContained();
+        // Save fields
         String username = person.getUsername();
         String name = person.getName();
         LocalDate birthdate = person.getBirthDate();
         Gender gender = person.getGender();
+        // Update
         try {
             String insertQuery = "UPDATE person SET name = ?, birthdate = ?, gender = ? WHERE username = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -69,7 +75,8 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public void deleteEntity(Person person) throws ObjectNotContained {
+    public void deleteEntity(Person person) throws ObjectNotContained
+    {
         if (Objects.equals(person.getUsername(), "null")) throw new ObjectNotContained();
         String username = person.getUsername();
         try {
@@ -85,13 +92,13 @@ public class PersonDao implements IDao<Person>, IPersonDao {
     }
 
     @Override
-    public ArrayList<Person> getAllEntities() {
+    public ArrayList<Person> getAllEntities()
+    {
         ArrayList<Person> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM person ORDER BY username;";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next())
             {
                 String username = resultSet.getString("username");
@@ -105,43 +112,22 @@ public class PersonDao implements IDao<Person>, IPersonDao {
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        result.remove(new Person("null"));
+        result.remove(Person.getNullPerson());
         return result;
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
-        if (Objects.equals(keyName, "null")) return Boolean.FALSE;
-        try {
-            String query = "SELECT COUNT(*) AS row_count FROM person WHERE username = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
-            ResultSet resultSet = statement.executeQuery();
-            // Analyse result
-            if (resultSet.next())
-            {
-                int row_count = resultSet.getInt("row_count");
-                if (row_count != 0) return Boolean.TRUE;
-            }
-            return Boolean.FALSE;
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Person searchByKeyName(String keyName) {
-        if (Objects.equals(keyName, "null")) return Person.getNullPerson();
+    public Person searchByUsername(String username)
+    {
+        if (Objects.equals(username, "null")) return Person.getNullPerson();
         try {
             String query = "SELECT * FROM person WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, keyName);
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             // Analyse result
             if (resultSet.next())
             {
-                String username = resultSet.getString("username");
                 String name = resultSet.getString("name");
                 LocalDate birthdate = resultSet.getDate("birthDate").toLocalDate();
                 Gender gender = Gender.valueOf(resultSet.getString("gender"));

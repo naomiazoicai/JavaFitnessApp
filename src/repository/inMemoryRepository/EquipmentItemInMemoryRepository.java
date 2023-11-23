@@ -3,7 +3,6 @@ package repository.inMemoryRepository;
 import domain.gym.EquipmentItem;
 import repository.interfaces.IEquipmentItemRepository;
 import repository.InMemoryRepository;
-import repository.exceptions.ObjectNotContained;
 
 public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem> implements IEquipmentItemRepository {
     private static EquipmentItemInMemoryRepository instance;
@@ -41,11 +40,11 @@ public class EquipmentItemInMemoryRepository extends InMemoryRepository<Equipmen
     }
 
     @Override
-    public EquipmentItem searchById(int id) throws ObjectNotContained {
+    public EquipmentItem searchById(int id){
         for (EquipmentItem equipmentItem : arrayList)
         {
             if (id == equipmentItem.getID()) return equipmentItem.copy();
         }
-        throw new ObjectNotContained();
+        return EquipmentItem.getNullEquipmentItem();
     }
 }

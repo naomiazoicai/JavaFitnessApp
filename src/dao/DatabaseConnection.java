@@ -7,6 +7,7 @@ public class DatabaseConnection
     private static Connection connection;
 
     private DatabaseConnection() {}
+
     public static void setConnection(String url, String user, String password) throws SQLException
     {
         // Set

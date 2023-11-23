@@ -13,10 +13,7 @@ import java.util.ArrayList;
 
 public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICustomerSubscriptionDao {
     private static CustomerSubscriptionDao instance;
-
-
     private final SubscriptionTypeDao subscriptionTypeDao;
-
     private final CustomerDao customerDao;
 
     private CustomerSubscriptionDao()
@@ -32,11 +29,14 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     }
 
     @Override
-    public void addEntity(CustomerSubscription customerSubscription) throws ObjectAlreadyContained {
+    public void addEntity(CustomerSubscription customerSubscription) throws ObjectAlreadyContained
+    {
+        // Save fields
         String customerUsername = customerSubscription.getCustomer().getUsername();
         String subscriptionTypeName = customerSubscription.getSubscriptionType().getName();
         LocalDate validFrom = customerSubscription.getValidFrom();
         LocalDate validUntil = customerSubscription.getValidUntil();
+        // Add
         try {
             String insertQuery = "INSERT INTO customersubscription (customerUsername, subscriptionTypeName, validFrom, validUntil) VALUES (?, ?, ?, ?);";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -55,11 +55,14 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     }
 
     @Override
-    public void updateEntity(CustomerSubscription customerSubscription) throws ObjectNotContained {
+    public void updateEntity(CustomerSubscription customerSubscription) throws ObjectNotContained
+    {
+        // Save fields
         String customerUsername = customerSubscription.getCustomer().getUsername();
         String subscriptionTypeName = customerSubscription.getSubscriptionType().getName();
         LocalDate validFrom = customerSubscription.getValidFrom();
         LocalDate validUntil = customerSubscription.getValidUntil();
+        // Update
         try {
             String query = "UPDATE customersubscription SET customerUsername = ?, subscriptionTypeName = ?, validFrom = ?, validUntil = ? WHERE customerUsername = ? AND subscriptionTypeName = ? AND validFrom = ? AND validUntil = ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -81,10 +84,12 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
 
     @Override
     public void deleteEntity(CustomerSubscription customerSubscription) throws ObjectNotContained {
+        // Save fields
         String customerUsername = customerSubscription.getCustomer().getUsername();
         String subscriptionTypeName = customerSubscription.getSubscriptionType().getName();
         LocalDate validFrom = customerSubscription.getValidFrom();
         LocalDate validUntil = customerSubscription.getValidUntil();
+        // Delete
         try {
             String query = "DELETE FROM customersubscription WHERE customerUsername = ? AND subscriptionTypeName = ? AND validFrom = ? AND validUntil = ?";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -101,54 +106,56 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     }
 
     @Override
-    public ArrayList<CustomerSubscription> getAllEntities() {
+    public ArrayList<CustomerSubscription> getAllEntities()
+    {
         ArrayList<CustomerSubscription> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM customersubscription ORDER BY customerUsername;";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-
+            // Add to result
             while (resultSet.next())
             {
                 String customerUsername = resultSet.getString("customerUsername");
-                Customer customer = customerDao.searchByKeyName(customerUsername);
+                Customer customer = customerDao.searchByUsername(customerUsername);
                 String subscriptionTypeName = resultSet.getString("subscriptionTypeName");
-                SubscriptionType subscriptionType = subscriptionTypeDao.searchByKeyName(subscriptionTypeName);
+                SubscriptionType subscriptionType = subscriptionTypeDao.searchByName(subscriptionTypeName);
                 LocalDate validFrom = resultSet.getDate("validFrom").toLocalDate();
                 LocalDate validUntil = resultSet.getDate("validUntil").toLocalDate();
                 CustomerSubscription customerSubscription = new CustomerSubscription(customer,
                         subscriptionType, validFrom, validUntil);
-                // Return
                 result.add(customerSubscription);
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        result.remove(CustomerSubscription.getNullCustomerSubscription());
         return result;
     }
 
     @Override
-    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username) {
+    public ArrayList<CustomerSubscription> searchSubscriptionsOfUser(String username)
+    {
         ArrayList<CustomerSubscription> result = new ArrayList<>();
-        if (!customerDao.keyNameInRepo(username)) return result;
+        if (username.equals("null")) return result;
+        if (!customerDao.usernameInRepo(username)) return result;
+        // Search
         try {
             String query = "SELECT * FROM customersubscription WHERE customerUsername = ? ORDER BY customerUsername;";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next())
             {
                 String customerUsername = resultSet.getString("customerUsername");
-                Customer customer = customerDao.searchByKeyName(customerUsername);
+                Customer customer = customerDao.searchByUsername(customerUsername);
                 String subscriptionTypeName = resultSet.getString("subscriptionTypeName");
-                SubscriptionType subscriptionType = subscriptionTypeDao.searchByKeyName(subscriptionTypeName);
+                SubscriptionType subscriptionType = subscriptionTypeDao.searchByName(subscriptionTypeName);
                 LocalDate validFrom = resultSet.getDate("validFrom").toLocalDate();
                 LocalDate validUntil = resultSet.getDate("validUntil").toLocalDate();
                 CustomerSubscription customerSubscription = new CustomerSubscription(customer,
                         subscriptionType, validFrom, validUntil);
-                // Return
                 result.add(customerSubscription);
             }
         }
@@ -161,7 +168,7 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     @Override
     public ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType) {
         ArrayList<CustomerSubscription> result = new ArrayList<>();
-        if (!subscriptionTypeDao.keyNameInRepo(subscriptionType.getName())) return result;
+        if (!subscriptionTypeDao.nameInRepo(subscriptionType.getName())) return result;
         try {
             String query = "SELECT * FROM customersubscription WHERE subscriptionTypeName = ? ORDER BY customerUsername;";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -171,9 +178,9 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
             while (resultSet.next())
             {
                 String customerUsername = resultSet.getString("customerUsername");
-                Customer customer = customerDao.searchByKeyName(customerUsername);
+                Customer customer = customerDao.searchByUsername(customerUsername);
                 String subscriptionTypeName = resultSet.getString("subscriptionTypeName");
-                SubscriptionType subscriptionTypeFound = subscriptionTypeDao.searchByKeyName(subscriptionTypeName);
+                SubscriptionType subscriptionTypeFound = subscriptionTypeDao.searchByName(subscriptionTypeName);
                 LocalDate validFrom = resultSet.getDate("validFrom").toLocalDate();
                 LocalDate validUntil = resultSet.getDate("validUntil").toLocalDate();
                 CustomerSubscription customerSubscription = new CustomerSubscription(customer,
@@ -189,8 +196,9 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     }
 
     @Override
-    public Boolean hasValidSubscription(Customer customer) {
-        if (!customerDao.keyNameInRepo(customer.getUsername())) return Boolean.FALSE;
+    public Boolean hasValidSubscription(Customer customer)
+    {
+        if (!customerDao.usernameInRepo(customer.getUsername())) return Boolean.FALSE;
         try {
             String query = "SELECT * FROM customersubscription WHERE customerUsername = ? ORDER BY customerUsername;";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -199,7 +207,7 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
             while (resultSet.next())
             {
                 String subscriptionTypeName = resultSet.getString("subscriptionTypeName");
-                SubscriptionType subscriptionType = subscriptionTypeDao.searchByKeyName(subscriptionTypeName);
+                SubscriptionType subscriptionType = subscriptionTypeDao.searchByName(subscriptionTypeName);
                 LocalDate validFrom = resultSet.getDate("validFrom").toLocalDate();
                 LocalDate validUntil = resultSet.getDate("validUntil").toLocalDate();
                 CustomerSubscription customerSubscription = new CustomerSubscription(customer,
@@ -215,7 +223,8 @@ public class CustomerSubscriptionDao implements IDao<CustomerSubscription>, ICus
     }
 
     @Override
-    public void subscriptionTypeDeleted(SubscriptionType subscriptionType) {
+    public void subscriptionTypeDeleted(SubscriptionType subscriptionType)
+    {
         try {
             String query = "UPDATE customersubscription SET subscriptionTypeName = 'null' WHERE subscriptionTypeName = ? ";
             PreparedStatement statement = connection.prepareStatement(query);

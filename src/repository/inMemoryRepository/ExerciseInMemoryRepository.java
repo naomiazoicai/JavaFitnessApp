@@ -2,7 +2,6 @@ package repository.inMemoryRepository;
 
 import domain.gym.EquipmentItem;
 import domain.gym.Exercise;
-import repository.exceptions.ObjectNotContained;
 import repository.interfaces.IExerciseRepository;
 import repository.InMemoryRepository;
 
@@ -39,12 +38,12 @@ public class ExerciseInMemoryRepository extends InMemoryRepository<Exercise> imp
     }
 
     @Override
-    public Exercise searchById(int id) throws ObjectNotContained {
+    public Exercise searchById(int id){
         for (Exercise exercise : arrayList)
         {
             if (id == exercise.getId()) return exercise.copy();
         }
-        throw new ObjectNotContained();
+        return Exercise.getNullExercise();
     }
 
     @Override
