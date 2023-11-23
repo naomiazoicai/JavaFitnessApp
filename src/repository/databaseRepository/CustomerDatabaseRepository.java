@@ -5,7 +5,6 @@ import dao.interaces.ICustomerDao;
 import domain.persons.Customer;
 import domain.persons.Trainer;
 import repository.DatabaseRepository;
-import repository.exceptions.ObjectNotContained;
 import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class CustomerDatabaseRepository extends DatabaseRepository<Customer> imp
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName)
+    public boolean usernameInRepo(String keyName)
     {
         return customerDao.keyNameInRepo(keyName);
     }
@@ -41,13 +40,13 @@ public class CustomerDatabaseRepository extends DatabaseRepository<Customer> imp
     }
 
     @Override
-    public Customer searchByKeyName(String keyName)
+    public Customer searchByUsername(String keyName)
     {
         return customerDao.searchByKeyName(keyName);
     }
 
     @Override
-    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer)
     {
         // TODO
         return Trainer.getNullTrainer();

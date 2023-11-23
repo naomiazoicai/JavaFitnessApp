@@ -4,7 +4,6 @@ import dao.EquipmentItemDao;
 import dao.interaces.IEquipmentItemDao;
 import domain.gym.EquipmentItem;
 import repository.DatabaseRepository;
-import repository.exceptions.ObjectNotContained;
 import repository.interfaces.IEquipmentItemRepository;
 
 public class EquipmentItemDatabaseRepository extends DatabaseRepository<EquipmentItem> implements IEquipmentItemRepository
@@ -31,7 +30,7 @@ public class EquipmentItemDatabaseRepository extends DatabaseRepository<Equipmen
     }
 
     @Override
-    public EquipmentItem searchById(int id) throws ObjectNotContained {
+    public EquipmentItem searchById(int id){
         return equipmentItemDao.searchById(id);
     }
 

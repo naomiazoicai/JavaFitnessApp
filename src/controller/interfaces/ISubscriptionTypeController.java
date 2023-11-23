@@ -4,8 +4,9 @@ import domain.gym.Room;
 import domain.money.SubscriptionType;
 import repository.exceptions.ObjectNotContained;
 
-public interface ISubscriptionTypeController extends NameIdentifiedEntitiesController<SubscriptionType>
-{
+import java.util.ArrayList;
+
+public interface ISubscriptionTypeController {
     void addRoomToSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained;
 
     void removeRoomFromSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained;
@@ -13,4 +14,10 @@ public interface ISubscriptionTypeController extends NameIdentifiedEntitiesContr
     Boolean roomIdInRepo(int roomId);
 
     Room searchRoom(int roomId);
+
+    ArrayList<SubscriptionType> searchByPartialUsername(String keyName);
+
+    SubscriptionType searchByUsername(String keyName);
+
+    Boolean usernameInRepo(String keyName);
 }

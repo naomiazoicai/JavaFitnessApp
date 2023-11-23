@@ -56,7 +56,7 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     public void addEntity() {
         // Customer
         String username = terminal.readUsername();
-        while (!customerSubscriptionController.customerInRepo(username)) {
+        while (!customerSubscriptionController.usernameInRepo(username)) {
             terminal.printMessage("Username not in repo! Choose a valid customer");
             username = terminal.readUsername();
         }
@@ -84,7 +84,7 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     public void deleteEntity() {
         // Customer
         String username = terminal.readUsername();
-        while (!customerSubscriptionController.customerInRepo(username)) {
+        while (!customerSubscriptionController.usernameInRepo(username)) {
             terminal.printMessage("Username not in repo! Choose a valid customer");
             username = terminal.readUsername();
         }
@@ -112,7 +112,7 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
     public void updateEntity() {
         // Customer
         String username = terminal.readUsername();
-        while (!customerSubscriptionController.customerInRepo(username)) {
+        while (!customerSubscriptionController.usernameInRepo(username)) {
             terminal.printMessage("Username not in repo! Choose a valid customer");
             username = terminal.readUsername();
         }
@@ -159,7 +159,7 @@ public class CustomerSubscriptionUI extends UI<CustomerSubscription> {
         ArrayList<CustomerSubscription> result;
         // Customer
         String username = terminal.readUsername();
-        while (!customerSubscriptionController.customerInRepo(username)) {
+        while (!customerSubscriptionController.usernameInRepo(username)) {
             terminal.printMessage("Username not in repo! Choose a valid customer");
             username = terminal.readUsername();
         }

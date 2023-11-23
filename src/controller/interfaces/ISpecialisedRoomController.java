@@ -1,7 +1,9 @@
 package controller.interfaces;
 
-import controller.interfaces.IdIdentifiedEntitiesController;
 import domain.gym.SpecialisedRoom;
 
-public interface ISpecialisedRoomController extends IdIdentifiedEntitiesController<SpecialisedRoom> {
+public interface ISpecialisedRoomController {
+    boolean idInRepo(int id);
+
+    SpecialisedRoom searchById(int id);
 }

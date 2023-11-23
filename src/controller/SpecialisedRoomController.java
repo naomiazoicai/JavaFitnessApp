@@ -16,10 +16,8 @@ import repository.interfaces.ISpecialisedRoomRepository;
 public class SpecialisedRoomController extends Controller<SpecialisedRoom> implements ISpecialisedRoomController, ISubjectDeletedRoom
 {
     private static SpecialisedRoomController instance;
-
-    private final ISpecialisedRoomRepository iSpecialisedRoomRepository;
-
     private static RepoTypes repoType;
+    private final ISpecialisedRoomRepository iSpecialisedRoomRepository; // Must be set before getInstance()
 
     private SpecialisedRoomController(IRepository<SpecialisedRoom> iRepository, ISpecialisedRoomRepository iSpecialisedRoomRepository)
     {
@@ -41,18 +39,15 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public boolean idInRepo(int id) {
+    public boolean idInRepo(int id)
+    {
         return iSpecialisedRoomRepository.idInRepo(id);
     }
 
     @Override
     public SpecialisedRoom searchById(int id)
     {
-        try {
-            return iSpecialisedRoomRepository.searchById(id).copy();
-        } catch (ObjectNotContained e) {
-            return new SpecialisedRoom();
-        }
+        return iSpecialisedRoomRepository.searchById(id);
     }
 
     @Override
@@ -70,12 +65,14 @@ public class SpecialisedRoomController extends Controller<SpecialisedRoom> imple
     }
 
     @Override
-    public void addObserver(IObserverDeletedRoom observer) {
+    public void addObserver(IObserverDeletedRoom observer)
+    {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(IObserverDeletedRoom observer) {
+    public void removeObserver(IObserverDeletedRoom observer)
+    {
         observerList.remove(observer);
     }
 

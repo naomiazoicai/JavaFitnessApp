@@ -1,10 +1,10 @@
 package factory;
 
 import UI.SpecialisedUIs.*;
-import UI.UiRunnable;
+import UI.UiRun;
 
-public class UiRunnableFactory {
-    public static UiRunnable buildUi(UiTypes uiType)
+public class UiRunFactory {
+    public static UiRun buildUi(UiTypes uiType)
     {
         return switch (uiType)
         {

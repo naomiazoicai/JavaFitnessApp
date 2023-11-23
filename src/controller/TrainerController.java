@@ -17,9 +17,8 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
 
 {
     private static TrainerController instance;
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final ITrainerRepository iTrainerRepository;
-
-    private static RepoTypes repoType;
 
     private TrainerController(IRepository<Trainer> iRepository, ITrainerRepository iTrainerRepository)
     {
@@ -41,19 +40,21 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public ArrayList<Trainer> searchByPartialKeyName(String keyName)
+    public ArrayList<Trainer> searchByPartialUsername(String username)
     {
-        return iTrainerRepository.searchByPartialKeyName(keyName);
+        return iTrainerRepository.searchByPartialUsername(username);
     }
 
     @Override
-    public Trainer searchByKeyName(String keyName) {
-        return iTrainerRepository.searchByKeyName(keyName);
+    public Trainer searchByUsername(String username)
+    {
+        return iTrainerRepository.searchByUsername(username);
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
-        return iTrainerRepository.keyNameInRepo(keyName);
+    public Boolean usernameInRepo(String username)
+    {
+        return iTrainerRepository.usernameInRepo(username);
     }
 
     @Override
@@ -64,12 +65,14 @@ public class TrainerController extends Controller<Trainer> implements ITrainerCo
     }
 
     @Override
-    public void addObserver(IObserverDeletedTrainer observer) {
+    public void addObserver(IObserverDeletedTrainer observer)
+    {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(IObserverDeletedTrainer observer) {
+    public void removeObserver(IObserverDeletedTrainer observer)
+    {
         observerList.remove(observer);
     }
 

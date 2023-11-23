@@ -13,10 +13,11 @@ public interface ICustomerSubscriptionController
 
     ArrayList<CustomerSubscription> searchSubscriptionByType(SubscriptionType subscriptionType);
 
-    boolean customerInRepo(String username);
+    boolean usernameInRepo(String username);
 
     Customer searchCustomerInRepo(String username);
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean subscriptionTypeInRepo(String name);
 
     SubscriptionType searchSubscriptionType(String name);

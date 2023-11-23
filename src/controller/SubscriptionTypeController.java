@@ -10,7 +10,6 @@ import factory.repo.SubscriptionTypeRepoFactory;
 import repository.IRepository;
 import repository.RepoTypes;
 import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
 import repository.interfaces.ISubscriptionTypeRepository;
 
 import java.util.ArrayList;
@@ -19,15 +18,13 @@ import java.util.ArrayList;
 public class SubscriptionTypeController extends Controller<SubscriptionType> implements ISubscriptionTypeController, IObserverDeletedRoom, ISubjectDeletedSubscriptionType
 {
     private static SubscriptionTypeController instance;
-
-    private final ISubscriptionTypeRepository subscriptionTypeRepository;
-
-    private static RepoTypes repoType;
+    private static RepoTypes repoType; // Must be set before getInstance()
+    private final ISubscriptionTypeRepository iSubscriptionTypeRepository;
 
     private SubscriptionTypeController(IRepository<SubscriptionType> iRepository, ISubscriptionTypeRepository iSubscriptionTypeRepository)
     {
         super(iRepository);
-        this.subscriptionTypeRepository = iSubscriptionTypeRepository;
+        this.iSubscriptionTypeRepository = iSubscriptionTypeRepository;
         addObserver(CustomerSubscriptionController.getInstance());
     }
 
@@ -51,62 +48,66 @@ public class SubscriptionTypeController extends Controller<SubscriptionType> imp
     }
 
     @Override
-    public ArrayList<SubscriptionType> searchByPartialKeyName(String keyName)
+    public ArrayList<SubscriptionType> searchByPartialUsername(String username)
     {
-        return subscriptionTypeRepository.searchByPartialKeyName(keyName);
+        return iSubscriptionTypeRepository.searchByPartialKeyName(username);
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName)
+    public SubscriptionType searchByUsername(String username)
     {
-        return subscriptionTypeRepository.searchByKeyName(keyName);
+        return iSubscriptionTypeRepository.searchByUsername(username);
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
-        return subscriptionTypeRepository.keyNameInRepo(keyName);
+    public Boolean usernameInRepo(String username)
+    {
+        return iSubscriptionTypeRepository.usernameInRepo(username);
     }
 
     @Override
     public Boolean roomIdInRepo(int roomId)
     {
-        return SpecialisedRoomInMemoryRepository.getInstance().idInRepo(roomId);
+        return SpecialisedRoomController.getInstance().idInRepo(roomId);
     }
 
     @Override
     public Room searchRoom(int roomId)
     {
-        return SpecialisedRoomInMemoryRepository.getInstance().searchById(roomId);
+        return SpecialisedRoomController.getInstance().searchById(roomId);
     }
 
     @Override
-    public void addRoomToSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained
+    public void addRoomToSubscription(String subscriptionTypeName, int roomId)
     {
         Room room = searchRoom(roomId);
-        SubscriptionType subscriptionType = searchByKeyName(subscriptionTypeName);
-        subscriptionTypeRepository.addRoomToSubscription(subscriptionType, room);
+        SubscriptionType subscriptionType = searchByUsername(subscriptionTypeName);
+        iSubscriptionTypeRepository.addRoomToSubscription(subscriptionType, room);
     }
 
     @Override
-    public void removeRoomFromSubscription(String subscriptionTypeName, int roomId) throws ObjectNotContained
+    public void removeRoomFromSubscription(String subscriptionTypeName, int roomId)
     {
         Room room = searchRoom(roomId);
-        SubscriptionType subscriptionType = searchByKeyName(subscriptionTypeName);
-        subscriptionTypeRepository.removeRoomFromSubscription(subscriptionType, room);
+        SubscriptionType subscriptionType = searchByUsername(subscriptionTypeName);
+        iSubscriptionTypeRepository.removeRoomFromSubscription(subscriptionType, room);
     }
 
     @Override
-    public void updateDeletedRoom(Room room) {
-        subscriptionTypeRepository.roomDeleted(room);
+    public void updateDeletedRoom(Room room)
+    {
+        iSubscriptionTypeRepository.roomDeleted(room);
     }
 
     @Override
-    public void addObserver(IObserverDeletedSubscriptionType observer) {
+    public void addObserver(IObserverDeletedSubscriptionType observer)
+    {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(IObserverDeletedSubscriptionType observer) {
+    public void removeObserver(IObserverDeletedSubscriptionType observer)
+    {
         observerList.remove(observer);
     }
 

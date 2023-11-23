@@ -17,15 +17,15 @@ import java.util.ArrayList;
 public class CustomerController extends Controller<Customer> implements ICustomerController, IObserverDeletedTrainer
 {
     private static CustomerController instance;
-
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final ICustomerRepository iCustomerRepository;
-
-    private static RepoTypes repoType;
+    private final TrainerController trainerController;
 
     private CustomerController(IRepository<Customer> iRepository, ICustomerRepository iCustomerRepository)
     {
         super(iRepository);
         this.iCustomerRepository = iCustomerRepository;
+        this.trainerController = TrainerController.getInstance();
     }
 
     public static CustomerController getInstance()
@@ -47,21 +47,20 @@ public class CustomerController extends Controller<Customer> implements ICustome
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName)
+    public Boolean keyNameInRepo(String username)
     {
-        return iCustomerRepository.keyNameInRepo(keyName);
+        return iCustomerRepository.usernameInRepo(username);
     }
 
     @Override
     public Boolean trainerUsernameInRepo(String username)
     {
-        TrainerController trainerController = TrainerController.getInstance();
-        return trainerController.keyNameInRepo(username);
+        return trainerController.usernameInRepo(username);
     }
 
     @Override
     public Customer searchByKeyName(String keyName) {
-        return iCustomerRepository.searchByKeyName(keyName);
+        return iCustomerRepository.searchByUsername(keyName);
     }
 
     @Override
@@ -73,8 +72,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
     @Override
     public Trainer getTrainerByUsername(String username)
     {
-        TrainerController trainerController = TrainerController.getInstance();
-        return trainerController.searchByKeyName(username);
+        return trainerController.searchByUsername(username);
     }
 
     @Override
@@ -86,7 +84,7 @@ public class CustomerController extends Controller<Customer> implements ICustome
     public boolean hasValidSubscription(String username)
     {
         ICustomerSubscriptionController customerSubscriptionController = CustomerSubscriptionController.getInstance();
-        Customer customer = iCustomerRepository.searchByKeyName(username);
+        Customer customer = iCustomerRepository.searchByUsername(username);
         return customerSubscriptionController.hasValidSubscription(customer);
     }
 

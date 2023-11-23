@@ -46,7 +46,7 @@ public class SubscriptionTypeDatabaseRepository extends DatabaseRepository<Subsc
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName)
+    public Boolean usernameInRepo(String keyName)
     {
         return subscriptionTypeDao.keyNameInRepo(keyName);
     }
@@ -58,7 +58,7 @@ public class SubscriptionTypeDatabaseRepository extends DatabaseRepository<Subsc
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName)
+    public SubscriptionType searchByUsername(String keyName)
     {
         return subscriptionTypeDao.searchByKeyName(keyName);
     }

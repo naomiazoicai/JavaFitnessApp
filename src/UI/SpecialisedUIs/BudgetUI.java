@@ -1,12 +1,12 @@
 package UI.SpecialisedUIs;
 
 import UI.Terminal;
-import UI.UiRunnable;
+import UI.UiRun;
 import controller.BudgetController;
 
 import java.util.Objects;
 
-public class BudgetUI implements UiRunnable {
+public class BudgetUI implements UiRun {
     private static BudgetUI instance;
 
     private final BudgetController controller;

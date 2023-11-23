@@ -28,7 +28,7 @@ public class TrainerInMemoryRepository extends InMemoryRepository<Trainer> imple
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
+    public Boolean usernameInRepo(String keyName) {
         for (Person person : arrayList)
         {
             if (keyName.equals(person.getUsername())) return Boolean.TRUE;
@@ -37,7 +37,7 @@ public class TrainerInMemoryRepository extends InMemoryRepository<Trainer> imple
     }
 
     @Override
-    public ArrayList<Trainer> searchByPartialKeyName(String keyName) {
+    public ArrayList<Trainer> searchByPartialUsername(String keyName) {
         ArrayList<Trainer> result = new ArrayList<>();
         for (Trainer trainer : arrayList)
         {
@@ -47,7 +47,7 @@ public class TrainerInMemoryRepository extends InMemoryRepository<Trainer> imple
     }
 
     @Override
-    public Trainer searchByKeyName(String keyName) {
+    public Trainer searchByUsername(String keyName) {
         for (Trainer trainer : arrayList)
         {
             if (trainer.getUsername().contains(keyName)) return trainer.copy();

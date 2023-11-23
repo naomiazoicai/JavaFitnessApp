@@ -9,10 +9,8 @@ import repository.interfaces.IBudgetRepo;
 public class BudgetController implements IObserverCustomerSubscriptionAdded
 {
     private static BudgetController instance;
-
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final IBudgetRepo repository;
-
-    private static RepoTypes repoType;
 
     private BudgetController()
     {

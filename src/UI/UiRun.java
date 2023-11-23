@@ -1,6 +1,6 @@
 package UI;
 
-public interface UiRunnable
+public interface UiRun
 {
     void run();
 }

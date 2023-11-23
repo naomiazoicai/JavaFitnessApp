@@ -15,10 +15,8 @@ import repository.exceptions.ObjectNotContained;
 public class EquipmentItemController extends Controller<EquipmentItem> implements IEquipmentItemController, ISubjectDeleteEquipmentItem
 {
     private static EquipmentItemController instance;
-
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final IEquipmentItemRepository iEquipmentItemRepository;
-
-    private static RepoTypes repoType;
 
     private EquipmentItemController(IRepository<EquipmentItem> iRepository, IEquipmentItemRepository iEquipmentItemRepository)
     {
@@ -40,18 +38,15 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     }
 
     @Override
-    public boolean idInRepo(int id) {
+    public boolean idInRepo(int id)
+    {
         return iEquipmentItemRepository.idInRepo(id);
     }
 
     @Override
     public EquipmentItem searchById(int id)
     {
-        try {
-            return iEquipmentItemRepository.searchById(id);
-        } catch (ObjectNotContained e) {
-            return new EquipmentItem();
-        }
+        return iEquipmentItemRepository.searchById(id);
     }
 
     @Override
@@ -70,13 +65,15 @@ public class EquipmentItemController extends Controller<EquipmentItem> implement
     }
 
     @Override
-    public void addObserver(IObserverDeleteEquipmentItem observer) {
+    public void addObserver(IObserverDeleteEquipmentItem observer)
+    {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(IObserverDeleteEquipmentItem observer) {
-        observerList.add(observer);
+    public void removeObserver(IObserverDeleteEquipmentItem observer)
+    {
+        observerList.remove(observer);
     }
 
     @Override

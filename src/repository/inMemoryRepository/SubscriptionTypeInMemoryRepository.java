@@ -26,7 +26,7 @@ public class SubscriptionTypeInMemoryRepository extends InMemoryRepository<Subsc
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName) {
+    public Boolean usernameInRepo(String keyName) {
         for (SubscriptionType subscriptionType : arrayList)
         {
             if (keyName.equals(subscriptionType.getName())) return Boolean.TRUE;
@@ -45,7 +45,7 @@ public class SubscriptionTypeInMemoryRepository extends InMemoryRepository<Subsc
     }
 
     @Override
-    public SubscriptionType searchByKeyName(String keyName) {
+    public SubscriptionType searchByUsername(String keyName) {
         for (SubscriptionType subscriptionType : arrayList)
         {
             if (keyName.equals(subscriptionType.getName())) return subscriptionType.copy();

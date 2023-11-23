@@ -3,7 +3,6 @@ package UI.SpecialisedUIs;
 import UI.UI;
 import controller.TrainerController;
 import controller.interfaces.ITrainerController;
-import domain.persons.Customer;
 import domain.persons.Gender;
 import domain.persons.Trainer;
 import domain.persons.TrainerSpecialization;
@@ -56,7 +55,7 @@ public class TrainerUI extends UI<Trainer> {
     public void addEntity() {
         String username = terminal.readUsername();
         // Check if username exists
-        while (trainerController.keyNameInRepo(username)) {
+        while (trainerController.usernameInRepo(username)) {
             terminal.printMessage("Username already in repo! Choose another");
             username = terminal.readUsername();
         }
@@ -78,8 +77,8 @@ public class TrainerUI extends UI<Trainer> {
     public void deleteEntity() {
         String username = terminal.readUsername();
         // Check if username exists
-        if (trainerController.keyNameInRepo(username)) {
-            Trainer trainer = trainerController.searchByKeyName(username);
+        if (trainerController.usernameInRepo(username)) {
+            Trainer trainer = trainerController.searchByUsername(username);
             try {
                 controller.delete(trainer);
                 terminal.printMessage("Trainer deleted: " + trainer.toString());
@@ -93,8 +92,8 @@ public class TrainerUI extends UI<Trainer> {
     public void updateEntity() {
         String username = terminal.readUsername();
         // Check if username exists
-        if (trainerController.keyNameInRepo(username)) {
-            Trainer existingTrainer = trainerController.searchByKeyName(username);
+        if (trainerController.usernameInRepo(username)) {
+            Trainer existingTrainer = trainerController.searchByUsername(username);
 
             // Display existing trainer details
             terminal.printMessage("Existing Trainer Details:\n" + existingTrainer);
@@ -130,7 +129,7 @@ public class TrainerUI extends UI<Trainer> {
     public void searchByPartialUsername()
     {
         String username = terminal.readUsername();
-        ArrayList<Trainer> trainers = trainerController.searchByPartialKeyName(username);
+        ArrayList<Trainer> trainers = trainerController.searchByPartialUsername(username);
         terminal.printArrayList(trainers);
     }
 }

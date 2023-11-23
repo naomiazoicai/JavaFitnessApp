@@ -8,14 +8,14 @@ import repository.RepoTypes;
 import java.util.Objects;
 
 public class MainUI {
-    private final UiRunnable budgetUI;
-    private final UiRunnable customerUI;
-    private final UiRunnable trainerUI;
-    private final UiRunnable subscriptionTypeUI;
-    private final UiRunnable customerSubscriptionUI;
-    private final UiRunnable specialisedRoomUI;
-    private final UiRunnable equipmentItemUI;
-    private final UiRunnable exerciseUI;
+    private final UiRun budgetUI;
+    private final UiRun customerUI;
+    private final UiRun trainerUI;
+    private final UiRun subscriptionTypeUI;
+    private final UiRun customerSubscriptionUI;
+    private final UiRun specialisedRoomUI;
+    private final UiRun equipmentItemUI;
+    private final UiRun exerciseUI;
     private static MainUI instance;
     private final Terminal terminal = Terminal.getInstance();
 

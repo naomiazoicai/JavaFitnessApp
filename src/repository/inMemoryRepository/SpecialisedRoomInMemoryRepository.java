@@ -36,12 +36,13 @@ public class SpecialisedRoomInMemoryRepository extends InMemoryRepository<Specia
     }
 
     @Override
-    public SpecialisedRoom searchById(int id){
+    public SpecialisedRoom searchById(int id)
+    {
         for (SpecialisedRoom specialisedRoom : arrayList)
         {
-            if (id == specialisedRoom.getId()) return specialisedRoom;
+            if (id == specialisedRoom.getId()) return specialisedRoom.copy();
         }
-        return new SpecialisedRoom();
+        return SpecialisedRoom.getNullSpecialisedRoom();
     }
 
     @Override

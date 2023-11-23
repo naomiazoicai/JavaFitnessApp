@@ -3,7 +3,6 @@ package UI.SpecialisedUIs;
 import UI.UI;
 import controller.SubscriptionTypeController;
 import controller.interfaces.ISubscriptionTypeController;
-import domain.gym.Room;
 import domain.money.SubscriptionType;
 import repository.exceptions.ObjectAlreadyContained;
 import repository.exceptions.ObjectNotContained;
@@ -55,7 +54,7 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     public void addEntity() {
         String name = terminal.readSubscriptionTypeName();
         // Check if name exists
-        while (subscriptionTypeController.keyNameInRepo(name))
+        while (subscriptionTypeController.usernameInRepo(name))
         {
             terminal.printMessage("Subscription Type name already in repo! Choose another");
             name = terminal.readSubscriptionTypeName();
@@ -76,9 +75,9 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     @Override
     public void deleteEntity() {
         String name = terminal.readSubscriptionTypeName();
-        if (subscriptionTypeController.keyNameInRepo(name))
+        if (subscriptionTypeController.usernameInRepo(name))
         {
-            SubscriptionType subscriptionType = subscriptionTypeController.searchByKeyName(name);
+            SubscriptionType subscriptionType = subscriptionTypeController.searchByUsername(name);
             try {
                 controller.delete(subscriptionType);
                 terminal.printMessage("Subscription type deleted: " + subscriptionType);
@@ -93,8 +92,8 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     public void updateEntity() {
         String name = terminal.readSubscriptionTypeName();
         // Check if name exists
-        if (subscriptionTypeController.keyNameInRepo(name)) {
-            SubscriptionType existingSubscriptionType = subscriptionTypeController.searchByKeyName(name);
+        if (subscriptionTypeController.usernameInRepo(name)) {
+            SubscriptionType existingSubscriptionType = subscriptionTypeController.searchByUsername(name);
 
             // Display existing subscription type details
             terminal.printMessage("Existing Subscription Type Details:\n" + existingSubscriptionType);
@@ -125,7 +124,7 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
     public void searchByPartialName()
     {
         String name = terminal.readSubscriptionTypeName();
-        ArrayList<SubscriptionType> subscriptionTypes = subscriptionTypeController.searchByPartialKeyName(name);
+        ArrayList<SubscriptionType> subscriptionTypes = subscriptionTypeController.searchByPartialUsername(name);
         terminal.printArrayList(subscriptionTypes);
     }
 
@@ -142,7 +141,7 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
         // Trainer
         terminal.printMessage("Enter subscription type name: ");
         String subscriptionTypeName = terminal.readSubscriptionTypeName();
-        if (!subscriptionTypeController.keyNameInRepo(subscriptionTypeName))
+        if (!subscriptionTypeController.usernameInRepo(subscriptionTypeName))
         {
             terminal.printMessage("Subscription type was not found");
             return;
@@ -169,7 +168,7 @@ public class SubscriptionTypeUI extends UI<SubscriptionType> {
         // Trainer
         terminal.printMessage("Enter subscription type name: ");
         String subscriptionTypeName = terminal.readSubscriptionTypeName();
-        if (!subscriptionTypeController.keyNameInRepo(subscriptionTypeName))
+        if (!subscriptionTypeController.usernameInRepo(subscriptionTypeName))
         {
             terminal.printMessage("Subscription type was not found");
             return;

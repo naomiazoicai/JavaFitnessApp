@@ -9,12 +9,13 @@ import domain.money.SubscriptionType;
 import domain.persons.Customer;
 import factory.repo.CustomerRepoFactory;
 import factory.repo.CustomerSubscriptionRepoFactory;
+import factory.repo.SubscriptionTypeRepoFactory;
 import repository.IRepository;
 import repository.RepoTypes;
 import repository.exceptions.ObjectAlreadyContained;
-import repository.inMemoryRepository.SubscriptionTypeInMemoryRepository;
 import repository.interfaces.ICustomerRepository;
 import repository.interfaces.ICustomerSubscriptionRepository;
+import repository.interfaces.ISubscriptionTypeRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,20 +25,19 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
         implements ICustomerSubscriptionController, IObserverDeletedSubscriptionType, ISubjectCustomerSubscriptionAdded
 {
     private static CustomerSubscriptionController instance;
-
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final ICustomerSubscriptionRepository customerSubscriptionRepository;
-
     private final ICustomerRepository iCustomerRepository;
-
-    private static RepoTypes repoType;
-
+    private final ISubscriptionTypeRepository iSubscriptionTypeRepository;
     private CustomerSubscriptionController(IRepository<CustomerSubscription> iRepository,
                                            ICustomerSubscriptionRepository iCustomerSubscriptionRepository,
-                                           ICustomerRepository iCustomerRepository)
+                                           ICustomerRepository iCustomerRepository,
+                                           ISubscriptionTypeRepository iSubscriptionTypeRepository)
     {
         super(iRepository);
         this.customerSubscriptionRepository = iCustomerSubscriptionRepository;
         this.iCustomerRepository = iCustomerRepository;
+        this.iSubscriptionTypeRepository = iSubscriptionTypeRepository;
         addObserver(BudgetController.getInstance());
     }
 
@@ -49,7 +49,8 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
             IRepository<CustomerSubscription> iRepository = CustomerSubscriptionRepoFactory.buildIRepository(repoType);
             ICustomerSubscriptionRepository iCustomerRepository = CustomerSubscriptionRepoFactory.buildInterface(repoType);
             ICustomerRepository iCustomerRepository1 = CustomerRepoFactory.buildInterface(repoType);
-            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository, iCustomerRepository1);
+            ISubscriptionTypeRepository iSubscriptionTypeRepository = SubscriptionTypeRepoFactory.buildInterface(repoType);
+            instance = new CustomerSubscriptionController(iRepository, iCustomerRepository, iCustomerRepository1, iSubscriptionTypeRepository);
         }
         return instance;
     }
@@ -74,36 +75,29 @@ public class CustomerSubscriptionController extends Controller<CustomerSubscript
     }
 
     @Override
-    public boolean customerInRepo(String username)
+    public boolean usernameInRepo(String username)
     {
-        return iCustomerRepository.keyNameInRepo(username);
+        return iCustomerRepository.usernameInRepo(username);
     }
 
     @Override
     public Customer searchCustomerInRepo(String username)
     {
-        if (iCustomerRepository.keyNameInRepo(username))
-        {
-            return iCustomerRepository.searchByKeyName(username);
-        }
+        if (iCustomerRepository.usernameInRepo(username)) return iCustomerRepository.searchByUsername(username);
         return Customer.getNullCustomer();
     }
 
     @Override
     public boolean subscriptionTypeInRepo(String name)
     {
-        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
-        return subscriptionTypeRepository.keyNameInRepo(name);
+
+        return iSubscriptionTypeRepository.usernameInRepo(name);
     }
 
     @Override
     public SubscriptionType searchSubscriptionType(String name)
     {
-        SubscriptionTypeInMemoryRepository subscriptionTypeRepository = SubscriptionTypeInMemoryRepository.getInstance();
-        if (subscriptionTypeRepository.keyNameInRepo(name))
-        {
-            return subscriptionTypeRepository.searchByKeyName(name);
-        }
+        if (iSubscriptionTypeRepository.usernameInRepo(name)) return iSubscriptionTypeRepository.searchByUsername(name);
         return new SubscriptionType();
     }
 

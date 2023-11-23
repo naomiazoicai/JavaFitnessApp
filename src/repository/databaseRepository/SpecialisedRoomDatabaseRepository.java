@@ -2,11 +2,8 @@ package repository.databaseRepository;
 
 import dao.SpecialisedRoomDao;
 import dao.interaces.ISpecialisedRoomDao;
-import domain.gym.RoomType;
 import domain.gym.SpecialisedRoom;
 import repository.DatabaseRepository;
-import repository.exceptions.ObjectNotContained;
-import repository.inMemoryRepository.SpecialisedRoomInMemoryRepository;
 import repository.interfaces.ISpecialisedRoomRepository;
 
 public class SpecialisedRoomDatabaseRepository extends DatabaseRepository<SpecialisedRoom> implements ISpecialisedRoomRepository
@@ -33,7 +30,8 @@ public class SpecialisedRoomDatabaseRepository extends DatabaseRepository<Specia
     }
 
     @Override
-    public SpecialisedRoom searchById(int id) throws ObjectNotContained {
+    public SpecialisedRoom searchById(int id)
+    {
         return specialisedRoomDao.searchById(id);
     }
 

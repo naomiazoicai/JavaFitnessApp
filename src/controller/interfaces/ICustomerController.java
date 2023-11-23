@@ -1,13 +1,13 @@
 package controller.interfaces;
 
 import domain.persons.Customer;
-import domain.persons.Person;
 import domain.persons.Trainer;
 import repository.exceptions.ObjectNotContained;
 
+import java.util.ArrayList;
 
-public interface ICustomerController extends NameIdentifiedEntitiesController<Customer>
-{
+
+public interface ICustomerController {
     Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained;
 
     Boolean trainerUsernameInRepo(String username);
@@ -15,4 +15,10 @@ public interface ICustomerController extends NameIdentifiedEntitiesController<Cu
     Trainer getTrainerByUsername(String username);
 
     boolean hasValidSubscription(String username);
+
+    ArrayList<Customer> searchByPartialKeyName(String keyName);
+
+    Customer searchByKeyName(String keyName);
+
+    Boolean keyNameInRepo(String keyName);
 }

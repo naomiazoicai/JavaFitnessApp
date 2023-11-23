@@ -16,12 +16,9 @@ import repository.interfaces.IExerciseRepository;
 public class ExerciseController extends Controller<Exercise> implements IExerciseController, IObserverDeleteEquipmentItem
 {
     private static ExerciseController instance;
-
+    private static RepoTypes repoType; // Must be set before getInstance()
     private final IExerciseRepository iExerciseRepository;
-
     private final IEquipmentItemRepository iEquipmentItemRepository;
-
-    private static RepoTypes repoType;
 
     private ExerciseController(IRepository<Exercise> iRepository, IExerciseRepository iExerciseRepository, IEquipmentItemRepository iEquipmentItemRepository)
     {
@@ -46,7 +43,6 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     @Override
     public boolean idInRepo(int id)
     {
-        // Set id
         return iExerciseRepository.idInRepo(id);
     }
 
@@ -57,7 +53,7 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
             return iExerciseRepository.searchById(id);
         } catch (ObjectNotContained e)
         {
-            return null;
+            return Exercise.getNullExercise();
         }
     }
 
@@ -70,18 +66,15 @@ public class ExerciseController extends Controller<Exercise> implements IExercis
     }
 
     @Override
-    public boolean checkEquipmentItemIdInRepo(int id) {
+    public boolean checkEquipmentItemIdInRepo(int id)
+    {
         return iEquipmentItemRepository.idInRepo(id);
     }
 
     @Override
     public EquipmentItem searchEquipmentItemById(int id)
     {
-        try {
-            return iEquipmentItemRepository.searchById(id);
-        } catch (ObjectNotContained e) {
-            return new EquipmentItem();
-        }
+        return iEquipmentItemRepository.searchById(id);
     }
 
     @Override

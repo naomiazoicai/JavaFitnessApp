@@ -31,7 +31,7 @@ public class CustomerInMemoryRepository extends InMemoryRepository<Customer> imp
     }
 
     @Override
-    public Boolean keyNameInRepo(String keyName)
+    public boolean usernameInRepo(String keyName)
     {
         for (Person person : arrayList)
         {
@@ -52,7 +52,7 @@ public class CustomerInMemoryRepository extends InMemoryRepository<Customer> imp
     }
 
     @Override
-    public Customer searchByKeyName(String keyName) {
+    public Customer searchByUsername(String keyName) {
         for (Customer customer : arrayList)
         {
             if (keyName.equals(customer.getUsername())) return customer.copy();
