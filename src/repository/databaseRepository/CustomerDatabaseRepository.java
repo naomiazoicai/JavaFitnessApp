@@ -5,6 +5,7 @@ import dao.interaces.ICustomerDao;
 import domain.persons.Customer;
 import domain.persons.Trainer;
 import repository.DatabaseRepository;
+import repository.exceptions.ObjectNotContained;
 import repository.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
@@ -46,10 +47,8 @@ public class CustomerDatabaseRepository extends DatabaseRepository<Customer> imp
     }
 
     @Override
-    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer)
-    {
-        // TODO
-        return Trainer.getNullTrainer();
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer trainer) throws ObjectNotContained {
+        return customerDao.changeAssignedTrainerOfCustomer(customer, trainer);
     }
 
     @Override

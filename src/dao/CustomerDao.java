@@ -222,6 +222,27 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
         }
     }
 
+    @Override
+    public Trainer changeAssignedTrainerOfCustomer(Customer customer, Trainer newTrainer) throws ObjectNotContained {
+        if (customer.getUsername().equals("null")) throw new ObjectNotContained();
+        String newTrainerUsername = validateTrainerUsername(newTrainer.getUsername());
+        Trainer oldTrainer = getAssignedTrainer(customer);
+        try {
+            // Add to employee
+            String insertQuery = "UPDATE customer SET assignedTrainerUsername = ? WHERE username = ?";
+            PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+            insertStatement.setString(2, customer.getUsername());
+            insertStatement.setString(1, newTrainerUsername);
+            int affectedRows = insertStatement.executeUpdate();
+            // No update done
+            if (affectedRows == 0) throw new ObjectNotContained();
+            else return oldTrainer;
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private String validateTrainerUsername(String username)
     {
         if (!trainerDao.usernameInRepo(username)) username = "null";
@@ -246,5 +267,27 @@ public class CustomerDao implements IDao<Customer>, ICustomerDao
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    private Trainer getAssignedTrainer(Customer customer)
+    {
+        String customerUsername = customer.getUsername();
+        String trainerUsername;
+        if (customerUsername.equals("null")) return Trainer.getNullTrainer();
+        try {
+            String insertQuery = "SELECT assignedTrainerUsername FROM customer WHERE username = ?";
+            PreparedStatement statement = connection.prepareStatement(insertQuery);
+            statement.setString(1, customerUsername);
+            ResultSet resultSet = statement.executeQuery();
+            // Analyse result
+            if (resultSet.next())
+            {
+                trainerUsername = resultSet.getString("assignedTrainerUsername");
+                return trainerDao.searchByUsername(trainerUsername);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return Trainer.getNullTrainer();
     }
 }
