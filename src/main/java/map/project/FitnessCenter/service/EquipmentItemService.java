@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class EquipmentItemService implements IService<EquipmentItem> {
+
     @Autowired
     private EquipmentItemRepository repository;
 
@@ -26,9 +27,13 @@ public class EquipmentItemService implements IService<EquipmentItem> {
     }
 
     @Override
-    public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained {
+    public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained, ObjectAlreadyContained {
         if (!repository.existsById(id)) throw new ObjectNotContained();
-        Optional<EquipmentItem> oldObject = repository.findById(id);
+        if (repository.exists(Example.of(object))) throw new ObjectAlreadyContained();
+        // Save old object
+        Optional<EquipmentItem> oldObject = repository.findById(id).map(EquipmentItem::copy);
+        // Update
+        object.setId(id);
         repository.save(object);
         return oldObject;
     }

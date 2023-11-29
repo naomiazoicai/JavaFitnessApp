@@ -6,19 +6,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 public class EquipmentItemController extends Controller<EquipmentItem>
 {
     @PostMapping("/equipmentItem")
     @Override
-    public ResponseEntity<EquipmentItem> add(EquipmentItem object) {
+    public ResponseEntity<EquipmentItem> add(@RequestBody EquipmentItem object) {
         return super.add(object);
     }
 
     @PutMapping("/equipmentItem/{id}")
     @Override
-    public ResponseEntity<EquipmentItem> update(@PathVariable(value = "id") Long id, EquipmentItem object) {
+    public ResponseEntity<EquipmentItem> update(@PathVariable(value = "id") Long id,@RequestBody EquipmentItem object) {
         return super.update(id, object);
     }
 

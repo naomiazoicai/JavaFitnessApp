@@ -3,6 +3,7 @@ package map.project.FitnessCenter.controller;
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.service.interfaces.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public abstract class Controller<Type> implements IController<Type>
+public abstract class   Controller<Type> implements IController<Type>
 {
+    @Autowired
     IService<Type> service;
     @Override
     public ResponseEntity<Type> add(Type object) {
@@ -21,7 +23,7 @@ public abstract class Controller<Type> implements IController<Type>
             Optional<Type> addedObject = service.add(object);
             return addedObject.map(type
                     -> ResponseEntity.status(HttpStatus.CREATED).body(type)).orElseGet(()
-                    -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+                    -> ResponseEntity.internalServerError().build()
             );
         } catch (ObjectAlreadyContained exception)
         {
@@ -35,10 +37,12 @@ public abstract class Controller<Type> implements IController<Type>
             Optional<Type> oldObject = service.update(id, object);
             return oldObject.map(type
                     -> ResponseEntity.status(HttpStatus.OK).body(oldObject.get())).orElseGet(()
-                    -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+                    -> ResponseEntity.internalServerError().build()
             );
         } catch (ObjectNotContained e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (ObjectAlreadyContained e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
 
@@ -48,7 +52,7 @@ public abstract class Controller<Type> implements IController<Type>
             Optional<Type> deletedObject = service.delete(id);
             return deletedObject.map(type
                     -> ResponseEntity.status(HttpStatus.OK).body(deletedObject.get())).orElseGet(()
-                    -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+                    -> ResponseEntity.internalServerError().build()
             );
         } catch (ObjectNotContained e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
