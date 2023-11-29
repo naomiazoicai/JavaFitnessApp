@@ -1,6 +1,9 @@
 package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
+import map.project.FitnessCenter.service.EquipmentItemService;
+import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +12,9 @@ import java.util.List;
 @RestController
 public class EquipmentItemController extends Controller<EquipmentItem>
 {
+    @Autowired
+    private IEquipmentItemService iEquipmentItemService;
+
     @PostMapping("/equipmentItem")
     @Override
     public ResponseEntity<EquipmentItem> add(@RequestBody EquipmentItem object) {
@@ -37,5 +43,13 @@ public class EquipmentItemController extends Controller<EquipmentItem>
     @Override
     public ResponseEntity<EquipmentItem> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);
+    }
+
+    @GetMapping("/equipmentItem/byName/{name}")
+    public ResponseEntity<EquipmentItem> getEntityByName(@PathVariable(value = "name") String name)
+    {
+        return iEquipmentItemService.getByName(name)
+                .map(equipmentItem -> ResponseEntity.ok().body(equipmentItem))
+                .orElse(ResponseEntity.notFound().build());
     }
 }

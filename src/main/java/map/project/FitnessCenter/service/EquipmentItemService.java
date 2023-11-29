@@ -4,6 +4,7 @@ import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
+import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EquipmentItemService implements IService<EquipmentItem> {
+public class EquipmentItemService implements IService<EquipmentItem>, IEquipmentItemService {
 
     @Autowired
     private EquipmentItemRepository repository;
@@ -56,5 +57,10 @@ public class EquipmentItemService implements IService<EquipmentItem> {
     @Override
     public Optional<EquipmentItem> getEntityById(Long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public Optional<EquipmentItem> getByName(String name) {
+        return repository.findByName(name);
     }
 }
