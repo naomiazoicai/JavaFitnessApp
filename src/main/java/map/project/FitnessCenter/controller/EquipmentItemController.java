@@ -1,20 +1,20 @@
 package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
+import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
-import map.project.FitnessCenter.service.interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-public class EquipmentItemController extends Controller<EquipmentItem>
+public class EquipmentItemController extends Controller<EquipmentItem, Long>
 {
     private final IEquipmentItemService iEquipmentItemService;
 
     @Autowired
-    public EquipmentItemController(IService<EquipmentItem> iService, IEquipmentItemService iEquipmentItemService) {
+    public EquipmentItemController(BaseService<EquipmentItem, Long> iService, IEquipmentItemService iEquipmentItemService) {
         super(iService);
         this.iEquipmentItemService = iEquipmentItemService;
     }

@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface IService<Type>
+public interface IService<Type, KeyType>
 {
     Optional<Type> add(Type object) throws ObjectAlreadyContained;
 
-    Optional<Type> update(Long id, Type object) throws ObjectNotContained, ObjectAlreadyContained;
+    Optional<Type> update(KeyType id, Type object) throws ObjectNotContained, ObjectAlreadyContained;
 
-    Optional<Type> delete(Long id) throws ObjectNotContained;
+    Optional<Type> delete(KeyType id) throws ObjectNotContained;
 
     Optional<List<Type>> getAll();
 
-    Optional<Type> getEntityById(Long id);
+    Optional<Type> getEntityById(KeyType id);
 }

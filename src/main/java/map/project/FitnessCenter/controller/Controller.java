@@ -2,7 +2,7 @@ package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
-import map.project.FitnessCenter.service.interfaces.IService;
+import map.project.FitnessCenter.service.interfaces.BaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public abstract class   Controller<Type> implements IController<Type>
+public abstract class   Controller<Type, KeyType> implements IController<Type, KeyType>
 {
-    final IService<Type> service;
-    public Controller(IService<Type> service) {
+    final BaseService<Type, KeyType> service;
+    public Controller(BaseService<Type, KeyType> service) {
         this.service = service;
     }
 
@@ -34,7 +34,7 @@ public abstract class   Controller<Type> implements IController<Type>
     }
 
     @Override
-    public ResponseEntity<Type> update(@PathVariable(value = "id") Long id, Type object) {
+    public ResponseEntity<Type> update(@PathVariable(value = "id") KeyType id, Type object) {
         try {
             Optional<Type> oldObject = service.update(id, object);
             return oldObject.map(type
@@ -49,7 +49,7 @@ public abstract class   Controller<Type> implements IController<Type>
     }
 
     @Override
-    public ResponseEntity<Type> delete(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Type> delete(@PathVariable(value = "id") KeyType id) {
         try {
             Optional<Type> deletedObject = service.delete(id);
             return deletedObject.map(type
@@ -69,7 +69,7 @@ public abstract class   Controller<Type> implements IController<Type>
     }
 
     @Override
-    public ResponseEntity<Type> getEntityById(Long id) {
+    public ResponseEntity<Type> getEntityById(KeyType id) {
         return service.getEntityById(id)
                 .map(equipmentItem -> ResponseEntity.ok().body(equipmentItem))
                 .orElse(ResponseEntity.notFound().build());
