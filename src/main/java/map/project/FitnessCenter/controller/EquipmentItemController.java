@@ -1,19 +1,23 @@
 package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.service.EquipmentItemService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
+import map.project.FitnessCenter.service.interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 public class EquipmentItemController extends Controller<EquipmentItem>
 {
+    private final IEquipmentItemService iEquipmentItemService;
+
     @Autowired
-    private IEquipmentItemService iEquipmentItemService;
+    public EquipmentItemController(IService<EquipmentItem> iService, IEquipmentItemService iEquipmentItemService) {
+        super(iService);
+        this.iEquipmentItemService = iEquipmentItemService;
+    }
 
     @PostMapping("/equipmentItem")
     @Override

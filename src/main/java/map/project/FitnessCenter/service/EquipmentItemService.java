@@ -16,8 +16,12 @@ import java.util.Optional;
 @Service
 public class EquipmentItemService implements IService<EquipmentItem>, IEquipmentItemService {
 
+    private final EquipmentItemRepository repository;
+
     @Autowired
-    private EquipmentItemRepository repository;
+    public EquipmentItemService(EquipmentItemRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Optional<EquipmentItem> add(EquipmentItem object) throws ObjectAlreadyContained {

@@ -3,7 +3,6 @@ package map.project.FitnessCenter.controller;
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.service.interfaces.IService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +14,11 @@ import java.util.Optional;
 @RestController
 public abstract class   Controller<Type> implements IController<Type>
 {
-    @Autowired
-    IService<Type> service;
+    final IService<Type> service;
+    public Controller(IService<Type> service) {
+        this.service = service;
+    }
+
     @Override
     public ResponseEntity<Type> add(Type object) {
         try {
