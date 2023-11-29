@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface EquipmentItemRepository extends JpaRepository<EquipmentItem, Long>{
+public interface EquipmentItemRepository extends JpaRepository<EquipmentItem, Long> {
     @Query("SELECT e FROM EquipmentItem e WHERE e.name = :name")
     Optional<EquipmentItem> findByName(@Param("name") String name);
 }

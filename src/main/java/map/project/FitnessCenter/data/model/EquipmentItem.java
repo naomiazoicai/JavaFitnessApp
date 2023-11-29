@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.util.Objects;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -19,14 +21,6 @@ public class EquipmentItem
     @Column
     private String name;
 
-    @Override
-    public String toString() {
-        return "EquipmentItem{" +
-                "ID=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
     public EquipmentItem copy() {
         return new EquipmentItem(id, name);
     }
@@ -37,6 +31,11 @@ public class EquipmentItem
         if (o == null || getClass() != o.getClass()) return false;
         EquipmentItem that = (EquipmentItem) o;
         return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
 
