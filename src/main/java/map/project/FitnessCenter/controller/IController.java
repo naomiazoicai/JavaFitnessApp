@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public interface IController<Type, KeyType>
+public interface IController<Entity, IdType>
 {
-    ResponseEntity<Type> add(Type object); //entity (POST)
+    ResponseEntity<Entity> add(Entity object); //entity (POST)
 
-    ResponseEntity<Type> update(@PathVariable(value = "id") KeyType id, Type object);  //entity/{id} (PUT)
+    ResponseEntity<Entity> update(@PathVariable(value = "id") IdType id, Entity object);  //entity/{id} (PUT)
 
-    ResponseEntity<Type> delete(@PathVariable(value = "id") KeyType id);  //entity/{id} (DELETE)
+    ResponseEntity<Entity> delete(@PathVariable(value = "id") IdType id);  //entity/{id} (DELETE)
 
-    ResponseEntity<List<Type>> getAll();  //entity (GET)
+    ResponseEntity<List<Entity>> getAll();  //entity (GET)
 
-    ResponseEntity<Type> getEntityById(KeyType id);  //entity/{id} (GET)  - by id or sth else
+    ResponseEntity<Entity> getEntityById(IdType id);  //entity/{id} (GET)  - by id or sth else
 }

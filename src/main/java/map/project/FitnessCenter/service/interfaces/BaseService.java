@@ -10,10 +10,10 @@ import java.util.Optional;
 
 @Service
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") 
-public abstract class BaseService<Entity, KeyType> implements IService<Entity, KeyType>
+public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>
 {
-    private final JpaRepository<Entity, KeyType> repository;
-    public BaseService(JpaRepository<Entity, KeyType> repository)
+    private final JpaRepository<Entity, IdType> repository;
+    public BaseService(JpaRepository<Entity, IdType> repository)
     {
         this.repository = repository;
     }
@@ -33,7 +33,7 @@ public abstract class BaseService<Entity, KeyType> implements IService<Entity, K
     }
 
     @Override
-    public Optional<Entity> getEntityById(KeyType key) {
-        return repository.findById(key);
+    public Optional<Entity> getEntityByKey(IdType id) {
+        return repository.findById(id);
     }
 }

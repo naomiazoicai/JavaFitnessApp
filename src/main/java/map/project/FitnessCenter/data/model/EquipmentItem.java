@@ -1,15 +1,14 @@
 package map.project.FitnessCenter.data.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import map.project.FitnessCenter.data.model.enums.Condition;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.Objects;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 @Data
@@ -18,24 +17,44 @@ public class EquipmentItem
 {
     @Id @GeneratedValue
     private Long id;
-    @Column
+    @Column(nullable = false)   
     private String name;
 
+    @Column (columnDefinition = "enum('NEW', 'GOOD', 'WORN', 'BROKEN', 'UNKNOWN')")
+    @Enumerated(EnumType.STRING)
+    private Condition condition;
+
+//    public EquipmentItem(Long id, String name, Condition condition) {
+//        if (condition == null) condition = Condition.UNKNOWN;
+//        this.id = id;
+//        this.name = name;
+//        this.condition = condition;
+//    }
+
     public EquipmentItem copy() {
-        return new EquipmentItem(id, name);
+        return new EquipmentItem(id, name, condition);
     }
 
+//    public EquipmentItem copy() {
+//        return new EquipmentItem(id, name);
+//    }
+
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EquipmentItem that = (EquipmentItem) o;
-        return name.equals(that.name);
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        EquipmentItem that = (EquipmentItem) object;
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(id);
     }
+
+//    public void setCondition(Condition condition) {
+//        if (condition == null) condition = Condition.UNKNOWN;
+//    }
 }
 

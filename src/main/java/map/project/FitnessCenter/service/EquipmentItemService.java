@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService {
 
-    private final EquipmentItemRepository equipmentItemRepository;
+    private final EquipmentItemRepository equipmentItemRepository; //TODO add interface for repo
 
     @Autowired
     public EquipmentItemService(EquipmentItemRepository repository) {

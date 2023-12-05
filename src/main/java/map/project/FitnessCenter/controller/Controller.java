@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public abstract class   Controller<Type, KeyType> implements IController<Type, KeyType>
+public abstract class   Controller<Type, IdType> implements IController<Type, IdType>
 {
-    final BaseService<Type, KeyType> service;
-    public Controller(BaseService<Type, KeyType> service) {
+    final BaseService<Type, IdType> service;
+    public Controller(BaseService<Type, IdType> service) {
         this.service = service;
     }
 
@@ -34,7 +34,7 @@ public abstract class   Controller<Type, KeyType> implements IController<Type, K
     }
 
     @Override
-    public ResponseEntity<Type> update(@PathVariable(value = "id") KeyType id, Type object) {
+    public ResponseEntity<Type> update(@PathVariable(value = "id") IdType id, Type object) {
         try {
             Optional<Type> oldObject = service.update(id, object);
             return oldObject.map(type
@@ -49,7 +49,7 @@ public abstract class   Controller<Type, KeyType> implements IController<Type, K
     }
 
     @Override
-    public ResponseEntity<Type> delete(@PathVariable(value = "id") KeyType id) {
+    public ResponseEntity<Type> delete(@PathVariable(value = "id") IdType id) {
         try {
             Optional<Type> deletedObject = service.delete(id);
             return deletedObject.map(type
@@ -69,8 +69,8 @@ public abstract class   Controller<Type, KeyType> implements IController<Type, K
     }
 
     @Override
-    public ResponseEntity<Type> getEntityById(KeyType id) {
-        return service.getEntityById(id)
+    public ResponseEntity<Type> getEntityById(IdType id) {
+        return service.getEntityByKey(id)
                 .map(equipmentItem -> ResponseEntity.ok().body(equipmentItem))
                 .orElse(ResponseEntity.notFound().build());
     }
