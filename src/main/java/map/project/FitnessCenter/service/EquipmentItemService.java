@@ -24,6 +24,12 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
     }
 
     @Override
+    public Optional<EquipmentItem> add(EquipmentItem object){
+        equipmentItemRepository.save(object);
+        return Optional.of(object);
+    }
+
+    @Override
     public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained, ObjectAlreadyContained {
         if (!equipmentItemRepository.existsById(id)) throw new ObjectNotContained();
         if (equipmentItemRepository.exists(Example.of(object))) throw new ObjectAlreadyContained();
