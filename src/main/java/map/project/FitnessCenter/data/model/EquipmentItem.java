@@ -6,6 +6,7 @@ import map.project.FitnessCenter.data.model.enums.Condition;
 
 import java.util.Objects;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
@@ -20,13 +21,6 @@ public class EquipmentItem
     @Enumerated
     @Column(nullable = false)
     private Condition condition = Condition.UNKNOWN; // Default value
-
-    public EquipmentItem(Long id, String name, Condition condition) {
-        if (condition == null) condition = Condition.UNKNOWN;
-        this.id = id;
-        this.name = name;
-        this.condition = condition;
-    }
 
     public EquipmentItem copy() {
         return new EquipmentItem(id, name, condition);

@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class EquipmentItemController extends Controller<EquipmentItem, Long>
 {
@@ -50,10 +52,15 @@ public class EquipmentItemController extends Controller<EquipmentItem, Long>
     }
 
     @GetMapping("/equipmentItem/byName/{name}")
-    public ResponseEntity<EquipmentItem> getEntityByName(@PathVariable(value = "name") String name)
+    public ResponseEntity<List<EquipmentItem>> getEntityByName(@PathVariable(value = "name") String name)
     {
-        return iEquipmentItemService.getByName(name)
-                .map(equipmentItem -> ResponseEntity.ok().body(equipmentItem))
-                .orElse(ResponseEntity.notFound().build());
+        Optional<List<EquipmentItem>> result = iEquipmentItemService.getByName(name);
+        if (result.isPresent())
+        {
+            List<EquipmentItem> list = result.get();
+            if (list.isEmpty()) return ResponseEntity.notFound().build();
+            else return ResponseEntity.ok().body(list);
+        }
+        return ResponseEntity.internalServerError().build();
     }
 }

@@ -1,26 +1,28 @@
 package map.project.FitnessCenter.service;
 
-import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
 import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
+import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
+import map.project.FitnessCenter.service.subjects.ISubjectDeleteEquipmentItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService {
+public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService, ISubjectDeleteEquipmentItem {
 
     private final EquipmentItemRepository equipmentItemRepository; //TODO add interface for repo
 
     @Autowired
-    public EquipmentItemService(EquipmentItemRepository repository) {
+    public EquipmentItemService(EquipmentItemRepository repository, ExerciseService exerciseService) {
         super(repository);
         this.equipmentItemRepository = repository;
+        addObserver(exerciseService);
     }
 
     @Override
@@ -30,9 +32,8 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
     }
 
     @Override
-    public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained, ObjectAlreadyContained {
+    public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained {
         if (!equipmentItemRepository.existsById(id)) throw new ObjectNotContained();
-        if (equipmentItemRepository.exists(Example.of(object))) throw new ObjectAlreadyContained();
         // Save old object
         Optional<EquipmentItem> oldObject = equipmentItemRepository.findById(id).map(EquipmentItem::copy);
         // Update
@@ -45,12 +46,28 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
     public Optional<EquipmentItem> delete(Long id) throws ObjectNotContained {
         if (!equipmentItemRepository.existsById(id)) throw new ObjectNotContained();
         Optional<EquipmentItem> oldObject = equipmentItemRepository.findById(id);
+        oldObject.ifPresent(this::notifyEquipmentItemDeleted);
         equipmentItemRepository.deleteById(id);
         return oldObject;
     }
 
     @Override
-    public Optional<EquipmentItem> getByName(String name) {
+    public Optional<List<EquipmentItem>> getByName(String name) {
         return equipmentItemRepository.findByName(name);
+    }
+
+    @Override
+    public void addObserver(IObserverDeleteEquipmentItem observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeleteEquipmentItem observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyEquipmentItemDeleted(EquipmentItem equipmentItem) {
+        for (IObserverDeleteEquipmentItem observer : observerList) observer.updateEquipmentItemDeleted(equipmentItem);
     }
 }
