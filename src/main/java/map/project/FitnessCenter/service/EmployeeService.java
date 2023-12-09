@@ -19,10 +19,10 @@ public class EmployeeService extends BaseService<Employee, String> {
 
     @Override
     public Optional<Employee> update(String id, Employee object) throws ObjectNotContained, ObjectAlreadyContained {
-        Optional<Employee> oldEmployee = repository.findById(id).map(Employee::copy);
+        Optional<Employee> oldObject = repository.findById(id).map(Employee::copy);
         object.setUsername(id);
         repository.save(object);
-        return oldEmployee;
+        return oldObject;
     }
 
     @Override

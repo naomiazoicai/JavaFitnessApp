@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Trainer extends Employee{
     @Column
     @Enumerated
-    TrainerSpecialisation trainerSpecialisation;
+    TrainerSpecialisation trainerSpecialisation = TrainerSpecialisation.none;
 
     public Trainer(String username, String name, LocalDate birthDate, Gender gender, double salary, TrainerSpecialisation trainerSpecialisation) {
 

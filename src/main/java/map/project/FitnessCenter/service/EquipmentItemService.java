@@ -3,6 +3,7 @@ package map.project.FitnessCenter.service;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
+import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
 import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
@@ -16,8 +17,7 @@ import java.util.Optional;
 @Service
 public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService, ISubjectDeleteEquipmentItem {
 
-    private final EquipmentItemRepository equipmentItemRepository; //TODO add interface for repo
-
+    private final IEquipmentItemRepository equipmentItemRepository;
     @Autowired
     public EquipmentItemService(EquipmentItemRepository repository, ExerciseService exerciseService) {
         super(repository);
@@ -27,27 +27,27 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
 
     @Override
     public Optional<EquipmentItem> add(EquipmentItem object){
-        equipmentItemRepository.save(object);
+        repository.save(object);
         return Optional.of(object);
     }
 
     @Override
     public Optional<EquipmentItem> update(Long id, EquipmentItem object) throws ObjectNotContained {
-        if (!equipmentItemRepository.existsById(id)) throw new ObjectNotContained();
+        if (!repository.existsById(id)) throw new ObjectNotContained();
         // Save old object
-        Optional<EquipmentItem> oldObject = equipmentItemRepository.findById(id).map(EquipmentItem::copy);
+        Optional<EquipmentItem> oldObject = repository.findById(id).map(EquipmentItem::copy);
         // Update
         object.setId(id);
-        equipmentItemRepository.save(object);
+        repository.save(object);
         return oldObject;
     }
 
     @Override
     public Optional<EquipmentItem> delete(Long id) throws ObjectNotContained {
-        if (!equipmentItemRepository.existsById(id)) throw new ObjectNotContained();
-        Optional<EquipmentItem> oldObject = equipmentItemRepository.findById(id);
+        if (!repository.existsById(id)) throw new ObjectNotContained();
+        Optional<EquipmentItem> oldObject = repository.findById(id);
         oldObject.ifPresent(this::notifyEquipmentItemDeleted);
-        equipmentItemRepository.deleteById(id);
+        repository.deleteById(id);
         return oldObject;
     }
 

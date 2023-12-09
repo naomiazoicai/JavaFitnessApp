@@ -1,9 +1,6 @@
 package map.project.FitnessCenter.data.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import map.project.FitnessCenter.data.model.enums.Gender;
 
@@ -16,6 +13,7 @@ import java.util.Objects;
 @Getter
 @Data
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person
 {
     @Id
