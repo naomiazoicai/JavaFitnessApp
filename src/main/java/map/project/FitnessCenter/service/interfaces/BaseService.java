@@ -12,7 +12,7 @@ import java.util.Optional;
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") 
 public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>
 {
-    private final JpaRepository<Entity, IdType> repository;
+    protected final JpaRepository<Entity, IdType> repository;
     public BaseService(JpaRepository<Entity, IdType> repository)
     {
         this.repository = repository;

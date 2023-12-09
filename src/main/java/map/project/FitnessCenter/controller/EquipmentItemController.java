@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class EquipmentItemController extends Controller<EquipmentItem, Long>
+public class EquipmentItemController extends BaseController<EquipmentItem, Long>
 {
     private final IEquipmentItemService iEquipmentItemService;
 

@@ -6,6 +6,7 @@ import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.model.Exercise;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.ExerciseRepository;
+import map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository;
 import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IExerciseService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
@@ -17,9 +18,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ExerciseService extends BaseService<Exercise, Long> implements IExerciseService, IObserverDeleteEquipmentItem
+public class ExerciseService extends BaseService<Exercise, Long>
+        implements IExerciseService, IObserverDeleteEquipmentItem
 {
-    private final ExerciseRepository exerciseRepository; //TODO add interface for repo
+    private final IExerciseRepository exerciseRepository;
     private final EquipmentItemRepository equipmentItemRepository;
 
     @Autowired
@@ -46,7 +48,7 @@ public class ExerciseService extends BaseService<Exercise, Long> implements IExe
 
     @Override
     public Optional<Exercise> update(Long id, Exercise object) throws ObjectNotContained, ObjectAlreadyContained {
-        if (!exerciseRepository.existsById(id)) throw new ObjectNotContained();
+        if (!repository.existsById(id)) throw new ObjectNotContained();
         // Set Equipment Item Used
         if (object.getEquipmentUsed() != null)
         {
@@ -58,20 +60,20 @@ public class ExerciseService extends BaseService<Exercise, Long> implements IExe
             else object.setEquipmentUsed(null);
         }
         // Check if same exercise exists
-        if (exerciseRepository.exists(Example.of(object))) throw new ObjectAlreadyContained();
+        if (repository.exists(Example.of(object))) throw new ObjectAlreadyContained();
         // Save old object
-        Optional<Exercise> oldExercise = exerciseRepository.findById(id).map(Exercise::copy);
+        Optional<Exercise> oldExercise = repository.findById(id).map(Exercise::copy);
         // Update
         object.setId(id);
-        exerciseRepository.save(object);
+        repository.save(object);
         return oldExercise;
     }
 
     @Override
     public Optional<Exercise> delete(Long id) throws ObjectNotContained {
-        if (!exerciseRepository.existsById(id)) throw new ObjectNotContained();
-        Optional<Exercise> oldObject = exerciseRepository.findById(id);
-        exerciseRepository.deleteById(id);
+        if (!repository.existsById(id)) throw new ObjectNotContained();
+        Optional<Exercise> oldObject = repository.findById(id);
+        repository.deleteById(id);
         return oldObject;
     }
 

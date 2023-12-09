@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class ExerciseController extends Controller<Exercise, Long>
+public class ExerciseController extends BaseController<Exercise, Long>
 {
     private final IExerciseService exerciseService;
     public ExerciseController(ExerciseService service) {

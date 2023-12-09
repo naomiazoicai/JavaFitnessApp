@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public abstract class   Controller<Type, IdType> implements IController<Type, IdType>
+public abstract class BaseController<Type, IdType> implements IController<Type, IdType>
 {
     final BaseService<Type, IdType> service;
-    public Controller(BaseService<Type, IdType> service) {
+    public BaseController(BaseService<Type, IdType> service) {
         this.service = service;
     }
 
