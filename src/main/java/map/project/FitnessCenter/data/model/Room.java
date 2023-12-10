@@ -2,6 +2,8 @@ package map.project.FitnessCenter.data.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import map.project.FitnessCenter.data.model.enums.RoomAccess;
+
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -12,9 +14,9 @@ import java.util.Objects;
 @Entity
 public class Room {
     @Id @GeneratedValue
-    private Long id;
+    public Long id;
     @Column(nullable = false)
-    private boolean occupied;
+    public boolean occupied;
 
     @Enumerated
     @Column(nullable = false)
