@@ -1,4 +1,4 @@
-package map.project.FitnessCenter.data.repository;
+package map.project.FitnessCenter.data.repository.Jpa;
 
 import jakarta.transaction.Transactional;
 import map.project.FitnessCenter.data.model.EquipmentItem;
@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface ExerciseRepository extends JpaRepository<Exercise, Long>, IExerciseRepository {
+public interface ExerciseRepository extends JpaRepository<Exercise, Long>, IExerciseRepository{
     @Override
     @Query("SELECT e FROM Exercise e WHERE e.name LIKE %:name%")
     Optional<List<Exercise>> findByName(@Param("name") String name);

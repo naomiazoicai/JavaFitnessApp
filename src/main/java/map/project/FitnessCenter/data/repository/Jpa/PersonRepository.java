@@ -1,4 +1,4 @@
-package map.project.FitnessCenter.data.repository;
+package map.project.FitnessCenter.data.repository.Jpa;
 
 import map.project.FitnessCenter.data.model.Person;
 import map.project.FitnessCenter.data.repository.intefaces.IPersonRepository;

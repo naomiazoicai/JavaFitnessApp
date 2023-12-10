@@ -4,7 +4,7 @@ import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.Person;
 
-import map.project.FitnessCenter.data.repository.PersonRepository;
+import map.project.FitnessCenter.data.repository.Jpa.PersonRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

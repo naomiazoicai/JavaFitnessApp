@@ -1,4 +1,4 @@
-package map.project.FitnessCenter.data.repository;
+package map.project.FitnessCenter.data.repository.Jpa;
 
 import jakarta.transaction.Transactional;
 import map.project.FitnessCenter.data.model.Customer;

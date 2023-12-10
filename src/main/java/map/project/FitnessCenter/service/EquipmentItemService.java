@@ -2,7 +2,7 @@ package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
+import map.project.FitnessCenter.data.repository.Jpa.EquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface IExerciseRepository {
+public interface IExerciseRepository extends IRepository<Exercise, Long>{
     Optional<List<Exercise>> findByName(@Param("name") String name);
 
     void updateEquipmentItemDeleted(@Param("equipmentItem") EquipmentItem equipmentItem);

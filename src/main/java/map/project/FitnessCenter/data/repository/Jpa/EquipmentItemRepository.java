@@ -1,4 +1,4 @@
-package map.project.FitnessCenter.data.repository;
+package map.project.FitnessCenter.data.repository.Jpa;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
@@ -13,4 +13,6 @@ public interface EquipmentItemRepository extends JpaRepository<EquipmentItem, Lo
     @Override
     @Query("SELECT e FROM EquipmentItem e WHERE e.name LIKE %:name%")
     Optional<List<EquipmentItem>> findByName(@Param("name") String name);
+
+    
 }

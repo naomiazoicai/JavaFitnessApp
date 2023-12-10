@@ -22,8 +22,7 @@ public abstract class BaseService<Entity, IdType> implements IService<Entity, Id
     @Override
     public Optional<Entity> add(Entity object) throws ObjectAlreadyContained {
         if (repository.exists(Example.of(object))) throw new ObjectAlreadyContained();
-        repository.save(object);
-        return Optional.of(object);
+        return Optional.of(repository.save(object));
     }
 
     @Override
