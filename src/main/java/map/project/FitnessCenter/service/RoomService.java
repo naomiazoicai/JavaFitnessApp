@@ -4,7 +4,6 @@ import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.Room;
 import map.project.FitnessCenter.data.repository.RoomRepository;
-import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteRoom;
 import map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.service.interfaces.BaseService;
+import map.project.FitnessCenter.service.BaseService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

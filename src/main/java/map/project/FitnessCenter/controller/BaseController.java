@@ -2,7 +2,7 @@ package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
-import map.project.FitnessCenter.service.interfaces.BaseService;
+import map.project.FitnessCenter.service.BaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -7,7 +7,6 @@ import map.project.FitnessCenter.data.model.Exercise;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.ExerciseRepository;
 import map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository;
-import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IExerciseService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
 import org.springframework.beans.factory.annotation.Autowired;

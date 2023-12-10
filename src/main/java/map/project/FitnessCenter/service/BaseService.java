@@ -1,6 +1,7 @@
-package map.project.FitnessCenter.service.interfaces;
+package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
+import map.project.FitnessCenter.service.interfaces.IService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

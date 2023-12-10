@@ -13,14 +13,18 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-public class Trainer extends Employee{
+public class Trainer extends Person
+{
+    @Column
+    protected double salary = 0;
     @Column
     @Enumerated
     TrainerSpecialisation trainerSpecialisation = TrainerSpecialisation.none;
 
-    public Trainer(String username, String name, LocalDate birthDate, Gender gender, double salary, TrainerSpecialisation trainerSpecialisation) {
-
-        super(username, name, birthDate, gender, salary);
+    public Trainer(String username, String name, LocalDate birthDate, Gender gender, double salary,
+                   TrainerSpecialisation trainerSpecialisation) {
+        super(username, name, birthDate, gender);
+        this.salary = salary;
         this.trainerSpecialisation = trainerSpecialisation;
     }
 
@@ -29,4 +33,3 @@ public class Trainer extends Employee{
         return new Trainer(username, name, birthDate, gender, salary, trainerSpecialisation);
     }
 }
-

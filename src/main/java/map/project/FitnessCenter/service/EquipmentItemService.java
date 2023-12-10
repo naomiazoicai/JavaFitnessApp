@@ -4,7 +4,6 @@ import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.EquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
-import map.project.FitnessCenter.service.interfaces.BaseService;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
 import map.project.FitnessCenter.service.subjects.ISubjectDeleteEquipmentItem;
