@@ -1,18 +1,17 @@
-package map.project.FitnessCenter.service.subjects;
+package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.Room;
 import map.project.FitnessCenter.data.repository.RoomRepository;
 import map.project.FitnessCenter.service.interfaces.BaseService;
-import map.project.FitnessCenter.service.interfaces.IRoomService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteRoom;
+import map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 import java.util.Optional;
 
-public class RoomService  extends BaseService<Room, Long> implements IRoomService, ISubjectDeleteRoom {
+public class RoomService  extends BaseService<Room, Long> implements ISubjectDeleteRoom {
 
     private final RoomRepository roomRepository; //TODO add interface for repo
 

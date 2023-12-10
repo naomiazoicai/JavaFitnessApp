@@ -1,23 +1,18 @@
 package map.project.FitnessCenter.controller;
 
 import map.project.FitnessCenter.data.model.Room;
-import map.project.FitnessCenter.service.interfaces.BaseService;
-import map.project.FitnessCenter.service.interfaces.IRoomService;
+import map.project.FitnessCenter.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-public class RoomController extends Controller<Room, Long>
+public class RoomController extends BaseController<Room, Long>
 {
-    private final IRoomService iRoomService;
-
     @Autowired
-    public RoomController(BaseService<Room, Long> iService, IRoomService iRoomService) {
-        super(iService);
-        this.iRoomService = iRoomService;
+    public RoomController(RoomService service) {
+        super(service);
     }
 
     @PostMapping("/room")
