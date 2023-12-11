@@ -1,26 +1,26 @@
 package map.project.FitnessCenter.service;
 
-import map.project.FitnessCenter.proxy.EquipmentProxy;
+import map.project.FitnessCenter.factory.RepoTypes;
+import map.project.FitnessCenter.proxy.EquipmentItemProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MainService {
-    private final EquipmentProxy equipmentProxy;
+    private final EquipmentItemProxy equipmentItemProxy;
 
     @Autowired
-    public MainService(EquipmentProxy equipmentProxy) {
-        this.equipmentProxy = equipmentProxy;
+    public MainService(EquipmentItemProxy equipmentItemProxy) {
+        this.equipmentItemProxy = equipmentItemProxy;
     }
 
-    public void selectDatabaseRepository(boolean choice)
+    public void selectRepoType(RepoTypes type)
     {
-        if (choice)
+
+        switch (type)
         {
-            equipmentProxy.selectJpa();
-        } else
-        {
-            equipmentProxy.selectInMemory();
+            case inMemory -> equipmentItemProxy.selectJpa();
+            case jpa -> equipmentItemProxy.selectInMemory();
         }
     }
 }

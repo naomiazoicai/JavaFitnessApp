@@ -1,5 +1,6 @@
 package map.project.FitnessCenter.controller;
 
+import map.project.FitnessCenter.factory.RepoTypes;
 import map.project.FitnessCenter.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +30,12 @@ public class MainController {
         System.out.println("Here");
         if (value.equals("jpa"))
         {
-            service.selectDatabaseRepository(true);
+            service.selectRepoType(RepoTypes.jpa);
             return "Jpa repository selected..";
         }
         else
         {
-            service.selectDatabaseRepository(false);
+            service.selectRepoType(RepoTypes.inMemory);
             return "In memory repository selected..";
         }
 

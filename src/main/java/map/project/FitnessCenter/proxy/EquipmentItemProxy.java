@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EquipmentProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
+public class EquipmentItemProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
     private final EquipmentItemInMemoryRepository equipmentItemInMemoryRepository;
 
     @Autowired
-    public EquipmentProxy(EquipmentItemRepository jpaRepo, EquipmentItemInMemoryRepository equipmentItemInMemoryRepository) {
+    public EquipmentItemProxy(EquipmentItemRepository jpaRepo, EquipmentItemInMemoryRepository equipmentItemInMemoryRepository) {
         super(jpaRepo);
         this.equipmentItemInMemoryRepository = equipmentItemInMemoryRepository;
     }
