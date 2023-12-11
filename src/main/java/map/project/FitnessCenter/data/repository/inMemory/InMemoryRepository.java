@@ -21,9 +21,9 @@ public abstract class InMemoryRepository<Entity, Id> implements IRepository<Enti
 
     @Override
     public Optional<Entity> findById(Id id) {
-        //TODO
-        Entity e = map.get(id);
-        return null;
+        Entity entity = map.get(id);
+        if (entity == null) return Optional.empty();
+        return Optional.of(entity);
     }
 
     @Override

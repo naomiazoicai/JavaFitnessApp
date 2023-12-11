@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/trainer")
 public class TrainerController extends BaseController<Trainer, String>
 {
     @Autowired
@@ -16,31 +17,31 @@ public class TrainerController extends BaseController<Trainer, String>
         super(service);
     }
 
-    @PostMapping("/trainer")
+    @PostMapping
     @Override
     public ResponseEntity<Trainer> add(@RequestBody Trainer object) {
         return super.add(object);
     }
 
-    @PutMapping("/trainer/{username}")
+    @PutMapping("/{username}")
     @Override
     public ResponseEntity<Trainer> update(@PathVariable(value = "username") String id, @RequestBody Trainer object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/trainer/{username}")
+    @DeleteMapping("/{username}")
     @Override
     public ResponseEntity<Trainer> delete(@PathVariable(value = "username") String id) {
         return super.delete(id);
     }
 
-    @GetMapping("/trainer")
+    @GetMapping
     @Override
     public ResponseEntity<List<Trainer>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping("/trainer/{username}")
+    @GetMapping("/{username}")
     @Override
     public ResponseEntity<Trainer> getEntityById(@PathVariable(value = "username") String id) {
         return super.getEntityById(id);

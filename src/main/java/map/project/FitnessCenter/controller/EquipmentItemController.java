@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/equipmentItem")
 public class EquipmentItemController extends BaseController<EquipmentItem, Long>
 {
     private final IEquipmentItemService iEquipmentItemService;
@@ -21,37 +22,37 @@ public class EquipmentItemController extends BaseController<EquipmentItem, Long>
         this.iEquipmentItemService = iEquipmentItemService;
     }
 
-    @PostMapping("/equipmentItem")
+    @PostMapping
     @Override
     public ResponseEntity<EquipmentItem> add(@RequestBody EquipmentItem object) {
         return super.add(object);
     }
 
-    @PutMapping("/equipmentItem/{id}")
+    @PutMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> update(@PathVariable(value = "id") Long id,@RequestBody EquipmentItem object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/equipmentItem/{id}")
+    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> delete(@PathVariable(value = "id") Long id) {
         return super.delete(id);
     }
 
-    @GetMapping("/equipmentItem")
+    @GetMapping
     @Override
     public ResponseEntity<List<EquipmentItem>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping(("/equipmentItem/{id}"))
+    @GetMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);
     }
 
-    @GetMapping("/equipmentItem/byName/{name}")
+    @GetMapping("/byName/{name}")
     public ResponseEntity<List<EquipmentItem>> getEntityByName(@PathVariable(value = "name") String name)
     {
         Optional<List<EquipmentItem>> result = iEquipmentItemService.getByName(name);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/exercise")
 public class ExerciseController extends BaseController<Exercise, Long>
 {
     private final IExerciseService exerciseService;
@@ -18,37 +19,37 @@ public class ExerciseController extends BaseController<Exercise, Long>
         this.exerciseService = service;
     }
 
-    @PostMapping("/exercise")
+    @PostMapping
     @Override
     public ResponseEntity<Exercise> add(@RequestBody Exercise object) {
         return super.add(object);
     }
 
-    @PutMapping("/exercise/{id}")
+    @PutMapping("/{id}")
     @Override
     public ResponseEntity<Exercise> update(@PathVariable(value = "id") Long id, @RequestBody Exercise object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/exercise/{id}")
+    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<Exercise> delete(@PathVariable(value = "id") Long id) {
         return super.delete(id);
     }
 
-    @GetMapping("/exercise")
+    @GetMapping
     @Override
     public ResponseEntity<List<Exercise>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping(("/exercise/{id}"))
+    @GetMapping(("/{id}"))
     @Override
     public ResponseEntity<Exercise> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);
     }
 
-    @GetMapping("/exercise/byName/{name}")
+    @GetMapping("/byName/{name}")
     public ResponseEntity<List<Exercise>> getEntityByName(@PathVariable(value = "name") String name)
     {
         Optional<List<Exercise>> result = exerciseService.getByName(name);
