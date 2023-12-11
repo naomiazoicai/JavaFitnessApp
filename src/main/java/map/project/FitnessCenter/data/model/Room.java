@@ -14,12 +14,12 @@ import java.util.Objects;
 @Entity
 public class Room {
     @Id @GeneratedValue
-    public Long id;
+    protected Long id;
     @Column(nullable = false)
-    public boolean occupied = false;
+    protected boolean occupied = false;
     @Enumerated
     @Column(nullable = false)
-    private RoomAccess roomAccess = RoomAccess.forAll; // Default value
+    protected RoomAccess roomAccess = RoomAccess.forAll; // Default value
 
     public Room copy() {
         return new Room(id, occupied, roomAccess);

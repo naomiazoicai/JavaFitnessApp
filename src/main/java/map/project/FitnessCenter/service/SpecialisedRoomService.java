@@ -31,15 +31,13 @@ public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> i
 
     @Override
     public Optional<SpecialisedRoom> update(Long id, SpecialisedRoom object) throws ObjectNotContained, ObjectAlreadyContained {
-//        if (!repository.existsById(id)) throw new ObjectNotContained();
-//        // Save old object
-//        Optional<SpecialisedRoom> oldObject = repository.findById(id).map(Room::copy);
-//        // Update
-//        object.setId(id);
-//        repository.save(object);
-//        return oldObject;
-        return Optional.empty();
-
+        if (!repository.existsById(id)) throw new ObjectNotContained();
+        // Save old object
+        Optional<SpecialisedRoom> oldObject = getEntityByKey(id).map(SpecialisedRoom::copy);
+        // Update
+        object.setId(id);
+        repository.save(object);
+        return oldObject;
     }
 
 
@@ -54,16 +52,16 @@ public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> i
 
     @Override
     public void addObserver(IObserverDeleteRoom observer) {
-
+        observerList.add(observer);
     }
 
     @Override
     public void removeObserver(IObserverDeleteRoom observer) {
-
+        observerList.remove(observer);
     }
 
     @Override
     public void notifyRoomDeleted(Room room) {
-
+        for (IObserverDeleteRoom observer : observerList) observer.updateRoomDeleted(room);
     }
 }
