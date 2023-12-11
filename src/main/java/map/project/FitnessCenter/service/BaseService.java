@@ -1,9 +1,10 @@
 package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
+import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 import map.project.FitnessCenter.service.interfaces.IService;
 import org.springframework.data.domain.Example;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,8 @@ import java.util.Optional;
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") 
 public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>
 {
-    protected final JpaRepository<Entity, IdType> repository;
-    public BaseService(JpaRepository<Entity, IdType> repository)
+    protected final IRepository<Entity, IdType> repository;
+    public BaseService(IRepository<Entity, IdType> repository)
     {
         this.repository = repository;
     }

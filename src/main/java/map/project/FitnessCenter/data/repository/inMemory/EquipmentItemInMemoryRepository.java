@@ -2,10 +2,17 @@ package map.project.FitnessCenter.data.repository.inMemory;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.model.enums.Condition;
+import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
+import org.springframework.stereotype.Service;
 
-public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem, Long> {
-    private static EquipmentItemInMemoryRepository instance;
-    private Long lastId;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem, Long>
+        implements IEquipmentItemRepository {
+    private Long lastId = 1L;
 
     private EquipmentItemInMemoryRepository()
     {
@@ -16,17 +23,23 @@ public class EquipmentItemInMemoryRepository extends InMemoryRepository<Equipmen
         lastId = 2L;
     }
 
-    public static EquipmentItemInMemoryRepository getInstance()
-    {
-        if (instance == null) instance = new EquipmentItemInMemoryRepository();
-        return instance;
+    @Override
+    public synchronized  <E extends EquipmentItem> E save(E entity) {
+        if (entity.getId() != null && map.containsKey(entity.getId())) map.put(entity.getId(), entity);
+        Long id = lastId;
+        lastId += 1L;
+        entity.setId(id);
+        map.put(id, entity);
+        return entity;
     }
 
     @Override
-    public EquipmentItem save(EquipmentItem equipmentItem) {
-        Long id = lastId;
-        lastId++;
-        equipmentItem.setId(id);
-        return map.put(id, equipmentItem);
+    public Optional<List<EquipmentItem>> findByName(String name) {
+        ArrayList<EquipmentItem> result = new ArrayList<>();
+        for (EquipmentItem item : map.values())
+        {
+            if (item.getName().contains(name)) result.add(item);
+        }
+        return Optional.of(result);
     }
 }

@@ -23,10 +23,20 @@ public class MainController {
         return "Welcome! Please select repository type.";
     }
 
-    @PostMapping("/select_repository/{value}")
-    public void selectRepositoryType(@PathVariable(value = "value") String value)
+    @PostMapping("/selectRepository/{value}")
+    public String selectRepositoryType(@PathVariable(value = "value") String value)
     {
-        // 1 Jpa / other in memory
-        service.selectDatabaseRepository(value.equals("1"));
+        System.out.println("Here");
+        if (value.equals("jpa"))
+        {
+            service.selectDatabaseRepository(true);
+            return "Jpa repository selected..";
+        }
+        else
+        {
+            service.selectDatabaseRepository(false);
+            return "In memory repository selected..";
+        }
+
     }
 }

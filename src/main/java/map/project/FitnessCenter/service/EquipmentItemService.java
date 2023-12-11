@@ -2,8 +2,8 @@ package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.data.repository.Jpa.EquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
+import map.project.FitnessCenter.proxy.EquipmentProxy;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
 import map.project.FitnessCenter.service.subjects.ISubjectDeleteEquipmentItem;
@@ -18,7 +18,7 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
 
     private final IEquipmentItemRepository equipmentItemRepository;
     @Autowired
-    public EquipmentItemService(EquipmentItemRepository repository, ExerciseService exerciseService) {
+    public EquipmentItemService(EquipmentProxy repository, ExerciseService exerciseService) {
         super(repository);
         this.equipmentItemRepository = repository;
         addObserver(exerciseService);

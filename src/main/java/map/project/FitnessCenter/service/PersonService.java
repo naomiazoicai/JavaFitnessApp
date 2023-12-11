@@ -5,7 +5,7 @@ import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.Person;
 
 import map.project.FitnessCenter.data.repository.Jpa.PersonRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 
 import java.util.Optional;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 public abstract class PersonService<PersonType extends Person> extends BaseService<PersonType, String> {
     private final PersonRepository personRepository;
 
-    public PersonService(JpaRepository<PersonType, String> repository, PersonRepository personRepository)
+    public PersonService(IRepository<PersonType, String> repository, PersonRepository personRepository)
     {
         super(repository);
         this.personRepository = personRepository;
