@@ -3,13 +3,13 @@ package map.project.FitnessCenter.data.repository.inMemory;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.model.enums.Condition;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem, Long>
         implements IEquipmentItemRepository {
     private Long lastId = 1L;

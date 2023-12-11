@@ -1,34 +1,42 @@
 package map.project.FitnessCenter.proxy;
 
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.data.repository.Jpa.EquipmentItemRepository;
-import map.project.FitnessCenter.data.repository.inMemory.EquipmentItemInMemoryRepository;
+import map.project.FitnessCenter.data.repository.intefaces.ICustomEquipmentItemRepository;
 import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
+import map.project.FitnessCenter.factory.EquipmentItemRepoFactory;
+import map.project.FitnessCenter.factory.RepoTypes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class EquipmentItemProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
-    private final EquipmentItemInMemoryRepository equipmentItemInMemoryRepository;
+    private ICustomEquipmentItemRepository customRepo;
+    private final EquipmentItemRepoFactory factory;
 
     @Autowired
-    public EquipmentItemProxy(EquipmentItemRepository jpaRepo, EquipmentItemInMemoryRepository equipmentItemInMemoryRepository) {
-        super(jpaRepo);
-        this.equipmentItemInMemoryRepository = equipmentItemInMemoryRepository;
+    public EquipmentItemProxy(ApplicationContext applicationContext) {
+        factory = applicationContext.getBean(EquipmentItemRepoFactory.class);
+        selectJpa();
+    }
+
+    public void selectJpa() {
+        currentRepo = factory.buildIRepository(RepoTypes.jpa);
+        customRepo = factory.buildCustom(RepoTypes.jpa);
     }
 
     @Override
     public void selectInMemory()
     {
-        if (inMemoryRepo == null) inMemoryRepo = equipmentItemInMemoryRepository;
-        currentRepo = inMemoryRepo;
+        currentRepo = factory.buildIRepository(RepoTypes.inMemory);
+        customRepo = factory.buildCustom(RepoTypes.inMemory);
     }
 
     @Override
     public Optional<List<EquipmentItem>> findByName(String name) {
-        return equipmentItemInMemoryRepository.findByName(name);
+        return customRepo.findByName(name);
     }
 }

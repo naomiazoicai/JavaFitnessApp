@@ -8,19 +8,7 @@ import java.util.Optional;
 
 public abstract class RepoProxy<Entity, Id> implements IRepository<Entity, Id>
 {
-    private final IRepository<Entity, Id> jpaRepo;
-    protected IRepository<Entity, Id> inMemoryRepo;
     protected IRepository<Entity, Id> currentRepo;
-
-    public RepoProxy(IRepository<Entity, Id> jpaRepo) {
-        this.jpaRepo = jpaRepo;
-        this.currentRepo = jpaRepo;
-    }
-
-    public void selectJpa()
-    {
-        currentRepo = jpaRepo;
-    }
 
     public abstract void selectInMemory();
 

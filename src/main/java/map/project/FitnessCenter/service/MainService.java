@@ -19,8 +19,8 @@ public class MainService {
 
         switch (type)
         {
-            case inMemory -> equipmentItemProxy.selectJpa();
-            case jpa -> equipmentItemProxy.selectInMemory();
+            case inMemory -> equipmentItemProxy.selectInMemory();
+            case jpa -> equipmentItemProxy.selectJpa();
         }
     }
 }
