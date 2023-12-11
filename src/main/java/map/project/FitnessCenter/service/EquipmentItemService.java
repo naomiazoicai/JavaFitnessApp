@@ -2,7 +2,7 @@ package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
-import map.project.FitnessCenter.data.repository.intefaces.IEquipmentItemRepository;
+import map.project.FitnessCenter.data.repository.intefaces.ICustomEquipmentItemRepository;
 import map.project.FitnessCenter.proxy.EquipmentItemProxy;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
@@ -16,11 +16,11 @@ import java.util.Optional;
 @Service
 public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService, ISubjectDeleteEquipmentItem {
 
-    private final IEquipmentItemRepository equipmentItemRepository;
+    private final ICustomEquipmentItemRepository equipmentItemCustomRepository;
     @Autowired
     public EquipmentItemService(EquipmentItemProxy repository, ExerciseService exerciseService) {
         super(repository);
-        this.equipmentItemRepository = repository;
+        this.equipmentItemCustomRepository = repository;
         addObserver(exerciseService);
     }
 
@@ -52,7 +52,7 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
 
     @Override
     public Optional<List<EquipmentItem>> getByName(String name) {
-        return equipmentItemRepository.findByName(name);
+        return equipmentItemCustomRepository.findByName(name);
     }
 
     @Override
