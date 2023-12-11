@@ -16,8 +16,7 @@ public class Room {
     @Id @GeneratedValue
     public Long id;
     @Column(nullable = false)
-    public boolean occupied;
-
+    public boolean occupied = false;
     @Enumerated
     @Column(nullable = false)
     private RoomAccess roomAccess = RoomAccess.forAll; // Default value
