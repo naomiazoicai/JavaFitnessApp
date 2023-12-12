@@ -8,14 +8,16 @@ import map.project.FitnessCenter.data.repository.Jpa.CustomerRepository;
 import map.project.FitnessCenter.data.repository.Jpa.PersonRepository;
 import map.project.FitnessCenter.data.repository.intefaces.ICustomerRepository;
 import map.project.FitnessCenter.service.interfaces.ITrainerService;
+import map.project.FitnessCenter.service.observers.IObserverDeletedCustomer;
 import map.project.FitnessCenter.service.observers.IObserverDeletedTrainer;
+import map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class CustomerService extends PersonService<Customer> implements IObserverDeletedTrainer {
+public class CustomerService extends PersonService<Customer> implements IObserverDeletedTrainer, ISubjectDeletedCustomer {
     private final ICustomerRepository customerRepository;
     private final ITrainerService trainerService;
 
@@ -45,6 +47,12 @@ public class CustomerService extends PersonService<Customer> implements IObserve
         return oldObject;
     }
 
+    @Override
+    public Optional<Customer> delete(String id) throws ObjectNotContained {
+        repository.findById(id).ifPresent(this::notifyCustomerDeleted);
+        return super.delete(id);
+    }
+
     private void setTrainer(Customer object)
     {
         if (object.getAssignedTrainer() == null) return;
@@ -56,5 +64,20 @@ public class CustomerService extends PersonService<Customer> implements IObserve
     @Override
     public void trainerDeleted(Trainer trainer) {
         customerRepository.trainerDeleted(trainer);
+    }
+
+    @Override
+    public void addObserver(IObserverDeletedCustomer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeletedCustomer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifyCustomerDeleted(Customer customer) {
+        for (IObserverDeletedCustomer observer : observerList) observer.customerDeleted(customer);
     }
 }

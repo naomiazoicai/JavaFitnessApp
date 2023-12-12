@@ -33,6 +33,7 @@ public class ExerciseService extends BaseService<Exercise, Long>
     @Override
     public Optional<Exercise> add(Exercise object) throws ObjectAlreadyContained
     {
+        // TODO separate function for equipment item search
         if (object.getEquipmentUsed() != null)
         {
             Optional<EquipmentItem> equipmentItem = equipmentItemRepository.findById(object.getEquipmentUsed().getId());
@@ -48,6 +49,7 @@ public class ExerciseService extends BaseService<Exercise, Long>
     @Override
     public Optional<Exercise> update(Long id, Exercise object) throws ObjectNotContained, ObjectAlreadyContained {
         if (!repository.existsById(id)) throw new ObjectNotContained();
+        // TODO separate functions
         // Set Equipment Item Used
         if (object.getEquipmentUsed() != null)
         {

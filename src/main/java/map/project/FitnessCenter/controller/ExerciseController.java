@@ -19,31 +19,6 @@ public class ExerciseController extends BaseController<Exercise, Long>
         this.exerciseService = service;
     }
 
-    @Override
-    public ResponseEntity<Exercise> add(@RequestBody Exercise object) {
-        return super.add(object);
-    }
-
-    @Override
-    public ResponseEntity<Exercise> update(@PathVariable(value = "id") Long id, @RequestBody Exercise object) {
-        return super.update(id, object);
-    }
-
-    @Override
-    public ResponseEntity<Exercise> delete(@PathVariable(value = "id") Long id) {
-        return super.delete(id);
-    }
-
-    @Override
-    public ResponseEntity<List<Exercise>> getAll() {
-        return super.getAll();
-    }
-
-    @Override
-    public ResponseEntity<Exercise> getEntityById(@PathVariable(value = "id") Long id) {
-        return super.getEntityById(id);
-    }
-
     @GetMapping("/byName/{name}")
     public ResponseEntity<List<Exercise>> getEntityByName(@PathVariable(value = "name") String name)
     {

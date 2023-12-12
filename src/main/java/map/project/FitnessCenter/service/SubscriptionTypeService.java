@@ -7,6 +7,8 @@ import map.project.FitnessCenter.data.model.SubscriptionType;
 import map.project.FitnessCenter.data.repository.Jpa.SubscriptionTypeRepository;
 import map.project.FitnessCenter.data.repository.intefaces.ICustomSubscriptionTypeRepository;
 import map.project.FitnessCenter.service.observers.IObserverDeleteRoom;
+import map.project.FitnessCenter.service.observers.IObserverDeletedSubscriptionType;
+import map.project.FitnessCenter.service.subjects.ISubjectDeletedSubscriptionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ import java.util.Set;
 
 @Service
 public class SubscriptionTypeService extends BaseService<SubscriptionType, String>
-implements IObserverDeleteRoom {
+implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
     private final SpecialisedRoomService roomService;
     private final ICustomSubscriptionTypeRepository customSubscriptionTypeRepository;
 
@@ -64,6 +66,7 @@ implements IObserverDeleteRoom {
     public Optional<SubscriptionType> delete(String id) throws ObjectNotContained {
         if (!repository.existsById(id)) throw new ObjectNotContained();
         Optional<SubscriptionType> oldObject = repository.findById(id);
+        oldObject.ifPresent(this::notifySubscriptionTypeDeleted);
         repository.deleteById(id);
         return oldObject;
     }
@@ -78,5 +81,20 @@ implements IObserverDeleteRoom {
                repository.save(subscriptionType);
            }
        }
+    }
+
+    @Override
+    public void addObserver(IObserverDeletedSubscriptionType observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IObserverDeletedSubscriptionType observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType) {
+        for (IObserverDeletedSubscriptionType observer : observerList) observer.subscriptionTypeDeleted(subscriptionType);
     }
 }
