@@ -22,7 +22,15 @@ public class EquipmentItemInMemoryRepository extends InMemoryRepository<Equipmen
         save(item2);
         lastId = 2L;
     }
+    public static EquipmentItemInMemoryRepository createInstance()
+    {
+        return new EquipmentItemInMemoryRepository();
+    }
 
+    public List<EquipmentItem> getAllEquipmentItems()
+    {
+        return new ArrayList<>(map.values());
+    }
     @Override
     public synchronized  <E extends EquipmentItem> E save(E entity) {
         if (entity.getId() != null && map.containsKey(entity.getId())) map.put(entity.getId(), entity);
