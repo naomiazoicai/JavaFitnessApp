@@ -9,9 +9,11 @@ import map.project.FitnessCenter.data.repository.intefaces.ISpecialisedRoomRepos
 import map.project.FitnessCenter.service.observers.IObserverDeleteRoom;
 import map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> implements ISubjectDeleteRoom {
 
     private final ISpecialisedRoomRepository specialisedRoomRepository;
