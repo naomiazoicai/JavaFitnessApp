@@ -15,31 +15,26 @@ public class CustomerController extends BaseController<Customer, String>
     @Autowired
     CustomerController(CustomerService service){super(service);}
 
-    @PostMapping
     @Override
     public ResponseEntity<Customer> add(@RequestBody Customer object) {
         return super.add(object);
     }
 
-    @PutMapping("/{username}")
     @Override
     public ResponseEntity<Customer> update(@PathVariable(value = "username") String id, @RequestBody Customer object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/{username}")
     @Override
     public ResponseEntity<Customer> delete(@PathVariable(value = "username") String id) {
         return super.delete(id);
     }
 
-    @GetMapping
     @Override
     public ResponseEntity<List<Customer>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping("/{username}")
     @Override
     public ResponseEntity<Customer> getEntityById(@PathVariable(value = "username") String id) {
         return super.getEntityById(id);

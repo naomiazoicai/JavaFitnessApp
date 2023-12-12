@@ -19,31 +19,26 @@ public class ExerciseController extends BaseController<Exercise, Long>
         this.exerciseService = service;
     }
 
-    @PostMapping
     @Override
     public ResponseEntity<Exercise> add(@RequestBody Exercise object) {
         return super.add(object);
     }
 
-    @PutMapping("/{id}")
     @Override
     public ResponseEntity<Exercise> update(@PathVariable(value = "id") Long id, @RequestBody Exercise object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<Exercise> delete(@PathVariable(value = "id") Long id) {
         return super.delete(id);
     }
 
-    @GetMapping
     @Override
     public ResponseEntity<List<Exercise>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping(("/{id}"))
     @Override
     public ResponseEntity<Exercise> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);

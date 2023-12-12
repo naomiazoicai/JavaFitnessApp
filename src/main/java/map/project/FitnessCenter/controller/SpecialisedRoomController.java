@@ -17,31 +17,26 @@ public class SpecialisedRoomController extends BaseController<SpecialisedRoom, L
         super(service);
     }
 
-    @PostMapping
     @Override
     public ResponseEntity<SpecialisedRoom> add(@RequestBody SpecialisedRoom object) {
         return super.add(object);
     }
 
-    @PutMapping("/{id}")
     @Override
     public ResponseEntity<SpecialisedRoom> update(@PathVariable(value = "id") Long id, @RequestBody SpecialisedRoom object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<SpecialisedRoom> delete(@PathVariable(value = "id") Long id) {
         return super.delete(id);
     }
 
-    @GetMapping
     @Override
     public ResponseEntity<List<SpecialisedRoom>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping(("/{id}"))
     @Override
     public ResponseEntity<SpecialisedRoom> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);

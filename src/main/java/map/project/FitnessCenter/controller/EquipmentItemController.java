@@ -22,31 +22,26 @@ public class EquipmentItemController extends BaseController<EquipmentItem, Long>
         this.iEquipmentItemService = iEquipmentItemService;
     }
 
-    @PostMapping
     @Override
     public ResponseEntity<EquipmentItem> add(@RequestBody EquipmentItem object) {
         return super.add(object);
     }
 
-    @PutMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> update(@PathVariable(value = "id") Long id,@RequestBody EquipmentItem object) {
         return super.update(id, object);
     }
 
-    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> delete(@PathVariable(value = "id") Long id) {
         return super.delete(id);
     }
 
-    @GetMapping
     @Override
     public ResponseEntity<List<EquipmentItem>> getAll() {
         return super.getAll();
     }
 
-    @GetMapping("/{id}")
     @Override
     public ResponseEntity<EquipmentItem> getEntityById(@PathVariable(value = "id") Long id) {
         return super.getEntityById(id);
