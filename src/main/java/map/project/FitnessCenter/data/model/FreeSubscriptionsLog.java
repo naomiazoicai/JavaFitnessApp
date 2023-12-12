@@ -1,6 +1,9 @@
 package map.project.FitnessCenter.data.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -8,34 +11,24 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
-@Data
+@Setter
 @Entity
-public class Subscription {
+@Data
+public class FreeSubscriptionsLog
+{
     @Id @GeneratedValue
     private Long id;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn()
-    private Customer customer;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn()
-    private SubscriptionType subscriptionType;
     @Column
-    private LocalDate startDate;
+    String personUsername;
     @Column
-    private int durationInDays = 1;
-
-    public Subscription copy()
-    {
-        return new Subscription(id, customer, subscriptionType, startDate, durationInDays);
-    }
+    LocalDate date;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subscription that = (Subscription) o;
+        FreeSubscriptionsLog that = (FreeSubscriptionsLog) o;
         return Objects.equals(id, that.id);
     }
 

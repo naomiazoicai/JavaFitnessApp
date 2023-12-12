@@ -1,4 +1,4 @@
-package map.project.FitnessCenter.service.subjects;
+package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
@@ -7,9 +7,7 @@ import map.project.FitnessCenter.data.model.Subscription;
 import map.project.FitnessCenter.data.model.SubscriptionType;
 import map.project.FitnessCenter.data.repository.Jpa.SubscriptionRepository;
 import map.project.FitnessCenter.data.repository.intefaces.ICustomSubscriptionRepository;
-import map.project.FitnessCenter.service.BaseService;
-import map.project.FitnessCenter.service.CustomerService;
-import map.project.FitnessCenter.service.SubscriptionTypeService;
+import map.project.FitnessCenter.service.interfaces.ISubscriptionService;
 import map.project.FitnessCenter.service.observers.IObserverDeletedCustomer;
 import map.project.FitnessCenter.service.observers.IObserverDeletedSubscriptionType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ import java.util.Optional;
 
 @Service
 public class SubscriptionService extends BaseService<Subscription, Long> implements IObserverDeletedCustomer,
-        IObserverDeletedSubscriptionType {
+        IObserverDeletedSubscriptionType, ISubscriptionService {
     private final ICustomSubscriptionRepository subscriptionRepository;
     private final CustomerService customerService;
     private final SubscriptionTypeService subscriptionTypeService;
@@ -71,7 +69,8 @@ public class SubscriptionService extends BaseService<Subscription, Long> impleme
         customer.ifPresent(object::setCustomer);
     }
 
-    private void setSubscriptionType(Subscription object)
+    @Override
+    public void setSubscriptionType(Subscription object)
     {
         if (object.getSubscriptionType() == null) return;
         Optional<SubscriptionType> subscriptionType = subscriptionTypeService.getEntityByKey(object.getSubscriptionType().getName());
