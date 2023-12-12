@@ -21,11 +21,21 @@ public class SubscriptionType {
     private double price = 0;
     @ManyToMany
     @JoinColumn
-    private Set<Room> accessibleRestrictedRooms;
+    private Set<SpecialisedRoom> accessibleRestrictedRooms;
 
     public SubscriptionType copy()
     {
         return new SubscriptionType(name, description, price, accessibleRestrictedRooms);
+    }
+
+    public void addRoom(SpecialisedRoom room)
+    {
+        accessibleRestrictedRooms.add(room);
+    }
+
+    public void removeRoom(SpecialisedRoom room)
+    {
+        accessibleRestrictedRooms.remove(room);
     }
 
     @Override

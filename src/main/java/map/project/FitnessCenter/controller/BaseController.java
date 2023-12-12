@@ -5,7 +5,6 @@ import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.service.BaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
     }
 
     @Override
-    public ResponseEntity<Type> update(@PathVariable(value = "id") IdType id, Type object) {
+    public ResponseEntity<Type> update(IdType id, Type object) {
         try {
             Optional<Type> oldObject = service.update(id, object);
             return oldObject.map(type
@@ -49,7 +48,7 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
     }
 
     @Override
-    public ResponseEntity<Type> delete(@PathVariable(value = "id") IdType id) {
+    public ResponseEntity<Type> delete(IdType id) {
         try {
             Optional<Type> deletedObject = service.delete(id);
             return deletedObject.map(type

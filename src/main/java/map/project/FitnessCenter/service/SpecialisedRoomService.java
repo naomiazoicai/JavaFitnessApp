@@ -2,7 +2,6 @@ package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.data.exceptions.ObjectAlreadyContained;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
-import map.project.FitnessCenter.data.model.Room;
 import map.project.FitnessCenter.data.model.SpecialisedRoom;
 import map.project.FitnessCenter.data.repository.Jpa.SpecialisedRoomRepository;
 import map.project.FitnessCenter.data.repository.intefaces.ISpecialisedRoomRepository;
@@ -22,7 +21,6 @@ public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> i
     public SpecialisedRoomService(SpecialisedRoomRepository repository) {
         super(repository);
         this.specialisedRoomRepository = repository;
-        //addObserver(specialisedRoomService);
     }
 
     @Override
@@ -63,7 +61,7 @@ public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> i
     }
 
     @Override
-    public void notifyRoomDeleted(Room room) {
+    public void notifyRoomDeleted(SpecialisedRoom room) {
         for (IObserverDeleteRoom observer : observerList) observer.updateRoomDeleted(room);
     }
 }

@@ -1,19 +1,24 @@
 package map.project.FitnessCenter.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 public interface IController<Entity, IdType>
 {
-    ResponseEntity<Entity> add(Entity object); //entity (POST)
+    @PostMapping
+    ResponseEntity<Entity> add(@RequestBody Entity object);
 
-    ResponseEntity<Entity> update(@PathVariable(value = "id") IdType id, Entity object);  //entity/{id} (PUT)
+    @PutMapping("/{id}")
+    ResponseEntity<Entity> update(@PathVariable(value = "id") IdType id, @RequestBody Entity object);
 
-    ResponseEntity<Entity> delete(@PathVariable(value = "id") IdType id);  //entity/{id} (DELETE)
+    @DeleteMapping("/{id}")
+    ResponseEntity<Entity> delete(@PathVariable(value = "id") IdType id);
 
-    ResponseEntity<List<Entity>> getAll();  //entity (GET)
+    @GetMapping
+    ResponseEntity<List<Entity>> getAll();
 
-    ResponseEntity<Entity> getEntityById(IdType id);  //entity/{id} (GET)  - by id or sth else
+    @GetMapping(("/{id}"))
+    ResponseEntity<Entity> getEntityById(@PathVariable(value = "id") IdType id);
 }

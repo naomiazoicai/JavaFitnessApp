@@ -1,7 +1,7 @@
 package map.project.FitnessCenter.service.subjects;
 
 
-import map.project.FitnessCenter.data.model.Room;
+import map.project.FitnessCenter.data.model.SpecialisedRoom;
 import map.project.FitnessCenter.service.observers.IObserverDeleteRoom;
 
 import java.util.ArrayList;
@@ -12,5 +12,5 @@ public interface ISubjectDeleteRoom {
 
     void removeObserver(IObserverDeleteRoom observer);
 
-    void notifyRoomDeleted(Room room);
+    void notifyRoomDeleted(SpecialisedRoom room);
 }
