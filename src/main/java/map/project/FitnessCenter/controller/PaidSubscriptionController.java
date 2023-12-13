@@ -1,6 +1,6 @@
 package map.project.FitnessCenter.controller;
 
-import map.project.FitnessCenter.service.BudgetService;
+import map.project.FitnessCenter.service.PaidSubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/paidSubscription")
 public class PaidSubscriptionController extends SubscriptionController{
     @Autowired
-    public PaidSubscriptionController(BudgetService service)
+    public PaidSubscriptionController(PaidSubscriptionService service)
     {
         super(service);
     }
+
+
 }
