@@ -1,8 +1,0 @@
-Todo:
-Null id/username custom exception and how it is handled
-Different method for addTo person and updatePerson
-
-Other:
-EquipmentItemRepository(both): generateNextId() should be private
-ExerciseRepository(both): generateNextId() should be private
-SpecialisedRoom(both): generateNextId() should be private
