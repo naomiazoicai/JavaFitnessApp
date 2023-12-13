@@ -3,7 +3,7 @@ package map.project.FitnessCenter.service;
 import map.project.FitnessCenter.data.exceptions.ObjectNotContained;
 import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.repository.intefaces.ICustomEquipmentItemRepository;
-import map.project.FitnessCenter.proxy.EquipmentItemProxy;
+import map.project.FitnessCenter.proxy.EquipmentItemRepositoryProxy;
 import map.project.FitnessCenter.service.interfaces.IEquipmentItemService;
 import map.project.FitnessCenter.service.observers.IObserverDeleteEquipmentItem;
 import map.project.FitnessCenter.service.subjects.ISubjectDeleteEquipmentItem;
@@ -18,7 +18,7 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
 
     private final ICustomEquipmentItemRepository equipmentItemCustomRepository;
     @Autowired
-    public EquipmentItemService(EquipmentItemProxy repository, ExerciseService exerciseService) {
+    public EquipmentItemService(EquipmentItemRepositoryProxy repository, ExerciseService exerciseService) {
         super(repository);
         this.equipmentItemCustomRepository = repository;
         addObserver(exerciseService);

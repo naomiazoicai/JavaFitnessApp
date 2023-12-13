@@ -30,36 +30,24 @@ public class ExerciseService extends BaseService<Exercise, Long>
         this.equipmentItemRepository = equipmentItemRepository;
     }
 
+    private void setEquipmentItem(Exercise object)
+    {
+        if (object.getEquipmentUsed() == null) return;
+        Optional<EquipmentItem> equipmentItem = equipmentItemRepository.findById(object.getEquipmentUsed().getId());
+        equipmentItem.ifPresent(object::setEquipmentUsed);
+    }
+
     @Override
     public Optional<Exercise> add(Exercise object) throws ObjectAlreadyContained
     {
-        // TODO separate function for equipment item search
-        if (object.getEquipmentUsed() != null)
-        {
-            Optional<EquipmentItem> equipmentItem = equipmentItemRepository.findById(object.getEquipmentUsed().getId());
-            if (equipmentItem.isPresent())
-            {
-                object.setEquipmentUsed(equipmentItem.get());
-            }
-            else object.setEquipmentUsed(null);
-        }
+        setEquipmentItem(object);
         return super.add(object);
     }
 
     @Override
     public Optional<Exercise> update(Long id, Exercise object) throws ObjectNotContained, ObjectAlreadyContained {
         if (!repository.existsById(id)) throw new ObjectNotContained();
-        // TODO separate functions
-        // Set Equipment Item Used
-        if (object.getEquipmentUsed() != null)
-        {
-            Optional<EquipmentItem> equipmentItem = equipmentItemRepository.findById(object.getEquipmentUsed().getId());
-            if (equipmentItem.isPresent())
-            {
-                object.setEquipmentUsed(equipmentItem.get());
-            }
-            else object.setEquipmentUsed(null);
-        }
+        setEquipmentItem(object);
         // Check if same exercise exists
         if (repository.exists(Example.of(object))) throw new ObjectAlreadyContained();
         // Save old object

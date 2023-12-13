@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class EquipmentItemProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
+public class EquipmentItemRepositoryProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
     private ICustomEquipmentItemRepository customRepo;
     private final EquipmentItemRepoFactory factory;
 
     @Autowired
-    public EquipmentItemProxy(ApplicationContext applicationContext) {
+    public EquipmentItemRepositoryProxy(ApplicationContext applicationContext) {
         factory = applicationContext.getBean(EquipmentItemRepoFactory.class);
         selectJpa();
     }

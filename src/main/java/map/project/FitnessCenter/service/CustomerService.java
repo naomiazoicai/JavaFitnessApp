@@ -39,7 +39,7 @@ public class CustomerService extends PersonService<Customer> implements IObserve
 
     @Override
     public Optional<Customer> update(String id, Customer object) throws ObjectNotContained, ObjectAlreadyContained {
-        // TODO if (!repository.existsById(id)) throw new ObjectNotContained();
+        if (!repository.existsById(id)) throw new ObjectNotContained();
         Optional<Customer> oldObject = repository.findById(id).map(Customer::copy);
         setTrainer(object);
         object.setUsername(id);

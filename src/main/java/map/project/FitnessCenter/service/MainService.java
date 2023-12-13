@@ -1,17 +1,17 @@
 package map.project.FitnessCenter.service;
 
 import map.project.FitnessCenter.factory.RepoTypes;
-import map.project.FitnessCenter.proxy.EquipmentItemProxy;
+import map.project.FitnessCenter.proxy.EquipmentItemRepositoryProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MainService {
-    private final EquipmentItemProxy equipmentItemProxy;
+    private final EquipmentItemRepositoryProxy equipmentItemRepositoryProxy;
 
     @Autowired
-    public MainService(EquipmentItemProxy equipmentItemProxy) {
-        this.equipmentItemProxy = equipmentItemProxy;
+    public MainService(EquipmentItemRepositoryProxy equipmentItemRepositoryProxy) {
+        this.equipmentItemRepositoryProxy = equipmentItemRepositoryProxy;
     }
 
     public void selectRepoType(RepoTypes type)
@@ -19,8 +19,8 @@ public class MainService {
 
         switch (type)
         {
-            case inMemory -> equipmentItemProxy.selectInMemory();
-            case jpa -> equipmentItemProxy.selectJpa();
+            case inMemory -> equipmentItemRepositoryProxy.selectInMemory();
+            case jpa -> equipmentItemRepositoryProxy.selectJpa();
         }
     }
 
