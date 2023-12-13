@@ -21,7 +21,7 @@ public class MainController {
     @GetMapping("")
     public String welcome()
     {
-        return "Welcome! Please select repository type.";
+        return service.welcome();
     }
 
     @PostMapping("/selectRepository/{value}")

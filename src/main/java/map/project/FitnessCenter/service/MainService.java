@@ -23,4 +23,9 @@ public class MainService {
             case jpa -> equipmentItemProxy.selectJpa();
         }
     }
+
+    public String welcome()
+    {
+        return "Welcome! Please select repository type.";
+    }
 }
