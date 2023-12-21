@@ -5,6 +5,9 @@ import map.project.FitnessCenter.proxy.EquipmentItemRepositoryProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for selecting the repository type of the fitness center app.
+ */
 @Service
 public class MainService {
     private final EquipmentItemRepositoryProxy equipmentItemRepositoryProxy;

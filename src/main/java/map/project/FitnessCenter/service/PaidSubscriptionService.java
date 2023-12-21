@@ -6,6 +6,9 @@ import map.project.FitnessCenter.decorator.SubscriptionServiceDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing the sold subscriptions of the fitness center.
+ */
 @Service
 public class PaidSubscriptionService extends SubscriptionServiceDecorator
 {

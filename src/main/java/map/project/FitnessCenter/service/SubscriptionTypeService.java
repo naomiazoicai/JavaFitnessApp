@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Service class for managing the available subscription plans of the fitness center.
+ */
 @Service
 public class SubscriptionTypeService extends BaseService<SubscriptionType, String>
 implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {

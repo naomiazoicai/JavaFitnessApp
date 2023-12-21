@@ -6,6 +6,9 @@ import map.project.FitnessCenter.service.interfaces.IBudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing the budget of the fitness center.
+ */
 @Service
 public class BudgetService implements IBudgetService {
     private final BudgetRepository repository;

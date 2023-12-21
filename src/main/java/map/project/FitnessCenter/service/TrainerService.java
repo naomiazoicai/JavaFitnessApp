@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service class for managing the trainer of the fitness center.
+ */
 @Service
 public class TrainerService extends PersonService<Trainer> implements ITrainerService, ISubjectDeletedTrainer {
     @Autowired

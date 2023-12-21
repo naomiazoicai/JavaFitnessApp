@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+/**
+ * Service class for managing the given away subscriptions of the fitness center.
+ */
 @Service
 public class NonBudgetService extends SubscriptionServiceDecorator {
     private final FreeSubscriptionLogRepo repository;

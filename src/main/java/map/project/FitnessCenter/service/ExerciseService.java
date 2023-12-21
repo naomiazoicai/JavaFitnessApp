@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for managing the exercises of the fitness center.
+ */
 @Service
 public class ExerciseService extends BaseService<Exercise, Long>
         implements IExerciseService, IObserverDeleteEquipmentItem

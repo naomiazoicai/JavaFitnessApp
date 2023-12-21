@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Generic service class for managing the given generic entity of the fitness center.
+ */
 @Service
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>
 {
     protected final IRepository<Entity, IdType> repository;

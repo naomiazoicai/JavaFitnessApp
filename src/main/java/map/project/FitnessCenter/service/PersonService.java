@@ -10,6 +10,10 @@ import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 import java.util.Optional;
 
 
+/**
+ * Service class for managing the stored personal accounts of users of the fitness center.
+ */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public abstract class PersonService<PersonType extends Person> extends BaseService<PersonType, String> {
     private final PersonRepository personRepository;
 
