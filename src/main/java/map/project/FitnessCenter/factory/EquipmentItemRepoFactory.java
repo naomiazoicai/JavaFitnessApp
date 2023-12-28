@@ -8,7 +8,9 @@ import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-
+/**
+ * Factory class for creating EquipmentItem repositories based on the specified repository type.
+ */
 @Service
 public class EquipmentItemRepoFactory implements IRepoFactory<EquipmentItem, Long>{
     private final ApplicationContext applicationContext;
