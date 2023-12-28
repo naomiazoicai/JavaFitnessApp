@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * In-memory repository implementation for EquipmentItem entities.
+ */
 @Component
 public class EquipmentItemInMemoryRepository extends InMemoryRepository<EquipmentItem, Long>
         implements IEquipmentItemRepository {

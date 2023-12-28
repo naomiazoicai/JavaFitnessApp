@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * JPA repository for the EquipmentItem entity.
+ */
 public interface EquipmentItemRepository extends JpaRepository<EquipmentItem, Long>, IEquipmentItemRepository {
     @Override
     @Query("SELECT e FROM EquipmentItem e WHERE e.name LIKE %:name%")

@@ -5,7 +5,10 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.Gender;
 
 import java.time.LocalDate;
-
+/**
+ * Entity class representing a customer in the fitness center.
+ *
+ */
 @NoArgsConstructor
 @Setter
 @Getter

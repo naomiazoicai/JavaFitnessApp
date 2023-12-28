@@ -5,7 +5,10 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.RoomAccess;
 
 import java.util.Objects;
-
+/**
+ * Entity class representing a room in the fitness center.
+ *
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

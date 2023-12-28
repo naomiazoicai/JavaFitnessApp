@@ -5,7 +5,10 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.Condition;
 
 import java.util.Objects;
-
+/**
+ * Entity class representing an equipment item in the fitness center.
+ *
+ **/
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

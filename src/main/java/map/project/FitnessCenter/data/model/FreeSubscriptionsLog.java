@@ -8,7 +8,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
-
+/**
+ * Entity class representing a log for free subscriptions in the fitness center.
+ * */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

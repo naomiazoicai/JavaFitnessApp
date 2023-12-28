@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
-
+/**
+ * Entity class representing the budget in the fitness center.
+ **/
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

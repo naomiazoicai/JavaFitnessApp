@@ -6,7 +6,9 @@ import map.project.FitnessCenter.data.model.enums.Gender;
 import map.project.FitnessCenter.data.model.enums.TrainerSpecialisation;
 
 import java.time.LocalDate;
-
+/**
+ * Entity class representing a trainer in the fitness center.
+ **/
 @NoArgsConstructor
 @Setter
 @Getter

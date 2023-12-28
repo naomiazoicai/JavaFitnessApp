@@ -5,7 +5,9 @@ import lombok.*;
 
 import java.util.Objects;
 import java.util.Set;
-
+/**
+ * Entity class representing a subscription type in the fitness center.
+ **/
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

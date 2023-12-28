@@ -5,7 +5,9 @@ import jakarta.persistence.Enumerated;
 import lombok.*;
 import map.project.FitnessCenter.data.model.enums.RoomAccess;
 import map.project.FitnessCenter.data.model.enums.RoomType;
-
+/**
+ * Entity class representing a specialised room in the fitness center.
+ **/
 @NoArgsConstructor
 @Setter
 @Getter

@@ -6,7 +6,9 @@ import map.project.FitnessCenter.data.model.enums.Gender;
 
 import java.time.LocalDate;
 import java.util.Objects;
-
+/**
+ * Base entity class representing a person in the fitness center.
+ * */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

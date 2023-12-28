@@ -4,7 +4,12 @@ import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 import org.springframework.data.domain.Example;
 
 import java.util.*;
-
+/**
+ * Abstract in-memory repository providing basic CRUD operations.
+ *
+ * @param <Entity> The type of the entity.
+ * @param <Id>     The type of the entity's ID.
+ */
 public abstract class InMemoryRepository<Entity, Id> implements IRepository<Entity, Id>
 {
     protected final HashMap<Id, Entity> map = new HashMap<>();

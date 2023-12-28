@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
-
+/**
+ * Entity class representing an exercise in the fitness center.
+ **/
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
