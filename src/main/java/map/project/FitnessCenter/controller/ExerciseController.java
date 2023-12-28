@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Controller class for managing exercise-related operations in the fitness center.
+ * This controller extends the BaseController and provides endpoints for common CRUD operations on Exercise entities.
+ * It also includes a specific endpoint for retrieving exercises by name.
+ **/
 @RestController
 @RequestMapping("/exercise")
 public class ExerciseController extends BaseController<Exercise, Long>

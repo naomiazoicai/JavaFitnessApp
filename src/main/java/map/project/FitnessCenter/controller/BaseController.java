@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Abstract base class for REST controllers handling operations on a specific entity type in the fitness center.
+ * This class provides common CRUD (Create, Read, Update, Delete) operations for the associated entity type.
+ */
 @RestController
 public abstract class BaseController<Type, IdType> implements IController<Type, IdType>
 {

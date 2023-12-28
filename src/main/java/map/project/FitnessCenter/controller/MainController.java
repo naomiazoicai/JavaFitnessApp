@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+/**
+ * Controller class for managing main operations in the fitness center application.
+ * This controller provides endpoints for welcoming messages and selecting repository types.
+ *
+ */
 
 @RestController
 public class MainController {

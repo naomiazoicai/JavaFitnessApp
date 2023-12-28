@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Controller class for managing equipment item-related operations in the fitness center.
+ * This controller extends the BaseController and provides endpoints for common CRUD operations on EquipmentItem entities.
+ * It also includes a specific endpoint for retrieving equipment items by name.
+ **/
 @RestController
 @RequestMapping("/equipmentItem")
 public class EquipmentItemController extends BaseController<EquipmentItem, Long>

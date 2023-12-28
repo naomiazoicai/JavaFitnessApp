@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Controller class for managing budget-related operations in the fitness center.
+ * This controller provides endpoints for retrieving, adding, and spending the budget.
+ */
 @RestController
 @RequestMapping("/budget")
 public class BudgetController {

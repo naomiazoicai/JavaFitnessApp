@@ -10,7 +10,11 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Controller class for managing subscription-related operations in the fitness center.
+ * This controller implements the common CRUD (Create, Read, Update, Delete) operations for Subscription entities.
+ *
+ */
 public class SubscriptionController implements IController<Subscription, Long>{
     private final ISubscriptionService service;
 
