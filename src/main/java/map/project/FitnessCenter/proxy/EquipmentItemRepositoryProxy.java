@@ -11,7 +11,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Proxy class for the EquipmentItem repository, implementing both IEquipmentItemRepository
+ * and ICustomEquipmentItemRepository interfaces.
+ */
 @Component
 public class EquipmentItemRepositoryProxy extends RepoProxy<EquipmentItem, Long> implements IEquipmentItemRepository {
     private ICustomEquipmentItemRepository customRepo;
