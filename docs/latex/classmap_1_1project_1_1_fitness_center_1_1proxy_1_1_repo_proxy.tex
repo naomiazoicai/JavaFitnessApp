@@ -1,0 +1,184 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy\texorpdfstring{$<$}{<} Entity, Id \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy\texorpdfstring{$<$}{<} Entity, Id \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a9351a7b7818bf3ca24cd64ab5be021e0}{select\+In\+Memory}} ()
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a25d07e0d4c5e205046962da27b57bcea}{delete\+By\+Id}} (Id id)
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af0a39fb27379fa0989a8f30dc0f16fb0}{find\+By\+Id}} (Id id)
+\item 
+List$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a4f15165beb43a5bf8d7adff82c3fdd5f}{find\+All}} ()
+\item 
+boolean \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a460d3a09f278d2886ca4723965fb39c3}{exists\+By\+Id}} (Id id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a1695fc049e04829143a46a743337a644}{current\+Repo}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+public$<$ E extends Entity $>$ E \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_aa243a63e0c9df0cba5a6281d1235e365}{save}} (E entity)
+\item 
+public$<$ E extends Entity $>$ boolean \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af373af52d247bbac10ce6b5c7427d620}{exists}} (Example$<$ E $>$ entity)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for repository proxies, implementing the IRepository interface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+Entity$>$} & the type of the entity \\
+\hline
+{\em $<$\+Id$>$} & the type of the entity\textquotesingle{}s identifier \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a25d07e0d4c5e205046962da27b57bcea}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a25d07e0d4c5e205046962da27b57bcea} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!deleteById@{deleteById}}
+\index{deleteById@{deleteById}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{deleteById()}{deleteById()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.delete\+By\+Id (\begin{DoxyParamCaption}\item[{Id}]{id }\end{DoxyParamCaption})}
+
+Delete an entity by its identifier.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier of the entity to be deleted. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_af4846b8c9ddce65f3f01a0ef22de4c3d}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af373af52d247bbac10ce6b5c7427d620}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af373af52d247bbac10ce6b5c7427d620} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!exists@{exists}}
+\index{exists@{exists}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily public$<$ E extends Entity $>$ boolean \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.exists (\begin{DoxyParamCaption}\item[{Example$<$ E $>$}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [package]}}
+
+Check if an entity exists based on the provided example.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The example entity. \\
+\hline
+{\em $<$\+E$>$} & The type of the entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the entity exists; otherwise, false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_a325d3a9d3a9c2dabd4c738bcf3b11af1}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a460d3a09f278d2886ca4723965fb39c3}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a460d3a09f278d2886ca4723965fb39c3} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!existsById@{existsById}}
+\index{existsById@{existsById}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{existsById()}{existsById()}}
+{\footnotesize\ttfamily boolean \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.exists\+By\+Id (\begin{DoxyParamCaption}\item[{Id}]{id }\end{DoxyParamCaption})}
+
+Check if an entity with the given identifier exists.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the entity exists; otherwise, false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_aef9699dd8ca15f3137b1e990950c727b}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a4f15165beb43a5bf8d7adff82c3fdd5f}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a4f15165beb43a5bf8d7adff82c3fdd5f} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!findAll@{findAll}}
+\index{findAll@{findAll}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{findAll()}{findAll()}}
+{\footnotesize\ttfamily List$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.find\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get a list of all entities.
+
+\begin{DoxyReturn}{Returns}
+A list of entities. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_affc5d685ed215500c0c3d9f69f971c01}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af0a39fb27379fa0989a8f30dc0f16fb0}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_af0a39fb27379fa0989a8f30dc0f16fb0} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!findById@{findById}}
+\index{findById@{findById}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{findById()}{findById()}}
+{\footnotesize\ttfamily Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.find\+By\+Id (\begin{DoxyParamCaption}\item[{Id}]{id }\end{DoxyParamCaption})}
+
+Find an entity by its identifier.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier of the entity to be found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional containing the found entity, or empty if not found. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_ad5ba96c9800b90780425d3ee3da7bcd0}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_aa243a63e0c9df0cba5a6281d1235e365}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_aa243a63e0c9df0cba5a6281d1235e365} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!save@{save}}
+\index{save@{save}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily public$<$ E extends Entity $>$ E \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.save (\begin{DoxyParamCaption}\item[{E}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [package]}}
+
+Save an entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to be saved. \\
+\hline
+{\em $<$\+E$>$} & The type of the entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The saved entity. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_a3040f35770a7ac4e40c16529c134fc81}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Entity, Id $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a9351a7b7818bf3ca24cd64ab5be021e0}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a9351a7b7818bf3ca24cd64ab5be021e0} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!selectInMemory@{selectInMemory}}
+\index{selectInMemory@{selectInMemory}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{selectInMemory()}{selectInMemory()}}
+{\footnotesize\ttfamily abstract void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.select\+In\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a1695fc049e04829143a46a743337a644}\label{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy_a1695fc049e04829143a46a743337a644} 
+\index{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}!currentRepo@{currentRepo}}
+\index{currentRepo@{currentRepo}!map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$@{map.project.FitnessCenter.proxy.RepoProxy$<$ Entity, Id $>$}}
+\doxysubsubsection{\texorpdfstring{currentRepo}{currentRepo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$Entity, Id$>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1proxy_1_1_repo_proxy}{map.\+project.\+Fitness\+Center.\+proxy.\+Repo\+Proxy}}$<$ Entity, Id $>$.current\+Repo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/proxy/\mbox{\hyperlink{_repo_proxy_8java}{Repo\+Proxy.\+java}}\end{DoxyCompactItemize}

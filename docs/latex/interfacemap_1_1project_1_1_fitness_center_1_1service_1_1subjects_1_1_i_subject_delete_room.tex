@@ -1,0 +1,93 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room}\index{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a4f68d3faa2a6e0003ad38f59694e00e1}{add\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_ae0631a31387d3c4a137d42b0496bd5a9}{remove\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a5d92b607b3eb5cbe83af3f73b6141fb4}{notify\+Room\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_specialised_room}{Specialised\+Room}} room)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}} $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_aa9e5f722b1af54b27b30c2165391b792}{observer\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A subject interface for notifying observers about the deletion of Specialised\+Rooms. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a4f68d3faa2a6e0003ad38f59694e00e1}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a4f68d3faa2a6e0003ad38f59694e00e1} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}}}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the list for monitoring Specialised\+Room deletions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service_a6efc5e2ff2863d883a3565968da8ba09}{map.\+project.\+Fitness\+Center.\+service.\+Specialised\+Room\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a5d92b607b3eb5cbe83af3f73b6141fb4}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_a5d92b607b3eb5cbe83af3f73b6141fb4} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}!notifyRoomDeleted@{notifyRoomDeleted}}
+\index{notifyRoomDeleted@{notifyRoomDeleted}!map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}}
+\doxysubsubsection{\texorpdfstring{notifyRoomDeleted()}{notifyRoomDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room.\+notify\+Room\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_specialised_room}{Specialised\+Room}}}]{room }\end{DoxyParamCaption})}
+
+Notifies all registered observers that a Specialised\+Room has been deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em room} & The Specialised\+Room object representing the deleted Specialised\+Room. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service_a80b1a01546061d5b8a176f8f4a356947}{map.\+project.\+Fitness\+Center.\+service.\+Specialised\+Room\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_ae0631a31387d3c4a137d42b0496bd5a9}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_ae0631a31387d3c4a137d42b0496bd5a9} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}}}]{observer }\end{DoxyParamCaption})}
+
+Removes an observer from the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service_ad0628e5fab5058a26df3237106127c18}{map.\+project.\+Fitness\+Center.\+service.\+Specialised\+Room\+Service}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_aa9e5f722b1af54b27b30c2165391b792}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_delete_room_aa9e5f722b1af54b27b30c2165391b792} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}!observerList@{observerList}}
+\index{observerList@{observerList}!map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom@{map.project.FitnessCenter.service.subjects.ISubjectDeleteRoom}}
+\doxysubsubsection{\texorpdfstring{observerList}{observerList}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room}{IObserver\+Delete\+Room}}$>$ map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Delete\+Room.\+observer\+List = new Array\+List$<$$>$()}
+
+List to store instances of {\ttfamily IObserver\+Delete\+Room} for observing Specialised\+Room deletions. 
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/subjects/\mbox{\hyperlink{_i_subject_delete_room_8java}{ISubject\+Delete\+Room.\+java}}\end{DoxyCompactItemize}

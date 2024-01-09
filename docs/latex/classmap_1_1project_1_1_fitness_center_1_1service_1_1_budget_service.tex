@@ -1,0 +1,102 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}{}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abe0fb9bdf958417261af1f229226be44}{Budget\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_budget_repository}{Budget\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_a5258bd6f7f1aba167d760a3fb1a38e50}{repository}})
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abdb25de12a6a4789b85a6fc31a0db481}{add\+Money}} (double amount)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ad4c7ae00f996e79b1d4afb761b3915a5}{spend\+Money}} (double amount)
+\item 
+String \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ade4f415165956c6b437c4cb4944d8398}{get\+Budget}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_budget_repository}{Budget\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_a5258bd6f7f1aba167d760a3fb1a38e50}{repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service class for managing the budget of the fitness center. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abe0fb9bdf958417261af1f229226be44}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abe0fb9bdf958417261af1f229226be44} 
+\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}!BudgetService@{BudgetService}}
+\index{BudgetService@{BudgetService}!map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+\doxysubsubsection{\texorpdfstring{BudgetService()}{BudgetService()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service.\+Budget\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_budget_repository}{Budget\+Repository}}}]{repository }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abdb25de12a6a4789b85a6fc31a0db481}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abdb25de12a6a4789b85a6fc31a0db481} 
+\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}!addMoney@{addMoney}}
+\index{addMoney@{addMoney}!map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+\doxysubsubsection{\texorpdfstring{addMoney()}{addMoney()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service.\+add\+Money (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+Adds the specified amount of money to the budget.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount of money to be added to the budget. Must be a non-\/negative value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a4eee8779134d61e41602393350eba6bd}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ade4f415165956c6b437c4cb4944d8398}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ade4f415165956c6b437c4cb4944d8398} 
+\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily String map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service.\+get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieves the current budget as a string representation.
+
+\begin{DoxyReturn}{Returns}
+A string representation of the current budget. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a57503d0a70d0f6b378d76c9b84aba884}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ad4c7ae00f996e79b1d4afb761b3915a5}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ad4c7ae00f996e79b1d4afb761b3915a5} 
+\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}!spendMoney@{spendMoney}}
+\index{spendMoney@{spendMoney}!map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+\doxysubsubsection{\texorpdfstring{spendMoney()}{spendMoney()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service.\+spend\+Money (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+Spends the specified amount of money from the budget.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount of money to be spent from the budget. Must be a non-\/negative value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a30cff324740270b1c0787479c37df1db}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_a5258bd6f7f1aba167d760a3fb1a38e50}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_a5258bd6f7f1aba167d760a3fb1a38e50} 
+\index{map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}!repository@{repository}}
+\index{repository@{repository}!map.project.FitnessCenter.service.BudgetService@{map.project.FitnessCenter.service.BudgetService}}
+\doxysubsubsection{\texorpdfstring{repository}{repository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_budget_repository}{Budget\+Repository}} map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service.\+repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/\mbox{\hyperlink{_budget_service_8java}{Budget\+Service.\+java}}\end{DoxyCompactItemize}

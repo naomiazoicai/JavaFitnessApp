@@ -1,0 +1,78 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IExercise\+Repository Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository}\index{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository@{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IExercise\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Optional$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a0c81d336900637c1660dae75a3c05fa6}{find\+By\+Name}} (@Param("{}name"{}) String name)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a2f24539e007af1ffd4196443b1de91f4}{update\+Equipment\+Item\+Deleted}} (@Param("{}equipment\+Item"{}) \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}} equipment\+Item)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IRepository$<$ Exercise, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+$<$ E extends Entity $>$ E \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_a3040f35770a7ac4e40c16529c134fc81}{save}} (E entity)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_af4846b8c9ddce65f3f01a0ef22de4c3d}{delete\+By\+Id}} (Id id)
+\item 
+$<$ E extends Entity $>$ boolean \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_a325d3a9d3a9c2dabd4c738bcf3b11af1}{exists}} (Example$<$ E $>$ entity)
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_ad5ba96c9800b90780425d3ee3da7bcd0}{find\+By\+Id}} (Id id)
+\item 
+List$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_affc5d685ed215500c0c3d9f69f971c01}{find\+All}} ()
+\item 
+boolean \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository_aef9699dd8ca15f3137b1e990950c727b}{exists\+By\+Id}} (Id id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the Exercise repository, extending the general repository interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a0c81d336900637c1660dae75a3c05fa6}\label{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a0c81d336900637c1660dae75a3c05fa6} 
+\index{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository@{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository}!findByName@{findByName}}
+\index{findByName@{findByName}!map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository@{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository}}
+\doxysubsubsection{\texorpdfstring{findByName()}{findByName()}}
+{\footnotesize\ttfamily Optional$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ $>$ map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IExercise\+Repository.\+find\+By\+Name (\begin{DoxyParamCaption}\item[{@Param("{}name"{}) String}]{name }\end{DoxyParamCaption})}
+
+Find exercises by name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Optional list of exercises with the specified name. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_exercise_repository_afefa454bb5ee4e0f13e7cd7213569371}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+Jpa.\+Exercise\+Repository}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a2f24539e007af1ffd4196443b1de91f4}\label{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository_a2f24539e007af1ffd4196443b1de91f4} 
+\index{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository@{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository}!updateEquipmentItemDeleted@{updateEquipmentItemDeleted}}
+\index{updateEquipmentItemDeleted@{updateEquipmentItemDeleted}!map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository@{map.project.FitnessCenter.data.repository.intefaces.IExerciseRepository}}
+\doxysubsubsection{\texorpdfstring{updateEquipmentItemDeleted()}{updateEquipmentItemDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+data.\+repository.\+intefaces.\+IExercise\+Repository.\+update\+Equipment\+Item\+Deleted (\begin{DoxyParamCaption}\item[{@Param("{}equipment\+Item"{}) \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}}]{equipment\+Item }\end{DoxyParamCaption})}
+
+Update method to handle the deletion of an equipment item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em equipment\+Item} & The equipment item to be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_exercise_repository_a9f8851751aff3c61b9fbce045b5df958}{map.\+project.\+Fitness\+Center.\+data.\+repository.\+Jpa.\+Exercise\+Repository}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/data/repository/intefaces/\mbox{\hyperlink{_i_exercise_repository_8java}{IExercise\+Repository.\+java}}\end{DoxyCompactItemize}

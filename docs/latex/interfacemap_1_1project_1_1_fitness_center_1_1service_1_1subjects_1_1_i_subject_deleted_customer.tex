@@ -1,0 +1,93 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer}\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a9a6b8b294b7c6e8de0d4fb4acbeea1de}{add\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a54cb14e8282190ab22a92652fb949dff}{remove\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a6731fe38a291075e01e5a828afa7be3c}{notify\+Customer\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} customer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a2e91fa41a630e72b7d5a6a88660a9bc1}{observer\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A subject interface for notifying observers about the deletion of Customer. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a9a6b8b294b7c6e8de0d4fb4acbeea1de}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a9a6b8b294b7c6e8de0d4fb4acbeea1de} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}}}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the list for monitoring customer deletions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaff4d222dc4976289757520cb3af578d}{map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a6731fe38a291075e01e5a828afa7be3c}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a6731fe38a291075e01e5a828afa7be3c} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}!notifyCustomerDeleted@{notifyCustomerDeleted}}
+\index{notifyCustomerDeleted@{notifyCustomerDeleted}!map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}}
+\doxysubsubsection{\texorpdfstring{notifyCustomerDeleted()}{notifyCustomerDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer.\+notify\+Customer\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}}}]{customer }\end{DoxyParamCaption})}
+
+Notifies all registered observers that a customer has been deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em customer} & The Customer object representing the deleted customer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a48957e1db03b000436aeaa4f828bcfe5}{map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a54cb14e8282190ab22a92652fb949dff}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a54cb14e8282190ab22a92652fb949dff} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}}}]{observer }\end{DoxyParamCaption})}
+
+Removes an observer from the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaed11d95c6a3928b1eb61c78d09ccd2d}{map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a2e91fa41a630e72b7d5a6a88660a9bc1}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a2e91fa41a630e72b7d5a6a88660a9bc1} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}!observerList@{observerList}}
+\index{observerList@{observerList}!map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedCustomer}}
+\doxysubsubsection{\texorpdfstring{observerList}{observerList}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}}$>$ map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer.\+observer\+List = new Array\+List$<$$>$()}
+
+A list to store instances of {\ttfamily IObserver\+Deleted\+Customer} for observing customer deletions. 
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/subjects/\mbox{\hyperlink{_i_subject_deleted_customer_8java}{ISubject\+Deleted\+Customer.\+java}}\end{DoxyCompactItemize}

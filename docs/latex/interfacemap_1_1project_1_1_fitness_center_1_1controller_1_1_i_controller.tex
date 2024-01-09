@@ -1,0 +1,112 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+controller.\+IController\texorpdfstring{$<$}{<} Entity, Id\+Type \texorpdfstring{$>$}{>} Interface Template Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a2da6575e38e0e5efb618eaeacd09bdc9}{add}} (@Request\+Body Entity object)
+\item 
+Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeec415f5524722e3fa6214b7162749b3}{update}} (@Path\+Variable(value="{}id"{}) Id\+Type id, @Request\+Body Entity object)
+\item 
+Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeb720913bd0c22be756a08a69795f849}{delete}} (@Path\+Variable(value="{}id"{}) Id\+Type id)
+\item 
+Response\+Entity$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aaf15222b94c2ee4b28fa07386eb0d336}{get\+All}} ()
+\item 
+Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a7006bf0c8ca70a6db66ab98f46fca86d}{get\+Entity\+By\+Id}} (@Path\+Variable(value="{}id"{}) Id\+Type id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface defining common CRUD (Create, Read, Update, Delete) operations for controllers managing entities in the fitness center.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+Entity$>$} & The type of the entity managed by the controller. \\
+\hline
+{\em $<$\+Id\+Type$>$} & The type of the entity\textquotesingle{}s identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a2da6575e38e0e5efb618eaeacd09bdc9}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a2da6575e38e0e5efb618eaeacd09bdc9} 
+\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{map.\+project.\+Fitness\+Center.\+controller.\+IController}}$<$ Entity, Id\+Type $>$.add (\begin{DoxyParamCaption}\item[{@Request\+Body Entity}]{object }\end{DoxyParamCaption})}
+
+Handles the HTTP POST request to add a new entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & The entity to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response\+Entity with the added entity and appropriate status. 
+\end{DoxyReturn}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeb720913bd0c22be756a08a69795f849}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeb720913bd0c22be756a08a69795f849} 
+\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}!delete@{delete}}
+\index{delete@{delete}!map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{map.\+project.\+Fitness\+Center.\+controller.\+IController}}$<$ Entity, Id\+Type $>$.delete (\begin{DoxyParamCaption}\item[{@Path\+Variable(value="{}id"{}) Id\+Type}]{id }\end{DoxyParamCaption})}
+
+Handles the HTTP DELETE request to delete an existing entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier of the entity to be deleted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response\+Entity with the deleted entity and appropriate status. 
+\end{DoxyReturn}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aaf15222b94c2ee4b28fa07386eb0d336}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aaf15222b94c2ee4b28fa07386eb0d336} 
+\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}!getAll@{getAll}}
+\index{getAll@{getAll}!map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily Response\+Entity$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{map.\+project.\+Fitness\+Center.\+controller.\+IController}}$<$ Entity, Id\+Type $>$.get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles the HTTP GET request to retrieve all entities.
+
+\begin{DoxyReturn}{Returns}
+Response\+Entity with a list of entities and appropriate status. 
+\end{DoxyReturn}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a7006bf0c8ca70a6db66ab98f46fca86d}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_a7006bf0c8ca70a6db66ab98f46fca86d} 
+\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}!getEntityById@{getEntityById}}
+\index{getEntityById@{getEntityById}!map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{getEntityById()}{getEntityById()}}
+{\footnotesize\ttfamily Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{map.\+project.\+Fitness\+Center.\+controller.\+IController}}$<$ Entity, Id\+Type $>$.get\+Entity\+By\+Id (\begin{DoxyParamCaption}\item[{@Path\+Variable(value="{}id"{}) Id\+Type}]{id }\end{DoxyParamCaption})}
+
+Handles the HTTP GET request to retrieve an entity by its identifier.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier of the entity to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response\+Entity with the retrieved entity and appropriate status. 
+\end{DoxyReturn}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeec415f5524722e3fa6214b7162749b3}\label{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller_aeec415f5524722e3fa6214b7162749b3} 
+\index{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}!update@{update}}
+\index{update@{update}!map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$@{map.project.FitnessCenter.controller.IController$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily Response\+Entity$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1controller_1_1_i_controller}{map.\+project.\+Fitness\+Center.\+controller.\+IController}}$<$ Entity, Id\+Type $>$.update (\begin{DoxyParamCaption}\item[{@Path\+Variable(value="{}id"{}) Id\+Type}]{id,  }\item[{@Request\+Body Entity}]{object }\end{DoxyParamCaption})}
+
+Handles the HTTP PUT request to update an existing entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier of the entity to be updated. \\
+\hline
+{\em object} & The updated entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response\+Entity with the updated entity and appropriate status. 
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/controller/\mbox{\hyperlink{_i_controller_8java}{IController.\+java}}\end{DoxyCompactItemize}

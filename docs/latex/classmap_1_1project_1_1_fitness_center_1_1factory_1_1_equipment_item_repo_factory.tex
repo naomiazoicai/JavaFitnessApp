@@ -1,0 +1,87 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory}{}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory}\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a34d46a59e93959cec5aa012064149471}{Equipment\+Item\+Repo\+Factory}} (Application\+Context \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a50cfb2c85890a7c4093cd27105c15f56}{application\+Context}})
+\item 
+\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}, Long $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a226bf20c6172eb1e498119bef837b6c5}{build\+IRepository}} (\mbox{\hyperlink{enummap_1_1project_1_1_fitness_center_1_1factory_1_1_repo_types}{Repo\+Types}} type)
+\item 
+\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_custom_equipment_item_repository}{ICustom\+Equipment\+Item\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a12a1756dd2ef6fbf44fe0286c2eff3e6}{build\+Custom}} (\mbox{\hyperlink{enummap_1_1project_1_1_fitness_center_1_1factory_1_1_repo_types}{Repo\+Types}} type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1factory_1_1_i_repo_factory}{map.\+project.\+Fitness\+Center.\+factory.\+IRepo\+Factory$<$ Equipment\+Item, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1factory_1_1_i_repo_factory_aa6218eef41ef61052e3f0a84886b1aee}{build\+IRepository}} (\mbox{\hyperlink{enummap_1_1project_1_1_fitness_center_1_1factory_1_1_repo_types}{Repo\+Types}} type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a378c595ecf66752d12237fd197e0c8ab}{get\+Jpa}} ()
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1in_memory_1_1_equipment_item_in_memory_repository}{Equipment\+Item\+In\+Memory\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a8683a129999c1c84676b8ca42efc09b4}{get\+In\+Memory}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Application\+Context \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a50cfb2c85890a7c4093cd27105c15f56}{application\+Context}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Factory class for creating Equipment\+Item repositories based on the specified repository type. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a34d46a59e93959cec5aa012064149471}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a34d46a59e93959cec5aa012064149471} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!EquipmentItemRepoFactory@{EquipmentItemRepoFactory}}
+\index{EquipmentItemRepoFactory@{EquipmentItemRepoFactory}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{EquipmentItemRepoFactory()}{EquipmentItemRepoFactory()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+Equipment\+Item\+Repo\+Factory (\begin{DoxyParamCaption}\item[{Application\+Context}]{application\+Context }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a12a1756dd2ef6fbf44fe0286c2eff3e6}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a12a1756dd2ef6fbf44fe0286c2eff3e6} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!buildCustom@{buildCustom}}
+\index{buildCustom@{buildCustom}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{buildCustom()}{buildCustom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_custom_equipment_item_repository}{ICustom\+Equipment\+Item\+Repository}} map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+build\+Custom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enummap_1_1project_1_1_fitness_center_1_1factory_1_1_repo_types}{Repo\+Types}}}]{type }\end{DoxyParamCaption})}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a226bf20c6172eb1e498119bef837b6c5}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a226bf20c6172eb1e498119bef837b6c5} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!buildIRepository@{buildIRepository}}
+\index{buildIRepository@{buildIRepository}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{buildIRepository()}{buildIRepository()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}, Long $>$ map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+build\+IRepository (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enummap_1_1project_1_1_fitness_center_1_1factory_1_1_repo_types}{Repo\+Types}}}]{type }\end{DoxyParamCaption})}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a8683a129999c1c84676b8ca42efc09b4}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a8683a129999c1c84676b8ca42efc09b4} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!getInMemory@{getInMemory}}
+\index{getInMemory@{getInMemory}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{getInMemory()}{getInMemory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1in_memory_1_1_equipment_item_in_memory_repository}{Equipment\+Item\+In\+Memory\+Repository}} map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+get\+In\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a378c595ecf66752d12237fd197e0c8ab}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a378c595ecf66752d12237fd197e0c8ab} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!getJpa@{getJpa}}
+\index{getJpa@{getJpa}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{getJpa()}{getJpa()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}} map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+get\+Jpa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a50cfb2c85890a7c4093cd27105c15f56}\label{classmap_1_1project_1_1_fitness_center_1_1factory_1_1_equipment_item_repo_factory_a50cfb2c85890a7c4093cd27105c15f56} 
+\index{map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}!applicationContext@{applicationContext}}
+\index{applicationContext@{applicationContext}!map.project.FitnessCenter.factory.EquipmentItemRepoFactory@{map.project.FitnessCenter.factory.EquipmentItemRepoFactory}}
+\doxysubsubsection{\texorpdfstring{applicationContext}{applicationContext}}
+{\footnotesize\ttfamily final Application\+Context map.\+project.\+Fitness\+Center.\+factory.\+Equipment\+Item\+Repo\+Factory.\+application\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/factory/\mbox{\hyperlink{_equipment_item_repo_factory_8java}{Equipment\+Item\+Repo\+Factory.\+java}}\end{DoxyCompactItemize}

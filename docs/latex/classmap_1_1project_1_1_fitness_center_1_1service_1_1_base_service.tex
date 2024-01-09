@@ -1,0 +1,116 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service\texorpdfstring{$<$}{<} Entity, Id\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+Base\+Service\texorpdfstring{$<$}{<} Entity, Id\+Type \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a184228c3f00593cbd744689f7b4f7dc9}{Base\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}})
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_ad240391822b45593cf21513cdc1f1892}{add}} (Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_afe07177c3a507ce8defea2fb9e224483}{get\+All}} ()
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a21236c99eac6b92373ff6a2812595b23}{get\+Entity\+By\+Key}} (Id\+Type id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IService$<$ Entity, Id\+Type $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_ab03d49a16287edc0dd0c3c4d656258ae}{update}} (Id\+Type id, Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a088e9ad6526f8dd6759da8aef86cc520}{delete}} (Id\+Type id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generic service class for managing the given generic entity of the fitness center. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a184228c3f00593cbd744689f7b4f7dc9}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a184228c3f00593cbd744689f7b4f7dc9} 
+\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}!BaseService@{BaseService}}
+\index{BaseService@{BaseService}!map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{BaseService()}{BaseService()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service}}$<$ Entity, Id\+Type $>$.\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{Base\+Service}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$}]{repository }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_ad240391822b45593cf21513cdc1f1892}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_ad240391822b45593cf21513cdc1f1892} 
+\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service}}$<$ Entity, Id\+Type $>$.add (\begin{DoxyParamCaption}\item[{Entity}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+Adds an entity to the repository, ensuring it does not already exist.
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & The entity to be added to the repository. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An Optional containing the added entity if successful or null if it was not. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Object\+Already\+Contained} & If the entity already exists in the repository. In this case, the repository remains unchanged. \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a14a7a953f5c86bdee54d5e2ab911a2ed}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IService$<$ Entity, Id\+Type $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_afe07177c3a507ce8defea2fb9e224483}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_afe07177c3a507ce8defea2fb9e224483} 
+\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}!getAll@{getAll}}
+\index{getAll@{getAll}!map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily Optional$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service}}$<$ Entity, Id\+Type $>$.get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets all stored entities in the repository. \begin{DoxyReturn}{Returns}
+An optional containing a list of the stored entities. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a1918d19c0d21f09e96cd11fa89ac4974}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IService$<$ Entity, Id\+Type $>$}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a21236c99eac6b92373ff6a2812595b23}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a21236c99eac6b92373ff6a2812595b23} 
+\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}!getEntityByKey@{getEntityByKey}}
+\index{getEntityByKey@{getEntityByKey}!map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{getEntityByKey()}{getEntityByKey()}}
+{\footnotesize\ttfamily Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service}}$<$ Entity, Id\+Type $>$.get\+Entity\+By\+Key (\begin{DoxyParamCaption}\item[{Id\+Type}]{id }\end{DoxyParamCaption})}
+
+Gets an entity from the repository identified with given ID. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique identifier of the entity to be searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional containing the searched entity or null if it was not found 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_acd850daff1ce4c418c7f91af5e6b10f4}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IService$<$ Entity, Id\+Type $>$}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2} 
+\index{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}!repository@{repository}}
+\index{repository@{repository}!map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$@{map.project.FitnessCenter.service.BaseService$<$ Entity, IdType $>$}}
+\doxysubsubsection{\texorpdfstring{repository}{repository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$Entity, Id\+Type$>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service}}$<$ Entity, Id\+Type $>$.repository\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/\mbox{\hyperlink{_base_service_8java}{Base\+Service.\+java}}\end{DoxyCompactItemize}

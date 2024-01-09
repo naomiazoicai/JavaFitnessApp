@@ -1,0 +1,184 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service}{}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service}\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.888889cm]{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae5c43ed54df67439ec218372a2439b6c}{Customer\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_customer_repository}{Customer\+Repository}} repository, \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_person_repository}{Person\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service_a81ac65fb6aa1fcd8a5c4bf2930558e5b}{person\+Repository}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_trainer_service}{Trainer\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_af13a986a533daed86f1d8352d4ad53ea}{trainer\+Service}})
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae4df9700962f21489e17c8b2395cb2ad}{add}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a381ccfd1c4a9319e4be4967863c5da54}{update}} (String id, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a8de350286d0c985217427293e75c8038}{delete}} (String id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}} 
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a9e8f54efe53e2a72177bed6e68e7e9c7}{trainer\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_trainer}{Trainer}} trainer)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaff4d222dc4976289757520cb3af578d}{add\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} observer)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaed11d95c6a3928b1eb61c78d09ccd2d}{remove\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} observer)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a48957e1db03b000436aeaa4f828bcfe5}{notify\+Customer\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} customer)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service}{map.\+project.\+Fitness\+Center.\+service.\+Person\+Service$<$ Customer $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service_ab79518f0c0bf8d3ad48d31f49c8d9996}{Person\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Person\+Type, String $>$ repository, \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_person_repository}{Person\+Repository}} person\+Repository)
+\item 
+Optional$<$ Person\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service_a9c12a1e4822703c1acd3b5837d268338}{add}} (Person\+Type object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ Person\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service_afc1d5841ac81bf76bd83e926bd3b1830}{delete}} (String id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}} 
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a96150b5008de51e99d1cc2d4ef347909}{set\+Trainer}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_customer_repository}{ICustomer\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a5bff4059f19a49232ea7a59d90b1f66e}{customer\+Repository}}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_trainer_service}{ITrainer\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_af13a986a533daed86f1d8352d4ad53ea}{trainer\+Service}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer}}}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}} $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a2e91fa41a630e72b7d5a6a88660a9bc1}{observer\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service}{map.\+project.\+Fitness\+Center.\+service.\+Person\+Service$<$ Customer $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_person_service_a4406038ec39b1d279f3d6d6fe40447e6}{person\+Username\+Exists}} (String username)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service class for managing the customers of the fitness center. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae5c43ed54df67439ec218372a2439b6c}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae5c43ed54df67439ec218372a2439b6c} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!CustomerService@{CustomerService}}
+\index{CustomerService@{CustomerService}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{CustomerService()}{CustomerService()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+Customer\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_customer_repository}{Customer\+Repository}}}]{repository,  }\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_person_repository}{Person\+Repository}}}]{person\+Repository,  }\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_trainer_service}{Trainer\+Service}}}]{trainer\+Service }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae4df9700962f21489e17c8b2395cb2ad}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_ae4df9700962f21489e17c8b2395cb2ad} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaff4d222dc4976289757520cb3af578d}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaff4d222dc4976289757520cb3af578d} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}}}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the list for monitoring customer deletions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a9a6b8b294b7c6e8de0d4fb4acbeea1de}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a8de350286d0c985217427293e75c8038}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a8de350286d0c985217427293e75c8038} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!delete@{delete}}
+\index{delete@{delete}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+delete (\begin{DoxyParamCaption}\item[{String}]{id }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a48957e1db03b000436aeaa4f828bcfe5}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a48957e1db03b000436aeaa4f828bcfe5} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!notifyCustomerDeleted@{notifyCustomerDeleted}}
+\index{notifyCustomerDeleted@{notifyCustomerDeleted}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{notifyCustomerDeleted()}{notifyCustomerDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+notify\+Customer\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}}}]{customer }\end{DoxyParamCaption})}
+
+Notifies all registered observers that a customer has been deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em customer} & The Customer object representing the deleted customer. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a6731fe38a291075e01e5a828afa7be3c}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaed11d95c6a3928b1eb61c78d09ccd2d}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_aaed11d95c6a3928b1eb61c78d09ccd2d} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_customer}{IObserver\+Deleted\+Customer}}}]{observer }\end{DoxyParamCaption})}
+
+Removes an observer from the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_customer_a54cb14e8282190ab22a92652fb949dff}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Customer}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a96150b5008de51e99d1cc2d4ef347909}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a96150b5008de51e99d1cc2d4ef347909} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!setTrainer@{setTrainer}}
+\index{setTrainer@{setTrainer}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{setTrainer()}{setTrainer()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+set\+Trainer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}}}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a9e8f54efe53e2a72177bed6e68e7e9c7}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a9e8f54efe53e2a72177bed6e68e7e9c7} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!trainerDeleted@{trainerDeleted}}
+\index{trainerDeleted@{trainerDeleted}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{trainerDeleted()}{trainerDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+trainer\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_trainer}{Trainer}}}]{trainer }\end{DoxyParamCaption})}
+
+Signals that a Trainer has been deleted from the system. 
+\begin{DoxyParams}{Parameters}
+{\em trainer} & The Trainer object representing the deleted Trainer \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer_a6ed9cd8086a8281675f2a6cf537f18e6}{map.\+project.\+Fitness\+Center.\+service.\+observers.\+IObserver\+Deleted\+Trainer}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a381ccfd1c4a9319e4be4967863c5da54}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a381ccfd1c4a9319e4be4967863c5da54} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!update@{update}}
+\index{update@{update}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+update (\begin{DoxyParamCaption}\item[{String}]{id,  }\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_customer}{Customer}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a5bff4059f19a49232ea7a59d90b1f66e}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_a5bff4059f19a49232ea7a59d90b1f66e} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!customerRepository@{customerRepository}}
+\index{customerRepository@{customerRepository}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{customerRepository}{customerRepository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_customer_repository}{ICustomer\+Repository}} map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+customer\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_af13a986a533daed86f1d8352d4ad53ea}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_customer_service_af13a986a533daed86f1d8352d4ad53ea} 
+\index{map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}!trainerService@{trainerService}}
+\index{trainerService@{trainerService}!map.project.FitnessCenter.service.CustomerService@{map.project.FitnessCenter.service.CustomerService}}
+\doxysubsubsection{\texorpdfstring{trainerService}{trainerService}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_trainer_service}{ITrainer\+Service}} map.\+project.\+Fitness\+Center.\+service.\+Customer\+Service.\+trainer\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/\mbox{\hyperlink{_customer_service_8java}{Customer\+Service.\+java}}\end{DoxyCompactItemize}

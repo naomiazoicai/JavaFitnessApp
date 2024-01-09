@@ -1,0 +1,186 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service}{}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service}\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.822320cm]{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_ac796ffb9e492c9f1d7ba14ac4d383183}{Subscription\+Type\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_subscription_type_repository}{Subscription\+Type\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service}{Specialised\+Room\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a936f0322c077a5ec745aab9d6e2cb7ca}{room\+Service}})
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a6642961ea614a24c7868bd6dbeb1360c}{add}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a083c5668d0702048841814157d7298c5}{update}} (String id, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_aed490c3296f387d3dc614a753499aa1a}{delete}} (String id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}} 
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a554785fbf36b74ec5df75915b57c486c}{update\+Room\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_specialised_room}{Specialised\+Room}} room)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a647bfac85d97f31ceabeef72d9cf9c81}{add\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_subscription_type}{IObserver\+Deleted\+Subscription\+Type}} observer)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_af1f975fdf72d36f8de9e7420acc81e43}{remove\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_subscription_type}{IObserver\+Deleted\+Subscription\+Type}} observer)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a002f01db5c3b4038e075be772f14183c}{notify\+Subscription\+Type\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} subscription\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service$<$ Subscription\+Type, String $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a184228c3f00593cbd744689f7b4f7dc9}{Base\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ repository)
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_ad240391822b45593cf21513cdc1f1892}{add}} (Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_afe07177c3a507ce8defea2fb9e224483}{get\+All}} ()
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a21236c99eac6b92373ff6a2812595b23}{get\+Entity\+By\+Key}} (Id\+Type id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a9944abec19636c86e0c05c5c1cee0038}{validate\+Accessible\+Rooms}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service}{Specialised\+Room\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a936f0322c077a5ec745aab9d6e2cb7ca}{room\+Service}}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_custom_subscription_type_repository}{ICustom\+Subscription\+Type\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_add51565d54aac6f7b860038a7eafd7b5}{custom\+Subscription\+Type\+Repository}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_subscription_type}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Subscription\+Type}}}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_subscription_type}{IObserver\+Deleted\+Subscription\+Type}} $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_subscription_type_a14473b04cc7d44e72c688f59f63e8231}{observer\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service$<$ Subscription\+Type, String $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service class for managing the available subscription plans of the fitness center. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_ac796ffb9e492c9f1d7ba14ac4d383183}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_ac796ffb9e492c9f1d7ba14ac4d383183} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!SubscriptionTypeService@{SubscriptionTypeService}}
+\index{SubscriptionTypeService@{SubscriptionTypeService}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{SubscriptionTypeService()}{SubscriptionTypeService()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+Subscription\+Type\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_subscription_type_repository}{Subscription\+Type\+Repository}}}]{repository,  }\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service}{Specialised\+Room\+Service}}}]{room\+Service }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a6642961ea614a24c7868bd6dbeb1360c}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a6642961ea614a24c7868bd6dbeb1360c} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a647bfac85d97f31ceabeef72d9cf9c81}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a647bfac85d97f31ceabeef72d9cf9c81} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_subscription_type}{IObserver\+Deleted\+Subscription\+Type}}}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the list for monitoring Subscription\+Type deletions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_subscription_type_a3a71fe98d95cceba67424832bbbbb89b}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Subscription\+Type}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_aed490c3296f387d3dc614a753499aa1a}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_aed490c3296f387d3dc614a753499aa1a} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!delete@{delete}}
+\index{delete@{delete}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+delete (\begin{DoxyParamCaption}\item[{String}]{id }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a002f01db5c3b4038e075be772f14183c}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a002f01db5c3b4038e075be772f14183c} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!notifySubscriptionTypeDeleted@{notifySubscriptionTypeDeleted}}
+\index{notifySubscriptionTypeDeleted@{notifySubscriptionTypeDeleted}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{notifySubscriptionTypeDeleted()}{notifySubscriptionTypeDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+notify\+Subscription\+Type\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}}}]{subscription\+Type }\end{DoxyParamCaption})}
+
+Notifies all registered observers that a Subscription\+Type has been deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em subscription\+Type} & The Subscription\+Type object representing the deleted Subscription\+Type. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_subscription_type_a79d3956857c08edf6975ba467f08a19b}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Subscription\+Type}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_af1f975fdf72d36f8de9e7420acc81e43}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_af1f975fdf72d36f8de9e7420acc81e43} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_subscription_type}{IObserver\+Deleted\+Subscription\+Type}}}]{observer }\end{DoxyParamCaption})}
+
+Removes an observer from the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_subscription_type_a158132d22e705f5b6a129f0239847b6d}{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Subscription\+Type}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a083c5668d0702048841814157d7298c5}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a083c5668d0702048841814157d7298c5} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!update@{update}}
+\index{update@{update}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+update (\begin{DoxyParamCaption}\item[{String}]{id,  }\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a554785fbf36b74ec5df75915b57c486c}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a554785fbf36b74ec5df75915b57c486c} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!updateRoomDeleted@{updateRoomDeleted}}
+\index{updateRoomDeleted@{updateRoomDeleted}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{updateRoomDeleted()}{updateRoomDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+update\+Room\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_specialised_room}{Specialised\+Room}}}]{room }\end{DoxyParamCaption})}
+
+Signals that an Specialised\+Room has been deleted from the system. 
+\begin{DoxyParams}{Parameters}
+{\em room} & The Specialised\+Room object representing the deleted Specialised\+Room. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_room_aa530682269e993e1088fb808af75f839}{map.\+project.\+Fitness\+Center.\+service.\+observers.\+IObserver\+Delete\+Room}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a9944abec19636c86e0c05c5c1cee0038}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a9944abec19636c86e0c05c5c1cee0038} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!validateAccessibleRooms@{validateAccessibleRooms}}
+\index{validateAccessibleRooms@{validateAccessibleRooms}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{validateAccessibleRooms()}{validateAccessibleRooms()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+validate\+Accessible\+Rooms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription_type}{Subscription\+Type}}}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_add51565d54aac6f7b860038a7eafd7b5}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_add51565d54aac6f7b860038a7eafd7b5} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!customSubscriptionTypeRepository@{customSubscriptionTypeRepository}}
+\index{customSubscriptionTypeRepository@{customSubscriptionTypeRepository}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{customSubscriptionTypeRepository}{customSubscriptionTypeRepository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_custom_subscription_type_repository}{ICustom\+Subscription\+Type\+Repository}} map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+custom\+Subscription\+Type\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a936f0322c077a5ec745aab9d6e2cb7ca}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_subscription_type_service_a936f0322c077a5ec745aab9d6e2cb7ca} 
+\index{map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}!roomService@{roomService}}
+\index{roomService@{roomService}!map.project.FitnessCenter.service.SubscriptionTypeService@{map.project.FitnessCenter.service.SubscriptionTypeService}}
+\doxysubsubsection{\texorpdfstring{roomService}{roomService}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_specialised_room_service}{Specialised\+Room\+Service}} map.\+project.\+Fitness\+Center.\+service.\+Subscription\+Type\+Service.\+room\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/\mbox{\hyperlink{_subscription_type_service_8java}{Subscription\+Type\+Service.\+java}}\end{DoxyCompactItemize}

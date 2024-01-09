@@ -1,0 +1,65 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller}{}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller}\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a955ce58de297e3000786c4562ed05e1d}{Budget\+Controller}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}{Budget\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a1d1be75ce0dc7496f74bc1e136a50c02}{service}})
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a760a89985e80f424e29a04adfb80d336}{get\+Budget}} ()
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a7a770067784d4e864142ccf4711f4674}{add}} (@Request\+Body \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1enums_1_1_money_value}{Money\+Value}} money\+Value)
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a6cbda4b86bf224edd9b920998169ab49}{spend}} (@Request\+Body \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1enums_1_1_money_value}{Money\+Value}} money\+Value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}{Budget\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a1d1be75ce0dc7496f74bc1e136a50c02}{service}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller class for managing budget-\/related operations in the fitness center. This controller provides endpoints for retrieving, adding, and spending the budget. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a955ce58de297e3000786c4562ed05e1d}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a955ce58de297e3000786c4562ed05e1d} 
+\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}!BudgetController@{BudgetController}}
+\index{BudgetController@{BudgetController}!map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection{\texorpdfstring{BudgetController()}{BudgetController()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller.\+Budget\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}{Budget\+Service}}}]{service }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a7a770067784d4e864142ccf4711f4674}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a7a770067784d4e864142ccf4711f4674} 
+\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Response\+Entity$<$ String $>$ map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller.\+add (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1enums_1_1_money_value}{Money\+Value}}}]{money\+Value }\end{DoxyParamCaption})}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a760a89985e80f424e29a04adfb80d336}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a760a89985e80f424e29a04adfb80d336} 
+\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily Response\+Entity$<$ String $>$ map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller.\+get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a6cbda4b86bf224edd9b920998169ab49}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a6cbda4b86bf224edd9b920998169ab49} 
+\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}!spend@{spend}}
+\index{spend@{spend}!map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection{\texorpdfstring{spend()}{spend()}}
+{\footnotesize\ttfamily Response\+Entity$<$ String $>$ map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller.\+spend (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1enums_1_1_money_value}{Money\+Value}}}]{money\+Value }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a1d1be75ce0dc7496f74bc1e136a50c02}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_budget_controller_a1d1be75ce0dc7496f74bc1e136a50c02} 
+\index{map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}!service@{service}}
+\index{service@{service}!map.project.FitnessCenter.controller.BudgetController@{map.project.FitnessCenter.controller.BudgetController}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service}{Budget\+Service}} map.\+project.\+Fitness\+Center.\+controller.\+Budget\+Controller.\+service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/controller/\mbox{\hyperlink{_budget_controller_8java}{Budget\+Controller.\+java}}\end{DoxyCompactItemize}

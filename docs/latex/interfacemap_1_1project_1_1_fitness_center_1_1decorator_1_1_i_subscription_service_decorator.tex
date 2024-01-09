@@ -1,0 +1,52 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+decorator.\+ISubscription\+Service\+Decorator Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator}\index{map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator@{map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+decorator.\+ISubscription\+Service\+Decorator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.070176cm]{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator_a8631ee5d2d1e9a97df36c465509d18c4}{subscription\+Sold}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription}{Subscription}} subscription)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_subscription_service}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+ISubscription\+Service}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_subscription_service_acfdc2ea764a060b1ee534426be47b5fe}{set\+Subscription\+Type}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription}{Subscription}} object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IService$<$ Subscription, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a14a7a953f5c86bdee54d5e2ab911a2ed}{add}} (Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_ab03d49a16287edc0dd0c3c4d656258ae}{update}} (Id\+Type id, Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a088e9ad6526f8dd6759da8aef86cc520}{delete}} (Id\+Type id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}
+\item 
+Optional$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_a1918d19c0d21f09e96cd11fa89ac4974}{get\+All}} ()
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_service_acd850daff1ce4c418c7f91af5e6b10f4}{get\+Entity\+By\+Key}} (Id\+Type id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Decorator interface for the Subscription\+Service. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator_a8631ee5d2d1e9a97df36c465509d18c4}\label{interfacemap_1_1project_1_1_fitness_center_1_1decorator_1_1_i_subscription_service_decorator_a8631ee5d2d1e9a97df36c465509d18c4} 
+\index{map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator@{map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator}!subscriptionSold@{subscriptionSold}}
+\index{subscriptionSold@{subscriptionSold}!map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator@{map.project.FitnessCenter.decorator.ISubscriptionServiceDecorator}}
+\doxysubsubsection{\texorpdfstring{subscriptionSold()}{subscriptionSold()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+decorator.\+ISubscription\+Service\+Decorator.\+subscription\+Sold (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_subscription}{Subscription}}}]{subscription }\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_non_budget_service_a285ff6301e07e079ea41f96c3489d317}{map.\+project.\+Fitness\+Center.\+service.\+Non\+Budget\+Service}}, and \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_paid_subscription_service_a002245fb4a90c392ca835a3a893e720d}{map.\+project.\+Fitness\+Center.\+service.\+Paid\+Subscription\+Service}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/decorator/\mbox{\hyperlink{_i_subscription_service_decorator_8java}{ISubscription\+Service\+Decorator.\+java}}\end{DoxyCompactItemize}

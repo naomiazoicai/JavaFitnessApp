@@ -1,0 +1,93 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer}\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a5f0ec8617cd61c0777391fc07fe744bb}{add\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a38e3bc05bec0ccf8ef18394c7c5dccae}{remove\+Observer}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}} observer)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a76b2f4591c9b44662a54254263b3abb6}{notify\+Trainer\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_trainer}{Trainer}} trainer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}} $>$ \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a7d7d6e216de9cd5dba3ecfe7af310ed0}{observer\+List}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A subject interface for notifying observers about the deletion of Trainers. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a5f0ec8617cd61c0777391fc07fe744bb}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a5f0ec8617cd61c0777391fc07fe744bb} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}}}]{observer }\end{DoxyParamCaption})}
+
+Adds an observer to the list for monitoring Trainer deletions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_trainer_service_ab20f4b7f7bcafd521b9dffab14ceb67d}{map.\+project.\+Fitness\+Center.\+service.\+Trainer\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a76b2f4591c9b44662a54254263b3abb6}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a76b2f4591c9b44662a54254263b3abb6} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}!notifyTrainerDeleted@{notifyTrainerDeleted}}
+\index{notifyTrainerDeleted@{notifyTrainerDeleted}!map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}}
+\doxysubsubsection{\texorpdfstring{notifyTrainerDeleted()}{notifyTrainerDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer.\+notify\+Trainer\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_trainer}{Trainer}}}]{trainer }\end{DoxyParamCaption})}
+
+Notifies all registered observers that a Trainer has been deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em trainer} & The Trainer object representing the deleted Trainer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_trainer_service_af35771530b6ef8a64f2222f85e50128c}{map.\+project.\+Fitness\+Center.\+service.\+Trainer\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a38e3bc05bec0ccf8ef18394c7c5dccae}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a38e3bc05bec0ccf8ef18394c7c5dccae} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}}}]{observer }\end{DoxyParamCaption})}
+
+Removes an observer from the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to be removed. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_trainer_service_afbf28b488863f813d84a31bb27da5e7d}{map.\+project.\+Fitness\+Center.\+service.\+Trainer\+Service}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a7d7d6e216de9cd5dba3ecfe7af310ed0}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1subjects_1_1_i_subject_deleted_trainer_a7d7d6e216de9cd5dba3ecfe7af310ed0} 
+\index{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}!observerList@{observerList}}
+\index{observerList@{observerList}!map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer@{map.project.FitnessCenter.service.subjects.ISubjectDeletedTrainer}}
+\doxysubsubsection{\texorpdfstring{observerList}{observerList}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_deleted_trainer}{IObserver\+Deleted\+Trainer}}$>$ map.\+project.\+Fitness\+Center.\+service.\+subjects.\+ISubject\+Deleted\+Trainer.\+observer\+List = new Array\+List$<$$>$()}
+
+List to store instances of {\ttfamily IObserver\+Deleted\+Trainer} for observing Trainer deletions. 
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/subjects/\mbox{\hyperlink{_i_subject_deleted_trainer_8java}{ISubject\+Deleted\+Trainer.\+java}}\end{DoxyCompactItemize}

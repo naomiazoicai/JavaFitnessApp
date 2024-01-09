@@ -1,0 +1,76 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+controller.\+Equipment\+Item\+Controller Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller}{}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller}\index{map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+controller.\+Equipment\+Item\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_ac95697c932d2fa7b7269824004f80eb3}{Equipment\+Item\+Controller}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{Base\+Service}}$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}, Long $>$ i\+Service, \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_equipment_item_service}{IEquipment\+Item\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a67c0d8237a54e046827d306150dfb903}{i\+Equipment\+Item\+Service}})
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}} $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a45b1feac023a96ddeebb899df5fcae3b}{get\+Entity\+By\+Name}} (@Path\+Variable(value="{}name"{}) String name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller}{map.\+project.\+Fitness\+Center.\+controller.\+Base\+Controller$<$ Equipment\+Item, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_ac107be2bf6970855062b3a34bb223ce5}{Base\+Controller}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{Base\+Service}}$<$ Type, Id\+Type $>$ service)
+\item 
+Response\+Entity$<$ Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_aa8375e090a1eddf279f357eb3e5c704a}{add}} (Type object)
+\item 
+Response\+Entity$<$ Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_ad71a9c54e1bf804aed9babc08c510e31}{update}} (Id\+Type id, Type object)
+\item 
+Response\+Entity$<$ Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_ae40829665682b101adc1039755f61454}{delete}} (Id\+Type id)
+\item 
+Response\+Entity$<$ List$<$ Type $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_a6adbbe6aba30be88250ba7ef024ca898}{get\+All}} ()
+\item 
+Response\+Entity$<$ Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_abeb8429728e0d0b6d347084de530eff3}{get\+Entity\+By\+Id}} (Id\+Type id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_equipment_item_service}{IEquipment\+Item\+Service}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a67c0d8237a54e046827d306150dfb903}{i\+Equipment\+Item\+Service}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Package Attributes inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller}{map.\+project.\+Fitness\+Center.\+controller.\+Base\+Controller$<$ Equipment\+Item, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{Base\+Service}}$<$ Type, Id\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_base_controller_a0a6e485fd2d966d0620c08b889250168}{service}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller class for managing equipment item-\/related operations in the fitness center. This controller extends the Base\+Controller and provides endpoints for common CRUD operations on Equipment\+Item entities. It also includes a specific endpoint for retrieving equipment items by name. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_ac95697c932d2fa7b7269824004f80eb3}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_ac95697c932d2fa7b7269824004f80eb3} 
+\index{map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}!EquipmentItemController@{EquipmentItemController}}
+\index{EquipmentItemController@{EquipmentItemController}!map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}}
+\doxysubsubsection{\texorpdfstring{EquipmentItemController()}{EquipmentItemController()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+controller.\+Equipment\+Item\+Controller.\+Equipment\+Item\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{Base\+Service}}$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}, Long $>$}]{i\+Service,  }\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_equipment_item_service}{IEquipment\+Item\+Service}}}]{i\+Equipment\+Item\+Service }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a45b1feac023a96ddeebb899df5fcae3b}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a45b1feac023a96ddeebb899df5fcae3b} 
+\index{map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}!getEntityByName@{getEntityByName}}
+\index{getEntityByName@{getEntityByName}!map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}}
+\doxysubsubsection{\texorpdfstring{getEntityByName()}{getEntityByName()}}
+{\footnotesize\ttfamily Response\+Entity$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}} $>$ $>$ map.\+project.\+Fitness\+Center.\+controller.\+Equipment\+Item\+Controller.\+get\+Entity\+By\+Name (\begin{DoxyParamCaption}\item[{@Path\+Variable(value="{}name"{}) String}]{name }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a67c0d8237a54e046827d306150dfb903}\label{classmap_1_1project_1_1_fitness_center_1_1controller_1_1_equipment_item_controller_a67c0d8237a54e046827d306150dfb903} 
+\index{map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}!iEquipmentItemService@{iEquipmentItemService}}
+\index{iEquipmentItemService@{iEquipmentItemService}!map.project.FitnessCenter.controller.EquipmentItemController@{map.project.FitnessCenter.controller.EquipmentItemController}}
+\doxysubsubsection{\texorpdfstring{iEquipmentItemService}{iEquipmentItemService}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_equipment_item_service}{IEquipment\+Item\+Service}} map.\+project.\+Fitness\+Center.\+controller.\+Equipment\+Item\+Controller.\+i\+Equipment\+Item\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/controller/\mbox{\hyperlink{_equipment_item_controller_8java}{Equipment\+Item\+Controller.\+java}}\end{DoxyCompactItemize}

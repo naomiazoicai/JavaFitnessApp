@@ -1,0 +1,147 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service Class Reference}
+\hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service}{}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service}\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.827790cm]{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a71c58a0c7713f9b936f6020d23f61a5e}{Exercise\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_exercise_repository}{Exercise\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}}, \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aeb5a701fd5f9aff3546b09f3db3c7298}{equipment\+Item\+Repository}})
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aa0b79852d294141052e48288035c7c98}{add}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}     
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aea273274b76af5fdcb152d99322530c9}{update}} (Long id, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_af4a8bdc914522ffe59b7cf95a131eabd}{delete}} (Long id)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}} 
+\item 
+Optional$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0e8dd3fa7cd8aa2d44b3f8f7bb7fdf6a}{get\+By\+Name}} (String name)
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c0e8c97463b963a33ef523e8be3d3da}{update\+Equipment\+Item\+Deleted}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}} equipment\+Item)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service$<$ Exercise, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a184228c3f00593cbd744689f7b4f7dc9}{Base\+Service}} (\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ repository)
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_ad240391822b45593cf21513cdc1f1892}{add}} (Entity object)  throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}} 
+\item 
+Optional$<$ List$<$ Entity $>$ $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_afe07177c3a507ce8defea2fb9e224483}{get\+All}} ()
+\item 
+Optional$<$ Entity $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a21236c99eac6b92373ff6a2812595b23}{get\+Entity\+By\+Key}} (Id\+Type id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a7643ad13ff13619b0069f2892469e317}{set\+Equipment\+Item}} (\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository}{IExercise\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c8e8387424adf86b8dc5fc4c148aaa9}{exercise\+Repository}}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}} \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aeb5a701fd5f9aff3546b09f3db3c7298}{equipment\+Item\+Repository}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service}{map.\+project.\+Fitness\+Center.\+service.\+Base\+Service$<$ Exercise, Long $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_repository}{IRepository}}$<$ Entity, Id\+Type $>$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_base_service_a6cc0744a31f5536cad8a98a3b5f872d2}{repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service class for managing the exercises of the fitness center. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a71c58a0c7713f9b936f6020d23f61a5e}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a71c58a0c7713f9b936f6020d23f61a5e} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!ExerciseService@{ExerciseService}}
+\index{ExerciseService@{ExerciseService}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{ExerciseService()}{ExerciseService()}}
+{\footnotesize\ttfamily map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+Exercise\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_exercise_repository}{Exercise\+Repository}}}]{repository,  }\item[{\mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}}}]{equipment\+Item\+Repository }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aa0b79852d294141052e48288035c7c98}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aa0b79852d294141052e48288035c7c98} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!add@{add}}
+\index{add@{add}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_af4a8bdc914522ffe59b7cf95a131eabd}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_af4a8bdc914522ffe59b7cf95a131eabd} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!delete@{delete}}
+\index{delete@{delete}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+delete (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0e8dd3fa7cd8aa2d44b3f8f7bb7fdf6a}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0e8dd3fa7cd8aa2d44b3f8f7bb7fdf6a} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!getByName@{getByName}}
+\index{getByName@{getByName}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{getByName()}{getByName()}}
+{\footnotesize\ttfamily Optional$<$ List$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ $>$ map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+get\+By\+Name (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Gets an Exercise from the repository identified with given name. 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name field of the entity to be searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An optional containing the searched entity or null if it was not found 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_exercise_service_a601012a4acf0b1b35fc71aaa11049c41}{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IExercise\+Service}}.
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a7643ad13ff13619b0069f2892469e317}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a7643ad13ff13619b0069f2892469e317} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!setEquipmentItem@{setEquipmentItem}}
+\index{setEquipmentItem@{setEquipmentItem}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{setEquipmentItem()}{setEquipmentItem()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+set\+Equipment\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}}}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aea273274b76af5fdcb152d99322530c9}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aea273274b76af5fdcb152d99322530c9} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!update@{update}}
+\index{update@{update}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}} $>$ map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+update (\begin{DoxyParamCaption}\item[{Long}]{id,  }\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_exercise}{Exercise}}}]{object }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_not_contained}{Object\+Not\+Contained}}, \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1exceptions_1_1_object_already_contained}{Object\+Already\+Contained}}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c0e8c97463b963a33ef523e8be3d3da}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c0e8c97463b963a33ef523e8be3d3da} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!updateEquipmentItemDeleted@{updateEquipmentItemDeleted}}
+\index{updateEquipmentItemDeleted@{updateEquipmentItemDeleted}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{updateEquipmentItemDeleted()}{updateEquipmentItemDeleted()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+update\+Equipment\+Item\+Deleted (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1data_1_1model_1_1_equipment_item}{Equipment\+Item}}}]{equipment\+Item }\end{DoxyParamCaption})}
+
+Signals that an Equipment\+Item has been deleted from the system. 
+\begin{DoxyParams}{Parameters}
+{\em equipment\+Item} & The Equipment\+Item object representing the deleted Equipment\+Item. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1observers_1_1_i_observer_delete_equipment_item_a98da5b35a47b283d0109c2af295cbe09}{map.\+project.\+Fitness\+Center.\+service.\+observers.\+IObserver\+Delete\+Equipment\+Item}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aeb5a701fd5f9aff3546b09f3db3c7298}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_aeb5a701fd5f9aff3546b09f3db3c7298} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!equipmentItemRepository@{equipmentItemRepository}}
+\index{equipmentItemRepository@{equipmentItemRepository}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{equipmentItemRepository}{equipmentItemRepository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1_jpa_1_1_equipment_item_repository}{Equipment\+Item\+Repository}} map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+equipment\+Item\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c8e8387424adf86b8dc5fc4c148aaa9}\label{classmap_1_1project_1_1_fitness_center_1_1service_1_1_exercise_service_a0c8e8387424adf86b8dc5fc4c148aaa9} 
+\index{map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}!exerciseRepository@{exerciseRepository}}
+\index{exerciseRepository@{exerciseRepository}!map.project.FitnessCenter.service.ExerciseService@{map.project.FitnessCenter.service.ExerciseService}}
+\doxysubsubsection{\texorpdfstring{exerciseRepository}{exerciseRepository}}
+{\footnotesize\ttfamily final \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1data_1_1repository_1_1intefaces_1_1_i_exercise_repository}{IExercise\+Repository}} map.\+project.\+Fitness\+Center.\+service.\+Exercise\+Service.\+exercise\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/\mbox{\hyperlink{_exercise_service_8java}{Exercise\+Service.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\doxysection{map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service Interface Reference}
+\hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service}{}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service}\index{map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}}
+Inheritance diagram for map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a4eee8779134d61e41602393350eba6bd}{add\+Money}} (double amount)
+\item 
+void \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a30cff324740270b1c0787479c37df1db}{spend\+Money}} (double amount)
+\item 
+String \mbox{\hyperlink{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a57503d0a70d0f6b378d76c9b84aba884}{get\+Budget}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An interface defining operations related to a budget. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a4eee8779134d61e41602393350eba6bd}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a4eee8779134d61e41602393350eba6bd} 
+\index{map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}!addMoney@{addMoney}}
+\index{addMoney@{addMoney}!map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}}
+\doxysubsubsection{\texorpdfstring{addMoney()}{addMoney()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service.\+add\+Money (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+Adds the specified amount of money to the budget.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount of money to be added to the budget. Must be a non-\/negative value. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_abdb25de12a6a4789b85a6fc31a0db481}{map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a57503d0a70d0f6b378d76c9b84aba884}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a57503d0a70d0f6b378d76c9b84aba884} 
+\index{map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily String map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service.\+get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieves the current budget as a string representation.
+
+\begin{DoxyReturn}{Returns}
+A string representation of the current budget. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ade4f415165956c6b437c4cb4944d8398}{map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service}}.
+
+\Hypertarget{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a30cff324740270b1c0787479c37df1db}\label{interfacemap_1_1project_1_1_fitness_center_1_1service_1_1interfaces_1_1_i_budget_service_a30cff324740270b1c0787479c37df1db} 
+\index{map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}!spendMoney@{spendMoney}}
+\index{spendMoney@{spendMoney}!map.project.FitnessCenter.service.interfaces.IBudgetService@{map.project.FitnessCenter.service.interfaces.IBudgetService}}
+\doxysubsubsection{\texorpdfstring{spendMoney()}{spendMoney()}}
+{\footnotesize\ttfamily void map.\+project.\+Fitness\+Center.\+service.\+interfaces.\+IBudget\+Service.\+spend\+Money (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+Spends the specified amount of money from the budget.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount of money to be spent from the budget. Must be a non-\/negative value. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classmap_1_1project_1_1_fitness_center_1_1service_1_1_budget_service_ad4c7ae00f996e79b1d4afb761b3915a5}{map.\+project.\+Fitness\+Center.\+service.\+Budget\+Service}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+Facultate/\+Fortgeschrittene\+Programmierungsmethoden/\+Java\+Fitness\+App/src/main/java/map/project/\+Fitness\+Center/service/interfaces/\mbox{\hyperlink{_i_budget_service_8java}{IBudget\+Service.\+java}}\end{DoxyCompactItemize}
