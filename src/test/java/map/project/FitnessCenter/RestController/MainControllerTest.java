@@ -1,4 +1,4 @@
-package map.project.FitnessCenter;
+package map.project.FitnessCenter.RestController;
 
 import map.project.FitnessCenter.controller.MainController;
 import map.project.FitnessCenter.service.MainService;

@@ -1,4 +1,4 @@
-package map.project.FitnessCenter;
+package map.project.FitnessCenter.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import map.project.FitnessCenter.controller.TrainerController;
