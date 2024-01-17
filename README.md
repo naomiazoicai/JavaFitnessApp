@@ -1,6 +1,6 @@
 # JavaFitnessApp
 # English (EN)
-This Java console application is designed to facilitate the administration of a Gym or fitness center. It enables users to oversee employees, customers, subscriptions, rooms, equipment, exercises, and the budget effectively.
+This Java backend application is designed to facilitate the administration of a Gym or fitness center. It enables users to oversee employees, customers, subscriptions, rooms, equipment, exercises, and the budget effectively.
 This application was developed by George and Naomi.
 ## Features
 This application includes the following features:
