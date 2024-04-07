@@ -22,13 +22,12 @@ import java.util.Set;
  */
 @Service
 public class SubscriptionTypeService extends BaseService<SubscriptionType, String>
-implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
+        implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
     private final SpecialisedRoomService roomService;
     private final ICustomSubscriptionTypeRepository customSubscriptionTypeRepository;
 
     @Autowired
-    public SubscriptionTypeService(SubscriptionTypeRepository repository, SpecialisedRoomService roomService)
-    {
+    public SubscriptionTypeService(SubscriptionTypeRepository repository, SpecialisedRoomService roomService) {
         super(repository);
         this.customSubscriptionTypeRepository = repository;
         this.roomService = roomService;
@@ -44,11 +43,9 @@ implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
         return Optional.of(object);
     }
 
-    private void validateAccessibleRooms(SubscriptionType object)
-    {
+    private void validateAccessibleRooms(SubscriptionType object) {
         Set<SpecialisedRoom> newContainer = new HashSet<>();
-        for (SpecialisedRoom room : object.getAccessibleRestrictedRooms())
-        {
+        for (SpecialisedRoom room : object.getAccessibleRestrictedRooms()) {
             Optional<SpecialisedRoom> existingRoom = roomService.getEntityByKey(room.getId());
             existingRoom.ifPresent(newContainer::add);
         }
@@ -77,13 +74,12 @@ implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
     @Override
     public void updateRoomDeleted(SpecialisedRoom room) {
         Optional<List<SubscriptionType>> subs = customSubscriptionTypeRepository.getSubscriptionTypesContainingRoom(room);
-       if (subs.isPresent())
-       {
-           for (SubscriptionType subscriptionType : subs.get()) {
-               subscriptionType.removeRoom(room);
-               repository.save(subscriptionType);
-           }
-       }
+        if (subs.isPresent()) {
+            for (SubscriptionType subscriptionType : subs.get()) {
+                subscriptionType.removeRoom(room);
+                repository.save(subscriptionType);
+            }
+        }
     }
 
     @Override
@@ -98,6 +94,7 @@ implements IObserverDeleteRoom, ISubjectDeletedSubscriptionType {
 
     @Override
     public void notifySubscriptionTypeDeleted(SubscriptionType subscriptionType) {
-        for (IObserverDeletedSubscriptionType observer : observerList) observer.subscriptionTypeDeleted(subscriptionType);
+        for (IObserverDeletedSubscriptionType observer : observerList)
+            observer.subscriptionTypeDeleted(subscriptionType);
     }
 }

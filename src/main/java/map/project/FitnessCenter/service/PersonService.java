@@ -17,14 +17,12 @@ import java.util.Optional;
 public abstract class PersonService<PersonType extends Person> extends BaseService<PersonType, String> {
     private final PersonRepository personRepository;
 
-    public PersonService(IRepository<PersonType, String> repository, PersonRepository personRepository)
-    {
+    public PersonService(IRepository<PersonType, String> repository, PersonRepository personRepository) {
         super(repository);
         this.personRepository = personRepository;
     }
 
-    protected boolean personUsernameExists(String username)
-    {
+    protected boolean personUsernameExists(String username) {
         return personRepository.personUsernameExists(username);
     }
 

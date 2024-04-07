@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.Objects;
 import java.util.Set;
+
 /**
  * Entity class representing a subscription type in the fitness center.
  **/
@@ -25,18 +26,15 @@ public class SubscriptionType {
     @JoinColumn
     private Set<SpecialisedRoom> accessibleRestrictedRooms;
 
-    public SubscriptionType copy()
-    {
+    public SubscriptionType copy() {
         return new SubscriptionType(name, description, price, accessibleRestrictedRooms);
     }
 
-    public void addRoom(SpecialisedRoom room)
-    {
+    public void addRoom(SpecialisedRoom room) {
         accessibleRestrictedRooms.add(room);
     }
 
-    public void removeRoom(SpecialisedRoom room)
-    {
+    public void removeRoom(SpecialisedRoom room) {
         accessibleRestrictedRooms.remove(room);
     }
 

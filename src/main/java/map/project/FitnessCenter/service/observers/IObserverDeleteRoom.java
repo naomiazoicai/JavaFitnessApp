@@ -1,4 +1,5 @@
 package map.project.FitnessCenter.service.observers;
+
 import map.project.FitnessCenter.data.model.SpecialisedRoom;
 
 /**
@@ -7,6 +8,7 @@ import map.project.FitnessCenter.data.model.SpecialisedRoom;
 public interface IObserverDeleteRoom {
     /**
      * Signals that an SpecialisedRoom has been deleted from the system.
+     *
      * @param room The SpecialisedRoom object representing the deleted SpecialisedRoom.
      */
     void updateRoomDeleted(SpecialisedRoom room);

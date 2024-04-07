@@ -8,6 +8,7 @@ import map.project.FitnessCenter.data.model.SubscriptionType;
 public interface IObserverDeletedSubscriptionType {
     /**
      * Signals that a SubscriptionType has been deleted from the system.
+     *
      * @param subscriptionType The SubscriptionType object representing the deleted SubscriptionType
      */
     void subscriptionTypeDeleted(SubscriptionType subscriptionType);

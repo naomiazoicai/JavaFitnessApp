@@ -5,9 +5,9 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.Gender;
 
 import java.time.LocalDate;
+
 /**
  * Entity class representing a customer in the fitness center.
- *
  */
 @NoArgsConstructor
 @Setter
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-public class Customer extends Person{
+public class Customer extends Person {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn()
     private Trainer assignedTrainer;
@@ -25,8 +25,7 @@ public class Customer extends Person{
         this.assignedTrainer = assignedTrainer;
     }
 
-    public Customer copy()
-    {
+    public Customer copy() {
         return new Customer(username, name, birthDate, gender, assignedTrainer);
     }
 }

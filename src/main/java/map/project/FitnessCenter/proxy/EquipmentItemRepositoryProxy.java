@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Proxy class for the EquipmentItem repository, implementing both IEquipmentItemRepository
  * and ICustomEquipmentItemRepository interfaces.
@@ -32,8 +33,7 @@ public class EquipmentItemRepositoryProxy extends RepoProxy<EquipmentItem, Long>
     }
 
     @Override
-    public void selectInMemory()
-    {
+    public void selectInMemory() {
         currentRepo = factory.buildIRepository(RepoTypes.inMemory);
         customRepo = factory.buildCustom(RepoTypes.inMemory);
     }

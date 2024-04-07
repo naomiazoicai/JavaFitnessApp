@@ -4,6 +4,7 @@ import map.project.FitnessCenter.data.model.Person;
 import map.project.FitnessCenter.data.repository.intefaces.IPersonRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
 /**
  * JPA repository for the Person entity.
  */

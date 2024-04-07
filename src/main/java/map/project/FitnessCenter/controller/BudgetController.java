@@ -16,20 +16,17 @@ public class BudgetController {
     private final BudgetService service;
 
     @Autowired
-    public BudgetController(BudgetService service)
-    {
+    public BudgetController(BudgetService service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<String> getBudget()
-    {
+    public ResponseEntity<String> getBudget() {
         return ResponseEntity.ok(service.getBudget());
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> add(@RequestBody MoneyValue moneyValue)
-    {
+    public ResponseEntity<String> add(@RequestBody MoneyValue moneyValue) {
         String response = "Old budget --->   " + service.getBudget() + "\n";
         service.addMoney(moneyValue.getAmount());
         response += "New budget --->   " + service.getBudget();
@@ -37,8 +34,7 @@ public class BudgetController {
     }
 
     @PostMapping("/spend")
-    public ResponseEntity<String> spend(@RequestBody MoneyValue moneyValue)
-    {
+    public ResponseEntity<String> spend(@RequestBody MoneyValue moneyValue) {
         String response = "Old budget --->   " + service.getBudget() + "\n";
         service.spendMoney(moneyValue.getAmount());
         response += "New budget --->   " + service.getBudget();

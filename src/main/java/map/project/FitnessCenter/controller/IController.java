@@ -4,14 +4,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 /**
  * Interface defining common CRUD (Create, Read, Update, Delete) operations for controllers managing entities in the fitness center.
  *
- * @param <Entity>  The type of the entity managed by the controller.
- * @param <IdType>  The type of the entity's identifier.
+ * @param <Entity> The type of the entity managed by the controller.
+ * @param <IdType> The type of the entity's identifier.
  */
-public interface IController<Entity, IdType>
-{
+public interface IController<Entity, IdType> {
     /**
      * Handles the HTTP POST request to add a new entity.
      *

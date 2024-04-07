@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
  * Service class for managing the sold subscriptions of the fitness center.
  */
 @Service
-public class PaidSubscriptionService extends SubscriptionServiceDecorator
-{
+public class PaidSubscriptionService extends SubscriptionServiceDecorator {
     private final BudgetService budgetService;
 
     @Autowired

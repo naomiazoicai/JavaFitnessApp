@@ -20,6 +20,7 @@ import java.util.Optional;
 public class EquipmentItemService extends BaseService<EquipmentItem, Long> implements IEquipmentItemService, ISubjectDeleteEquipmentItem {
 
     private final ICustomEquipmentItemRepository equipmentItemCustomRepository;
+
     @Autowired
     public EquipmentItemService(EquipmentItemRepositoryProxy repository, ExerciseService exerciseService) {
         super(repository);
@@ -28,7 +29,7 @@ public class EquipmentItemService extends BaseService<EquipmentItem, Long> imple
     }
 
     @Override
-    public Optional<EquipmentItem> add(EquipmentItem object){
+    public Optional<EquipmentItem> add(EquipmentItem object) {
         repository.save(object);
         return Optional.of(object);
     }

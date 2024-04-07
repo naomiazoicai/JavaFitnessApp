@@ -3,8 +3,10 @@ package map.project.FitnessCenter.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import map.project.FitnessCenter.controller.BudgetController;
 import map.project.FitnessCenter.service.BudgetService;
+
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.doNothing;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,8 +29,7 @@ public class BudgetControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void get() throws Exception
-    {
+    void get() throws Exception {
         String response = "Budget: 30.0 EURO";
         given(service.getBudget()).willReturn(response);
 
@@ -38,8 +39,7 @@ public class BudgetControllerTest {
     }
 
     @Test
-    void add() throws Exception
-    {
+    void add() throws Exception {
         double amount = 10;
         String requestBody = objectMapper.writeValueAsString(amount);
         String response = "Old budget --->   Budget: 30.0 EURO\n" +
@@ -50,8 +50,8 @@ public class BudgetControllerTest {
         doNothing().when(service).addMoney(amount);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/budget/add")
-                .content(requestBody)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(response));
     }

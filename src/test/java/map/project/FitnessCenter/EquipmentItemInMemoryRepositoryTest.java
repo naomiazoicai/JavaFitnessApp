@@ -4,15 +4,16 @@ import map.project.FitnessCenter.data.model.EquipmentItem;
 import map.project.FitnessCenter.data.model.enums.Condition;
 import map.project.FitnessCenter.data.repository.inMemory.EquipmentItemInMemoryRepository;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EquipmentItemInMemoryRepositoryTest {
 
     @Test
-    public void testSave()
-    {
+    public void testSave() {
         EquipmentItemInMemoryRepository repository = EquipmentItemInMemoryRepository.createInstance();
 
         EquipmentItem newItem = new EquipmentItem(null, "Treadmill", Condition.NEW);
@@ -28,8 +29,7 @@ public class EquipmentItemInMemoryRepositoryTest {
     }
 
     @Test
-    public void testFindByName()
-    {
+    public void testFindByName() {
         EquipmentItemInMemoryRepository repository = EquipmentItemInMemoryRepository.createInstance();
 
         Optional<List<EquipmentItem>> result = repository.findByName("Plate");

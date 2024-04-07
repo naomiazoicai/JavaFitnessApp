@@ -5,9 +5,9 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.Condition;
 
 import java.util.Objects;
+
 /**
  * Entity class representing an equipment item in the fitness center.
- *
  **/
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,9 +15,9 @@ import java.util.Objects;
 @Getter
 @Data
 @Entity
-public class EquipmentItem
-{
-    @Id @GeneratedValue
+public class EquipmentItem {
+    @Id
+    @GeneratedValue
     private Long id;
     @Column(nullable = false)
     private String name;

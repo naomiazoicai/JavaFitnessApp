@@ -8,6 +8,7 @@ import map.project.FitnessCenter.data.model.Trainer;
 public interface IObserverDeletedTrainer {
     /**
      * Signals that a Trainer has been deleted from the system.
+     *
      * @param trainer The Trainer object representing the deleted Trainer
      */
     void trainerDeleted(Trainer trainer);

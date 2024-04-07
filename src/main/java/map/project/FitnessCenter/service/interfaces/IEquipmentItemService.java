@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface IEquipmentItemService {
     /**
      * * Gets an Equipment Item from the repository identified with given name.
+     *
      * @param name The name field of the entity to be searched.
      * @return An optional containing the searched entity or null if it was not found
      */

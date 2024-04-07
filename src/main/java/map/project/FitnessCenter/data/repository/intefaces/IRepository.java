@@ -4,6 +4,7 @@ import org.springframework.data.domain.Example;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Generic repository interface defining common CRUD operations for entities.
  *

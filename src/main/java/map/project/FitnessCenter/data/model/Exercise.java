@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
+
 /**
  * Entity class representing an exercise in the fitness center.
  **/
@@ -14,7 +15,8 @@ import java.util.Objects;
 @Data
 @Entity
 public class Exercise {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @Column(nullable = false)
     private String name;
@@ -28,8 +30,7 @@ public class Exercise {
     @Column
     private int reps = 0;
 
-    public Exercise copy()
-    {
+    public Exercise copy() {
         return new Exercise(id, name, muscleTrained, equipmentUsed, sets, reps);
     }
 

@@ -8,18 +8,19 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
+
 /**
  * Entity class representing a log for free subscriptions in the fitness center.
- * */
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Data
-public class FreeSubscriptionsLog
-{
-    @Id @GeneratedValue
+public class FreeSubscriptionsLog {
+    @Id
+    @GeneratedValue
     private Long id;
     @Column
     String personUsername;

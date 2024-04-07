@@ -2,6 +2,7 @@ package map.project.FitnessCenter.data.repository.intefaces;
 
 import map.project.FitnessCenter.data.model.Customer;
 import map.project.FitnessCenter.data.model.SubscriptionType;
+
 /**
  * Custom repository interface for Subscription, providing additional update methods.
  */

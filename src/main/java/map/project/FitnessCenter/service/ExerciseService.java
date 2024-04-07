@@ -21,8 +21,7 @@ import java.util.Optional;
  */
 @Service
 public class ExerciseService extends BaseService<Exercise, Long>
-        implements IExerciseService, IObserverDeleteEquipmentItem
-{
+        implements IExerciseService, IObserverDeleteEquipmentItem {
     private final IExerciseRepository exerciseRepository;
     private final EquipmentItemRepository equipmentItemRepository;
 
@@ -33,16 +32,14 @@ public class ExerciseService extends BaseService<Exercise, Long>
         this.equipmentItemRepository = equipmentItemRepository;
     }
 
-    private void setEquipmentItem(Exercise object)
-    {
+    private void setEquipmentItem(Exercise object) {
         if (object.getEquipmentUsed() == null) return;
         Optional<EquipmentItem> equipmentItem = equipmentItemRepository.findById(object.getEquipmentUsed().getId());
         equipmentItem.ifPresent(object::setEquipmentUsed);
     }
 
     @Override
-    public Optional<Exercise> add(Exercise object) throws ObjectAlreadyContained
-    {
+    public Optional<Exercise> add(Exercise object) throws ObjectAlreadyContained {
         setEquipmentItem(object);
         return super.add(object);
     }

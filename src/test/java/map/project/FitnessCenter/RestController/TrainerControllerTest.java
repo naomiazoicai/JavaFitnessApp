@@ -8,6 +8,7 @@ import map.project.FitnessCenter.data.model.enums.TrainerSpecialisation;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import map.project.FitnessCenter.service.TrainerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,24 +34,22 @@ public class TrainerControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void add() throws Exception
-    {
+    void add() throws Exception {
         Trainer testTrainer = new Trainer("ion", "ion", null, Gender.male, 0, TrainerSpecialisation.none);
         String requestBody = objectMapper.writeValueAsString(testTrainer);
 
         given(service.add(testTrainer)).willReturn(Optional.of(testTrainer));
 
         mockMvc.perform(MockMvcRequestBuilders.post("/trainer")
-                .content(requestBody)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.username").value(testTrainer.getUsername()));
     }
 
     @Test
-    void getById() throws Exception
-    {
+    void getById() throws Exception {
         Trainer testTrainer = new Trainer("ion", "ion", null, Gender.male, 0, TrainerSpecialisation.none);
         given(service.getEntityByKey(testTrainer.getUsername())).willReturn(Optional.of(testTrainer));
 

@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
+
 /**
  * Entity class representing a subscription in the fitness center.
  **/
@@ -15,7 +16,8 @@ import java.util.Objects;
 @Data
 @Entity
 public class Subscription {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn()
@@ -28,8 +30,7 @@ public class Subscription {
     @Column
     private int durationInDays = 1;
 
-    public Subscription copy()
-    {
+    public Subscription copy() {
         return new Subscription(id, customer, subscriptionType, startDate, durationInDays);
     }
 

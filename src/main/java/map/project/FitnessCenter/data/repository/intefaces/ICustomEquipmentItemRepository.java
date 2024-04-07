@@ -5,6 +5,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Custom repository interface for EquipmentItem, providing additional query methods.
  */

@@ -26,8 +26,7 @@ public class CustomerService extends PersonService<Customer> implements IObserve
 
     @Autowired
     public CustomerService(CustomerRepository repository, PersonRepository personRepository,
-                           TrainerService trainerService)
-    {
+                           TrainerService trainerService) {
         super(repository, personRepository);
         this.customerRepository = repository;
         this.trainerService = trainerService;
@@ -56,8 +55,7 @@ public class CustomerService extends PersonService<Customer> implements IObserve
         return super.delete(id);
     }
 
-    private void setTrainer(Customer object)
-    {
+    private void setTrainer(Customer object) {
         if (object.getAssignedTrainer() == null) return;
         String trainerUsername = object.getAssignedTrainer().getUsername();
         Trainer trainer = trainerService.getTrainerByUsername(trainerUsername);

@@ -17,18 +17,15 @@ public class MainService {
         this.equipmentItemRepositoryProxy = equipmentItemRepositoryProxy;
     }
 
-    public void selectRepoType(RepoTypes type)
-    {
+    public void selectRepoType(RepoTypes type) {
 
-        switch (type)
-        {
+        switch (type) {
             case inMemory -> equipmentItemRepositoryProxy.selectInMemory();
             case jpa -> equipmentItemRepositoryProxy.selectJpa();
         }
     }
 
-    public String welcome()
-    {
+    public String welcome() {
         return "Welcome! Please select repository type.";
     }
 }

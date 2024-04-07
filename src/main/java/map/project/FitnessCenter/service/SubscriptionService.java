@@ -27,8 +27,7 @@ public class SubscriptionService extends BaseService<Subscription, Long> impleme
 
     @Autowired
     SubscriptionService(SubscriptionRepository repository, CustomerService customerService,
-                        SubscriptionTypeService subscriptionTypeService)
-    {
+                        SubscriptionTypeService subscriptionTypeService) {
         super(repository);
         this.subscriptionRepository = repository;
         this.customerService = customerService;
@@ -65,16 +64,14 @@ public class SubscriptionService extends BaseService<Subscription, Long> impleme
         return oldObject;
     }
 
-    private void setCustomer(Subscription object)
-    {
+    private void setCustomer(Subscription object) {
         if (object.getCustomer() == null) return;
         Optional<Customer> customer = customerService.getEntityByKey(object.getCustomer().getUsername());
         customer.ifPresent(object::setCustomer);
     }
 
     @Override
-    public void setSubscriptionType(Subscription object)
-    {
+    public void setSubscriptionType(Subscription object) {
         if (object.getSubscriptionType() == null) return;
         Optional<SubscriptionType> subscriptionType = subscriptionTypeService.getEntityByKey(object.getSubscriptionType().getName());
         subscriptionType.ifPresent(object::setSubscriptionType);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * A decorator base class that enhances the functionality of SubscriptionService implementations.
  */
@@ -17,8 +18,7 @@ public abstract class SubscriptionServiceDecorator implements ISubscriptionServi
 
     protected final ISubscriptionService subscriptionService;
 
-    public SubscriptionServiceDecorator(SubscriptionService subscriptionService)
-    {
+    public SubscriptionServiceDecorator(SubscriptionService subscriptionService) {
         this.subscriptionService = subscriptionService;
     }
 

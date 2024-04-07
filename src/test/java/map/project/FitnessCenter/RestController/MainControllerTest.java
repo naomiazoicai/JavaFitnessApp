@@ -21,9 +21,8 @@ public class MainControllerTest {
     private MainService mainService;
 
     @Test
-    void defaultWelcomeMessage() throws Exception
-    {
-        when (mainService
+    void defaultWelcomeMessage() throws Exception {
+        when(mainService
                 .welcome()).thenReturn("Welcome! Please select repository type.");
         mockMvc.perform(get("/"))
                 .andDo(print())

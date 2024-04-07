@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BudgetService implements IBudgetService {
     private final BudgetRepository repository;
+
     @Autowired
     public BudgetService(BudgetRepository repository) {
         this.repository = repository;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Controller class for managing equipment item-related operations in the fitness center.
  * This controller extends the BaseController and provides endpoints for common CRUD operations on EquipmentItem entities.
@@ -16,8 +17,7 @@ import java.util.Optional;
  **/
 @RestController
 @RequestMapping("/equipmentItem")
-public class EquipmentItemController extends BaseController<EquipmentItem, Long>
-{
+public class EquipmentItemController extends BaseController<EquipmentItem, Long> {
     private final IEquipmentItemService iEquipmentItemService;
 
     @Autowired
@@ -27,11 +27,9 @@ public class EquipmentItemController extends BaseController<EquipmentItem, Long>
     }
 
     @GetMapping("/byName/{name}")
-    public ResponseEntity<List<EquipmentItem>> getEntityByName(@PathVariable(value = "name") String name)
-    {
+    public ResponseEntity<List<EquipmentItem>> getEntityByName(@PathVariable(value = "name") String name) {
         Optional<List<EquipmentItem>> result = iEquipmentItemService.getByName(name);
-        if (result.isPresent())
-        {
+        if (result.isPresent()) {
             List<EquipmentItem> list = result.get();
             if (list.isEmpty()) return ResponseEntity.notFound().build();
             else return ResponseEntity.ok().body(list);

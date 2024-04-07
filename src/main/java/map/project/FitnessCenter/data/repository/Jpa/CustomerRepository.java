@@ -7,6 +7,7 @@ import map.project.FitnessCenter.data.repository.intefaces.ICustomerRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
 /**
  * JPA repository for the Customer entity.
  */

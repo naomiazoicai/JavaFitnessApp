@@ -6,6 +6,7 @@ import map.project.FitnessCenter.data.model.enums.Gender;
 import map.project.FitnessCenter.data.model.enums.TrainerSpecialisation;
 
 import java.time.LocalDate;
+
 /**
  * Entity class representing a trainer in the fitness center.
  **/
@@ -15,8 +16,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-public class Trainer extends Person
-{
+public class Trainer extends Person {
     @Column
     protected double salary = 0;
     @Column
@@ -30,8 +30,7 @@ public class Trainer extends Person
         this.trainerSpecialisation = trainerSpecialisation;
     }
 
-    public Trainer copy()
-    {
+    public Trainer copy() {
         return new Trainer(username, name, birthDate, gender, salary, trainerSpecialisation);
     }
 }

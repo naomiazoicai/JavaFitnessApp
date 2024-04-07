@@ -13,13 +13,11 @@ import java.util.Optional;
 /**
  * Controller class for managing subscription-related operations in the fitness center.
  * This controller implements the common CRUD (Create, Read, Update, Delete) operations for Subscription entities.
- *
  */
-public class SubscriptionController implements IController<Subscription, Long>{
+public class SubscriptionController implements IController<Subscription, Long> {
     private final ISubscriptionService service;
 
-    public SubscriptionController(ISubscriptionService service)
-    {
+    public SubscriptionController(ISubscriptionService service) {
         this.service = service;
     }
 
@@ -31,8 +29,7 @@ public class SubscriptionController implements IController<Subscription, Long>{
                     -> ResponseEntity.status(HttpStatus.CREATED).body(type)).orElseGet(()
                     -> ResponseEntity.internalServerError().build()
             );
-        } catch (ObjectAlreadyContained exception)
-        {
+        } catch (ObjectAlreadyContained exception) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }

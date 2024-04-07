@@ -17,25 +17,24 @@ public class EquipmentItemInMemoryRepository extends InMemoryRepository<Equipmen
         implements IEquipmentItemRepository {
     private Long lastId = 1L;
 
-    private EquipmentItemInMemoryRepository()
-    {
+    private EquipmentItemInMemoryRepository() {
         EquipmentItem item1 = new EquipmentItem(1L, "Plate", Condition.NEW);
         EquipmentItem item2 = new EquipmentItem(2L, "Dumbbell", Condition.WORN);
         save(item1);
         save(item2);
         lastId = 2L;
     }
-    public static EquipmentItemInMemoryRepository createInstance()
-    {
+
+    public static EquipmentItemInMemoryRepository createInstance() {
         return new EquipmentItemInMemoryRepository();
     }
 
-    public List<EquipmentItem> getAllEquipmentItems()
-    {
+    public List<EquipmentItem> getAllEquipmentItems() {
         return new ArrayList<>(map.values());
     }
+
     @Override
-    public synchronized  <E extends EquipmentItem> E save(E entity) {
+    public synchronized <E extends EquipmentItem> E save(E entity) {
         if (entity.getId() != null && map.containsKey(entity.getId())) map.put(entity.getId(), entity);
         Long id = lastId;
         lastId += 1L;
@@ -47,8 +46,7 @@ public class EquipmentItemInMemoryRepository extends InMemoryRepository<Equipmen
     @Override
     public Optional<List<EquipmentItem>> findByName(String name) {
         ArrayList<EquipmentItem> result = new ArrayList<>();
-        for (EquipmentItem item : map.values())
-        {
+        for (EquipmentItem item : map.values()) {
             if (item.getName().contains(name)) result.add(item);
         }
         return Optional.of(result);

@@ -5,9 +5,9 @@ import lombok.*;
 import map.project.FitnessCenter.data.model.enums.RoomAccess;
 
 import java.util.Objects;
+
 /**
  * Entity class representing a room in the fitness center.
- *
  */
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +16,8 @@ import java.util.Objects;
 @Data
 @Entity
 public class Room {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     protected Long id;
     @Column(nullable = false)
     protected boolean occupied = false;
@@ -29,8 +30,7 @@ public class Room {
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;

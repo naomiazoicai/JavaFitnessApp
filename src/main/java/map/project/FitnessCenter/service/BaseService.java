@@ -15,11 +15,10 @@ import java.util.Optional;
  */
 @Service
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>
-{
+public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType> {
     protected final IRepository<Entity, IdType> repository;
-    public BaseService(IRepository<Entity, IdType> repository)
-    {
+
+    public BaseService(IRepository<Entity, IdType> repository) {
         this.repository = repository;
     }
 

@@ -11,10 +11,11 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * JPA repository for the Exercise entity.
  */
-public interface ExerciseRepository extends JpaRepository<Exercise, Long>, IExerciseRepository{
+public interface ExerciseRepository extends JpaRepository<Exercise, Long>, IExerciseRepository {
     @Override
     @Query("SELECT e FROM Exercise e WHERE e.name LIKE %:name%")
     Optional<List<Exercise>> findByName(@Param("name") String name);

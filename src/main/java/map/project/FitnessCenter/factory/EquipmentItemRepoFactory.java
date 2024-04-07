@@ -8,11 +8,12 @@ import map.project.FitnessCenter.data.repository.intefaces.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+
 /**
  * Factory class for creating EquipmentItem repositories based on the specified repository type.
  */
 @Service
-public class EquipmentItemRepoFactory implements IRepoFactory<EquipmentItem, Long>{
+public class EquipmentItemRepoFactory implements IRepoFactory<EquipmentItem, Long> {
     private final ApplicationContext applicationContext;
 
     @Autowired
@@ -21,31 +22,25 @@ public class EquipmentItemRepoFactory implements IRepoFactory<EquipmentItem, Lon
     }
 
     @Override
-    public IRepository<EquipmentItem, Long> buildIRepository(RepoTypes type)
-    {
-        return switch (type)
-        {
+    public IRepository<EquipmentItem, Long> buildIRepository(RepoTypes type) {
+        return switch (type) {
             case jpa -> getJpa();
             case inMemory -> getInMemory();
         };
     }
 
-    public ICustomEquipmentItemRepository buildCustom(RepoTypes type)
-    {
-        return switch (type)
-        {
+    public ICustomEquipmentItemRepository buildCustom(RepoTypes type) {
+        return switch (type) {
             case jpa -> getJpa();
             case inMemory -> getInMemory();
         };
     }
 
-    private EquipmentItemRepository getJpa()
-    {
+    private EquipmentItemRepository getJpa() {
         return applicationContext.getBean(EquipmentItemRepository.class);
     }
 
-    private EquipmentItemInMemoryRepository getInMemory()
-    {
+    private EquipmentItemInMemoryRepository getInMemory() {
         return applicationContext.getBean(EquipmentItemInMemoryRepository.class);
     }
 

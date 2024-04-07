@@ -2,11 +2,11 @@ package map.project.FitnessCenter.data.repository.intefaces;
 
 import map.project.FitnessCenter.data.model.Person;
 import org.springframework.data.repository.query.Param;
+
 /**
  * Interface for the Person repository, extending the general repository interface.
  */
-public interface IPersonRepository extends IRepository<Person, String>
-{
+public interface IPersonRepository extends IRepository<Person, String> {
     /**
      * Check if a person with the given username exists.
      *

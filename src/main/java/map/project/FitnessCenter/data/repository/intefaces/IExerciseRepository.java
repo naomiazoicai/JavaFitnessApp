@@ -6,10 +6,11 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Interface for the Exercise repository, extending the general repository interface.
  */
-public interface IExerciseRepository extends IRepository<Exercise, Long>{
+public interface IExerciseRepository extends IRepository<Exercise, Long> {
     /**
      * Find exercises by name.
      *

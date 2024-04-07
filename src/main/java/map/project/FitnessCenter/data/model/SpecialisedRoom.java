@@ -1,10 +1,12 @@
 package map.project.FitnessCenter.data.model;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import lombok.*;
 import map.project.FitnessCenter.data.model.enums.RoomAccess;
 import map.project.FitnessCenter.data.model.enums.RoomType;
+
 /**
  * Entity class representing a specialised room in the fitness center.
  **/
@@ -14,7 +16,7 @@ import map.project.FitnessCenter.data.model.enums.RoomType;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-public class SpecialisedRoom extends Room{
+public class SpecialisedRoom extends Room {
     @Enumerated
     @Column(nullable = false)
     private RoomType roomType = RoomType.empty;
@@ -27,8 +29,7 @@ public class SpecialisedRoom extends Room{
         this.personCapacity = personCapacity;
     }
 
-    public SpecialisedRoom copy()
-    {
+    public SpecialisedRoom copy() {
         return new SpecialisedRoom(id, occupied, roomAccess, roomType, personCapacity);
     }
 }

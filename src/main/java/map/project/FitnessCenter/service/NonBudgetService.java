@@ -17,6 +17,7 @@ import java.time.LocalDate;
 public class NonBudgetService extends SubscriptionServiceDecorator {
     private final FreeSubscriptionLogRepo repository;
     private final SubscriptionService subscriptionService;
+
     @Autowired
     public NonBudgetService(FreeSubscriptionLogRepo repository, SubscriptionService subscriptionService) {
         super(subscriptionService);

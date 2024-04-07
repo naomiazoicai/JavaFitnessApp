@@ -6,9 +6,10 @@ import map.project.FitnessCenter.data.model.enums.Gender;
 
 import java.time.LocalDate;
 import java.util.Objects;
+
 /**
  * Base entity class representing a person in the fitness center.
- * */
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -16,8 +17,7 @@ import java.util.Objects;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Person
-{
+public class Person {
     @Id
     protected String username;
     @Column
@@ -28,8 +28,7 @@ public class Person
     @Enumerated
     protected Gender gender = Gender.doNotSay;
 
-    public Person copy()
-    {
+    public Person copy() {
         return new Person(username, name, birthDate, gender);
     }
 

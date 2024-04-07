@@ -27,7 +27,7 @@ public class SpecialisedRoomService extends BaseService<SpecialisedRoom, Long> i
     }
 
     @Override
-    public Optional<SpecialisedRoom> add(SpecialisedRoom object){
+    public Optional<SpecialisedRoom> add(SpecialisedRoom object) {
         specialisedRoomRepository.save(object);
         return Optional.of(object);
     }
